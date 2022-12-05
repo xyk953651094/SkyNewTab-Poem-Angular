@@ -1,0 +1,13 @@
+/*移动端竖屏样式*/
+@media screen and (max-width: 500px) and (orientation:portrait) {
+    /* 中国诗词 */
+    #poemDiv, #poemContent, #poemAuthor {
+        writing-mode: vertical-lr;
+        letter-spacing: 5px;
+        max-height: 80%;
+    }
+
+    #poemAuthor {
+        display: none;
+    }
+}

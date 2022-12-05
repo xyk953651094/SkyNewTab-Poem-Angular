@@ -113,7 +113,7 @@ export let darkThemeArray = [
     {'bodyBackgroundColor': '#50543B', 'fontColor': '#FFE7B6'},
 ];
 
-export let chineseIconArray = [
+export let chinaWindowArray = [
     "icon-chuangge1",
     "icon-chuangge2",
     "icon-chuangge3",
@@ -129,7 +129,7 @@ export let chineseIconArray = [
     "icon-chuangge13",
 ]
 
-export let chineseObjectArray = [
+export let chinaObjectArray = [
     "icon-huaping",
     "icon-huaping1",
     "icon-xiangyun",

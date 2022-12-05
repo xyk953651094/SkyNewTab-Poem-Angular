@@ -1,16 +1,22 @@
-<mat-grid-list class="header" cols="2" rowHeight="100px" xmlns="http://www.w3.org/1999/html">
+<mat-grid-list class="header" cols="2" rowHeight="100px">
   <mat-grid-tile colspan="1">
-    <greet-component></greet-component>
+    <greet-component [fontColor]="fontColor"></greet-component>
   </mat-grid-tile>
-  <mat-grid-tile colspan="1">2</mat-grid-tile>
+  <mat-grid-tile colspan="1"></mat-grid-tile>
 </mat-grid-list>
-
 <mat-grid-list class="content" cols="1" rowHeight="fit">
   <mat-grid-tile class="center">
-    <poem-component></poem-component>
+    <poem-component [fontColor]="fontColor"></poem-component>
   </mat-grid-tile>
 </mat-grid-list>
 <mat-grid-list class="footer" cols="2" rowHeight="100px">
-  <mat-grid-tile>5</mat-grid-tile>
-  <mat-grid-tile>6</mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
 </mat-grid-list>
+<div id="chinaWindowDiv" [style.color]="fontColor">
+  <i id="chinaWindowIcon" [class]="chinaWindowIconClass"></i>
+</div>
+<div id="chinaObjectDiv" [style.color]="fontColor">
+  <i id="chinaObjectIcon" [class]="chinaObjectIconClass"></i>
+</div>
+
