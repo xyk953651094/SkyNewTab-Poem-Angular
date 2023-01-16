@@ -1,0 +1,56 @@
+/* 中国物件容器 */
+#chinaObjectDiv {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    bottom: 0;
+    right:0;
+    overflow: hidden;
+}
+
+/* 中国物件图标 */
+#chinaObjectIcon {
+    font-size: 200px;
+    position: absolute;
+    bottom: 135px;
+}
+
+/*移动端竖屏样式*/
+@media screen and (max-width: 500px) and (orientation:portrait) {
+    /* 中国物件容器 */
+    #chinaObjectDiv {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        bottom: 0;
+        right:0;
+        overflow: hidden;
+    }
+
+    /* 中国物件图标 */
+    #chinaObjectIcon {
+        font-size: 100px;
+        position: absolute;
+        bottom: 90px;
+    }
+}
+
+/*移动端横屏样式*/
+@media screen and (max-width: 1000px) and (orientation:landscape) {
+    /* 中国物件容器 */
+    #chinaObjectDiv {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        bottom: 0;
+        right:0;
+        overflow: hidden;
+    }
+
+    /* 中国物件图标 */
+    #chinaObjectIcon {
+        font-size: 100px;
+        position: absolute;
+        bottom: 90px;
+    }
+}

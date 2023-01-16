@@ -24,6 +24,6 @@
     "default_title": "__MSG_extensionDefaultTitle__"
   },
   "chrome_url_overrides": {
-    "newtab": "mainPage.html"
+    "newtab": "index.html"
   }
 }

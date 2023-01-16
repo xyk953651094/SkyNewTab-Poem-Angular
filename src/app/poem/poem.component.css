@@ -1,13 +1,27 @@
+.poem-font {
+    font-family: cursive,SimSun, Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+#poemDiv, #poemContent, #poemAuthor {
+    letter-spacing: 5px;
+}
+
 /*移动端竖屏样式*/
 @media screen and (max-width: 500px) and (orientation:portrait) {
+    .poem-font {
+        font-family: cursive,SimSun, Arial, Helvetica, sans-serif;
+        font-size: 18px;
+    }
+
     /* 中国诗词 */
     #poemDiv, #poemContent, #poemAuthor {
         writing-mode: vertical-lr;
-        letter-spacing: 5px;
-        max-height: 80%;
+        overflow: hidden;
     }
 
-    #poemAuthor {
+    /* 隐藏部分元素 */
+    #poemAuthor, #poemDivide {
         display: none;
     }
 }

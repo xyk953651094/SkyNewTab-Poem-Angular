@@ -5,12 +5,12 @@ const $ = require('jquery');
 @Component({
     selector: 'poem-component',
     templateUrl: './poem.component.html',
-    styleUrls: ['./poem.component.css', '../app.component.css']
+    styleUrls: ['./poem.component.css']
 })
 
 export class PoemComponent implements OnInit{
     title = 'PoemComponent';
-    @Input() fontColor: string = 'black';
+    @Input() fontColor: string = '#000000';
     poemContent: string = '海上生明月，天涯共此时';
     poemAuthor: string = '【唐】张九龄 ·《望月怀远》';
 

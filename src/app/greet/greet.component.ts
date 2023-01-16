@@ -5,14 +5,13 @@ const $ = require('jquery');
 @Component({
     selector: 'greet-component',
     templateUrl: './greet.component.html',
-    styleUrls: ['./greet.component.css', '../app.component.css']
+    styleUrls: ['./greet.component.css']
 })
 export class GreetComponent implements OnInit {
-    @Input() fontColor: string = 'black';
+    @Input() fontColor: string = '#000000';
     title = 'GreetComponent';
     greetContent: string = '你好';
-    holidayContent: string = '暂无节日信息';
-    weatherContent: string = '暂无天气信息';
+    holidayContent: string = '无节气信息';
 
     // 问候
     setGreet(): void {
@@ -37,6 +36,7 @@ export class GreetComponent implements OnInit {
                     } else {
                         tempThis.holidayContent = result.data.solarTerms;
                     }
+                    tempThis.greetContent += "｜" + tempThis.holidayContent;
                 }
             },
             error: function (err: any) {
@@ -45,30 +45,8 @@ export class GreetComponent implements OnInit {
         })
     }
 
-    // 天气
-    setWeather(): void {
-        let tempThis = this;
-        $.ajax({
-            url: "https://v2.jinrishici.com/info",
-            type: "GET",
-            success: function (result: any) {
-                if (result.status === "success") {
-                    if (result.data.weatherData) {
-                        tempThis.weatherContent = result.data.weatherData.weather;
-                    }
-                } else {
-
-                }
-            },
-            error: function (err: any) {
-
-            }
-        });
-    }
-
     ngOnInit(): void {
         this.setGreet();       // 问候
         this.setHoliday();     // 节气
-        this.setWeather();     // 天气
     }
 }

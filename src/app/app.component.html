@@ -2,21 +2,23 @@
   <mat-grid-tile colspan="1">
     <greet-component [fontColor]="fontColor"></greet-component>
   </mat-grid-tile>
-  <mat-grid-tile colspan="1"></mat-grid-tile>
+  <mat-grid-tile colspan="1">
+    <weather-component [fontColor]="fontColor"></weather-component>
+  </mat-grid-tile>
 </mat-grid-list>
 <mat-grid-list class="content" cols="1" rowHeight="fit">
   <mat-grid-tile class="center">
     <poem-component [fontColor]="fontColor"></poem-component>
   </mat-grid-tile>
 </mat-grid-list>
-<mat-grid-list class="footer" cols="2" rowHeight="100px">
-  <mat-grid-tile></mat-grid-tile>
-  <mat-grid-tile></mat-grid-tile>
+<mat-grid-list class="footer" cols="1" rowHeight="100px">
+  <mat-grid-tile>
+    <wave-component [waveColor]="waveColor"></wave-component>
+  </mat-grid-tile>
 </mat-grid-list>
-<div id="chinaWindowDiv" [style.color]="fontColor">
-  <i id="chinaWindowIcon" [class]="chinaWindowIconClass"></i>
-</div>
-<div id="chinaObjectDiv" [style.color]="fontColor">
-  <i id="chinaObjectIcon" [class]="chinaObjectIconClass"></i>
-</div>
+<china-window-component [fontColor]="fontColor"></china-window-component>
+<!--<china-object-component [fontColor]="fontColor"></china-object-component>-->
+
+
+
 
