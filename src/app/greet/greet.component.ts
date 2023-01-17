@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {getTimeDetails, getGreet} from "../../public/publicFunctions";
+import {getTimeDetails, getGreet, getSolarHoliday, getChineseHoliday} from "../../public/publicFunctions";
 const $ = require('jquery');
 
 @Component({
@@ -36,7 +36,7 @@ export class GreetComponent implements OnInit {
                     } else {
                         tempThis.holidayContent = result.data.solarTerms;
                     }
-                    tempThis.greetContent += "｜" + tempThis.holidayContent;
+                    tempThis.greetContent += "｜" + tempThis.holidayContent + " " + getSolarHoliday() + " " + getChineseHoliday(result.data.lunarCalendar);
                 }
             },
             error: function (err: any) {
