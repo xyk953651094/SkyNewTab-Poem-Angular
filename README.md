@@ -18,4 +18,7 @@
 * 正在开发，敬请期待
 
 ## 效果展示
+<img width="1440" alt="截屏2023-01-18 20 35 43" src="https://user-images.githubusercontent.com/28004442/213172914-fc65e431-a56c-48f2-a32c-aee332f69e9e.png">
+
+<img width="1440" alt="截屏2023-01-18 20 36 34" src="https://user-images.githubusercontent.com/28004442/213173092-b2c87eeb-8607-4f23-ad1e-3f311bf67f27.png">
 
