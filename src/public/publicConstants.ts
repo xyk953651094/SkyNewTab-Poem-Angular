@@ -1,7 +1,7 @@
 export let themeArray: ({ bodyBackgroundColor: string; fontColor: string; waveColor: string[] }[]) = [
     {'bodyBackgroundColor': '#5C2223', 'fontColor': '#F9F871', 'waveColor':['#EAC557', '#D19546', '#AF693B']},  // 暗玉紫
     {'bodyBackgroundColor': '#EEA2A4', 'fontColor': '#2F4858', 'waveColor':['#9F7B9D', '#746B8D', '#4D5A75']},  // 牡丹粉
-    {'bodyBackgroundColor': '#7A7374', 'fontColor': '#FFE3EC', 'waveColor':['#F05E84', '#FFF5F8', '#A6868B']},  // 锌灰
+    {'bodyBackgroundColor': '#7A7374', 'fontColor': '#FFE3EC', 'waveColor':['#FFF5F8', '#F05E84', '#A6868B']},  // 锌灰
     {'bodyBackgroundColor': '#2D0C13', 'fontColor': '#F9F871', 'waveColor':['#E5BB55', '#C38445', '#965438']},  // 茄皮紫
     {'bodyBackgroundColor': '#EF498B', 'fontColor': '#2F4858', 'waveColor':['#895AA3', '#575A94', '#365378']},  // 扁豆花红
     {'bodyBackgroundColor': '#E9D7DF', 'fontColor': '#276860', 'waveColor':['#A0A7BF', '#7192A9', '#447E89']},  // 丁香淡紫

@@ -6,6 +6,7 @@ import {GreetComponent} from './greet/greet.component';
 import {WeatherComponent} from "./weather/weather.component";
 import {PoemComponent} from './poem/poem.component';
 import {SearchComponent} from "./search/search.component";
+import {SunComponent} from "./sun/sun.component";
 import {WaveComponent} from "./wave/wave.component";
 import {ChinaWindowComponent} from "./chinaWindow/chinaWindow.component";
 import {ChinaObjectComponent} from "./chinaObject/chinaObject.component";
@@ -24,6 +25,7 @@ import {MatIconModule} from "@angular/material/icon";
         WeatherComponent,
         PoemComponent,
         SearchComponent,
+        SunComponent,
         WaveComponent,
         ChinaWindowComponent,
         ChinaObjectComponent
