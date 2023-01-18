@@ -1,14 +1,14 @@
 {
   "extensionName":{
-    "message": "SkyNewTab Poem Angular",
+    "message": "SkyNewTab Poem Pro",
     "description": "extension_name"
   },
   "extensionDescription":{
-    "message": "SkyNewTab Poem by XYK based on Angular",
+    "message": "SkyNewTab Poem Pro by XYK based on Angular",
     "description": "extension_description"
   },
   "extensionDefaultTitle":{
-    "message": "SkyNewTab Poem",
+    "message": "SkyNewTab Poem Pro",
     "description": "extension_default_title"
   },
 
