@@ -1,119 +1,17 @@
-export let lightThemeArray = [
-    // Material Design配色
-    {'bodyBackgroundColor': '#FFEBEE', 'fontColor': '#F44336'},
-    {'bodyBackgroundColor': '#F44336', 'fontColor': '#FFEBEE'},
-    {'bodyBackgroundColor': '#FCE4EC', 'fontColor': '#E91E63'},
-    {'bodyBackgroundColor': '#E91E63', 'fontColor': '#FCE4EC'},
-    {'bodyBackgroundColor': '#F3E5F5', 'fontColor': '#9C27B0'},
-    {'bodyBackgroundColor': '#9C27B0', 'fontColor': '#F3E5F5'},
-    {'bodyBackgroundColor': '#EDE7F6', 'fontColor': '#673AB7'},
-    {'bodyBackgroundColor': '#673AB7', 'fontColor': '#EDE7F6'},
-    {'bodyBackgroundColor': '#E8EAF6', 'fontColor': '#3F51B5'},
-    {'bodyBackgroundColor': '#3F51B5', 'fontColor': '#E8EAF6'},
-    {'bodyBackgroundColor': '#E3F2FD', 'fontColor': '#2196F3'},
-    {'bodyBackgroundColor': '#2196F3', 'fontColor': '#E3F2FD'},
-    {'bodyBackgroundColor': '#E1F5FE', 'fontColor': '#03A9F4'},
-    {'bodyBackgroundColor': '#03A9F4', 'fontColor': '#E1F5FE'},
-    {'bodyBackgroundColor': '#E0F7FA', 'fontColor': '#00BCD4'},
-    {'bodyBackgroundColor': '#00BCD4', 'fontColor': '#E0F7FA'},
-    {'bodyBackgroundColor': '#E0F2F1', 'fontColor': '#009688'},
-    {'bodyBackgroundColor': '#009688', 'fontColor': '#E0F2F1'},
-    {'bodyBackgroundColor': '#E8F5E9', 'fontColor': '#4CAF50'},
-    {'bodyBackgroundColor': '#4CAF50', 'fontColor': '#E8F5E9'},
-    {'bodyBackgroundColor': '#F1F8E9', 'fontColor': '#8BC34A'},
-    {'bodyBackgroundColor': '#8BC34A', 'fontColor': '#F1F8E9'},
-    {'bodyBackgroundColor': '#F9FBE7', 'fontColor': '#CDDC39'},
-    {'bodyBackgroundColor': '#CDDC39', 'fontColor': '#F9FBE7'},
-    {'bodyBackgroundColor': '#FFFDE7', 'fontColor': '#FFEB3B'},
-    {'bodyBackgroundColor': '#FFEB3B', 'fontColor': '#FFFDE7'},
-    {'bodyBackgroundColor': '#FFF8E1', 'fontColor': '#FFC107'},
-    {'bodyBackgroundColor': '#FFC107', 'fontColor': '#FFF8E1'},
-    {'bodyBackgroundColor': '#FFF3E0', 'fontColor': '#FF9800'},
-    {'bodyBackgroundColor': '#FF9800', 'fontColor': '#FFF3E0'},
-    {'bodyBackgroundColor': '#FBE9E7', 'fontColor': '#FF5722'},
-    {'bodyBackgroundColor': '#FF5722', 'fontColor': '#FBE9E7'},
-    {'bodyBackgroundColor': '#EFEBE9', 'fontColor': '#795548'},
-    {'bodyBackgroundColor': '#795548', 'fontColor': '#EFEBE9'},
-    {'bodyBackgroundColor': '#ECEFF1', 'fontColor': '#607D8B'},
-    {'bodyBackgroundColor': '#607D8B', 'fontColor': '#ECEFF1'},
-    {'bodyBackgroundColor': '#FAFAFA', 'fontColor': '#9E9E9E'},
-    {'bodyBackgroundColor': '#9E9E9E', 'fontColor': '#FAFAFA'},
-
-    // 高级配色
-    {'bodyBackgroundColor': '#FAEFDE', 'fontColor': '#E42D44'},
-    {'bodyBackgroundColor': '#E42D44', 'fontColor': '#FAEFDE'},
-    {'bodyBackgroundColor': '#F2EAE0', 'fontColor': '#7BAD5F'},
-    {'bodyBackgroundColor': '#7BAD5F', 'fontColor': '#F2EAE0'},
-    {'bodyBackgroundColor': '#E5D7AD', 'fontColor': '#614F4D'},
-    {'bodyBackgroundColor': '#614F4D', 'fontColor': '#E5D7AD'},
-    {'bodyBackgroundColor': '#5B3663', 'fontColor': '#FFD800'},
-    {'bodyBackgroundColor': '#FFD800', 'fontColor': '#5B3663'},
-    {'bodyBackgroundColor': '#BCCF90', 'fontColor': '#F6A09A'},
-    {'bodyBackgroundColor': '#F6A09A', 'fontColor': '#BCCF90'},
-    {'bodyBackgroundColor': '#343130', 'fontColor': '#FF7900'},
-    {'bodyBackgroundColor': '#FF7900', 'fontColor': '#343130'},
-    {'bodyBackgroundColor': '#EDB04C', 'fontColor': '#8A3C48'},
-    {'bodyBackgroundColor': '#8A3C48', 'fontColor': '#EDB04C'},
-    {'bodyBackgroundColor': '#A0C198', 'fontColor': '#535E4B'},
-    {'bodyBackgroundColor': '#535E4B', 'fontColor': '#A0C198'},
-    {'bodyBackgroundColor': '#CFA33E', 'fontColor': '#262424'},
-    {'bodyBackgroundColor': '#262424', 'fontColor': '#CFA33E'},
-    {'bodyBackgroundColor': '#D23538', 'fontColor': '#36527D'},
-    {'bodyBackgroundColor': '#36527D', 'fontColor': '#D23538'},
-    {'bodyBackgroundColor': '#F7F2ED', 'fontColor': '#8D587E'},
-    {'bodyBackgroundColor': '#8D587E', 'fontColor': '#F7F2ED'},
-
-    {'bodyBackgroundColor': '#FD454A', 'fontColor': '#FCBE23'},
-    {'bodyBackgroundColor': '#FCBE23', 'fontColor': '#FD454A'},
-    {'bodyBackgroundColor': '#4C3C36', 'fontColor': '#7CAC67'},
-    {'bodyBackgroundColor': '#7CAC67', 'fontColor': '#4C3C36'},
-    {'bodyBackgroundColor': '#013372', 'fontColor': '#C9AB70'},
-    {'bodyBackgroundColor': '#C9AB70', 'fontColor': '#013372'},
-    {'bodyBackgroundColor': '#F4EEE6', 'fontColor': '#362228'},
-    {'bodyBackgroundColor': '#362228', 'fontColor': '#F4EEE6'},
-    {'bodyBackgroundColor': '#C92C35', 'fontColor': '#044091'},
-    {'bodyBackgroundColor': '#044091', 'fontColor': '#C92C35'},
-    {'bodyBackgroundColor': '#A2DDB8', 'fontColor': '#F6F2EB'},
-    {'bodyBackgroundColor': '#F6F2EB', 'fontColor': '#A2DDB8'},
-    {'bodyBackgroundColor': '#FFCE56', 'fontColor': '#7F8284'},
-    {'bodyBackgroundColor': '#7F8284', 'fontColor': '#FFCE56'},
-    {'bodyBackgroundColor': '#6D8158', 'fontColor': '#245776'},
-    {'bodyBackgroundColor': '#245776', 'fontColor': '#6D8158'},
-    {'bodyBackgroundColor': '#CEBECE', 'fontColor': '#EFF2FA'},
-    {'bodyBackgroundColor': '#EFF2FA', 'fontColor': '#CEBECE'},
-    {'bodyBackgroundColor': '#DCB28C', 'fontColor': '#474361'},
-    {'bodyBackgroundColor': '#474361', 'fontColor': '#DCB28C'},
-    {'bodyBackgroundColor': '#50543B', 'fontColor': '#FFE7B6'},
-    {'bodyBackgroundColor': '#FFE7B6', 'fontColor': '#50543B'},
+export let themeArray: ({ bodyBackgroundColor: string; fontColor: string; waveColor: string[] }[]) = [
+    {'bodyBackgroundColor': '#5C2223', 'fontColor': '#F9F871', 'waveColor':['#EAC557', '#D19546', '#AF693B']},  // 暗玉紫
+    {'bodyBackgroundColor': '#EEA2A4', 'fontColor': '#2F4858', 'waveColor':['#9F7B9D', '#746B8D', '#4D5A75']},  // 牡丹粉
+    {'bodyBackgroundColor': '#7A7374', 'fontColor': '#FFE3EC', 'waveColor':['#FFF5F8', '#F05E84', '#A6868B']},  // 锌灰
+    {'bodyBackgroundColor': '#2D0C13', 'fontColor': '#F9F871', 'waveColor':['#E5BB55', '#C38445', '#965438']},  // 茄皮紫
+    {'bodyBackgroundColor': '#EF498B', 'fontColor': '#2F4858', 'waveColor':['#895AA3', '#575A94', '#365378']},  // 扁豆花红
+    {'bodyBackgroundColor': '#E9D7DF', 'fontColor': '#276860', 'waveColor':['#A0A7BF', '#7192A9', '#447E89']},  // 丁香淡紫
+    {'bodyBackgroundColor': '#F7C173', 'fontColor': '#2F4858', 'waveColor':['#689F70', '#368477', '#276670']},  // 肉色
+    {'bodyBackgroundColor': '#0EB0C9', 'fontColor': '#F9F871', 'waveColor':['#B8F283', '#7AE69D', '#3BD7B5']},  // 孔雀蓝
+    {'bodyBackgroundColor': '#D8E3E7', 'fontColor': '#7B5362', 'waveColor':['#A4AABD', '#948DA4', '#886F85']},  // 云峰白
+    {'bodyBackgroundColor': '#57C3C2', 'fontColor': '#F9F871', 'waveColor':['#C7F482', '#9AEB98', '#75E0AC']},  // 石绿
 ];
 
-export let darkThemeArray = [
-    // Material Design配色
-    {'bodyBackgroundColor': '#9C27B0', 'fontColor': '#F3E5F5'},
-    {'bodyBackgroundColor': '#673AB7', 'fontColor': '#EDE7F6'},
-    {'bodyBackgroundColor': '#3F51B5', 'fontColor': '#E8EAF6'},
-    {'bodyBackgroundColor': '#795548', 'fontColor': '#EFEBE9'},
-    {'bodyBackgroundColor': '#9E9E9E', 'fontColor': '#FAFAFA'},
-
-    // 高级配色
-    {'bodyBackgroundColor': '#614F4D', 'fontColor': '#E5D7AD'},
-    {'bodyBackgroundColor': '#5B3663', 'fontColor': '#FFD800'},
-    {'bodyBackgroundColor': '#343130', 'fontColor': '#FF7900'},
-    {'bodyBackgroundColor': '#8A3C48', 'fontColor': '#EDB04C'},
-    {'bodyBackgroundColor': '#535E4B', 'fontColor': '#A0C198'},
-    {'bodyBackgroundColor': '#262424', 'fontColor': '#CFA33E'},
-    {'bodyBackgroundColor': '#36527D', 'fontColor': '#D23538'},
-
-    {'bodyBackgroundColor': '#4C3C36', 'fontColor': '#7CAC67'},
-    {'bodyBackgroundColor': '#013372', 'fontColor': '#C9AB70'},
-    {'bodyBackgroundColor': '#362228', 'fontColor': '#F4EEE6'},
-    {'bodyBackgroundColor': '#044091', 'fontColor': '#C92C35'},
-    {'bodyBackgroundColor': '#245776', 'fontColor': '#6D8158'},
-    {'bodyBackgroundColor': '#474361', 'fontColor': '#DCB28C'},
-    {'bodyBackgroundColor': '#50543B', 'fontColor': '#FFE7B6'},
-];
-
-export let chineseIconArray = [
+export let chinaWindowArray = [
     "icon-chuangge1",
     "icon-chuangge2",
     "icon-chuangge3",
@@ -129,7 +27,7 @@ export let chineseIconArray = [
     "icon-chuangge13",
 ]
 
-export let chineseObjectArray = [
+export let chinaObjectArray = [
     "icon-huaping",
     "icon-huaping1",
     "icon-xiangyun",

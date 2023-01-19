@@ -1,0 +1,12 @@
+.greet-font {
+    font-family: cursive,SimSun, Arial, Helvetica, sans-serif;
+    font-size: 25px;
+}
+
+/*移动端竖屏样式*/
+@media screen and (max-width: 500px) and (orientation:portrait) {
+    .greet-font {
+        font-family: cursive,SimSun, Arial, Helvetica, sans-serif;
+        font-size: 18px;
+    }
+}
