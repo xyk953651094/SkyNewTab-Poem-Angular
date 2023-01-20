@@ -15,7 +15,7 @@
 
 ## 安装
 * [Chrome 网上应用商店]()
-* [Edge 外接程序商店]()
+* [Edge 外接程序商店](https://microsoftedge.microsoft.com/addons/detail/bjffkcmhfeebpeaifnblceieijbpplhp)
 * [Firefox 附加组件商店]()
 * 下载本页面提供的文件进行安装
 
