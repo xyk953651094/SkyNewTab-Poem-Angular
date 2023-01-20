@@ -7,7 +7,7 @@
 @media screen and (max-width: 500px) and (orientation:portrait) {
     .weather-font {
         font-family: cursive,SimSun, Arial, Helvetica, sans-serif;
-        font-size: 18px;
+        font-size: 20px;
     }
 
     /* 隐藏部分元素 */
