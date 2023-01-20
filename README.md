@@ -14,8 +14,10 @@
 * 诗词来源：https://www.jinrishici.com   
 
 ## 安装
-* 商店版即将发布，敬请期待
-* 或：下载本页面提供的文件进行安装
+* [Chrome 网上应用商店]()
+* [Edge 外接程序商店]()
+* [Firefox 附加组件商店]()
+* 下载本页面提供的文件进行安装
 
 ## 效果展示
 <img width="280" alt="截屏2023-01-20 14 23 58" src="https://user-images.githubusercontent.com/28004442/213631172-a175818c-f5e0-46b5-9296-2259af166f0f.png">
