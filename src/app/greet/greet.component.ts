@@ -10,11 +10,20 @@ const $ = require('jquery');
 export class GreetComponent implements OnInit {
     @Input() fontColor: string = '#000000';
     title = 'GreetComponent';
+    greetIcon = 'light_mode';
     greetContent: string = '你好';
     holidayContent: string = '无节气信息';
 
     // 问候
     setGreet(): void {
+        let hours = new Date().getHours();
+        if (hours >= 6 && hours < 18 ) {
+            this.greetIcon = 'light_mode';
+        }
+        else {
+            this.greetIcon = 'dark_mode';
+        }
+
         this.greetContent = getGreet();
     }
 
