@@ -33,7 +33,7 @@ export class GreetComponent implements OnInit {
             data: parameters,
             success: function (resultData: any) {
                 if (resultData.code === 1) {
-                    tempThis.holidayContent = resultData.data.solarTerms + " " + resultData.data.typeDes;
+                    tempThis.holidayContent = resultData.data.solarTerms + " · " + resultData.data.typeDes;
                     if (resultData.data.solarTerms.indexOf("后") === -1) {
                         tempThis.holidayContent = "今日" + tempThis.holidayContent;
                     }
