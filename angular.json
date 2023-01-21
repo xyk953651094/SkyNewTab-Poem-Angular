@@ -28,7 +28,8 @@
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
-              "src/assets/iconFont/iconfont.css"
+              "src/assets/iconFont/iconfont.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
@@ -95,7 +96,8 @@
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
-              "src/assets/iconFont/iconfont.css"
+              "src/assets/iconFont/iconfont.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
             ],
             "scripts": []
           }

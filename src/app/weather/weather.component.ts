@@ -1,4 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
+import {getWeatherIcon} from "../../public/publicFunctions";
 const $ = require('jquery');
 
 @Component({
@@ -9,7 +10,7 @@ const $ = require('jquery');
 export class WeatherComponent implements OnInit {
     @Input() fontColor: string = '#000000';
     title = 'WeatherComponent';
-
+    weatherIcon: string = ''
     weatherContent: string = '';
 
     // 天气
@@ -22,7 +23,8 @@ export class WeatherComponent implements OnInit {
                 if (result.status === "success") {
                     if (result.data.weatherData) {
                         let weatherData = result.data.weatherData;
-                        tempThis.weatherContent = weatherData.temperature + '°C｜' + weatherData.weather;
+                        tempThis.weatherIcon = getWeatherIcon(weatherData.weather);
+                        tempThis.weatherContent = weatherData.weather + '｜' + weatherData.temperature + '°C';
                     }
                 } else {
 

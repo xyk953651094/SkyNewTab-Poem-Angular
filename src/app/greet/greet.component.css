@@ -3,6 +3,10 @@
     font-size: 25px;
 }
 
+.greet-font > i {
+    vertical-align: middle;
+}
+
 /*移动端竖屏样式*/
 @media screen and (max-width: 500px) and (orientation:portrait) {
     .greet-font {
