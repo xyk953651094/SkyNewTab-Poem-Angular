@@ -20,10 +20,11 @@
 * 下载本页面提供的文件进行安装
 
 ## 效果展示
-<img width="282" alt="截屏2023-01-21 18 02 25" src="https://user-images.githubusercontent.com/28004442/213861939-7851d33c-6264-4d66-941c-dec899ea3d11.png">
+<img width="281" alt="截屏2023-01-21 18 05 44" src="https://user-images.githubusercontent.com/28004442/213862033-02da11f1-6442-4ec1-a0bf-747323b5cfd0.png">
 
-<img width="281" alt="截屏2023-01-21 18 03 11" src="https://user-images.githubusercontent.com/28004442/213861963-44a9c348-dc32-4662-992e-52f64e1b98e8.png">
+<img width="281" alt="截屏2023-01-21 18 06 16" src="https://user-images.githubusercontent.com/28004442/213862062-35b6b21c-1604-4c04-b4e5-0d781d79d600.png">
 
-<img width="1440" alt="截屏2023-01-21 18 03 29" src="https://user-images.githubusercontent.com/28004442/213861974-b1579667-be4e-4848-bc83-8cdba065492d.png">
+<img width="1440" alt="截屏2023-01-21 18 06 38" src="https://user-images.githubusercontent.com/28004442/213862070-d7714c32-1af3-46d2-81f0-20a9cf18744d.png">
 
-<img width="1440" alt="截屏2023-01-21 18 03 43" src="https://user-images.githubusercontent.com/28004442/213861979-37f4fffb-cab6-4937-9a9f-d8407539f153.png">
+<img width="1440" alt="截屏2023-01-21 18 06 57" src="https://user-images.githubusercontent.com/28004442/213862087-8836837c-628a-439e-9df7-85d00a93b7bb.png">
+
