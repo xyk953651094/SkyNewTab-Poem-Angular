@@ -20,11 +20,10 @@
 * 下载本页面提供的文件进行安装
 
 ## 效果展示
-<img width="280" alt="截屏2023-01-20 14 23 58" src="https://user-images.githubusercontent.com/28004442/213631172-a175818c-f5e0-46b5-9296-2259af166f0f.png">
+<img width="282" alt="截屏2023-01-21 18 02 25" src="https://user-images.githubusercontent.com/28004442/213861939-7851d33c-6264-4d66-941c-dec899ea3d11.png">
 
-<img width="283" alt="截屏2023-01-20 14 24 18" src="https://user-images.githubusercontent.com/28004442/213631197-054d4bdd-103f-4a10-b080-9e24896ea811.png">
+<img width="281" alt="截屏2023-01-21 18 03 11" src="https://user-images.githubusercontent.com/28004442/213861963-44a9c348-dc32-4662-992e-52f64e1b98e8.png">
 
-<img width="1440" alt="截屏2023-01-18 20 35 43" src="https://user-images.githubusercontent.com/28004442/213172914-fc65e431-a56c-48f2-a32c-aee332f69e9e.png">
+<img width="1440" alt="截屏2023-01-21 18 03 29" src="https://user-images.githubusercontent.com/28004442/213861974-b1579667-be4e-4848-bc83-8cdba065492d.png">
 
-<img width="1440" alt="截屏2023-01-18 20 36 34" src="https://user-images.githubusercontent.com/28004442/213173092-b2c87eeb-8607-4f23-ad1e-3f311bf67f27.png">
-
+<img width="1440" alt="截屏2023-01-21 18 03 43" src="https://user-images.githubusercontent.com/28004442/213861979-37f4fffb-cab6-4937-9a9f-d8407539f153.png">
