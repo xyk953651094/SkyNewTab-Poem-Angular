@@ -37,7 +37,6 @@ export class GreetComponent implements OnInit {
                     if (resultData.data.solarTerms.indexOf("后") === -1) {
                         tempThis.holidayContent = "今日" + tempThis.holidayContent;
                     }
-                    tempThis.greetContent += "｜" + tempThis.holidayContent;
                 }
             },
             error: function (err: any) {

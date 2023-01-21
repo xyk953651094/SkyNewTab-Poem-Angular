@@ -13,4 +13,8 @@
         font-family: cursive,SimSun, Arial, Helvetica, sans-serif;
         font-size: 20px;
     }
+
+    #holidayContent {
+        display: none;
+    }
 }

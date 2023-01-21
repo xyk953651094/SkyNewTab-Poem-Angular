@@ -1,9 +1,10 @@
 <div [style.color]="fontColor" id="greetDiv">
- <p class="greet-font">
-<!--  <mat-icon style="vertical-align: middle">{{greetIcon}}</mat-icon>-->
-  <i [class]="greetIcon"> </i>
-  {{greetContent}}
- </p>
+    <p class="greet-font">
+        <!--  <mat-icon style="vertical-align: middle">{{greetIcon}}</mat-icon>-->
+        <i [class]="greetIcon"> </i>
+        <span>{{" " + greetContent}}</span>
+        <span id="holidayContent">{{"｜" + holidayContent}}</span>
+    </p>
 </div>
 
 
