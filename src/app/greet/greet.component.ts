@@ -1,5 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {getTimeDetails, getGreetContent, getGreetIcon} from "../../public/publicFunctions";
+const bootstrap = require('bootstrap');
 const $ = require('jquery');
 
 @Component({
@@ -13,6 +14,9 @@ export class GreetComponent implements OnInit {
     greetIcon: string = '';
     greetContent: string = '你好';
     holidayContent: string = '无节气信息';
+    calendar: string = '暂无日历信息';
+    suit: string = '';
+    avoid: string = '';
 
     // 问候
     setGreet(): void {
@@ -37,6 +41,30 @@ export class GreetComponent implements OnInit {
                     if (resultData.data.solarTerms.indexOf("后") === -1) {
                         tempThis.holidayContent = "今日" + tempThis.holidayContent;
                     }
+                    let timeDetails = getTimeDetails();
+                    tempThis.calendar = timeDetails.showDate4 + " " + timeDetails.showWeek + "｜" + resultData.data.yearTips + resultData.data.chineseZodiac + "年｜" + resultData.data.lunarCalendar;
+                    tempThis.suit = resultData.data.suit.replace(/\./g, " · ");
+                    tempThis.avoid = resultData.data.avoid.replace(/\./g, " · ");
+
+                    // 更新 popover
+                    let contentHtml =
+                        "<div>" +
+                            "<p><i class=\"bi bi-check-circle\"></i> 宜：" + tempThis.suit + "</p>" +
+                            "<p><i class=\"bi bi-x-circle\"></i> 忌：" + tempThis.avoid + "</p>" +
+                        "</div>"
+
+                    let greetP = $('#greetP');
+                    let popover = new bootstrap.Popover(greetP, {
+                        html: true,
+                        title: tempThis.calendar,
+                        content: contentHtml,
+                        offset: "200, 10"
+                    })
+
+                    greetP.on('shown.bs.popover', function() {
+                        popover.update();
+                        popover.setContent();
+                    })
                 }
             },
             error: function (err: any) {
@@ -46,6 +74,11 @@ export class GreetComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+        const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+        });
+
         this.setGreet();       // 问候
         this.setHoliday();     // 节气
     }

@@ -19,9 +19,29 @@ export class AppComponent implements OnInit{
     setColorTheme(): void {
         let theme: ({ bodyBackgroundColor: string; fontColor: string; waveColor: string[] }[]) = themeArray;  // 默认为亮色
         let randomNum = Math.floor(Math.random() * theme.length);  // 随机选择
-        $("body").css('background-color', theme[randomNum].bodyBackgroundColor);
+        $('body').css('background-color', theme[randomNum].bodyBackgroundColor);
         this.fontColor = theme[randomNum].fontColor;
         this.waveColor = theme[randomNum].waveColor;
+
+        $("body").bind("DOMNodeInserted", () => {
+            let popoverEle = $(".popover");
+            if (popoverEle.length && popoverEle.length > 0) {
+                popoverEle.css('cssText',
+                    '--bs-popover-header-color:' + theme[randomNum].fontColor + '!important;' +
+                    '--bs-popover-body-color:' + theme[randomNum].fontColor + '!important;' +
+                    'font-family: cursive,SimSun, Arial, Helvetica, sans-serif !important;' +
+                    'font-size: 18px;'
+                );
+            }
+
+            let popoverHeader = $(".popover-header");
+            if (popoverHeader.length && popoverHeader.length > 0) {
+                popoverHeader.css('cssText',
+                    'font-family: cursive,SimSun, Arial, Helvetica, sans-serif !important;' +
+                    'font-size: 20px;'
+                );
+            }
+        });
     }
 
     ngOnInit(): void {
