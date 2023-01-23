@@ -55,7 +55,7 @@ export class WeatherComponent implements OnInit {
                             html: true,
                             title: tempThis.location,
                             content: contentHtml,
-                            offset: "43, 10"
+                            offset: "35, 10"
                         })
 
                         weatherP.on('shown.bs.popover', function () {
@@ -75,11 +75,6 @@ export class WeatherComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-        // const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-        //     return new bootstrap.Popover(popoverTriggerEl)
-        // });
-        
         this.setWeather();     // 天气
     }
 }

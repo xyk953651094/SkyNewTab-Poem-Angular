@@ -18,6 +18,7 @@
     #poemDiv, #poemContent, #poemAuthor {
         writing-mode: vertical-lr;
         overflow: hidden;
+        text-overflow:ellipsis;
     }
 
     /* 隐藏部分元素 */

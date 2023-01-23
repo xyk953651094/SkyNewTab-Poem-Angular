@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {themeArray, chinaWindowArray, chinaObjectArray} from "../public/publicConstants";
 import {getFontColor} from "../public/publicFunctions";
-
+const bootstrap = require('bootstrap');
 const $ = require('jquery');
 
 @Component({
@@ -45,6 +45,12 @@ export class AppComponent implements OnInit{
     }
 
     ngOnInit(): void {
+        // 初始化 popover
+        const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+        const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+        });
+
         this.setColorTheme();
     }
 }

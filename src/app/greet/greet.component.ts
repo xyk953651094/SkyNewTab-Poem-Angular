@@ -74,11 +74,6 @@ export class GreetComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-        const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-            return new bootstrap.Popover(popoverTriggerEl)
-        });
-
         this.setGreet();       // 问候
         this.setHoliday();     // 节气
     }
