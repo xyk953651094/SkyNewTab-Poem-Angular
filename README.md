@@ -7,7 +7,7 @@
 
 ## 简介
 适用于 Chrome、Edge、Firefox、~~Safari~~ 的新标签页插件。  
-基于 Html + TypeScript + CSS + Angular + Webpack + ~~Angular Material Design~~ + Bootstrap + Bootstrap Icon。  
+基于 Html + TypeScript + CSS + Angular + Webpack + Angular Material Design + Bootstrap（Popover）+ Bootstrap Icon。  
 语言：中文  
 * 节气来源：https://www.mxnzp.com 
 * 天气来源：https://www.jinrishici.com  
