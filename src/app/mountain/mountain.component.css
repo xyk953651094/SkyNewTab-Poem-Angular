@@ -1,0 +1,53 @@
+.mountainSvg {
+    width: 400px;
+    height: 400px;
+}
+
+.mountainSvg .mountains {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.svgAnimation {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    transform-box:fill-box;
+    transform-origin:center;
+}
+
+#mountain1 {
+    animation-name: translate;
+    animation-duration: 6s;
+}
+
+#mountain2 {
+    animation-name: translate;
+    animation-duration: 6s;
+}
+
+#mountain3 {
+    animation-name: translate;
+    animation-duration: 6s;
+}
+
+@keyframes translate {
+    0% {
+        transform: translate(0px, 0px);
+    }
+    25% {
+        transform: translate(0px, 5px);
+    }
+    50% {
+        transform: translate(5px, 5px);
+    }
+    75% {
+        transform: translate(5px, 0px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}

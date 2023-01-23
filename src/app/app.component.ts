@@ -13,15 +13,15 @@ export class AppComponent implements OnInit{
     constructor() {}
     title = 'Sky诗词新标签页 Angular';
     fontColor: string = '#ffffff';
-    waveColor: string[] = ['#ffffff', '#ffffff', '#ffffff'];
+    svgColor: string[] = ['#ffffff', '#ffffff', '#ffffff', '#ffffff'];
 
     // 随机颜色主题
     setColorTheme(): void {
-        let theme: ({ bodyBackgroundColor: string; fontColor: string; waveColor: string[] }[]) = themeArray;  // 默认为亮色
+        let theme: ({ bodyBackgroundColor: string, fontColor: string, svgColor: string[]}[]) = themeArray;
         let randomNum = Math.floor(Math.random() * theme.length);  // 随机选择
         $('body').css('background-color', theme[randomNum].bodyBackgroundColor);
         this.fontColor = theme[randomNum].fontColor;
-        this.waveColor = theme[randomNum].waveColor;
+        this.svgColor = theme[randomNum].svgColor;
 
         $("body").bind("DOMNodeInserted", () => {
             let popoverEle = $(".popover");

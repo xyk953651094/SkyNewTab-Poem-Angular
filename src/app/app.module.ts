@@ -9,6 +9,7 @@ import {PoemComponent} from './poem/poem.component';
 import {SearchComponent} from "./search/search.component";
 import {SunComponent} from "./sun/sun.component";
 import {WaveComponent} from "./wave/wave.component";
+import {MountainComponent} from "./mountain/mountain.component";
 import {ChinaWindowComponent} from "./chinaWindow/chinaWindow.component";
 import {ChinaObjectComponent} from "./chinaObject/chinaObject.component";
 
@@ -28,6 +29,7 @@ import {MatIconModule} from "@angular/material/icon";
         SearchComponent,
         SunComponent,
         WaveComponent,
+        MountainComponent,
         ChinaWindowComponent,
         ChinaObjectComponent
     ],

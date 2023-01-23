@@ -7,7 +7,7 @@
     /*overflow: hidden;*/
 }
 
-.sunSvg {
+.sunDiv .sunSvg {
     width: 200px;
     height: 200px;
 }
