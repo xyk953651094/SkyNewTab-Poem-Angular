@@ -8,9 +8,13 @@
 #poemDiv, #poemContent, #poemAuthor {
     letter-spacing: 5px;
     line-height: 35px;
-    height: 35px;
+    /*height: 35px;*/
     overflow: hidden;
     text-overflow:ellipsis;
+}
+
+#poemContent, #poemAuthor {
+    height: 35px;
 }
 
 /*移动端竖屏样式*/
@@ -24,9 +28,13 @@
     #poemDiv, #poemContent, #poemAuthor {
         writing-mode: vertical-lr;
         line-height: 20px;
-        height: inherit;
+        /*height: inherit;*/
         overflow: hidden;
         text-overflow:ellipsis;
+    }
+
+    #poemContent, #poemAuthor {
+        height: inherit;
     }
 
     /* 隐藏部分元素 */
