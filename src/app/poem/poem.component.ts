@@ -16,6 +16,8 @@ export class PoemComponent implements OnInit{
 
     // 今日诗词
     setPoem(): void {
+        // this.poemContent = "人生代代无穷矣，江月年年望相似。人生代代无穷矣，江月年年望相似。人生代代无穷矣，江月年年望相似。"
+
         poemContent.load((result: any) => {
             this.poemContent = result.data.content;
             this.poemAuthor = '【' + result.data.origin.dynasty + '】' +

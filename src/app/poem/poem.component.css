@@ -1,10 +1,16 @@
+/*TODO: 字体大小变量*/
+
 .poem-font {
     font-family: cursive,SimSun, Arial, Helvetica, sans-serif;
-    font-size: 25px;
+    font-size: 35px;
 }
 
 #poemDiv, #poemContent, #poemAuthor {
     letter-spacing: 5px;
+    line-height: 35px;
+    height: 35px;
+    overflow: hidden;
+    text-overflow:ellipsis;
 }
 
 /*移动端竖屏样式*/
@@ -17,6 +23,8 @@
     /* 中国诗词 */
     #poemDiv, #poemContent, #poemAuthor {
         writing-mode: vertical-lr;
+        line-height: 20px;
+        height: inherit;
         overflow: hidden;
         text-overflow:ellipsis;
     }
