@@ -8,7 +8,6 @@
 #poemDiv, #poemContent, #poemAuthor {
     letter-spacing: 5px;
     line-height: 35px;
-    /*height: 35px;*/
     overflow: hidden;
     text-overflow:ellipsis;
 }
@@ -28,7 +27,6 @@
     #poemDiv, #poemContent, #poemAuthor {
         writing-mode: vertical-lr;
         line-height: 20px;
-        /*height: inherit;*/
         overflow: hidden;
         text-overflow:ellipsis;
     }
