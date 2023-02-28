@@ -55,7 +55,7 @@ export class WeatherComponent implements OnInit {
                             html: true,
                             title: tempThis.location,
                             content: contentHtml,
-                            offset: "35, 10"
+                            offset: "10, 10"
                         })
 
                         weatherP.on('shown.bs.popover', function () {
