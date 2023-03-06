@@ -8,12 +8,28 @@
 #poemDiv, #poemContent, #poemAuthor {
     letter-spacing: 5px;
     line-height: 35px;
+    display: block;
     overflow: hidden;
     text-overflow:ellipsis;
+    white-space: nowrap;
+
+}
+
+#poemDiv {
+    position: fixed;
+    top: auto;
+    bottom: auto;
+    left: 15%;
+    right: 15%;
 }
 
 #poemContent, #poemAuthor {
     height: 35px;
+    letter-spacing: 5px;
+    line-height: 35px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
 }
 
 /*移动端竖屏样式*/
@@ -24,15 +40,22 @@
     }
 
     /* 中国诗词 */
-    #poemDiv, #poemContent, #poemAuthor {
-        writing-mode: vertical-lr;
-        line-height: 20px;
-        overflow: hidden;
-        text-overflow:ellipsis;
+    #poemDiv {
+        position: fixed;
+        top: 100px;
+        bottom: 100px;
+        left: auto;
+        right: auto;
     }
 
     #poemContent, #poemAuthor {
         height: inherit;
+        writing-mode: vertical-lr;
+        line-height: 20px;
+        display: block;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
     }
 
     /* 隐藏部分元素 */
