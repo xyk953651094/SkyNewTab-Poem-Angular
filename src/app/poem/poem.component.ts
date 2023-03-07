@@ -17,15 +17,7 @@ export class PoemComponent implements OnInit{
     // 今日诗词
     setPoem(): void {
         poemContent.load((result: any) => {
-            // 限制显示字数
-            // if (result.data.content.length > 30) {
-            //     this.poemContent = result.data.content.slice(0, 30) + '...';
-            // }
-            // else {
-            //     this.poemContent = result.data.content
-            // }
-
-            this.poemContent = '谁家今夜扁舟子，何处相思明月楼？谁家今夜扁舟子，何处相思明月楼？谁家今夜扁舟子，何处相思明月楼？'
+            this.poemContent = result.data.content
             this.poemAuthor = '【' + result.data.origin.dynasty + '】' +
                 result.data.origin.author + ' ·' +
                 '《' + result.data.origin.title + '》'

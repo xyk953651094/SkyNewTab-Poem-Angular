@@ -59,7 +59,7 @@ export class GreetComponent implements OnInit {
                         title: tempThis.calendar,
                         content: contentHtml,
                         placement: 'bottom',
-                        offset: "60, 10"
+                        offset: "40, 10"
                     })
 
                     greetP.on('shown.bs.popover', function() {
