@@ -1,3 +1,23 @@
+const $ = require('jquery');
+
+// 网络请求
+export function httpRequest(url: string, data: object, method: "GET" | "POST") {
+    return new Promise(function(resolve,reject){
+        $.ajax({
+            url: url,
+            type: method,
+            data: data,
+            timeout: 5000,
+            success: (resultData: any) => {
+                resolve(resultData);
+            },
+            error: function () {
+                reject();
+            }
+        });
+    })
+}
+
 // 根据颜色获取反色
 export function getThemeColor(color: string) {
     color = "0x" + color.replace("#", '');

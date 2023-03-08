@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {getTimeDetails, getGreetContent, getGreetIcon} from "../../public/publicFunctions";
+import {httpRequest, getTimeDetails, getGreetContent, getGreetIcon} from "../../public/publicFunctions";
 const bootstrap = require('bootstrap');
 const $ = require('jquery');
 
@@ -27,15 +27,13 @@ export class GreetComponent implements OnInit {
     // 节气
     setHoliday(): void {
         let tempThis = this;
-        let parameters = {
+        let url = "https://www.mxnzp.com/api/holiday/single/" + getTimeDetails().showDate3;
+        let data = {
             "app_id": "cicgheqakgmpjclo",
             "app_secret": "RVlRVjZTYXVqeHB3WCtQUG5lM0h0UT09",
         };
-        $.ajax({
-            url: "https://www.mxnzp.com/api/holiday/single/" + getTimeDetails().showDate3,
-            type: "GET",
-            data: parameters,
-            success: function (resultData: any) {
+        httpRequest(url, data, "GET")
+            .then(function(resultData: any){
                 if (resultData.code === 1) {
                     tempThis.holidayContent = resultData.data.solarTerms + " · " + resultData.data.typeDes;
                     if (resultData.data.solarTerms.indexOf("后") === -1) {
@@ -49,8 +47,8 @@ export class GreetComponent implements OnInit {
                     // 更新 popover
                     let contentHtml =
                         "<div>" +
-                            "<p><i class=\"bi bi-check-circle\"></i> 宜：" + tempThis.suit + "</p>" +
-                            "<p><i class=\"bi bi-x-circle\"></i> 忌：" + tempThis.avoid + "</p>" +
+                        "<p><i class=\"bi bi-check-circle\"></i> 宜：" + tempThis.suit + "</p>" +
+                        "<p><i class=\"bi bi-x-circle\"></i> 忌：" + tempThis.avoid + "</p>" +
                         "</div>"
 
                     let greetP = $('#greetP');
@@ -67,11 +65,8 @@ export class GreetComponent implements OnInit {
                         popover.setContent();
                     })
                 }
-            },
-            error: function (err: any) {
-
-            }
-        })
+            })
+            .then(function(){})
     }
 
     ngOnInit(): void {

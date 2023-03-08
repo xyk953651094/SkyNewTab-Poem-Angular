@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {getWeatherIcon} from "../../public/publicFunctions";
+import {getTimeDetails, getWeatherIcon, httpRequest} from "../../public/publicFunctions";
 const bootstrap = require('bootstrap');
 const $ = require('jquery');
 
@@ -13,22 +13,22 @@ export class WeatherComponent implements OnInit {
     title = 'WeatherComponent';
     weatherIcon: string = ''
     weatherContent: string = '';
-    location: string = '暂无地区信息';
-    humidity: string = '暂无湿度信息';
-    pm25: string = '暂无PM2.5信息';
-    rainfall: string = '暂无降雨信息';
-    visibility: string = '暂无视距信息';
-    windInfo: string = '暂无风况信息';
+    location: string = '暂无信息';
+    humidity: string = '暂无信息';
+    pm25: string = '暂无信息';
+    rainfall: string = '暂无信息';
+    visibility: string = '暂无信息';
+    windInfo: string = '暂无信息';
     
 
     // 天气
     setWeather(): void {
         let tempThis = this;
-        $.ajax({
-            url: "https://v2.jinrishici.com/info",
-            type: "GET",
-            success: function (resultData: any) {
-                if (resultData.status === "success") {
+        let url = "https://v2.jinrishici.com/info";
+        let data = {};
+        httpRequest(url, data, "GET")
+            .then(function(resultData: any){
+                if (resultData.status === "success" && resultData.data.weatherData !== null) {
                     if (resultData.data.weatherData) {
                         let weatherData = resultData.data.weatherData;
                         tempThis.weatherIcon = getWeatherIcon(weatherData.weather);
@@ -55,7 +55,7 @@ export class WeatherComponent implements OnInit {
                             html: true,
                             title: tempThis.location,
                             content: contentHtml,
-                            offset: "10, 10"
+                            offset: "20, 10"
                         })
 
                         weatherP.on('shown.bs.popover', function () {
@@ -64,14 +64,9 @@ export class WeatherComponent implements OnInit {
                         })
 
                     }
-                } else {
-
                 }
-            },
-            error: function (err: any) {
-
-            }
-        });
+            })
+            .then(function(){})
     }
 
     ngOnInit(): void {
