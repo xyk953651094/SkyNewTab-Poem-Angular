@@ -22,54 +22,77 @@ export class WeatherComponent implements OnInit {
     
 
     // 天气
-    setWeather(): void {
+    setWeather(data: any): void {
+        if (data.weatherData) {
+            this.weatherIcon = getWeatherIcon(data.weatherData.weather);
+            this.weatherContent = data.weatherData.weather + '｜' + data.weatherData.temperature + '°C';
+            this.location = data.region.replace("|", " · ");
+            this.humidity = data.weatherData.humidity;
+            this.pm25 = data.weatherData.pm25;
+            this.rainfall = data.weatherData.rainfall + "%";
+            this.visibility = data.weatherData.visibility;
+            this.windInfo = data.weatherData.windDirection + data.weatherData.windPower + "级";
+
+            // 更新 popover
+            let contentHtml =
+                "<div>" +
+                "<p><i class=\"bi bi-moisture\"></i> 空气湿度：" + this.humidity + "</p>" +
+                "<p><i class=\"bi bi-water\"></i> 空气质量：" + this.pm25 + "</p>" +
+                "<p><i class=\"bi bi-cloud-rain\"></i> 降雨概率：" + this.rainfall + "</p>" +
+                "<p><i class=\"bi bi-eye\"></i> 视线距离：" + this.visibility + "</p>" +
+                "<p><i class=\"bi bi-wind\"></i> 风速情况：" + this.windInfo + "</p>" +
+                "</div>";
+
+            let weatherP = $('#weatherP');
+            let popover = new bootstrap.Popover(weatherP, {
+                html: true,
+                title: this.location,
+                content: contentHtml,
+                offset: "20, 10"
+            })
+
+            weatherP.on('shown.bs.popover', function () {
+                popover.update();
+                popover.setContent();
+            })
+
+        }
+    }
+
+    getWeather(): void {
         let tempThis = this;
         let url = "https://v2.jinrishici.com/info";
         let data = {};
         httpRequest(url, data, "GET")
             .then(function(resultData: any){
+                localStorage.setItem("lastWeatherRequestTime", String(new Date().getTime()));  // 保存请求时间，防抖节流
                 if (resultData.status === "success" && resultData.data.weatherData !== null) {
-                    if (resultData.data.weatherData) {
-                        let weatherData = resultData.data.weatherData;
-                        tempThis.weatherIcon = getWeatherIcon(weatherData.weather);
-                        tempThis.weatherContent = weatherData.weather + '｜' + weatherData.temperature + '°C';
-                        tempThis.location = resultData.data.region.replace("|", " · ");
-                        tempThis.humidity = resultData.data.weatherData.humidity;
-                        tempThis.pm25 = resultData.data.weatherData.pm25;
-                        tempThis.rainfall = resultData.data.weatherData.rainfall + "%";
-                        tempThis.visibility = resultData.data.weatherData.visibility;
-                        tempThis.windInfo = resultData.data.weatherData.windDirection + resultData.data.weatherData.windPower + "级";
-
-                        // 更新 popover
-                        let contentHtml =
-                            "<div>" +
-                            "<p><i class=\"bi bi-moisture\"></i> 空气湿度：" + tempThis.humidity + "</p>" +
-                            "<p><i class=\"bi bi-water\"></i> 空气质量：" + tempThis.pm25 + "</p>" +
-                            "<p><i class=\"bi bi-cloud-rain\"></i> 降雨概率：" + tempThis.rainfall + "</p>" +
-                            "<p><i class=\"bi bi-eye\"></i> 视线距离：" + tempThis.visibility + "</p>" +
-                            "<p><i class=\"bi bi-wind\"></i> 风速情况：" + tempThis.windInfo + "</p>" +
-                            "</div>";
-
-                        let weatherP = $('#weatherP');
-                        let popover = new bootstrap.Popover(weatherP, {
-                            html: true,
-                            title: tempThis.location,
-                            content: contentHtml,
-                            offset: "20, 10"
-                        })
-
-                        weatherP.on('shown.bs.popover', function () {
-                            popover.update();
-                            popover.setContent();
-                        })
-
-                    }
+                    localStorage.setItem("lastWeather", JSON.stringify(resultData.data));      // 保存请求结果，防抖节流
+                    tempThis.setWeather(resultData.data);
                 }
             })
-            .then(function(){})
+            .catch(function(){
+                // 请求失败也更新请求时间，防止超时后无信息可显示
+                localStorage.setItem("lastWeatherRequestTime", String(new Date().getTime()));  // 保存请求时间，防抖节流
+            });
     }
 
     ngOnInit(): void {
-        this.setWeather();     // 天气
+        // 天气,防抖节流
+        let lastRequestTime: any = localStorage.getItem("lastWeatherRequestTime");
+        let nowTimeStamp = new Date().getTime();
+        if(lastRequestTime === null) {  // 第一次请求时 lastRequestTime 为 null，因此直接进行请求赋值 lastRequestTime
+            this.getWeather();
+        }
+        else if(nowTimeStamp - parseInt(lastRequestTime) > 60 * 60 * 1000) {  // 必须多于一小时才能进行新的请求
+            this.getWeather();
+        }
+        else {  // 一小时之内使用上一次请求结果
+            let lastWeather: any = localStorage.getItem("lastWeather");
+            if (lastWeather) {
+                lastWeather = JSON.parse(lastWeather);
+                this.setWeather(lastWeather);
+            }
+        }
     }
 }
