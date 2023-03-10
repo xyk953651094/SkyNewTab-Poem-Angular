@@ -1,6 +1,14 @@
 <div [style.color]="fontColor" id="weatherDiv">
-  <p class="weather-font">{{weatherContent}}</p>
-<!--  <span class="weather-font" id="temperatureSpan">{{temperatureContent}}</span>-->
-<!--  <span class="weather-font">｜</span>-->
-<!--  <span class="weather-font" id="weather">{{weatherContent}}</span>-->
+    <p class="weather-font"
+       id="weatherP"
+       title=""
+       data-bs-toggle="popover"
+       data-bs-placement="bottom"
+       data-bs-trigger="hover"
+       data-bs-content=""
+       data-bs-custom-class="custom-popover"
+    >
+        <i [class]="weatherIcon"> </i>
+        <span>{{" " + weatherContent}}</span>
+    </p>
 </div>

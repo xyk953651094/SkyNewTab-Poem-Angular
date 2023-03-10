@@ -2,3 +2,29 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.custom-popover {
+    --bs-popover-max-width: 400px !important;
+    --bs-popover-border-color: transparent !important;
+    --bs-popover-bg: transparent !important;
+
+    --bs-popover-header-bg: transparent !important;
+    --bs-popover-header-padding-x: 0 !important;
+    --bs-popover-header-padding-y: 0 !important;
+
+    --bs-popover-body-bg: transparent !important;
+    --bs-popover-body-padding-x: 0 !important;
+    --bs-popover-body-padding-y: 0 !important;
+
+    --bs-popover-arrow-width: 0 !important;
+    --bs-popover-arrow-height: 0 !important;
+
+    /*line-height: 20px !important;*/
+}
+
+/*移动端竖屏样式*/
+@media screen and (max-width: 500px) and (orientation:portrait) {
+    .custom-popover {
+        display: none !important;
+    }
+}

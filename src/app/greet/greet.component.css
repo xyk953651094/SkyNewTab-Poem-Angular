@@ -1,6 +1,14 @@
 .greet-font {
     font-family: cursive,SimSun, Arial, Helvetica, sans-serif;
     font-size: 25px;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+.greet-font > i {
+    vertical-align: middle;
 }
 
 /*移动端竖屏样式*/
@@ -8,5 +16,9 @@
     .greet-font {
         font-family: cursive,SimSun, Arial, Helvetica, sans-serif;
         font-size: 20px;
+    }
+
+    #holidayContent {
+        display: none;
     }
 }

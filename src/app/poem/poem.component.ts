@@ -17,7 +17,7 @@ export class PoemComponent implements OnInit{
     // 今日诗词
     setPoem(): void {
         poemContent.load((result: any) => {
-            this.poemContent = result.data.content;
+            this.poemContent = result.data.content
             this.poemAuthor = '【' + result.data.origin.dynasty + '】' +
                 result.data.origin.author + ' ·' +
                 '《' + result.data.origin.title + '》'

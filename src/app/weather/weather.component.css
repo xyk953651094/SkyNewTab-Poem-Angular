@@ -1,6 +1,11 @@
 .weather-font {
     font-family: cursive,SimSun, Arial, Helvetica, sans-serif;
     font-size: 25px;
+    cursor: pointer;
+}
+
+.weather-font > i {
+    vertical-align: middle;
 }
 
 /*移动端竖屏样式*/

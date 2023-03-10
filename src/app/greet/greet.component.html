@@ -1,8 +1,14 @@
 <div [style.color]="fontColor" id="greetDiv">
- <p class="greet-font">
-  <mat-icon style="vertical-align: middle">{{greetIcon}}</mat-icon>
-  {{greetContent}}
- </p>
+    <p class="greet-font" id="greetP"
+       title=""
+       data-bs-toggle="popover"
+       data-bs-trigger="hover"
+       data-bs-custom-class="custom-popover"
+    >
+        <i [class]="greetIcon"> </i>
+        <span>{{" " + greetContent}}</span>
+        <span id="holidayContent">{{"｜" + holidayContent}}</span>
+    </p>
 </div>
 
 

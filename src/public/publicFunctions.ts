@@ -1,3 +1,23 @@
+const $ = require('jquery');
+
+// 网络请求
+export function httpRequest(url: string, data: object, method: "GET" | "POST") {
+    return new Promise(function(resolve,reject){
+        $.ajax({
+            url: url,
+            type: method,
+            data: data,
+            timeout: 5000,
+            success: (resultData: any) => {
+                resolve(resultData);
+            },
+            error: function () {
+                reject();
+            }
+        });
+    })
+}
+
 // 根据颜色获取反色
 export function getThemeColor(color: string) {
     color = "0x" + color.replace("#", '');
@@ -74,7 +94,7 @@ export function getTimeDetails() {
 }
 
 // 获取问候
-export function getGreet() {
+export function getGreetContent() {
     let now = new Date();
     let hour = now.getHours();
     const greets = {
@@ -106,34 +126,44 @@ export function getGreet() {
     }
 }
 
-// 获取阳历节日
-export function getSolarHoliday(): string {
-    let today = new Date();
-    let month: number = today.getMonth();
-    let day: number = today.getDate();
-    if (month === 1 && day === 1) { return "｜元旦节" }
-    else if (month === 3 && day === 8) { return "｜妇女节"}
-    else if (month === 4 && day === 5) { return "｜清明节"}
-    else if (month === 5 && day === 1) { return "｜劳动节"}
-    else if (month === 5 && day === 4) { return "｜青年节"}
-    else if (month === 6 && day === 1) { return "｜儿童节"}
-    else if (month === 8 && day === 1) { return "｜建军节"}
-    else if (month === 10 && day === 1) { return "｜国庆节"}
-    else return "";
+// 获取问候语图标 className
+export function getGreetIcon() {
+    let hour = new Date().getHours();
+    if (hour >= 6 && hour < 12) {   // 上午
+        return "bi bi-sunrise";
+    }
+    else if (hour >= 12 && hour < 18) {  // 下午
+        return "bi bi-sunset";
+    }
+    else {                               // 夜晚
+        return "bi bi-moon-stars";
+    }
 }
 
-// 获取农历节日
-export function getChineseHoliday(today: string): string {
-    if (today === "正月初一") { return "｜春节"}
-    else if (today === "正月十五") { return "｜元宵节"}
-    else if (today === "二月初二") { return "｜龙抬头"}
-    else if (today === "五月初五") { return "｜端午节"}
-    else if (today === "七月初七") { return "｜七夕节"}
-    else if (today === "七月十五") { return "｜中元节"}
-    else if (today === "八月十五") { return "｜中秋节"}
-    else if (today === "九月初九") { return "｜重阳节"}
-    else if (today === "腊月初八") { return "｜腊八节"}
-    else if (today === "腊月廿四") { return "｜小年"}
-    else if (today === "腊月三十") { return "｜除夕"}
-    else return ""
+// 获取天气图标className
+export function getWeatherIcon(weatherInfo: string) {
+    if( weatherInfo.indexOf("晴") !== -1 ) {
+        return "bi bi-sun"
+    }
+    else if( weatherInfo.indexOf("云") !== -1 ) {
+        return "bi bi-cloud"
+    }
+    else if ( weatherInfo.indexOf("雨") !== -1 ) {
+        return "bi bi-cloud-rain"
+    }
+    else if ( weatherInfo.indexOf("雾") !== -1 ) {
+        return "bi bi-cloud-fog"
+    }
+    else if ( weatherInfo.indexOf("霾") !== -1 ) {
+        return "bi bi-cloud-haze"
+    }
+    else if ( weatherInfo.indexOf("雪") !== -1 ) {
+        return "bi bi-cloud-snow"
+    }
+    else if ( weatherInfo.indexOf("雹") !== -1 ) {
+        return "bi bi-cloud-hail"
+    }
+    else {
+        return ""
+    }
 }
