@@ -1,4 +1,9 @@
-# SkyNewTab Poem Pro based on Angular
+# SkyNewTab Poem based on Angular（abandoned）
+## 注意
+* 此浏览器插件已不再获得更新，若想体验最新版，请前往 [SkyNewTab-Poem-React](https://github.com/xyk953651094/SkyNewTab-Poem-React).
+* This browser plugin is no longer updated, to try the latest version, go to [SkyNewTab-Poem-React](https://github.com/xyk953651094/SkyNewTab-Poem-React).
+
+
 ## 声明
 * 诗词由第三方网站提供，内容不代表作者任何观点。  
 * 本作品由作者个人出于学习目的开发，由于成本原因，难以保证不同型号设备下的最终品质，后续尽量完善。
