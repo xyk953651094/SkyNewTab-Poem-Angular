@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background-color: #FFFFFF;
+}
+
+.ant-layout {
+  background: transparent;
+}
+
+.header {
+  height: 100px;
+  line-height: 100px;
+  background-color: transparent;
+}
+
+.content {
+  position: fixed;
+  top: 100px;
+  bottom : 100px;
+  left: 50px;
+  right: 50px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: transparent;
+  height: 100px;
+  line-height: 100px;
+  padding: 0 50px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

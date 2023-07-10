@@ -1,0 +1,20 @@
+<nz-space nzDirection="vertical">
+  <div nz-col nzSpan="24" class="center">
+    <button nz-button nzType="text" nzShape="round" nzSize="large"
+            class="buttonFont"
+            (click)="poemContentBtnOnClick()"
+            [style.color]="fontColor"
+    >
+      {{poemContent}}
+    </button>
+  </div>
+  <div nz-col [nzXs]="{span: 0}" [nzSm]="{span: 0}" [nzMd]="{span: 0}" [nzLg]="{span: 24}" [nzXl]="{span: 24}" [nzXXl]="{span: 24}" class="center">
+    <button nz-button nzType="text" nzShape="round" nzSize="large"
+            class="buttonFont"
+            (click)="poemAuthorBtnOnClick()"
+            [style.color]="fontColor"
+    >
+      {{poemAuthorDetails}}
+    </button>
+  </div>
+</nz-space>

@@ -1,0 +1,23 @@
+<!-- NG-ZORRO -->
+<nz-layout>
+  <nz-header class="header">
+    <div nz-row nzJustify="center">
+      <div nz-col [nzXs]="{span: 0}" [nzSm]="{span: 0}" [nzMd]="{span: 10}" [nzLg]="{span: 10}" [nzXl]="{span: 10}" [nzXXl]="{span: 10}">
+<!--      <div nz-col nzSpan="10">-->
+        <greet-component [fontColor]="fontColor"/>
+      </div>
+      <div nz-col [nzXs]="{span: 0}" [nzSm]="{span: 0}" [nzMd]="{span: 10}" [nzLg]="{span: 10}" [nzXl]="{span: 10}" [nzXXl]="{span: 10}" style="text-align: right">
+<!--      <div nz-col nzSpan="10" style="text-align: right">-->
+        <weather-component [fontColor]="fontColor"/>
+      </div>
+    </div>
+  </nz-header>
+  <nz-content class="content center">
+    <poem-component [fontColor]="fontColor"/>
+  </nz-content>
+  <nz-footer class="footer">
+    <wave-component [waveColor]="svgColor"/>
+  </nz-footer>
+</nz-layout>
+<sun-component [sunColor]="svgColor"/>
+
