@@ -1,14 +1,12 @@
 {
   "name": "sky-new-tab-poem-angular",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "webpackD": "webpack --mode development",
-    "webpackP": "webpack --mode production"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {

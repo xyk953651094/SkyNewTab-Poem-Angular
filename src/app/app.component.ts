@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {themeArray, chinaWindowArray, chinaObjectArray} from "../public/publicConstants";
-import {getFontColor} from "../public/publicFunctions";
+import {themeArray} from "../public/publicConstants";
 const bootstrap = require('bootstrap');
 const $ = require('jquery');
 
@@ -11,7 +10,7 @@ const $ = require('jquery');
 })
 export class AppComponent implements OnInit{
     constructor() {}
-    title = 'Sky诗词新标签页 Angular';
+    title = '云开诗词新标签页';
     fontColor: string = '#ffffff';
     svgColor: string[] = ['#ffffff', '#ffffff', '#ffffff', '#ffffff'];
 
