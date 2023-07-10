@@ -1,2 +1,0 @@
-# SkyNewTab-Poem_Angular
-
