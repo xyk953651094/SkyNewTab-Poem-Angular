@@ -1,59 +1,39 @@
-import {Component, OnInit} from '@angular/core';
-import {themeArray, chinaWindowArray, chinaObjectArray} from "../public/publicConstants";
-import {getFontColor} from "../public/publicFunctions";
-const bootstrap = require('bootstrap');
-const $ = require('jquery');
+import {Component, OnInit} from "@angular/core";
+import {themeArray} from "../typescripts/publicConstants";
+const $ = require("jquery");
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
 })
-export class AppComponent implements OnInit{
-    constructor() {}
-    title = 'Sky诗词新标签页 Angular';
-    fontColor: string = '#ffffff';
-    svgColor: string[] = ['#ffffff', '#ffffff', '#ffffff', '#ffffff'];
+export class AppComponent implements OnInit {
+  constructor() {}
+  title = "云开诗词新标签页";
+  fontColor: string = "#ffffff";
+  svgColor: string[] = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"];
 
-    // 随机颜色主题
-    setColorTheme(): void {
-        let theme: ({ bodyBackgroundColor: string, fontColor: string, svgColor: string[]}[]) = themeArray;
-        let randomNum = Math.floor(Math.random() * theme.length);  // 随机选择
-        $('body').css('background-color', theme[randomNum].bodyBackgroundColor);
-        this.fontColor = theme[randomNum].fontColor;
-        this.svgColor = theme[randomNum].svgColor;
+  // 随机颜色主题
+  setColorTheme(): void {
+    let theme: ({ bodyBackgroundColor: string, fontColor: string, svgColor: string[]}[]) = themeArray;
+    let randomNum = Math.floor(Math.random() * theme.length);  // 随机选择
+    $("body").css("background-color", theme[randomNum].bodyBackgroundColor);
+    this.fontColor = theme[randomNum].fontColor;
+    this.svgColor = theme[randomNum].svgColor;
 
-        $("body").bind("DOMNodeInserted", () => {
-            let popoverEle = $(".popover");
-            if (popoverEle.length && popoverEle.length > 0) {
-                popoverEle.css('cssText',
-                    '--bs-popover-header-color:' + theme[randomNum].fontColor + '!important;' +
-                    '--bs-popover-body-color:' + theme[randomNum].fontColor + '!important;' +
-                    'font-family: cursive,SimSun, Arial, Helvetica, sans-serif !important;' +
-                    'font-size: 18px;'
-                );
-            }
+    $("body").bind("DOMNodeInserted", () => {
+      // popover
+      let popoverEle = $(".ant-popover");
+      if (popoverEle.length && popoverEle.length > 0) {
+        $(".ant-popover-arrow").css("display", "none");
+        $(".ant-popover-inner").css("box-shadow", "none");
+        $(".ant-popover-title").css({"color": this.fontColor, "font-family": "cursive, SimSun, Arial, Helvetica, sans-serif", "font-size": "20px", "background-color": theme[randomNum].bodyBackgroundColor, "border-color": "transparent"});
+        $(".ant-popover-inner-content").css({"color": this.fontColor, "backgroundColor": theme[randomNum].bodyBackgroundColor});
+      }
+    });
+  }
 
-            let popoverHeader = $(".popover-header");
-            if (popoverHeader.length && popoverHeader.length > 0) {
-                popoverHeader.css('cssText',
-                    'font-family: cursive,SimSun, Arial, Helvetica, sans-serif !important;' +
-                    'font-size: 20px;'
-                );
-            }
-        });
-    }
-
-    ngOnInit(): void {
-        // 初始化 popover
-        const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-        const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-            return new bootstrap.Popover(popoverTriggerEl)
-        });
-
-        this.setColorTheme();
-    }
+  ngOnInit(): void {
+    this.setColorTheme();
+  }
 }
-
-
-

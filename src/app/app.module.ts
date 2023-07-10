@@ -1,50 +1,57 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-import {AppComponent} from './app.component';
-import {GreetComponent} from './greet/greet.component';
-import {WeatherComponent} from "./weather/weather.component";
-import {PoemComponent} from './poem/poem.component';
-import {SearchComponent} from "./search/search.component";
-import {SunComponent} from "./sun/sun.component";
-import {WaveComponent} from "./wave/wave.component";
-import {MountainComponent} from "./mountain/mountain.component";
-import {ChinaWindowComponent} from "./chinaWindow/chinaWindow.component";
-import {ChinaObjectComponent} from "./chinaObject/chinaObject.component";
+import { AppComponent } from './app.component';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { zh_CN } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import zh from '@angular/common/locales/zh';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatGridListModule} from "@angular/material/grid-list";
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatListModule} from "@angular/material/list";
-import {MatInputModule} from "@angular/material/input";
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatIconModule} from "@angular/material/icon";
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzGridModule } from "ng-zorro-antd/grid";
+import { NzSpaceModule } from 'ng-zorro-antd/space';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzPopoverModule } from 'ng-zorro-antd/popover';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzMessageModule } from 'ng-zorro-antd/message';
+
+import { GreetComponent } from './greetComponent/greet.component';
+import { WeatherComponent } from './weatherComponent/weather.component';
+import { PoemComponent } from "./poemComponent/poem.component";
+import { SunComponent } from "./sunComponent/sun.component";
+import { WaveComponent } from "./waveComponent/wave.component";
+
+registerLocaleData(zh);
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        GreetComponent,
-        WeatherComponent,
-        PoemComponent,
-        SearchComponent,
-        SunComponent,
-        WaveComponent,
-        MountainComponent,
-        ChinaWindowComponent,
-        ChinaObjectComponent
-    ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatGridListModule,
-        MatSlideToggleModule,
-        MatListModule,
-        MatInputModule,
-        MatTooltipModule,
-        MatIconModule,
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    GreetComponent,
+    WeatherComponent,
+    PoemComponent,
+    SunComponent,
+    WaveComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NzLayoutModule,
+    NzGridModule,
+    NzButtonModule,
+    NzPopoverModule,
+    NzSpaceModule,
+    NzIconModule,
+    NzTypographyModule
+  ],
+  providers: [
+    { provide: NZ_I18N, useValue: zh_CN }
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
