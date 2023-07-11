@@ -1,4 +1,4 @@
-# SkyNewTab Poem based on Angular
+# 云开诗词新标签页 based on Angular
 ## 声明
 * 诗词由第三方网站提供，内容不代表作者任何观点。  
 * 本作品由作者个人出于学习目的开发，由于成本原因，难以保证不同型号设备下的最终品质，后续尽量完善。
@@ -17,3 +17,9 @@
 * 下载本页面提供的文件进行安装
 
 ## 效果展示
+<img width="1440" alt="截屏2023-07-11 15 52 53" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/24d93bc3-0561-474e-be30-1b56f587a7bf">
+
+<img width="1440" alt="截屏2023-07-11 15 53 10" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/2011aa43-dde9-4de7-a797-2967919b4964">
+
+<img width="1440" alt="截屏2023-07-11 15 53 37" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/51584c84-58c9-4b7d-ad7a-fafb2fe9a445">
+
