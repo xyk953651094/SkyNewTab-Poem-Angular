@@ -5,7 +5,7 @@ const $ = require("jquery");
 @Component({
   selector: "weather-component",
   templateUrl: "./weather.component.html",
-  styleUrls: ["./weather.component.css", "../../stylesheets/publicStyles.css"]
+  styleUrls: ["./weather.component.scss", "../../stylesheets/publicStyles.scss"]
 })
 export class WeatherComponent implements OnInit {
   @Input() fontColor: string = "#000000";

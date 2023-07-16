@@ -5,7 +5,7 @@ const $ = require("jquery");
 @Component({
   selector: "greet-component",
   templateUrl: "./greet.component.html",
-  styleUrls: ["./greet.component.css", "../../stylesheets/publicStyles.css"]
+  styleUrls: ["./greet.component.scss", "../../stylesheets/publicStyles.scss"]
 })
 export class GreetComponent implements OnInit {
   @Input() fontColor: string = "#000000";
@@ -25,7 +25,7 @@ export class GreetComponent implements OnInit {
 
   // 请求完成后处理步骤
   setHoliday(data: any): void {
-    this.holidayContent = data.solarTerms + " · " + data.typeDes;
+    this.holidayContent = data.solarTerms;
     if (data.solarTerms.indexOf("后") === -1) {
       this.holidayContent = "今日" + this.holidayContent;
     }

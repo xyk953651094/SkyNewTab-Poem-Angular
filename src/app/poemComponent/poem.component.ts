@@ -6,14 +6,14 @@ const poemRequest = require("jinrishici");
 @Component({
   selector: "poem-component",
   templateUrl: "./poem.component.html",
-  styleUrls: ["./poem.component.css", "../../stylesheets/publicStyles.css"]
+  styleUrls: ["./poem.component.scss", "../../stylesheets/publicStyles.scss"]
 })
 export class PoemComponent implements OnInit{
   // constructor(private message: NzMessageService) {}
 
   title = "PoemComponent";
   @Input() fontColor: string = "#000000";
-  poemContent: string = "海上生明月，天涯共此时";
+  poemContent: string = "海上生明月，天涯共此时。";
   poemAuthor: string = "张九龄";
   poemAuthorDetails: string = "【唐】张九龄 ·《望月怀远》"
 
