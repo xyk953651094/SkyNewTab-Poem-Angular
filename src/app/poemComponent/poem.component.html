@@ -1,12 +1,17 @@
-<div nz-row nzJustify="center">
-  <div nz-col nzSpan="24">
+<div nz-row nzJustify="center" nzAlign="middle">
+  <div nz-col [nzXs]="{span: 0}" [nzSm]="{span: 0}" [nzMd]="{span: 0}" [nzLg]="{span: 24}" [nzXl]="{span: 24}" [nzXXl]="{span: 24}">
     <button nz-button nzType="text" nzShape="round" nzSize="large"
-            class="buttonFont poemContent"
+            class="buttonFont"
             (click)="poemContentBtnOnClick()"
             [style.color]="fontColor"
     >
       {{poemContent}}
     </button>
+  </div>
+  <div nz-col [nzXs]="{span: 24}" [nzSm]="{span: 24}" [nzMd]="{span: 24}" [nzLg]="{span: 0}" [nzXl]="{span: 0}" [nzXXl]="{span: 0}">
+    <div nz-space nzAlign="center">
+      <span nz-typography class="buttonFont vertical" [style.color]="fontColor">{{poemContent}}</span>
+    </div>
   </div>
   <div nz-col [nzXs]="{span: 0}" [nzSm]="{span: 0}" [nzMd]="{span: 0}" [nzLg]="{span: 24}" [nzXl]="{span: 24}" [nzXXl]="{span: 24}">
     <button nz-button nzType="text" nzShape="round" nzSize="large"
@@ -18,25 +23,3 @@
     </button>
   </div>
 </div>
-
-
-<!--<nz-space nzDirection="vertical" nzAlign="center">-->
-<!--  <div nz-col nzSpan="24">-->
-<!--    <button nz-button nzType="text" nzShape="round" nzSize="large"-->
-<!--            class="buttonFont poemContent"-->
-<!--            (click)="poemContentBtnOnClick()"-->
-<!--            [style.color]="fontColor"-->
-<!--    >-->
-<!--      {{poemContent}}-->
-<!--    </button>-->
-<!--  </div>-->
-<!--  <div nz-col [nzXs]="{span: 0}" [nzSm]="{span: 0}" [nzMd]="{span: 0}" [nzLg]="{span: 24}" [nzXl]="{span: 24}" [nzXXl]="{span: 24}">-->
-<!--    <button nz-button nzType="text" nzShape="round" nzSize="large"-->
-<!--            class="buttonFont"-->
-<!--            (click)="poemAuthorBtnOnClick()"-->
-<!--            [style.color]="fontColor"-->
-<!--    >-->
-<!--      {{poemAuthorDetails}}-->
-<!--    </button>-->
-<!--  </div>-->
-<!--</nz-space>-->
