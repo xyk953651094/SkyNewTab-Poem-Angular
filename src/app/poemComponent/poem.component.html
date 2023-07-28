@@ -2,7 +2,7 @@
   <div nz-col [nzXs]="{span: 0}" [nzSm]="{span: 0}" [nzMd]="{span: 0}" [nzLg]="{span: 24}" [nzXl]="{span: 24}" [nzXXl]="{span: 24}">
     <button nz-button nzType="text" nzShape="round" nzSize="large"
             class="buttonFont"
-            (click)="poemContentBtnOnClick()"
+            (click)="poemContentBtnOnClick()" (mouseover)="btnMouseOver($event)" (mouseout)="btnMouseOut($event)"
             [style.color]="fontColor"
     >
       {{poemContent}}
@@ -16,7 +16,7 @@
   <div nz-col [nzXs]="{span: 0}" [nzSm]="{span: 0}" [nzMd]="{span: 0}" [nzLg]="{span: 24}" [nzXl]="{span: 24}" [nzXXl]="{span: 24}">
     <button nz-button nzType="text" nzShape="round" nzSize="large"
             class="buttonFont"
-            (click)="poemAuthorBtnOnClick()"
+            (click)="poemAuthorBtnOnClick()" (mouseover)="btnMouseOver($event)" (mouseout)="btnMouseOut($event)"
             [style.color]="fontColor"
     >
       {{poemAuthorDetails}}

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { NzMessageService } from 'ng-zorro-antd/message';
+import {getFontColor} from "../../typescripts/publicFunctions";
 
 const poemRequest = require("jinrishici");
 
@@ -16,6 +17,16 @@ export class PoemComponent implements OnInit{
   poemContent: string = "海上生明月，天涯共此时。";
   poemAuthor: string = "张九龄";
   poemAuthorDetails: string = "【唐】张九龄 ·《望月怀远》"
+
+  btnMouseOver(e: any) {
+    e.currentTarget.style.backgroundColor = this.fontColor;
+    e.currentTarget.style.color = getFontColor(this.fontColor);
+  }
+
+  btnMouseOut(e:any) {
+    e.currentTarget.style.backgroundColor = "transparent";
+    e.currentTarget.style.color = this.fontColor;
+  }
 
   // 今日诗词
   setPoem(poemData: any) {

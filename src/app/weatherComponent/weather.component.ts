@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from "@angular/core";
-import {getWeatherIcon, httpRequest} from "../../typescripts/publicFunctions";
+import {getFontColor, getWeatherIcon, httpRequest} from "../../typescripts/publicFunctions";
 const $ = require("jquery");
 
 @Component({
@@ -18,6 +18,16 @@ export class WeatherComponent implements OnInit {
   rainfall: string = "暂无信息";
   visibility: string = "暂无信息";
   windInfo: string = "暂无信息";
+
+  btnMouseOver(e: any) {
+    e.currentTarget.style.backgroundColor = this.fontColor;
+    e.currentTarget.style.color = getFontColor(this.fontColor);
+  }
+
+  btnMouseOut(e:any) {
+    e.currentTarget.style.backgroundColor = "transparent";
+    e.currentTarget.style.color = this.fontColor;
+  }
 
   // 天气
   setWeather(data: any): void {

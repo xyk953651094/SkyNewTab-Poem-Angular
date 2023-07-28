@@ -1,4 +1,5 @@
-<button nz-button nzType="text" nzShape="round" nzSize="large" class="buttonFont" [style.color]="fontColor" (click)="greetBtnOnClick()"
+<button nz-button nzType="text" nzShape="round" nzSize="large" class="buttonFont" [style.color]="fontColor"
+        (click)="greetBtnOnClick()" (mouseover)="btnMouseOver($event)" (mouseout)="btnMouseOut($event)"
         nz-popover [nzPopoverTitle]="popoverTitle" [nzPopoverContent]="popoverContent" nzPopoverPlacement="bottomLeft"
 >
     <span [class]="greetIcon">&nbsp;</span>

@@ -1,6 +1,6 @@
 <button nz-button nzType="text" nzShape="round" nzSize="large"
         class="buttonFont"
-        (click)="weatherBtnOnClick()"
+        (click)="weatherBtnOnClick()" (mouseover)="btnMouseOver($event)" (mouseout)="btnMouseOut($event)"
         [style.color]="fontColor"
 
         nz-popover [nzPopoverTitle]="popoverTitle" [nzPopoverContent]="popoverContent" nzPopoverPlacement="bottomLeft"

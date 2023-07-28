@@ -1,5 +1,11 @@
 import {Component, OnInit, Input} from "@angular/core";
-import {httpRequest, getTimeDetails, getGreetContent, getGreetIcon} from "../../typescripts/publicFunctions";
+import {
+  httpRequest,
+  getTimeDetails,
+  getGreetContent,
+  getGreetIcon,
+  getFontColor
+} from "../../typescripts/publicFunctions";
 const $ = require("jquery");
 
 @Component({
@@ -16,6 +22,16 @@ export class GreetComponent implements OnInit {
   calendar: string = "暂无信息";
   suit: string = "暂无信息";
   avoid: string = "暂无信息";
+
+  btnMouseOver(e: any) {
+    e.currentTarget.style.backgroundColor = this.fontColor;
+    e.currentTarget.style.color = getFontColor(this.fontColor);
+  }
+
+  btnMouseOut(e:any) {
+    e.currentTarget.style.backgroundColor = "transparent";
+    e.currentTarget.style.color = this.fontColor;
+  }
 
   // 问候
   setGreet(): void {
