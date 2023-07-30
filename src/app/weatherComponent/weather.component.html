@@ -1,38 +1,38 @@
-<button nz-button nzType="text" nzShape="round" nzSize="large"
-        class="buttonFont"
-        (click)="weatherBtnOnClick()" (mouseover)="btnMouseOver($event)" (mouseout)="btnMouseOut($event)"
-        [style.color]="fontColor"
-
-        nz-popover [nzPopoverTitle]="popoverTitle" [nzPopoverContent]="popoverContent" nzPopoverPlacement="bottomLeft"
+<button (click)="weatherBtnOnClick()" (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)" [nzPopoverContent]="popoverContent"
         [nzPopoverOverlayStyle]='{backgroundColor: "transparent"}'
+        [nzPopoverTitle]="popoverTitle" [style.color]="fontColor" class="buttonFont"
+        nz-button
+
+        nz-popover nzPopoverPlacement="bottomLeft" nzShape="round" nzSize="large"
+        nzType="text"
 >
     <span [class]="weatherIcon">&nbsp;</span>
-  {{weatherContent}}
+    {{weatherContent}}
 </button>
 <ng-template #popoverTitle>
-  <span nz-typography [style.color]="fontColor">{{location}}</span>
+    <span [style.color]="fontColor" nz-typography>{{location}}</span>
 </ng-template>
 <ng-template #popoverContent>
-  <nz-space nzDirection="vertical" nzAlign="start" class="popoverFont">
-    <div nz-typography [style.color]="fontColor">
-      <span class="bi bi-moisture"></span>
-      {{"&nbsp;空气湿度：" + humidity}}
-    </div>
-    <div nz-typography [style.color]="fontColor">
-      <span class="bi bi-water"></span>
-      {{"&nbsp;空气质量：" + pm25}}
-    </div>
-    <div nz-typography [style.color]="fontColor">
-      <span class="bi bi-cloud-rain"></span>
-      {{"&nbsp;降雨概率：" + rainfall}}
-    </div>
-    <div nz-typography [style.color]="fontColor">
-      <span class="bi bi-eye"></span>
-      {{"&nbsp;视线距离：" + visibility}}
-    </div>
-    <div nz-typography [style.color]="fontColor">
-      <span class="bi bi-wind"></span>
-      {{"&nbsp;风速情况：" + this.windInfo}}
-    </div>
-  </nz-space>
+    <nz-space class="popoverFont" nzAlign="start" nzDirection="vertical">
+        <div [style.color]="fontColor" nz-typography>
+            <span class="bi bi-moisture"></span>
+            {{"&nbsp;空气湿度：" + humidity}}
+        </div>
+        <div [style.color]="fontColor" nz-typography>
+            <span class="bi bi-water"></span>
+            {{"&nbsp;空气质量：" + pm25}}
+        </div>
+        <div [style.color]="fontColor" nz-typography>
+            <span class="bi bi-cloud-rain"></span>
+            {{"&nbsp;降雨概率：" + rainfall}}
+        </div>
+        <div [style.color]="fontColor" nz-typography>
+            <span class="bi bi-eye"></span>
+            {{"&nbsp;视线距离：" + visibility}}
+        </div>
+        <div [style.color]="fontColor" nz-typography>
+            <span class="bi bi-wind"></span>
+            {{"&nbsp;风速情况：" + this.windInfo}}
+        </div>
+    </nz-space>
 </ng-template>

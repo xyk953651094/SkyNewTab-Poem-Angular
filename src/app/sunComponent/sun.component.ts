@@ -1,11 +1,11 @@
-import { Component, Input } from "@angular/core";
+import {Component, Input} from "@angular/core";
 
 @Component({
-  selector: "sun-component",
-  templateUrl: "./sun.component.html",
-  styleUrls: ["./sun.component.scss"]
+    selector: "sun-component",
+    templateUrl: "./sun.component.html",
+    styleUrls: ["./sun.component.scss"]
 })
 export class SunComponent {
-  title = "SunComponent";
-  @Input() sunColor: string[] = ["#ffffff", "#ffffff", "#ffffff"];
+    title = "SunComponent";
+    @Input() sunColor: string[] = ["#ffffff", "#ffffff", "#ffffff"];
 }

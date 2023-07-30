@@ -1,25 +1,30 @@
-<div nz-row nzJustify="center" nzAlign="middle">
-  <div nz-col [nzXs]="{span: 0}" [nzSm]="{span: 0}" [nzMd]="{span: 0}" [nzLg]="{span: 24}" [nzXl]="{span: 24}" [nzXXl]="{span: 24}">
-    <button nz-button nzType="text" nzShape="round" nzSize="large"
-            class="buttonFont"
-            (click)="poemContentBtnOnClick()" (mouseover)="btnMouseOver($event)" (mouseout)="btnMouseOut($event)"
-            [style.color]="fontColor"
-    >
-      {{poemContent}}
-    </button>
-  </div>
-  <div nz-col [nzXs]="{span: 24}" [nzSm]="{span: 24}" [nzMd]="{span: 24}" [nzLg]="{span: 0}" [nzXl]="{span: 0}" [nzXXl]="{span: 0}">
-    <div nz-space nzAlign="center">
-      <span nz-typography class="buttonFont vertical" [style.color]="fontColor">{{poemContent}}</span>
-    </div>
-  </div>
-  <div nz-col [nzXs]="{span: 0}" [nzSm]="{span: 0}" [nzMd]="{span: 0}" [nzLg]="{span: 24}" [nzXl]="{span: 24}" [nzXXl]="{span: 24}">
-    <button nz-button nzType="text" nzShape="round" nzSize="large"
-            class="buttonFont"
-            (click)="poemAuthorBtnOnClick()" (mouseover)="btnMouseOver($event)" (mouseout)="btnMouseOut($event)"
-            [style.color]="fontColor"
-    >
-      {{poemAuthorDetails}}
-    </button>
-  </div>
+<div nz-row nzAlign="middle" nzJustify="center">
+    <nz-space nzDirection="vertical">
+        <div [nzLg]="{span: 24}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 24}" [nzXl]="{span: 24}" [nzXs]="{span: 0}"
+             nz-col>
+            <button (click)="poemContentBtnOnClick()" (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)" [style.color]="fontColor"
+                    class="buttonFont"
+                    nz-button nzShape="round" nzSize="large"
+                    nzType="text"
+            >
+                {{poemContent}}
+            </button>
+        </div>
+        <div [nzLg]="{span: 0}" [nzMd]="{span: 24}" [nzSm]="{span: 24}" [nzXXl]="{span: 0}" [nzXl]="{span: 0}" [nzXs]="{span: 24}"
+             nz-col>
+            <div nz-space nzAlign="center">
+                <span [style.color]="fontColor" class="buttonFont vertical" nz-typography>{{poemContent}}</span>
+            </div>
+        </div>
+        <div [nzLg]="{span: 24}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 24}" [nzXl]="{span: 24}" [nzXs]="{span: 0}"
+             nz-col>
+            <button (click)="poemAuthorBtnOnClick()" (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)" [style.color]="fontColor"
+                    class="buttonFont"
+                    nz-button nzShape="round" nzSize="large"
+                    nzType="text"
+            >
+                {{poemAuthorDetails}}
+            </button>
+        </div>
+    </nz-space>
 </div>
