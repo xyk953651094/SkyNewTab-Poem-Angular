@@ -1,12 +1,12 @@
 <div class="waveSvg">
-  <svg class="waves" viewBox="0 24 150 24" preserveAspectRatio="none">
-    <defs>
-      <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-    </defs>
-    <g>
-      <use class="wave" xlink:href="#wave" [attr.fill]="waveColor[0]" x="50" y="0"></use>
-      <use class="wave" xlink:href="#wave" [attr.fill]="waveColor[1]" x="50" y="2"></use>
-      <use class="wave" xlink:href="#wave" [attr.fill]="waveColor[2]" x="50" y="4"></use>
-    </g>
-  </svg>
+    <svg class="waves" preserveAspectRatio="none" viewBox="0 24 150 24">
+        <defs>
+            <path d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" id="wave"/>
+        </defs>
+        <g>
+            <use [attr.fill]="waveColor[0]" class="wave" x="50" xlink:href="#wave" y="0"></use>
+            <use [attr.fill]="waveColor[1]" class="wave" x="50" xlink:href="#wave" y="2"></use>
+            <use [attr.fill]="waveColor[2]" class="wave" x="50" xlink:href="#wave" y="4"></use>
+        </g>
+    </svg>
 </div>

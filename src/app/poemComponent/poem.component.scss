@@ -1,0 +1,7 @@
+/*移动端竖屏样式*/
+@media screen and (max-width: 500px) and (orientation: portrait) {
+    .vertical {
+        height: 100% !important;
+        writing-mode: vertical-lr;
+    }
+}

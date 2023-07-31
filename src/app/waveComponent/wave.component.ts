@@ -1,11 +1,11 @@
-import { Component, Input } from "@angular/core";
+import {Component, Input} from "@angular/core";
 
 @Component({
-  selector: "wave-component",
-  templateUrl: "./wave.component.html",
-  styleUrls: ["./wave.component.css"]
+    selector: "wave-component",
+    templateUrl: "./wave.component.html",
+    styleUrls: ["./wave.component.scss"]
 })
 export class WaveComponent {
-  title = "WaveComponent";
-  @Input() waveColor: string[] = ["#ffffff", "#ffffff", "#ffffff"];
+    title = "WaveComponent";
+    @Input() waveColor: string[] = ["#ffffff", "#ffffff", "#ffffff"];
 }
