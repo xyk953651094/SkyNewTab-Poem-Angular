@@ -7,13 +7,15 @@
                     nz-button nzShape="round" nzSize="large"
                     nzType="text"
             >
-                {{poemContent}}
+                {{poemContent.length < 30? poemContent : poemContent.substring(0, 30) + "..."}}
             </button>
         </div>
         <div [nzLg]="{span: 0}" [nzMd]="{span: 24}" [nzSm]="{span: 24}" [nzXXl]="{span: 0}" [nzXl]="{span: 0}" [nzXs]="{span: 24}"
              nz-col>
             <div nz-space nzAlign="center">
-                <span [style.color]="fontColor" class="buttonFont vertical" nz-typography>{{poemContent}}</span>
+                <span [style.color]="fontColor" class="buttonFont vertical" nz-typography>
+                    {{poemContent.length < 20? poemContent : poemContent.substring(0, 20) + "..."}}
+                </span>
             </div>
         </div>
         <div [nzLg]="{span: 24}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 24}" [nzXl]="{span: 24}" [nzXs]="{span: 0}"
@@ -23,7 +25,7 @@
                     nz-button nzShape="round" nzSize="large"
                     nzType="text"
             >
-                {{poemAuthorDetails}}
+                {{poemAuthorDetails.length < 30? poemAuthorDetails : poemAuthorDetails.substring(0, 30) + "..."}}
             </button>
         </div>
     </nz-space>

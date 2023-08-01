@@ -10,26 +10,26 @@
 </ng-template>
 <ng-template #popoverContent>
     <nz-space class="popoverFont" nzAlign="start" nzDirection="vertical">
-        <div [style.color]="fontColor" nz-typography>
-            <span nz-icon nzTheme="outline" nzType="check-circle"></span>
-            {{"&nbsp;宜：" + suit}}
-        </div>
-        <div [style.color]="fontColor" nz-typography>
-            <span nz-icon nzTheme="outline" nzType="close-circle"></span>
-            {{"&nbsp;忌：" + avoid}}
-        </div>
+            <button nz-button nzType="text" nzShape="round" (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                    class="popoverFont" [style.color]="fontColor"
+            >
+              <span nz-icon nzType="check-circle" nzTheme="outline"></span>
+              {{"宜：" + suit}}
+            </button>
+            <button nz-button nzType="text" nzShape="round" (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                    class="popoverFont" [style.color]="fontColor"
+            >
+              <span nz-icon nzType="close-circle" nzTheme="outline"></span>
+              {{"忌：" + avoid}}
+            </button>
 
-        <!--    <button nz-button nzType="text" nzShape="round" nzSize="small"-->
-        <!--            class="popoverFont" [style.color]="fontColor"-->
-        <!--    >-->
-        <!--      <span nz-icon nzType="check-circle" nzTheme="outline"></span>-->
-        <!--      {{"宜：" + suit}}-->
-        <!--    </button>-->
-        <!--    <button nz-button nzType="text" nzShape="round" nzSize="small"-->
-        <!--            class="popoverFont" [style.color]="fontColor"-->
-        <!--    >-->
-        <!--      <span nz-icon nzType="close-circle" nzTheme="outline"></span>-->
-        <!--      {{"忌：" + avoid}}-->
-        <!--    </button>-->
+<!--        <div [style.color]="fontColor" nz-typography>-->
+<!--            <span nz-icon nzTheme="outline" nzType="check-circle"></span>-->
+<!--            {{"&nbsp;宜：" + suit}}-->
+<!--        </div>-->
+<!--        <div [style.color]="fontColor" nz-typography>-->
+<!--            <span nz-icon nzTheme="outline" nzType="close-circle"></span>-->
+<!--            {{"&nbsp;忌：" + avoid}}-->
+<!--        </div>-->
     </nz-space>
 </ng-template>
