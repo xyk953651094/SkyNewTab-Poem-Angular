@@ -1,10 +1,11 @@
 import {Component, Input, OnInit} from "@angular/core";
+import {device} from "../../typescripts/publicConstants"
 import {
-  getFontColor,
-  getGreetContent,
-  getGreetIcon,
-  getTimeDetails,
-  httpRequest
+    getFontColor,
+    getGreetContent,
+    getGreetIcon,
+    getTimeDetails,
+    httpRequest
 } from "../../typescripts/publicFunctions";
 
 const $ = require("jquery");
@@ -23,6 +24,8 @@ export class GreetComponent implements OnInit {
     calendar: string = "暂无信息";
     suit: string = "暂无信息";
     avoid: string = "暂无信息";
+    protected readonly getGreetContent = getGreetContent;
+    protected readonly device = device;
 
     btnMouseOver(e: any) {
         e.currentTarget.style.backgroundColor = this.fontColor;
@@ -52,7 +55,7 @@ export class GreetComponent implements OnInit {
 
         let timeDetails = getTimeDetails(new Date());
         this.greetContent = this.greetContent + "｜" + this.holidayContent;
-        this.calendar = timeDetails.showDate4 + " " + timeDetails.showWeek + "｜" + data.yearTips + data.chineseZodiac + "年｜" + data.lunarCalendar;
+        this.calendar = timeDetails.showDate4 + " " + timeDetails.showWeek + "｜" + data.yearTips + data.chineseZodiac + "年｜" + data.lunarCalendar + "｜" + data.constellation;
         this.suit = data.suit.replace(/\./g, " · ");
         this.avoid = data.avoid.replace(/\./g, " · ");
     }

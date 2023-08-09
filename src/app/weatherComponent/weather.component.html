@@ -1,5 +1,5 @@
-<button (click)="weatherBtnOnClick()" (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)" [nzPopoverContent]="popoverContent"
-        [nzPopoverOverlayStyle]='{backgroundColor: "transparent"}'
+<button (click)="weatherBtnOnClick()" (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+        [nzPopoverContent]="popoverContent"
         [nzPopoverTitle]="popoverTitle" [style.color]="fontColor" class="buttonFont"
         nz-button
 
@@ -14,25 +14,45 @@
 </ng-template>
 <ng-template #popoverContent>
     <nz-space class="popoverFont" nzAlign="start" nzDirection="vertical">
-        <div [style.color]="fontColor" nz-typography>
+        <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)" [style.color]="fontColor"
+                class="popoverFont"
+                nz-button
+                nzShape="round" nzType="text"
+        >
             <span class="bi bi-moisture"></span>
             {{"&nbsp;空气湿度：" + humidity}}
-        </div>
-        <div [style.color]="fontColor" nz-typography>
+        </button>
+        <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)" [style.color]="fontColor"
+                class="popoverFont"
+                nz-button
+                nzShape="round" nzType="text"
+        >
             <span class="bi bi-water"></span>
             {{"&nbsp;空气质量：" + pm25}}
-        </div>
-        <div [style.color]="fontColor" nz-typography>
+        </button>
+        <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)" [style.color]="fontColor"
+                class="popoverFont"
+                nz-button
+                nzShape="round" nzType="text"
+        >
             <span class="bi bi-cloud-rain"></span>
             {{"&nbsp;降雨概率：" + rainfall}}
-        </div>
-        <div [style.color]="fontColor" nz-typography>
+        </button>
+        <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)" [style.color]="fontColor"
+                class="popoverFont"
+                nz-button
+                nzShape="round" nzType="text"
+        >
             <span class="bi bi-eye"></span>
             {{"&nbsp;视线距离：" + visibility}}
-        </div>
-        <div [style.color]="fontColor" nz-typography>
+        </button>
+        <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)" [style.color]="fontColor"
+                class="popoverFont"
+                nz-button
+                nzShape="round" nzType="text"
+        >
             <span class="bi bi-wind"></span>
             {{"&nbsp;风速情况：" + this.windInfo}}
-        </div>
+        </button>
     </nz-space>
 </ng-template>
