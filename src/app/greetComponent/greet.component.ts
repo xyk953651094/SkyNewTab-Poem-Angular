@@ -55,7 +55,7 @@ export class GreetComponent implements OnInit {
 
         let timeDetails = getTimeDetails(new Date());
         this.greetContent = this.greetContent + "｜" + this.holidayContent;
-        this.calendar = timeDetails.showDate4 + " " + timeDetails.showWeek + "｜" + data.yearTips + data.chineseZodiac + "年｜" + data.lunarCalendar;
+        this.calendar = timeDetails.showDate4 + " " + timeDetails.showWeek + "｜" + data.yearTips + data.chineseZodiac + "年｜" + data.lunarCalendar + "｜" + data.constellation;
         this.suit = data.suit.replace(/\./g, " · ");
         this.avoid = data.avoid.replace(/\./g, " · ");
     }
