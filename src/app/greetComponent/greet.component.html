@@ -3,7 +3,7 @@
         class="buttonFont" nz-button nz-popover
         nzPopoverPlacement="bottomLeft" nzShape="round" nzSize="large" nzType="text"
 >
-    <span [class]="greetIcon">&nbsp;</span>
+    <span [class]="greetIcon">&nbsp;&nbsp;</span>
     {{(device === "iPhone" || device === "Android") ? getGreetContent() : greetContent}}
 </button>
 <ng-template #popoverTitle>
