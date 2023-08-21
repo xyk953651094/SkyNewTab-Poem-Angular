@@ -22,6 +22,7 @@ import {WeatherComponent} from './weatherComponent/weather.component';
 import {PoemComponent} from "./poemComponent/poem.component";
 import {SunComponent} from "./sunComponent/sun.component";
 import {WaveComponent} from "./waveComponent/wave.component";
+import {WindowComponent} from "./windowComponent/window.component";
 
 registerLocaleData(zh);
 
@@ -32,7 +33,8 @@ registerLocaleData(zh);
         WeatherComponent,
         PoemComponent,
         SunComponent,
-        WaveComponent
+        WaveComponent,
+        WindowComponent
     ],
     imports: [
         BrowserModule,

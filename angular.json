@@ -38,7 +38,8 @@
               "src/theme.less",
               "src/styles.css",
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "src/assets/iconFont/iconfont.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js"
