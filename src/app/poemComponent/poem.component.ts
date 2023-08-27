@@ -9,22 +9,21 @@ const poemRequest = require("jinrishici");
     styleUrls: ["./poem.component.scss", "../../stylesheets/publicStyles.scss"]
 })
 export class PoemComponent implements OnInit {
-    // constructor(private message: NzMessageService) {}
-
+    @Input() minorColor: string = "#000000";
     title = "PoemComponent";
-    @Input() fontColor: string = "#000000";
+    searchEngineUrl: string = "https://www.bing.com/search?q=";
     poemContent: string = "海上生明月，天涯共此时。";
     poemAuthor: string = "张九龄";
     poemAuthorDetails: string = "【唐】张九龄 ·《望月怀远》"
 
     btnMouseOver(e: any) {
-        e.currentTarget.style.backgroundColor = this.fontColor;
-        e.currentTarget.style.color = getFontColor(this.fontColor);
+        e.currentTarget.style.backgroundColor = this.minorColor;
+        e.currentTarget.style.color = getFontColor(this.minorColor);
     }
 
     btnMouseOut(e: any) {
         e.currentTarget.style.backgroundColor = "transparent";
-        e.currentTarget.style.color = this.fontColor;
+        e.currentTarget.style.color = this.minorColor;
     }
 
     // 今日诗词
@@ -45,11 +44,11 @@ export class PoemComponent implements OnInit {
     }
 
     poemContentBtnOnClick() {
-        window.open("https://cn.bing.com/search?&q=" + this.poemContent, "_blank");
+        window.open(this.searchEngineUrl + this.poemContent, "_blank");
     }
 
     poemAuthorBtnOnClick() {
-        window.open("https://cn.bing.com/search?&q=" + this.poemAuthor, "_blank");
+        window.open(this.searchEngineUrl + this.poemAuthor, "_blank");
     }
 
     ngOnInit(): void {

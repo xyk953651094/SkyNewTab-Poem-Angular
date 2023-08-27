@@ -1,17 +1,58 @@
-<button (click)="greetBtnOnClick()" (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
-        [nzPopoverContent]="popoverContent" [nzPopoverTitle]="popoverTitle" [style.color]="fontColor"
+<button [nzPopoverContent]="popoverContent" [nzPopoverTitle]="popoverTitle"
         class="buttonFont" nz-button nz-popover
+        [style]="{cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
         nzPopoverPlacement="bottomLeft" nzShape="round" nzSize="large" nzType="text"
+        [nzPopoverOverlayStyle]="{width: '1000px'}"
 >
     <span [class]="greetIcon">&nbsp;&nbsp;</span>
     {{(device === "iPhone" || device === "Android") ? getGreetContent() : greetContent}}
 </button>
 <ng-template #popoverTitle>
-    <span [style.color]="fontColor" nz-typography>{{calendar}}</span>
+    <div nz-row nzAlign="middle">
+        <div nz-col nzSpan="10">
+            <span class="popoverFont" [style]="{color: getFontColor(minorColor)}" nz-typography>{{"万年历"}}</span>
+        </div>
+        <div nz-col nzSpan="14" style="{text-align: right}">
+            <nz-space>
+                <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)" *nzSpaceItem
+                        (click)="historyBtnOnClick()"
+                        class="popoverFont"
+                        [style]="{color: getFontColor(minorColor)}"
+                        nz-button
+                        nzShape="round" nzType="text"
+                >
+                    <span nz-icon nzTheme="outline" nzType="history"></span>
+                    {{"历史上的今天"}}
+                </button>
+                <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                        *nzSpaceItem
+                        (click)="infoBtnOnClick()"
+                        class="popoverFont"
+                        [style]="{color: getFontColor(minorColor)}"
+                        nz-button
+                        nzShape="round" nzType="text"
+                >
+                    <span nz-icon nzTheme="outline" nzType="info-circle"></span>
+                    {{"更多信息"}}
+                </button>
+            </nz-space>
+        </div>
+    </div>
 </ng-template>
 <ng-template #popoverContent>
     <nz-space nzAlign="start" nzDirection="vertical">
-        <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)" [style.color]="fontColor"
+        <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)" *nzSpaceItem
+                class="popoverFont"
+                [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+                nz-button
+                nzShape="round" nzType="text"
+        >
+            <span nz-icon nzTheme="outline" nzType="calendar"></span>
+            {{calendar}}
+        </button>
+        <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                *nzSpaceItem
+                [style]="{color: getFontColor(minorColor), cursor: 'default'}"
                 class="popoverFont"
                 nz-button
                 nzShape="round" nzType="text"
@@ -19,7 +60,9 @@
             <span nz-icon nzTheme="outline" nzType="check-circle"></span>
             {{"宜：" + suit}}
         </button>
-        <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)" [style.color]="fontColor"
+        <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                *nzSpaceItem
+                [style]="{color: getFontColor(minorColor), cursor: 'default'}"
                 class="popoverFont"
                 nz-button
                 nzShape="round" nzType="text"

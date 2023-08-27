@@ -16,8 +16,10 @@ const $ = require("jquery");
     styleUrls: ["./greet.component.scss", "../../stylesheets/publicStyles.scss"]
 })
 export class GreetComponent implements OnInit {
-    @Input() fontColor: string = "#000000";
+    @Input() majorColor: string = "#000000";
+    @Input() minorColor: string = "#ffffff";
     title = "GreetComponent";
+    searchEngineUrl: string = "https://www.bing.com/search?q=";
     greetIcon: string = "";
     greetContent: string = "你好";
     holidayContent: string = "暂无信息";
@@ -28,13 +30,21 @@ export class GreetComponent implements OnInit {
     protected readonly device = device;
 
     btnMouseOver(e: any) {
-        e.currentTarget.style.backgroundColor = this.fontColor;
-        e.currentTarget.style.color = getFontColor(this.fontColor);
+        e.currentTarget.style.backgroundColor = this.majorColor;
+        e.currentTarget.style.color = getFontColor(this.majorColor);
     }
 
     btnMouseOut(e: any) {
         e.currentTarget.style.backgroundColor = "transparent";
-        e.currentTarget.style.color = this.fontColor;
+        e.currentTarget.style.color = getFontColor(this.minorColor);
+    }
+
+    historyBtnOnClick() {
+        window.open( this.searchEngineUrl + "历史上的今天", "_blank",);
+    }
+
+    infoBtnOnClick() {
+        window.open(this.searchEngineUrl + "万年历", "_blank");
     }
 
     // 问候
@@ -83,10 +93,6 @@ export class GreetComponent implements OnInit {
             });
     };
 
-    greetBtnOnClick() {
-        window.open("https://cn.bing.com/search?&q=日历", "_blank");
-    }
-
     ngOnInit(): void {
         // 问候
         this.setGreet();
@@ -106,4 +112,6 @@ export class GreetComponent implements OnInit {
             }
         }
     }
+
+    protected readonly getFontColor = getFontColor;
 }

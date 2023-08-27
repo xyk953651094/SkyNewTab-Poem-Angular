@@ -9,8 +9,10 @@ const $ = require("jquery");
     styleUrls: ["./weather.component.scss", "../../stylesheets/publicStyles.scss"]
 })
 export class WeatherComponent implements OnInit {
-    @Input() fontColor: string = "#000000";
+    @Input() majorColor: string = "#000000";
+    @Input() minorColor: string = "#ffffff";
     title = "WeatherComponent";
+    searchEngineUrl: string = "https://www.bing.com/search?q=";
     weatherIcon: string = "";
     weatherContent: string = "";
     location: string = "暂无信息";
@@ -21,13 +23,17 @@ export class WeatherComponent implements OnInit {
     windInfo: string = "暂无信息";
 
     btnMouseOver(e: any) {
-        e.currentTarget.style.backgroundColor = this.fontColor;
-        e.currentTarget.style.color = getFontColor(this.fontColor);
+        e.currentTarget.style.backgroundColor = this.majorColor;
+        e.currentTarget.style.color = getFontColor(this.majorColor);
     }
 
     btnMouseOut(e: any) {
         e.currentTarget.style.backgroundColor = "transparent";
-        e.currentTarget.style.color = this.fontColor;
+        e.currentTarget.style.color = getFontColor(this.minorColor);
+    }
+
+    infoBtnOnClick() {
+        window.open(this.searchEngineUrl + "天气", "_blank");
     }
 
     // 天气
@@ -63,10 +69,6 @@ export class WeatherComponent implements OnInit {
             });
     }
 
-    weatherBtnOnClick() {
-        window.open("https://cn.bing.com/search?&q=天气", "_blank");
-    }
-
     ngOnInit(): void {
         // 天气,防抖节流
         let lastRequestTime: any = localStorage.getItem("lastWeatherRequestTime");
@@ -83,4 +85,6 @@ export class WeatherComponent implements OnInit {
             }
         }
     }
+
+    protected readonly getFontColor = getFontColor;
 }

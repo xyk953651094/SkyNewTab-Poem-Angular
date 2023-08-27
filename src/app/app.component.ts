@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {themeArray} from "../typescripts/publicConstants";
+import {getFontColor} from "../typescripts/publicFunctions";
 
 const $ = require("jquery");
 
@@ -10,36 +11,42 @@ const $ = require("jquery");
 })
 export class AppComponent implements OnInit {
     title = "云开诗词新标签页";
-    fontColor: string = "#ffffff";
-    svgColor: string[] = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"];
+    majorColor = "#000000";
+    minorColor: string = "#ffffff";
+    svgColors: string[] = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"];
 
     constructor() {
     }
 
     // 随机颜色主题
-    setColorTheme(): void {
-        let theme: ({ bodyBackgroundColor: string, fontColor: string, svgColor: string[] }[]) = themeArray;
+    setColorTheme() {
+        // 随机颜色主题
+        let theme: ({ majorColor: string, minorColor: string, svgColors: string[] }[]) = themeArray;
         let randomNum = Math.floor(Math.random() * theme.length);  // 随机选择
-        $("body").css("background-color", theme[randomNum].bodyBackgroundColor);
-        this.fontColor = theme[randomNum].fontColor;
-        this.svgColor = theme[randomNum].svgColor;
+        this.majorColor = theme[randomNum].majorColor;
+        this.minorColor = theme[randomNum].minorColor;
+        this.svgColors = theme[randomNum].svgColors;
 
-        $("body").bind("DOMNodeInserted", () => {
+        let bodyEle = $("body");
+        bodyEle.css("background-color", theme[randomNum].majorColor);
+
+        // 修改弹窗主题
+        bodyEle.bind("DOMNodeInserted", () => {
             // popover
             let popoverEle = $(".ant-popover");
             if (popoverEle.length && popoverEle.length > 0) {
                 $(".ant-popover-arrow").css("display", "none");
-                $(".ant-popover-inner").css("box-shadow", "none");
+                // $(".ant-popover-inner").css("box-shadow", "none");
                 $(".ant-popover-title").css({
-                    "color": this.fontColor,
+                    "color": getFontColor(this.minorColor),
                     "font-family": "'Times New Roman', cursive, sans-serif",
                     "font-size": "20px",
-                    "background-color": theme[randomNum].bodyBackgroundColor,
-                    "border-color": "transparent"
+                    "background-color": this.minorColor,
+                    "border-color": this.minorColor
                 });
                 $(".ant-popover-inner-content").css({
-                    "color": this.fontColor,
-                    "backgroundColor": theme[randomNum].bodyBackgroundColor
+                    "color": getFontColor(this.minorColor),
+                    "backgroundColor": this.minorColor
                 });
             }
         });
