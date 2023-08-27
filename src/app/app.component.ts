@@ -37,16 +37,21 @@ export class AppComponent implements OnInit {
             if (popoverEle.length && popoverEle.length > 0) {
                 $(".ant-popover-arrow").css("display", "none");
                 // $(".ant-popover-inner").css("box-shadow", "none");
+                $(".ant-popover-inner").css("border-radius", "10px");
                 $(".ant-popover-title").css({
                     "color": getFontColor(this.minorColor),
                     "font-family": "'Times New Roman', cursive, sans-serif",
                     "font-size": "20px",
                     "background-color": this.minorColor,
-                    "border-color": this.minorColor
+                    "border-color": this.minorColor,
+                    "border-top-left-radius": "10px",
+                    "border-top-right-radius": "10px"
                 });
                 $(".ant-popover-inner-content").css({
                     "color": getFontColor(this.minorColor),
-                    "backgroundColor": this.minorColor
+                    "backgroundColor":  this.minorColor,
+                    "border-bottom-left-radius": "10px",
+                    "border-bottom-right-radius": "10px"
                 });
             }
         });
