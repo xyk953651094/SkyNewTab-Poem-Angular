@@ -18,8 +18,8 @@
 ## V1.7.0 更新内容
 * 优化代码质量
 * 修复已知问题
-* * 优化视觉效果，新增菜单栏
-* 注意：由于 NG Zorro(Ant Design for Angular) 的部分组件存在致命Bug，已严重影响功能实现，现决定降低本产品的维护优先级。
+* 优化视觉效果，新增菜单栏
+* 注意：由于 NG Zorro 的部分组件存在Bug，已严重影响部分功能实现，现决定降低本产品的维护优先级。
 
 ## 安装
 * 与 [SkyNewTab-Poem-React](https://github.com/xyk953651094/SkyNewTab-Poem-React) 重复，暂时不上架各商店。
