@@ -16,6 +16,7 @@
 * 诗词来源：https://www.jinrishici.com   
 
 ## 安装
+* 由于 NG Zorro(Ant Design for Angular) 的不稳定性（部分组件存在致命Bug，已严重影响功能实现），已决定降低本产品的维护优先级。
 * 与 [SkyNewTab-Poem-React](https://github.com/xyk953651094/SkyNewTab-Poem-React) 重复，暂时不上架各商店。
 * 下载本页面提供的文件进行安装。
 
