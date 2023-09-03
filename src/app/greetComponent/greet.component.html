@@ -1,22 +1,22 @@
 <button [nzPopoverContent]="popoverContent" [nzPopoverTitle]="popoverTitle"
-        class="buttonFont" nz-button nz-popover
-        [style]="{cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
+        class="componentTheme poemFont" nz-button nz-popover
+        [style]="{display: display, cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
         nzPopoverPlacement="bottomLeft" nzShape="round" nzSize="large" nzType="text"
-        [nzPopoverOverlayStyle]="{width: '1000px'}"
+        [nzPopoverOverlayStyle]="{minWidth: '550px'}"
 >
     <span [class]="greetIcon">&nbsp;&nbsp;</span>
-    {{(device === "iPhone" || device === "Android") ? getGreetContent() : greetContent}}
+    {{greetContent + "｜" + holidayContent}}
 </button>
 <ng-template #popoverTitle>
     <div nz-row nzAlign="middle">
         <div nz-col nzSpan="10">
-            <span class="popoverFont" [style]="{color: getFontColor(minorColor)}" nz-typography>{{"万年历"}}</span>
+            <span class="poemFont" [style]="{color: getFontColor(minorColor)}" nz-typography>{{"万年历"}}</span>
         </div>
         <div nz-col nzSpan="14" class="alignRight">
             <nz-space>
                 <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)" *nzSpaceItem
                         (click)="historyBtnOnClick()"
-                        class="popoverFont"
+                        class="poemFont"
                         [style]="{color: getFontColor(minorColor)}"
                         nz-button
                         nzShape="round" nzType="text"
@@ -27,7 +27,7 @@
                 <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
                         *nzSpaceItem
                         (click)="infoBtnOnClick()"
-                        class="popoverFont"
+                        class="poemFont"
                         [style]="{color: getFontColor(minorColor)}"
                         nz-button
                         nzShape="round" nzType="text"
@@ -42,7 +42,7 @@
 <ng-template #popoverContent>
     <nz-space nzAlign="start" nzDirection="vertical">
         <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)" *nzSpaceItem
-                class="popoverFont"
+                class="poemFont"
                 [style]="{color: getFontColor(minorColor), cursor: 'default'}"
                 nz-button
                 nzShape="round" nzType="text"
@@ -53,7 +53,7 @@
         <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
                 *nzSpaceItem
                 [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                class="popoverFont"
+                class="poemFont"
                 nz-button
                 nzShape="round" nzType="text"
         >
@@ -63,7 +63,7 @@
         <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
                 *nzSpaceItem
                 [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                class="popoverFont"
+                class="poemFont"
                 nz-button
                 nzShape="round" nzType="text"
         >

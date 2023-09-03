@@ -1,5 +1,5 @@
 // import "jquery-color"
-import {chinaWindow} from "./publicConstants";
+import {chinaObject, chinaWindow} from "./publicConstants";
 
 const $ = require("jquery");
 // import * as $ from "jquery";
@@ -73,6 +73,7 @@ export function getTimeDetails(param: Date) {
         showDate2: year + "." + month + "." + day,
         showDate3: year + month + day,
         showDate4: year + "年" + month + "月" + day + "日",
+        showDate5: year + "-" + month + "-" + day,
         showTime: hour + ":" + minute,
         showLocaleDate: "农历" + localeDate.split(" ")[0] + "日"
     };
@@ -148,6 +149,12 @@ export function getWindowClassName() {
     return chinaWindow[index];
 }
 
+export function getObjectClassName() {
+    let arrayLength = chinaObject.length;
+    let index = Math.floor(Math.random() * arrayLength);
+    return chinaObject[index];
+}
+
 // 根据图片背景颜色获取元素反色效果
 export function getReverseColor(color: string) {
     color = "0x" + color.replace("#", '');
@@ -185,4 +192,32 @@ export function getDevice() {
     } else {
         return ""
     }
+}
+
+export function getSearchEngineDetail(searchEngine: string) {
+    let searchEngineUrl: string;
+    let searchEngineIconUrl: string;
+    switch (searchEngine) {
+        case "baidu":
+            searchEngineUrl = "https://www.baidu.com/s?wd=";
+            searchEngineIconUrl = "https://www.baidu.com/favicon.ico";
+            break;
+        case "bing":
+            searchEngineUrl = "https://www.bing.com/search?q=";
+            searchEngineIconUrl = "https://www.bing.com/favicon.ico";
+            break;
+        case "google":
+            searchEngineUrl = "https://www.google.com/search?q=";
+            searchEngineIconUrl = "https://www.google.com/favicon.ico";
+            break;
+        case "yandex":
+            searchEngineUrl = "https://yandex.com/search/?text=";
+            searchEngineIconUrl = "https://yastatic.net/s3/home-static/_/92/929b10d17990e806734f68758ec917ec.png";
+            break;
+        default:
+            searchEngineUrl = "https://www.bing.com/search?q=";
+            searchEngineIconUrl = "https://www.bing.com/favicon.ico";
+            break;
+    }
+    return {"searchEngineUrl": searchEngineUrl, "searchEngineIconUrl": searchEngineIconUrl};
 }

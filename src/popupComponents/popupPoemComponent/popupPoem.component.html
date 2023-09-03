@@ -1,0 +1,22 @@
+<div nz-row nzJustify="center" nzAlign="middle">
+    <nz-space nzDirection="vertical">
+        <div nz-col nzSpan="24" *nzSpaceItem>
+            <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                    (click)="poemContentBtnOnClick()"
+                    class="popupFont" [style.color]="getFontColor(minorColor)"
+                    nz-button nzShape="round" nzType="text"
+            >
+                {{poemContent.length < poemMaxSize ? poemContent : poemContent.substring(0, poemMaxSize) + "..."}}
+            </button>
+        </div>
+        <div nz-col nzSpan="24" *nzSpaceItem>
+            <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                    (click)="poemAuthorBtnOnClick()"
+                    class="popupFont" [style.color]="getFontColor(minorColor)"
+                    nz-button nzShape="round" nzType="text"
+            >
+                {{poemAuthorDetails.length < poemMaxSize ? poemAuthorDetails : poemAuthorDetails.substring(0, poemMaxSize) + "..."}}
+            </button>
+        </div>
+    </nz-space>
+</div>

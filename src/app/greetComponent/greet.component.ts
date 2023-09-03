@@ -1,12 +1,13 @@
-import {Component, Input, OnInit} from "@angular/core";
-import {device} from "../../typescripts/publicConstants"
+import {Component, Input, OnInit, SimpleChanges} from "@angular/core";
+import {defaultPreferenceData, device} from "../../typescripts/publicConstants"
 import {
     getFontColor,
     getGreetContent,
-    getGreetIcon,
+    getGreetIcon, getSearchEngineDetail,
     getTimeDetails,
     httpRequest
 } from "../../typescripts/publicFunctions";
+import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 
 const $ = require("jquery");
 
@@ -18,7 +19,9 @@ const $ = require("jquery");
 export class GreetComponent implements OnInit {
     @Input() majorColor: string = "#000000";
     @Input() minorColor: string = "#ffffff";
+    @Input() preferenceData: PreferenceDataInterface = defaultPreferenceData;
     title = "GreetComponent";
+    display = "block";
     searchEngineUrl: string = "https://www.bing.com/search?q=";
     greetIcon: string = "";
     greetContent: string = "你好";
@@ -64,7 +67,6 @@ export class GreetComponent implements OnInit {
         }
 
         let timeDetails = getTimeDetails(new Date());
-        this.greetContent = this.greetContent + "｜" + this.holidayContent;
         this.calendar = timeDetails.showDate4 + " " + timeDetails.showWeek + "｜" + data.yearTips + data.chineseZodiac + "年｜" + data.lunarCalendar + "｜" + data.constellation;
         this.suit = data.suit.replace(/\./g, " · ");
         this.avoid = data.avoid.replace(/\./g, " · ");
@@ -93,23 +95,37 @@ export class GreetComponent implements OnInit {
             });
     };
 
+    ngOnChanges(changes: SimpleChanges) {
+        console.log(changes);
+    }
+
     ngOnInit(): void {
+        this.display = this.preferenceData.simpleMode ? "none" : "block";
+        this.searchEngineUrl = getSearchEngineDetail(this.preferenceData.searchEngine).searchEngineUrl;
+
         // 问候
         this.setGreet();
 
         // 节气，防抖节流
-        let lastRequestTime: any = localStorage.getItem("lastHolidayRequestTime");
-        let nowTimeStamp = new Date().getTime();
-        if (lastRequestTime === null) {  // 第一次请求时 lastRequestTime 为 null，因此直接进行请求赋值 lastRequestTime
-            this.getHoliday();
-        } else if (nowTimeStamp - parseInt(lastRequestTime) > 60 * 60 * 1000) {  // 必须多于一小时才能进行新的请求
-            this.getHoliday();
-        } else {  // 一小时之内使用上一次请求结果
-            let lastHoliday: any = localStorage.getItem("lastHoliday");
-            if (lastHoliday) {
-                lastHoliday = JSON.parse(lastHoliday);
-                this.setHoliday(lastHoliday);
+        if (!this.preferenceData.simpleMode) {
+            let lastRequestTime: any = localStorage.getItem("lastHolidayRequestTime");
+            let nowTimeStamp = new Date().getTime();
+            if (lastRequestTime === null) {  // 第一次请求时 lastRequestTime 为 null，因此直接进行请求赋值 lastRequestTime
+                this.getHoliday();
+            } else if (nowTimeStamp - parseInt(lastRequestTime) > 60 * 60 * 1000) {  // 必须多于一小时才能进行新的请求
+                this.getHoliday();
+            } else {  // 一小时之内使用上一次请求结果
+                let lastHoliday: any = localStorage.getItem("lastHoliday");
+                if (lastHoliday) {
+                    lastHoliday = JSON.parse(lastHoliday);
+                    this.setHoliday(lastHoliday);
+                }
             }
+
+            setInterval(() => {
+                this.greetIcon = getGreetIcon();
+                this.greetContent = getGreetContent()
+            }, 60 * 60 * 1000);
         }
     }
 

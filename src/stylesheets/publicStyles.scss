@@ -1,19 +1,18 @@
-.buttonFont {
-    font-family: "Times New Roman", cursive, sans-serif;
-    font-size: 25px !important;
-    line-height: 25px;
+.poemFont {
+    font-family: "Times New Roman", cursive, sans-serif !important;
 }
 
-.popoverFont {
-    font-family: "Times New Roman", cursive, sans-serif;
+.largeFont {
+    font-size: 24px !important;
+    line-height: 24px !important;
 }
 
 /*水平垂直居中*/
 .alignCenter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
 }
 
 .alignRight {
@@ -21,4 +20,13 @@
     justify-content: right;
     align-items: center;
     text-align: right;
+}
+
+/*毛玻璃效果*/
+.componentTheme {
+    border-width: 0;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 2px 1px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    overflow: hidden;
 }

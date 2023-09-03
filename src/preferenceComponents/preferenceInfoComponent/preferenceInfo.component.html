@@ -1,0 +1,35 @@
+<nz-card nzTitle="产品信息" nzSize="small" [nzExtra]="extraTemplate"
+         [style]="{border: '1px solid ' + getFontColor(minorColor)}"
+         [nzBodyStyle]="{backgroundColor: minorColor}"
+>
+    <nz-space nzDirection="vertical">
+        <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                (click)="calendarBtnOnClick()"
+                class="poemFont" [style.color]="getFontColor(minorColor)"
+                nz-button nzShape="round" nzType="text" *nzSpaceItem
+        >
+            <span nz-icon nzType="info-circle" nzTheme="outline"></span>
+            {{"节气来源：https://www.mxnzp.com"}}
+        </button>
+        <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                (click)="weatherBtnOnClick()"
+                class="poemFont" [style.color]="getFontColor(minorColor)"
+                nz-button nzShape="round" nzType="text" *nzSpaceItem
+        >
+            <span nz-icon nzType="info-circle" nzTheme="outline"></span>
+            {{"天气来源：https://www.jinrishici.com"}}
+        </button>
+        <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                (click)="poemBtnOnClick()"
+                class="poemFont" [style.color]="getFontColor(minorColor)"
+                nz-button nzShape="round" nzType="text" *nzSpaceItem
+        >
+            <span nz-icon nzType="info-circle" nzTheme="outline"></span>
+            {{"诗词来源：https://www.jinrishici.com"}}
+        </button>
+    </nz-space>
+</nz-card>
+
+<ng-template #extraTemplate>
+    <span nz-icon nzType="appstore" nzTheme="outline" [style]="{color: getFontColor(minorColor)}"></span>
+</ng-template>

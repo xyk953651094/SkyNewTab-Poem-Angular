@@ -1,0 +1,43 @@
+<nz-space [style]="{display: preferenceData.simpleMode ? 'none' : 'inline-flex'}">
+    <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+            (click)="greetBtnOnClick()"
+            class="popupFont" [style.color]="getFontColor(minorColor)"
+            nz-button nzShape="round" nzType="text" *nzSpaceItem
+    >
+        <span [class]="greetIcon">&nbsp;&nbsp;</span>
+        {{greetContent}}
+    </button>
+    <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+            (click)="weatherBtnOnClick()"
+            class="popupFont" [style.color]="getFontColor(minorColor)"
+            nz-button nzShape="round" nzType="text" *nzSpaceItem
+    >
+        <span [class]="weatherIcon">&nbsp;&nbsp;</span>
+        {{weatherContent}}
+    </button>
+    <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+            (click)="weatherBtnOnClick()"
+            class="popupFont" [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+            nz-button nzShape="round" nzType="text" *nzSpaceItem
+    >
+        <span nz-icon nzType="calendar" nzTheme="outline"></span>
+        {{dailySize + " 个倒数日"}}
+    </button>
+    <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+            (click)="weatherBtnOnClick()"
+            class="popupFont" [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+            nz-button nzShape="round" nzType="text" *nzSpaceItem
+    >
+        <span nz-icon nzType="check-square" nzTheme="outline"></span>
+        {{todoSize + " 个待办事项"}}
+    </button>
+</nz-space>
+<button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+        (click)="weatherBtnOnClick()"
+        class="popupFont" 
+        [style]="{color: getFontColor(minorColor), cursor: 'default', display: preferenceData.simpleMode ? 'inline-block' : 'none'}"
+        nz-button nzShape="round" nzType="text" *nzSpaceItem
+>
+    <span nz-icon nzType="check-square" nzTheme="outline"></span>
+    {{"已开启简洁模式"}}
+</button>

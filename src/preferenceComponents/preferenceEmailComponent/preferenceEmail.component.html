@@ -1,0 +1,31 @@
+<nz-card nzTitle="联系作者" nzSize="small" [nzExtra]="extraTemplate"
+         [style]="{border: '1px solid ' + getFontColor(minorColor)}"
+         [nzBodyStyle]="{backgroundColor: minorColor}"
+>
+<div nz-row nzGutter="[0, 8]">
+    <div nz-col nzSpan="12">
+        <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                (click)="suggestBtnOnClick()"
+                class="poemFont" [style.color]="getFontColor(minorColor)"
+                nz-button nzShape="round" nzType="text"
+        >
+            <span nz-icon nzType="info-circle" nzTheme="outline"></span>
+            {{"功能建议"}}
+        </button>
+    </div>
+    <div nz-col nzSpan="12">
+        <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                (click)="issueBtnOnClick()"
+                class="poemFont" [style.color]="getFontColor(minorColor)"
+                nz-button nzShape="round" nzType="text"
+        >
+            <span nz-icon nzType="info-circle" nzTheme="outline"></span>
+            {{"问题反馈"}}
+        </button>
+    </div>
+</div>
+</nz-card>
+
+<ng-template #extraTemplate>
+    <span nz-icon nzType="send" nzTheme="outline" [style]="{color: getFontColor(minorColor)}"></span>
+</ng-template>

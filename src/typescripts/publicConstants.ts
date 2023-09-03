@@ -1,4 +1,5 @@
 import {getDevice} from "./publicFunctions";
+import {PreferenceDataInterface} from "./publicInterface";
 
 export let themeArray: ({ majorColor: string; minorColor: string; svgColors: string[]; }[]) = [
     // 深色
@@ -80,6 +81,21 @@ export const chinaWindow = [
     "icon-chuangge14",
     "icon-chuangge16",
 ]
+
+// 中国窗体
+export const chinaObject = [
+    "icon-chaye",
+    "icon-huaping",
+    "icon-huaping1",
+    "icon-meihua",
+    "icon-facaishu",
+    "icon-chuxiye",
+]
+
+export let defaultPreferenceData: PreferenceDataInterface = {
+    searchEngine: "bing",
+    simpleMode: false,
+}
 
 // 常用变量
 export let device = getDevice();  // 获取当前设备类型

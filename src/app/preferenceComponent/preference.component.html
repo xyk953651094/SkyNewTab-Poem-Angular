@@ -1,0 +1,54 @@
+<button nzTooltipTitle="菜单栏" nzTooltipPlacement="bottomRight" [nzTooltipColor]="minorColor"
+        class="componentTheme poemFont" nz-button nz-tooltip
+        [style]="{cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
+        nzShape="circle" nzSize="large" nzType="text"
+        (click)="showDrawerBtnOnClick()"
+>
+    <span nz-icon nzType="more" nzTheme="outline"></span>
+</button>
+
+<nz-drawer
+    nzTitle="菜单栏"
+    nzSize="default"
+    nzPlacement="right"
+    (nzOnClose)="drawerOnClose()"
+    [nzVisible]="displayDrawer"
+    nzCloseIcon = null
+    [nzBodyStyle] = "{backgroundColor: minorColor}"
+    [nzMaskStyle] = "{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
+    [nzFooter] = "drawerFooter"
+>
+    <ng-container *nzDrawerContent>
+        <nz-space nzDirection="vertical" nzSize="large">
+            <preferenceFunction-component
+                *nzSpaceItem
+                [majorColor]="majorColor"
+                [minorColor]="minorColor"
+                [getPreferenceData]="getPreferenceData"
+            />
+            <preferenceLink-component
+                *nzSpaceItem
+                [majorColor]="majorColor"
+                [minorColor]="minorColor"
+            />
+            <preferenceInfo-component
+                *nzSpaceItem
+                [majorColor]="majorColor"
+                [minorColor]="minorColor"
+            />
+            <preferenceEmail-component
+                *nzSpaceItem
+                [majorColor]="majorColor"
+                [minorColor]="minorColor"
+            />
+        </nz-space>
+    </ng-container>
+</nz-drawer>
+<ng-template #drawerFooter>
+    <div nz-row nzJustify="center" nzAlign="middle">
+        <preferenceFooter-component
+            [majorColor]="majorColor"
+            [minorColor]="minorColor"
+        />
+    </div>
+</ng-template>

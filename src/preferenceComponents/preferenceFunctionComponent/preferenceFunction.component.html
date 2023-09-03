@@ -1,0 +1,43 @@
+<nz-card nzTitle="功能设置" nzSize="small" [nzExtra]="extraTemplate"
+         [style]="{border: '1px solid ' + getFontColor(minorColor)}"
+         [nzBodyStyle]="{backgroundColor: minorColor}"
+>
+    <form nz-form [nzNoColon]="true">
+        <nz-form-item>
+            <nz-form-label>搜索引擎</nz-form-label>
+            <nz-form-control>
+                <nz-radio-group name="searchEngine" [(ngModel)]="preferenceData.searchEngine" (ngModelChange)="searchEngineRadioOnChange($event)">
+                    <div nz-row>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="baidu">Baidu</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="bing">Bing</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="google">Google</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="yandex">Yandex</label></div>
+                    </div>
+                </nz-radio-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label>简洁模式</nz-form-label>
+            <nz-form-control>
+                <nz-switch name="simpleMode" [ngModel]="preferenceData.simpleMode" (ngModelChange)="simpleModeSwitchOnChange($event)" nzCheckedChildren="已开启" nzUnCheckedChildren="已关闭"></nz-switch>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label>危险设置</nz-form-label>
+            <nz-form-control>
+                <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                        (click)="clearStorageBtnOnClick()"
+                        class="poemFont" [style.color]="getFontColor(minorColor)"
+                        nz-button nzShape="round" nzType="text"
+                >
+                    <span nz-icon nzType="delete" nzTheme="outline"></span>
+                    {{"清空并重置所有内容"}}
+                </button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</nz-card>
+
+<ng-template #extraTemplate>
+    <span nz-icon nzType="setting" nzTheme="outline" [style]="{color: getFontColor(minorColor)}"></span>
+</ng-template>

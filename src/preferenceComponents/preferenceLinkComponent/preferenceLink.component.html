@@ -1,0 +1,51 @@
+<nz-card nzTitle="友情链接" nzSize="small" [nzExtra]="extraTemplate"
+         [style]="{border: '1px solid ' + getFontColor(minorColor)}"
+         [nzBodyStyle]="{backgroundColor: minorColor}"
+>
+  <div nz-row [nzGutter]="[0, 8]">
+    <div nz-col nzSpan="12">
+      <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+              (click)="baiduBtnOnClick()"
+              class="poemFont" [style.color]="getFontColor(minorColor)"
+              nz-button nzShape="round" nzType="text"
+      >
+        <nz-avatar [nzSize]="16" nzShape="square" nzSrc="https://www.baidu.com/favicon.ico"></nz-avatar>
+        {{"&nbsp;&nbsp;百度汉语"}}
+      </button>
+    </div>
+    <div nz-col nzSpan="12">
+      <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+              (click)="sougouBtnOnClick()"
+              class="poemFont" [style.color]="getFontColor(minorColor)"
+              nz-button nzShape="round" nzType="text"
+      >
+        <nz-avatar [nzSize]="16" nzShape="square" nzSrc="https://www.sogou.com/favicon.ico"></nz-avatar>
+        {{"&nbsp;&nbsp;搜狗汉语"}}
+      </button>
+    </div>
+    <div nz-col nzSpan="12">
+      <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+              (click)="soBtnOnClick()"
+              class="poemFont" [style.color]="getFontColor(minorColor)"
+              nz-button nzShape="round" nzType="text"
+      >
+        <nz-avatar [nzSize]="16" nzShape="square" nzSrc="https://www.so.com/favicon.ico"></nz-avatar>
+        {{"&nbsp;&nbsp;360国学"}}
+      </button>
+    </div>
+    <div nz-col nzSpan="12">
+      <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+              (click)="jetBrainsBtnOnClick()"
+              class="poemFont" [style.color]="getFontColor(minorColor)"
+              nz-button nzShape="round" nzType="text"
+      >
+        <nz-avatar [nzSize]="16" nzShape="square" nzSrc="https://www.jetbrains.com/favicon.ico"></nz-avatar>
+        {{"&nbsp;&nbsp;JetBrains"}}
+      </button>
+    </div>
+  </div>
+</nz-card>
+
+<ng-template #extraTemplate>
+  <span nz-icon nzType="link" nzTheme="outline" [style]="{color: getFontColor(minorColor)}"></span>
+</ng-template>

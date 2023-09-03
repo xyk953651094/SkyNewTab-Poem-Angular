@@ -1,0 +1,121 @@
+<button [nzPopoverContent]="popoverContent" [nzPopoverTitle]="popoverTitle" nzPopoverTrigger="click"
+        class="componentTheme poemFont" nz-button nz-popover
+        [style]="{display: display, cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
+        nzPopoverPlacement="bottomRight" nzShape="round" nzSize="large" nzType="text"
+        [nzPopoverOverlayStyle]="{width: '550px'}"
+>
+    <span nz-icon nzType="check-square" nzTheme="outline"></span>
+    {{todoSize + " 个待办事项"}}
+</button>
+<nz-modal [nzTitle]="'添加待办事项 ' + todoSize + ' / ' + todoMaxSize" [nzClosable]="false" nzCentered
+          [nzContent]="modalContent"
+          [(nzVisible)]="displayModal" (nzOnOk)="modalOkBtnOnClick()" (nzOnCancel)="modalCancelBtnOnClick()"
+          [nzBodyStyle]="{backgroundColor: minorColor}"
+          [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
+>
+    <ng-template #modalContent>
+            <form nz-form [nzNoColon]="true">
+                <nz-form-item>
+                    <nz-form-label>待办事项</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input class="poemFont" placeholder="请输入待办内容，字数不能超过10个" id="todoInput" [maxLength]="10"/>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label>标签分类</nz-form-label>
+                    <nz-form-control>
+                        <nz-select name="todoSelect" ngModel="work" (ngModelChange)="selectOnChange($event)">
+                            <nz-option class="poemFont" nzValue="work" nzLabel="工作"></nz-option>
+                            <nz-option class="poemFont" nzValue="study" nzLabel="学习"></nz-option>
+                            <nz-option class="poemFont" nzValue="life" nzLabel="生活"></nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label>优先级别</nz-form-label>
+                    <nz-form-control>
+                        <nz-rate name="todoRate" [ngModel]="'1'" (ngModelChange)="rateOnChange($event)" [style.color]="majorColor"></nz-rate>
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+    </ng-template>
+</nz-modal>
+
+<ng-template #popoverTitle>
+    <div nz-row nzAlign="middle">
+        <div nz-col nzSpan="10">
+      <span class="poemFont" [style]="{color: getFontColor(minorColor)}" nz-typography>
+        {{"待办事项 " + todoSize + " / " + todoMaxSize}}
+      </span>
+        </div>
+        <div nz-col nzSpan="14" class="alignRight">
+            <nz-space>
+                <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)" *nzSpaceItem
+                        (click)="showAddModalBtnOnClick()"
+                        class="poemFont"
+                        [style]="{color: getFontColor(minorColor)}"
+                        nz-button
+                        nzShape="round" nzType="text"
+                >
+                    <span nz-icon nzType="plus" nzTheme="outline"></span>
+                    {{"添加待办事项"}}
+                </button>
+                <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                        *nzSpaceItem
+                        (click)="finishAllBtnOnClick()"
+                        class="poemFont"
+                        [style]="{color: getFontColor(minorColor)}"
+                        nz-button
+                        nzShape="round" nzType="text"
+                >
+                    <span nz-icon nzType="check" nzTheme="outline"></span>
+                    {{"全部完成"}}
+                </button>
+            </nz-space>
+        </div>
+    </div>
+</ng-template>
+<ng-template #popoverContent>
+    <nz-empty nzNotFoundImage="simple" [style]="{display: (listItems.length > 0 ? 'none' : 'block')}"></nz-empty>
+    <nz-list>
+        <nz-list-item *ngFor="let item of listItems">
+            <ul nz-list-item-actions>
+                <nz-list-item-action>
+                    <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                            (click)="finishBtnOnClick(item)"
+                            class="poemFont"
+                            [style]="{color: getFontColor(minorColor)}"
+                            nz-button
+                            nzShape="circle" nzType="text"
+                    >
+                        <span nz-icon nzType="check" nzTheme="outline"></span>
+                    </button>
+                </nz-list-item-action>
+            </ul>
+            <div nz-row [style.width]="'100%'">
+                <div nz-col nzSpan=12>
+                    <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                            class="poemFont"
+                            [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+                            nz-button
+                            nzShape="round" nzType="text"
+                    >
+                        <span nz-icon nzType="check-square" nzTheme="outline"></span>
+                        {{item.title}}
+                    </button>
+                </div>
+                <div nz-col nzSpan=12>
+                    <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                            class="poemFont"
+                            [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+                            nz-button
+                            nzShape="round" nzType="text"
+                    >
+                        <span nz-icon nzType="clock-circle" nzTheme="outline"></span>
+                        {{item.tag + "｜" + item.priority}}
+                    </button>
+                </div>
+            </div>
+        </nz-list-item>
+    </nz-list>
+</ng-template>

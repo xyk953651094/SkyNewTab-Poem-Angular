@@ -1,11 +1,11 @@
 <div nz-row nzAlign="middle" nzJustify="center">
-    <nz-space nzDirection="vertical">
+    <nz-space nzDirection="vertical" nzAlign="center">
         <div [nzLg]="{span: 24}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 24}" [nzXl]="{span: 24}"
              [nzXs]="{span: 0}"
              nz-col *nzSpaceItem>
             <button (click)="poemContentBtnOnClick()" (mouseout)="btnMouseOut($event)"
                     (mouseover)="btnMouseOver($event)" [style.color]="minorColor"
-                    class="buttonFont"
+                    class="poemFont largeFont"
                     nz-button nzShape="round" nzSize="large"
                     nzType="text"
             >
@@ -16,7 +16,7 @@
              [nzXs]="{span: 24}"
              nz-col>
             <div nz-space nzAlign="center">
-                <span [style.color]="minorColor" class="buttonFont vertical" nz-typography>
+                <span [style]="{color: minorColor, fontSize: '24px'}" class="poemFont largeFont vertical" nz-typography>
                     {{poemContent.length < 20 ? poemContent : poemContent.substring(0, 20) + "..."}}
                 </span>
             </div>
@@ -26,7 +26,7 @@
              nz-col *nzSpaceItem>
             <button (click)="poemAuthorBtnOnClick()" (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
                     [style.color]="minorColor"
-                    class="buttonFont"
+                    class="poemFont largeFont"
                     nz-button nzShape="round" nzSize="large"
                     nzType="text"
             >
