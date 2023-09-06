@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from "@angular/core";
-import { NzMessageService } from 'ng-zorro-antd/message';
-import {getFontColor, getTimeDetails,} from "../../typescripts/publicFunctions";
+import {Component, Input, OnInit, OnChanges, SimpleChanges} from "@angular/core";
+import {NzMessageService} from 'ng-zorro-antd/message';
+import {getFontColor, getSearchEngineDetail, getTimeDetails,} from "../../typescripts/publicFunctions";
 
 const $ = require("jquery");
 
@@ -9,9 +9,7 @@ const $ = require("jquery");
     templateUrl: "./daily.component.html",
     styleUrls: ["./daily.component.scss", "../../stylesheets/publicStyles.scss"]
 })
-export class DailyComponent implements OnInit {
-    constructor(private message: NzMessageService) {}
-
+export class DailyComponent implements OnInit, OnChanges {
     @Input() majorColor: string = "#000000";
     @Input() minorColor: string = "#ffffff";
     @Input() preferenceData: any = {};
@@ -22,6 +20,12 @@ export class DailyComponent implements OnInit {
     dailySize: number = 0;
     dailyMaxSize: number = 5;
     selectedTimeStamp: number = 0;
+    protected readonly getFontColor = getFontColor;
+    protected readonly getTimeDetails = getTimeDetails;
+    protected readonly Date = Date;
+
+    constructor(private message: NzMessageService) {
+    }
 
     btnMouseOver(e: any) {
         e.currentTarget.style.backgroundColor = this.majorColor;
@@ -111,11 +115,18 @@ export class DailyComponent implements OnInit {
             } else {
                 this.message.error("倒数日数量最多为" + this.dailyMaxSize + "个");
             }
-        }
-        else {
+        } else {
             this.message.error("表单不能为空");
         }
     }
+
+    // datePickerOnChange(result: Date) {
+    //     if (result) {
+    //         this.selectedTimeStamp = new Date(result).getTime();
+    //     } else {
+    //         this.selectedTimeStamp = 0;
+    //     }
+    // };
 
     modalCancelBtnOnClick() {
         this.displayModal = false
@@ -138,13 +149,11 @@ export class DailyComponent implements OnInit {
         return new Date(value);
     }
 
-    // datePickerOnChange(result: Date) {
-    //     if (result) {
-    //         this.selectedTimeStamp = new Date(result).getTime();
-    //     } else {
-    //         this.selectedTimeStamp = 0;
-    //     }
-    // };
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes["preferenceData"]) {
+            this.display = this.preferenceData.simpleMode ? "none" : "block";
+        }
+    }
 
     ngOnInit(): void {
         this.display = this.preferenceData.simpleMode ? "none" : "block"
@@ -157,8 +166,4 @@ export class DailyComponent implements OnInit {
         this.listItems = daily;
         this.dailySize = daily.length;
     }
-
-    protected readonly getFontColor = getFontColor;
-    protected readonly getTimeDetails = getTimeDetails;
-    protected readonly Date = Date;
 }

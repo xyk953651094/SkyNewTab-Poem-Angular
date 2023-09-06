@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
                 });
                 $(".ant-popover-inner-content").css({
                     "color": getFontColor(this.minorColor),
-                    "background-color":  this.minorColor,
+                    "background-color": this.minorColor,
                     "border-bottom-left-radius": "10px",
                     "border-bottom-right-radius": "10px"
                 });
@@ -76,7 +76,7 @@ export class AppComponent implements OnInit {
                 $(".ant-tooltip-inner").css({
                     "color": getFontColor(this.minorColor),
                     "font-family": "Times New Roman, cursive, sans-serif"
-                }).addClass("poemFont");
+                });
             }
 
             // message
@@ -84,9 +84,12 @@ export class AppComponent implements OnInit {
             if (messageEle.length && messageEle.length > 0) {
                 $(".ant-message-notice-content").css({
                     "backgroundColor": this.minorColor,
-                    "color": getFontColor(this.minorColor)
+                    "color": getFontColor(this.minorColor),
+                    "font-family": "Times New Roman, cursive, sans-serif"
                 });
-                $(".ant-message-custom-content > .anticon").css("color", getFontColor(this.minorColor));
+                $(".ant-message-custom-content > .anticon").css({
+                    "color": getFontColor(this.minorColor),
+                });
             }
 
             // drawer
@@ -159,8 +162,7 @@ export class AppComponent implements OnInit {
         if (tempPreferenceData === null) {
             this.preferenceData = defaultPreferenceData
             localStorage.setItem("preferenceData", JSON.stringify(defaultPreferenceData));
-        }
-        else {
+        } else {
             this.preferenceData = JSON.parse(tempPreferenceData);
         }
 

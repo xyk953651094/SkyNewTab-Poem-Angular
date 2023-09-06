@@ -10,6 +10,7 @@ export class preferenceFooterComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
     title = "preferenceFooterComponent";
+    protected readonly getFontColor = getFontColor;
 
     btnMouseOver(e: any) {
         e.currentTarget.style.backgroundColor = this.majorColor;
@@ -36,6 +37,4 @@ export class preferenceFooterComponent implements OnInit {
     ngOnInit(): void {
 
     }
-
-    protected readonly getFontColor = getFontColor;
 }

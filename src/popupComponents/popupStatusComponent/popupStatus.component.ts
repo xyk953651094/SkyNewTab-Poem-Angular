@@ -26,6 +26,7 @@ export class popupStatusComponent implements OnInit {
     dailySize = 0;
     todoSize = 0;
     searchEngineUrl = "https://www.bing.com/search?q=";
+    protected readonly getFontColor = getFontColor;
 
     btnMouseOver(e: any) {
         e.currentTarget.style.backgroundColor = this.majorColor;
@@ -69,6 +70,4 @@ export class popupStatusComponent implements OnInit {
         this.todoSize = tempTodos ? JSON.parse(tempTodos).length : 0;
         this.searchEngineUrl = getSearchEngineDetail(this.preferenceData.searchEngine).searchEngineUrl
     }
-
-    protected readonly getFontColor = getFontColor;
 }

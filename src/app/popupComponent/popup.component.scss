@@ -1,10 +1,10 @@
 body {
-    width: max-content;
-    //width: 600px;
+    width: max-content !important;
 }
 
 .popupLayout {
     background: transparent;
+    padding: 0 8px;
 }
 
 .popupHeader {
@@ -19,8 +19,8 @@ body {
 }
 
 .popupFooter {
-    height: 50px;
-    line-height: 50px;
+    //height: 50px;
+    //line-height: 50px;
     padding: 10px 0;
     background-color: transparent;
     text-align: center;

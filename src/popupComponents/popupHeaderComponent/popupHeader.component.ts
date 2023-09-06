@@ -10,6 +10,7 @@ export class popupHeaderComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
     title = "popupHeaderComponent";
+    protected readonly getFontColor = getFontColor;
 
     btnMouseOver(e: any) {
         e.currentTarget.style.backgroundColor = this.majorColor;
@@ -24,6 +25,4 @@ export class popupHeaderComponent implements OnInit {
     ngOnInit(): void {
 
     }
-
-    protected readonly getFontColor = getFontColor;
 }

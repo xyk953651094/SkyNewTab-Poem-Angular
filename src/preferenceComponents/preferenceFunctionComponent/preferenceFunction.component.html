@@ -1,12 +1,13 @@
-<nz-card nzTitle="功能设置" nzSize="small" [nzExtra]="extraTemplate"
-         [style]="{border: '1px solid ' + getFontColor(minorColor)}"
-         [nzBodyStyle]="{backgroundColor: minorColor}"
+<nz-card [nzBodyStyle]="{backgroundColor: minorColor}" [nzExtra]="extraTemplate" [style]="{border: '1px solid ' + getFontColor(minorColor)}"
+         nzSize="small"
+         nzTitle="功能设置"
 >
-    <form nz-form [nzNoColon]="true">
+    <form [nzNoColon]="true" nz-form>
         <nz-form-item>
             <nz-form-label>搜索引擎</nz-form-label>
             <nz-form-control>
-                <nz-radio-group name="searchEngine" [(ngModel)]="preferenceData.searchEngine" (ngModelChange)="searchEngineRadioOnChange($event)">
+                <nz-radio-group (ngModelChange)="searchEngineRadioOnChange($event)" [(ngModel)]="preferenceData.searchEngine"
+                                name="searchEngine">
                     <div nz-row>
                         <div nz-col nzSpan="12"><label nz-radio nzValue="baidu">Baidu</label></div>
                         <div nz-col nzSpan="12"><label nz-radio nzValue="bing">Bing</label></div>
@@ -19,18 +20,20 @@
         <nz-form-item>
             <nz-form-label>简洁模式</nz-form-label>
             <nz-form-control>
-                <nz-switch name="simpleMode" [ngModel]="preferenceData.simpleMode" (ngModelChange)="simpleModeSwitchOnChange($event)" nzCheckedChildren="已开启" nzUnCheckedChildren="已关闭"></nz-switch>
+                <nz-switch (ngModelChange)="simpleModeSwitchOnChange($event)" [ngModel]="preferenceData.simpleMode"
+                           name="simpleMode" nzCheckedChildren="已开启"
+                           nzUnCheckedChildren="已关闭"></nz-switch>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
             <nz-form-label>危险设置</nz-form-label>
             <nz-form-control>
-                <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
-                        (click)="clearStorageBtnOnClick()"
-                        class="poemFont" [style.color]="getFontColor(minorColor)"
+                <button (click)="clearStorageBtnOnClick()" (mouseout)="btnMouseOut($event)"
+                        (mouseover)="btnMouseOver($event)"
+                        [style.color]="getFontColor(minorColor)" class="poemFont"
                         nz-button nzShape="round" nzType="text"
                 >
-                    <span nz-icon nzType="delete" nzTheme="outline"></span>
+                    <span nz-icon nzTheme="outline" nzType="delete"></span>
                     {{"清空并重置所有内容"}}
                 </button>
             </nz-form-control>
@@ -39,5 +42,5 @@
 </nz-card>
 
 <ng-template #extraTemplate>
-    <span nz-icon nzType="setting" nzTheme="outline" [style]="{color: getFontColor(minorColor)}"></span>
+    <span [style]="{color: getFontColor(minorColor)}" nz-icon nzTheme="outline" nzType="setting"></span>
 </ng-template>

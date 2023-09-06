@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {getFontColor} from "../../typescripts/publicFunctions";
-import {defaultPreferenceData, device} from "../../typescripts/publicConstants";
+import {device} from "../../typescripts/publicConstants";
 import {
     preferenceFooterComponent
 } from "../../preferenceComponents/preferenceFooterComponent/preferenceFooter.component";
@@ -16,10 +16,12 @@ const poemRequest = require("jinrishici");
 export class PreferenceComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
-    @Input() getPreferenceData: any;
+    @Output() getPreferenceData: EventEmitter<PreferenceDataInterface> = new EventEmitter();
     title = "PreferenceComponent";
     displayDrawer = false;
     drawerPosition = "right";
+    protected readonly getFontColor = getFontColor;
+    protected readonly preferenceFooterComponent = preferenceFooterComponent;
 
     showDrawerBtnOnClick() {
         this.displayDrawer = true;
@@ -29,13 +31,15 @@ export class PreferenceComponent implements OnInit {
         this.displayDrawer = false;
     }
 
+    getPreferenceFunctionData(value: PreferenceDataInterface) {
+        this.getPreferenceData.emit(value);
+        console.log(value);
+    }
+
     ngOnInit(): void {
         // 屏幕适配
         if (device === "iPhone" || device === "Android") {
             this.drawerPosition = "bottom";
         }
     }
-
-    protected readonly getFontColor = getFontColor;
-    protected readonly preferenceFooterComponent = preferenceFooterComponent;
 }

@@ -35,19 +35,19 @@
                         [preferenceData]="preferenceData"
                     />
                     <preference-component
+                        (getPreferenceData)="getPreferenceData($event)"
                         *nzSpaceItem
                         [majorColor]="majorColor"
                         [minorColor]="minorColor"
-                        [getPreferenceData]="getPreferenceData"
                     />
                 </nz-space>
             </div>
             <div [nzLg]="{span: 0}" [nzMd]="{span: 0}" [nzSm]="{span: 22}" [nzXXl]="{span: 0}" [nzXl]="{span: 0}"
                  [nzXs]="{span: 22}" nz-col style="text-align: right">
                 <preference-component
+                    (getPreferenceData)="getPreferenceData($event)"
                     [majorColor]="majorColor"
                     [minorColor]="minorColor"
-                    [getPreferenceData]="getPreferenceData"
                 />
             </div>
         </div>

@@ -10,6 +10,7 @@ export class preferenceEmailComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
     title = "preferenceEmailComponent";
+    protected readonly getFontColor = getFontColor;
 
     btnMouseOver(e: any) {
         e.currentTarget.style.backgroundColor = this.majorColor;
@@ -32,6 +33,4 @@ export class preferenceEmailComponent implements OnInit {
     ngOnInit(): void {
 
     }
-
-    protected readonly getFontColor = getFontColor;
 }

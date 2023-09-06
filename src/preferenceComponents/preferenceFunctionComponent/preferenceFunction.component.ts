@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from "@angular/core";
-import { NzMessageService } from 'ng-zorro-antd/message';
+import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import {NzMessageService} from 'ng-zorro-antd/message';
 import {getFontColor} from "../../typescripts/publicFunctions";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
@@ -10,13 +10,15 @@ import {PreferenceDataInterface} from "../../typescripts/publicInterface";
     styleUrls: ["./preferenceFunction.component.scss", "../../stylesheets/publicStyles.scss"]
 })
 export class preferenceFunctionComponent implements OnInit {
-    constructor(private message: NzMessageService) {}
-
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
-    @Input() getPreferenceData: any;
     title = "preferenceFunctionComponent";
     preferenceData: PreferenceDataInterface = this.initPreferenceData();
+    @Output() getPreferenceFunctionData: EventEmitter<PreferenceDataInterface> = new EventEmitter();
+    protected readonly getFontColor = getFontColor;
+
+    constructor(private message: NzMessageService) {
+    }
 
     btnMouseOver(e: any) {
         e.currentTarget.style.backgroundColor = this.majorColor;
@@ -31,7 +33,7 @@ export class preferenceFunctionComponent implements OnInit {
     // 搜索引擎
     searchEngineRadioOnChange(value: string) {
         this.preferenceData = this.modifyPreferenceData({searchEngine: value});
-        this.getPreferenceData(this.preferenceData);
+        this.getPreferenceFunctionData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
         this.message.success("已更换搜索引擎");
     }
@@ -39,7 +41,7 @@ export class preferenceFunctionComponent implements OnInit {
     // 简洁模式
     simpleModeSwitchOnChange(checked: boolean) {
         this.preferenceData = this.modifyPreferenceData({simpleMode: checked});
-        this.getPreferenceData(this.preferenceData);
+        this.getPreferenceFunctionData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
         if (checked) {
             this.message.success("已开启简洁模式，一秒后刷新页面");
@@ -62,8 +64,7 @@ export class preferenceFunctionComponent implements OnInit {
         if (tempPreferenceData === null) {
             localStorage.setItem("preferenceData", JSON.stringify(defaultPreferenceData));
             return defaultPreferenceData;
-        }
-        else {
+        } else {
             return JSON.parse(tempPreferenceData);
         }
     }
@@ -80,8 +81,12 @@ export class preferenceFunctionComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
+        let tempPreferenceData = localStorage.getItem("preferenceData");
+        if (tempPreferenceData === null) {
+            localStorage.setItem("preferenceData", JSON.stringify(defaultPreferenceData));
+            this.preferenceData = defaultPreferenceData;
+        } else {
+            return JSON.parse(tempPreferenceData);
+        }
     }
-
-    protected readonly getFontColor = getFontColor;
 }

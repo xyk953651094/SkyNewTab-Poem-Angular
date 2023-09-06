@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {getFontColor} from "../../typescripts/publicFunctions";
 import {defaultPreferenceData, themeArray} from "../../typescripts/publicConstants";
 
@@ -14,6 +14,7 @@ export class popupComponent implements OnInit {
     majorColor = "#000000";
     minorColor = "#ffffff";
     preferenceData = defaultPreferenceData;
+    protected readonly getFontColor = getFontColor;
 
     ngOnInit(): void {
 // 加载偏好设置
@@ -31,10 +32,8 @@ export class popupComponent implements OnInit {
         if (tempThemeColor) {
             themeColor = JSON.parse(tempThemeColor);
         }
-        bodyEle.css("backgroundColor", themeColor.minorColor + " !important");
+        bodyEle.css("background-color", themeColor.minorColor + " !important");
         this.majorColor = themeColor.majorColor;
         this.minorColor = themeColor.minorColor;
     }
-
-    protected readonly getFontColor = getFontColor;
 }

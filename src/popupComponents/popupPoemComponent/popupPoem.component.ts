@@ -18,6 +18,7 @@ export class popupPoemComponent implements OnInit {
     poemAuthor = "张九龄";
     poemAuthorDetails = "【唐】张九龄 ·《望月怀远》";
     poemMaxSize = 25;
+    protected readonly getFontColor = getFontColor;
 
     btnMouseOver(e: any) {
         e.currentTarget.style.backgroundColor = this.majorColor;
@@ -47,7 +48,7 @@ export class popupPoemComponent implements OnInit {
 
     getPoem() {
         let poemData = localStorage.getItem("lastPoem");
-        if(poemData){
+        if (poemData) {
             this.setPoem(JSON.parse(poemData));
         }
     }
@@ -56,6 +57,4 @@ export class popupPoemComponent implements OnInit {
         this.getPoem();
         this.searchEngineUrl = getSearchEngineDetail(this.preferenceData.searchEngine).searchEngineUrl
     }
-
-    protected readonly getFontColor = getFontColor;
 }

@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from "@angular/core";
-import { NzMessageService } from 'ng-zorro-antd/message';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
+import {NzMessageService} from 'ng-zorro-antd/message';
 import {getFontColor, getSearchEngineDetail, getWeatherIcon, httpRequest} from "../../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
@@ -11,9 +11,7 @@ const $ = require("jquery");
     templateUrl: "./weather.component.html",
     styleUrls: ["./weather.component.scss", "../../stylesheets/publicStyles.scss"]
 })
-export class WeatherComponent implements OnInit {
-    constructor(private message: NzMessageService) {}
-
+export class WeatherComponent implements OnInit, OnChanges {
     @Input() majorColor: string = "#000000";
     @Input() minorColor: string = "#ffffff";
     @Input() preferenceData: PreferenceDataInterface = defaultPreferenceData;
@@ -28,8 +26,11 @@ export class WeatherComponent implements OnInit {
     rainfall: string = "暂无信息";
     visibility: string = "暂无信息";
     windInfo: string = "暂无信息";
-    temperatureSuggest: string = "暂无信息";
-    airSuggest: string = "暂无信息";
+    suggest: string = "暂无信息"
+    protected readonly getFontColor = getFontColor;
+
+    constructor(private message: NzMessageService) {
+    }
 
     btnMouseOver(e: any) {
         e.currentTarget.style.backgroundColor = this.majorColor;
@@ -42,10 +43,9 @@ export class WeatherComponent implements OnInit {
     }
 
     locationBtnOnClick() {
-        if(this.location !== "暂无信息") {
+        if (this.location !== "暂无信息") {
             window.open(this.searchEngineUrl + this.location, "_blank");
-        }
-        else {
+        } else {
             this.message.error("无跳转链接");
         }
     }
@@ -54,27 +54,38 @@ export class WeatherComponent implements OnInit {
         window.open(this.searchEngineUrl + "天气", "_blank");
     }
 
-    getTemperatureSuggest(temperature: number) {
+    getSuggest(temperature: number, pm25: number) {
+        let tempTemperature = "";
+        let tempPm25 = "";
+
         if (temperature > 30) {
-            return "温度炎热，注意避暑"
+            tempTemperature = "温度炎热，注意避暑"
         }
         else if(temperature < 10) {
-            return "温度寒冷，注意防寒"
+            tempTemperature = "温度寒冷，注意防寒"
         }
-        else {
-            return "温度宜人，适合外出"
-        }
-    }
 
-    getAirSuggest(pm25: number) {
         if (pm25 > 200) {
-            return " · 空气较差，不宜外出"
+            tempPm25 = "空气较差，不宜外出"
         }
         else if(pm25 < 100) {
-            return " · 空气良好，适合外出"
+            tempPm25 = "空气良好，适合外出"
+        }
+
+        if(tempTemperature.length === 0 && tempPm25.length === 0) {
+            return "";
+        }
+        else if (tempTemperature.length !== 0 && tempPm25.length === 0) {
+            return tempTemperature;
+        }
+        else if (tempTemperature.length !== 0 && tempPm25.length !== 0) {
+            return tempTemperature + " · " + tempPm25;
+        }
+        else if (tempTemperature.length === 0 && tempPm25.length !== 0) {
+            return tempPm25;
         }
         else {
-            return ""
+            return "";
         }
     }
 
@@ -89,8 +100,8 @@ export class WeatherComponent implements OnInit {
             this.rainfall = data.weatherData.rainfall + "%";
             this.visibility = data.weatherData.visibility;
             this.windInfo = data.weatherData.windDirection + data.weatherData.windPower + "级";
-            this.temperatureSuggest = this.getTemperatureSuggest(parseInt(data.weatherData.temperature));
-            this.airSuggest = this.getAirSuggest(parseInt(data.weatherData.pm25));
+            // @ts-ignore
+            this.suggest = this.getSuggest(parseInt(data.weatherData.temperature), parseInt(data.weatherData.pm25))
         }
     }
 
@@ -111,6 +122,13 @@ export class WeatherComponent implements OnInit {
                 // 请求失败也更新请求时间，防止超时后无信息可显示
                 localStorage.setItem("lastWeatherRequestTime", String(new Date().getTime()));  // 保存请求时间，防抖节流
             });
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes["preferenceData"]) {
+            this.display = this.preferenceData.simpleMode ? "none" : "block";
+            this.searchEngineUrl = getSearchEngineDetail(this.preferenceData.searchEngine).searchEngineUrl;
+        }
     }
 
     ngOnInit(): void {
@@ -134,6 +152,4 @@ export class WeatherComponent implements OnInit {
             }
         }
     }
-
-    protected readonly getFontColor = getFontColor;
 }

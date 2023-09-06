@@ -1,8 +1,8 @@
 <div nz-row nzAlign="middle" nzJustify="center">
-    <nz-space nzDirection="vertical" nzAlign="center">
-        <div [nzLg]="{span: 24}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 24}" [nzXl]="{span: 24}"
-             [nzXs]="{span: 0}"
-             nz-col *nzSpaceItem>
+    <nz-space nzAlign="center" nzDirection="vertical">
+        <div *nzSpaceItem [nzLg]="{span: 24}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 24}"
+             [nzXl]="{span: 24}"
+             [nzXs]="{span: 0}" nz-col>
             <button (click)="poemContentBtnOnClick()" (mouseout)="btnMouseOut($event)"
                     (mouseover)="btnMouseOver($event)" [style.color]="minorColor"
                     class="poemFont largeFont"
@@ -21,9 +21,9 @@
                 </span>
             </div>
         </div>
-        <div [nzLg]="{span: 24}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 24}" [nzXl]="{span: 24}"
-             [nzXs]="{span: 0}"
-             nz-col *nzSpaceItem>
+        <div *nzSpaceItem [nzLg]="{span: 24}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 24}"
+             [nzXl]="{span: 24}"
+             [nzXs]="{span: 0}" nz-col>
             <button (click)="poemAuthorBtnOnClick()" (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
                     [style.color]="minorColor"
                     class="poemFont largeFont"

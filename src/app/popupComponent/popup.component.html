@@ -1,13 +1,13 @@
-<nz-layout class="popupLayout">
-    <nz-header class="popupHeader">
+<nz-layout class="popupLayout" [style]="{backgroundColor: minorColor}">
+    <nz-header class="popupHeader" [style]="{backgroundColor: minorColor}">
         <popupHeader-component
             [majorColor]="majorColor"
             [minorColor]="minorColor"
         />
     </nz-header>
-    <nz-content class="popupContent">
+    <nz-content class="popupContent" [style]="{backgroundColor: minorColor}">
         <nz-list>
-            <nz-list-item class="alignCenter" [style]="{borderBlockEndColor: getFontColor(minorColor)}">
+            <nz-list-item [style]="{borderBlockEndColor: getFontColor(minorColor)}" class="alignCenter">
                 <popupStatus-component
                     [majorColor]="majorColor"
                     [minorColor]="minorColor"
@@ -34,11 +34,10 @@
             </nz-list-item>
         </nz-list>
     </nz-content>
-    <nz-footer class="popupFooter">
+    <nz-footer class="popupFooter" [style]="{backgroundColor: minorColor}">
         <popupFooter-component
-            *nzSpaceItem
             [majorColor]="majorColor"
             [minorColor]="minorColor"
-       />
+        />
     </nz-footer>
 </nz-layout>

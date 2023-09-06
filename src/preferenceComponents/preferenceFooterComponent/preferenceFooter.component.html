@@ -1,26 +1,26 @@
 <nz-space>
-    <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
-            (click)="homeBtnOnClick()"
-            class="poemFont" [style.color]="getFontColor(minorColor)"
-            nz-button nzShape="round" nzType="text" *nzSpaceItem
+    <button (click)="homeBtnOnClick()" (mouseout)="btnMouseOut($event)"
+            (mouseover)="btnMouseOver($event)"
+            *nzSpaceItem [style.color]="getFontColor(minorColor)"
+            class="poemFont" nz-button nzShape="round" nzType="text"
     >
-        <span nz-icon nzType="github" nzTheme="outline"></span>
+        <span nz-icon nzTheme="outline" nzType="github"></span>
         {{"主页"}}
     </button>
-    <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
-            (click)="blogBtnOnClick()"
-            class="poemFont" [style.color]="getFontColor(minorColor)"
-            nz-button nzShape="round" nzType="text" *nzSpaceItem
+    <button (click)="blogBtnOnClick()" (mouseout)="btnMouseOut($event)"
+            (mouseover)="btnMouseOver($event)"
+            *nzSpaceItem [style.color]="getFontColor(minorColor)"
+            class="poemFont" nz-button nzShape="round" nzType="text"
     >
-        <span nz-icon nzType="message" nzTheme="outline"></span>
+        <span nz-icon nzTheme="outline" nzType="message"></span>
         {{"博客"}}
     </button>
-    <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
-            (click)="supportBtnOnClick()"
-            class="poemFont" [style.color]="getFontColor(minorColor)"
-            nz-button nzShape="round" nzType="text" *nzSpaceItem
+    <button (click)="supportBtnOnClick()" (mouseout)="btnMouseOut($event)"
+            (mouseover)="btnMouseOver($event)"
+            *nzSpaceItem [style.color]="getFontColor(minorColor)"
+            class="poemFont" nz-button nzShape="round" nzType="text"
     >
-        <span nz-icon nzType="gift" nzTheme="outline"></span>
+        <span nz-icon nzTheme="outline" nzType="gift"></span>
         {{"支持"}}
     </button>
 </nz-space>

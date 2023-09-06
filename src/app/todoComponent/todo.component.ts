@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from "@angular/core";
-import { NzMessageService } from 'ng-zorro-antd/message';
+import {Component, Input, OnInit, OnChanges, SimpleChanges} from "@angular/core";
+import {NzMessageService} from 'ng-zorro-antd/message';
 import {getFontColor, getTimeDetails,} from "../../typescripts/publicFunctions";
 
 const $ = require("jquery");
@@ -9,9 +9,7 @@ const $ = require("jquery");
     templateUrl: "./todo.component.html",
     styleUrls: ["./todo.component.scss", "../../stylesheets/publicStyles.scss"]
 })
-export class todoComponent implements OnInit {
-    constructor(private message: NzMessageService) {}
-
+export class todoComponent implements OnInit, OnChanges {
     @Input() majorColor: string = "#000000";
     @Input() minorColor: string = "#ffffff";
     @Input() preferenceData: any = {};
@@ -23,6 +21,12 @@ export class todoComponent implements OnInit {
     todoMaxSize: number = 5;
     tag: string = "工作";
     priority: string = "★";
+    protected readonly getFontColor = getFontColor;
+    protected readonly getTimeDetails = getTimeDetails;
+    protected readonly Date = Date;
+
+    constructor(private message: NzMessageService) {
+    }
 
     btnMouseOver(e: any) {
         e.currentTarget.style.backgroundColor = this.majorColor;
@@ -115,8 +119,6 @@ export class todoComponent implements OnInit {
     }
 
     selectOnChange(value: string) {
-        console.log(value);
-
         let tempTag = "工作";
         switch (value) {
             case "work":
@@ -139,6 +141,12 @@ export class todoComponent implements OnInit {
         this.priority = "★".repeat(value);
     }
 
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes["preferenceData"]) {
+            this.display = this.preferenceData.simpleMode ? "none" : "block";
+        }
+    }
+
     ngOnInit(): void {
         this.display = this.preferenceData.simpleMode ? "none" : "block";
 
@@ -151,8 +159,4 @@ export class todoComponent implements OnInit {
         this.listItems = todos;
         this.todoSize = todos.length;
     }
-
-    protected readonly getFontColor = getFontColor;
-    protected readonly getTimeDetails = getTimeDetails;
-    protected readonly Date = Date;
 }

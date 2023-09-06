@@ -10,6 +10,7 @@ export class preferenceInfoComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
     title = "preferenceInfoComponent";
+    protected readonly getFontColor = getFontColor;
 
     btnMouseOver(e: any) {
         e.currentTarget.style.backgroundColor = this.majorColor;
@@ -36,6 +37,4 @@ export class preferenceInfoComponent implements OnInit {
     ngOnInit(): void {
 
     }
-
-    protected readonly getFontColor = getFontColor;
 }

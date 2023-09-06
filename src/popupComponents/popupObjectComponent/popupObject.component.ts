@@ -1,5 +1,5 @@
 import {Component, Input} from "@angular/core";
-import {getFontColor, getObjectClassName, getWindowClassName} from "../../typescripts/publicFunctions";
+import {getFontColor, getObjectClassName} from "../../typescripts/publicFunctions";
 
 @Component({
     selector: "popupObject-component",

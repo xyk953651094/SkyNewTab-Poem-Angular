@@ -1,9 +1,10 @@
-import {Component, Input, OnInit, SimpleChanges} from "@angular/core";
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {defaultPreferenceData, device} from "../../typescripts/publicConstants"
 import {
     getFontColor,
     getGreetContent,
-    getGreetIcon, getSearchEngineDetail,
+    getGreetIcon,
+    getSearchEngineDetail,
     getTimeDetails,
     httpRequest
 } from "../../typescripts/publicFunctions";
@@ -16,7 +17,7 @@ const $ = require("jquery");
     templateUrl: "./greet.component.html",
     styleUrls: ["./greet.component.scss", "../../stylesheets/publicStyles.scss"]
 })
-export class GreetComponent implements OnInit {
+export class GreetComponent implements OnInit, OnChanges {
     @Input() majorColor: string = "#000000";
     @Input() minorColor: string = "#ffffff";
     @Input() preferenceData: PreferenceDataInterface = defaultPreferenceData;
@@ -31,6 +32,7 @@ export class GreetComponent implements OnInit {
     avoid: string = "暂无信息";
     protected readonly getGreetContent = getGreetContent;
     protected readonly device = device;
+    protected readonly getFontColor = getFontColor;
 
     btnMouseOver(e: any) {
         e.currentTarget.style.backgroundColor = this.majorColor;
@@ -43,7 +45,7 @@ export class GreetComponent implements OnInit {
     }
 
     historyBtnOnClick() {
-        window.open( this.searchEngineUrl + "历史上的今天", "_blank",);
+        window.open(this.searchEngineUrl + "历史上的今天", "_blank",);
     }
 
     infoBtnOnClick() {
@@ -96,7 +98,10 @@ export class GreetComponent implements OnInit {
     };
 
     ngOnChanges(changes: SimpleChanges) {
-        console.log(changes);
+        if (changes["preferenceData"]) {
+            this.display = this.preferenceData.simpleMode ? "none" : "block";
+            this.searchEngineUrl = getSearchEngineDetail(this.preferenceData.searchEngine).searchEngineUrl;
+        }
     }
 
     ngOnInit(): void {
@@ -128,6 +133,4 @@ export class GreetComponent implements OnInit {
             }, 60 * 60 * 1000);
         }
     }
-
-    protected readonly getFontColor = getFontColor;
 }
