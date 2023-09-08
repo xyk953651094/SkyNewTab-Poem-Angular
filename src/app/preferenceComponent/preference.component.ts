@@ -5,6 +5,7 @@ import {
     preferenceFooterComponent
 } from "../../preferenceComponents/preferenceFooterComponent/preferenceFooter.component";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
+import {NzDrawerPlacement} from "ng-zorro-antd/drawer";
 
 const poemRequest = require("jinrishici");
 
@@ -19,7 +20,7 @@ export class PreferenceComponent implements OnInit {
     @Output() getPreferenceData: EventEmitter<PreferenceDataInterface> = new EventEmitter();
     title = "PreferenceComponent";
     displayDrawer = false;
-    drawerPosition = "right";
+    drawerPosition: NzDrawerPlacement = "right";
     protected readonly getFontColor = getFontColor;
     protected readonly preferenceFooterComponent = preferenceFooterComponent;
 

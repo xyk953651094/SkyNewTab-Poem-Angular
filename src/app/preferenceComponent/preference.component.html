@@ -14,9 +14,11 @@
     [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
     [nzVisible]="displayDrawer"
     nzCloseIcon=null
-    nzPlacement="right"
+    [nzPlacement]="drawerPosition"
     nzSize="default"
     nzTitle="菜单栏"
+    [nzWidth]="380"
+    [nzHeight]="500"
 >
     <ng-container *nzDrawerContent>
         <nz-space nzDirection="vertical" nzSize="large">

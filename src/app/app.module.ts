@@ -49,13 +49,6 @@ import {preferenceInfoComponent} from "../preferenceComponents/preferenceInfoCom
 import {preferenceLinkComponent} from "../preferenceComponents/preferenceLinkComponent/preferenceLink.component";
 import {preferenceFooterComponent} from "../preferenceComponents/preferenceFooterComponent/preferenceFooter.component";
 
-// import {popupComponent} from "./popupComponent/popup.component";
-// import {popupHeaderComponent} from "../popupComponents/popupHeaderComponent/popupHeader.component";
-// import {popupStatusComponent} from "../popupComponents/popupStatusComponent/popupStatus.component";
-// import {popupObjectComponent} from "../popupComponents/popupObjectComponent/popupObject.component";
-// import {popupPoemComponent} from "../popupComponents/popupPoemComponent/popupPoem.component";
-// import {PopupWindowComponent} from "../popupComponents/popupWindowComponent/popupWindow.component";
-// import {popupFooterComponent} from "../popupComponents/popupFooterComponent/popupFooter.component";
 registerLocaleData(zh);
 
 @NgModule({
@@ -74,13 +67,6 @@ registerLocaleData(zh);
         preferenceInfoComponent,
         preferenceLinkComponent,
         preferenceFunctionComponent,
-        // popupComponent,
-        // popupHeaderComponent,
-        // popupStatusComponent,
-        // popupObjectComponent,
-        // popupPoemComponent,
-        // PopupWindowComponent,
-        // popupFooterComponent,
     ],
     imports: [
         BrowserModule,
