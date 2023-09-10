@@ -28,10 +28,14 @@
             <nz-form-item>
                 <nz-form-label>标签分类</nz-form-label>
                 <nz-form-control>
-                    <nz-select (ngModelChange)="selectOnChange($event)" name="todoSelect" ngModel="work">
-                        <nz-option class="poemFont" nzLabel="工作" nzValue="work"></nz-option>
-                        <nz-option class="poemFont" nzLabel="学习" nzValue="study"></nz-option>
-                        <nz-option class="poemFont" nzLabel="生活" nzValue="life"></nz-option>
+                    <nz-select class="poemFont" [nzDropdownStyle]="{fontFamily: 'Times New Roman, cursive, sans-serif'}" (ngModelChange)="selectOnChange($event)"
+                               name="todoSelect" ngModel="work"
+                               [nzOptions]="[
+                               {value: 'work', label: '工作'},
+                                {value: 'study', label: '学习'},
+                                {value: 'life', label: '生活'}
+                               ]"
+                    >
                     </nz-select>
                 </nz-form-control>
             </nz-form-item>
