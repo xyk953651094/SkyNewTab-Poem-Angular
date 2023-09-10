@@ -20,12 +20,20 @@
 * 下载 Releases 页面提供的文件进行安装
 
 ## 效果展示
-### Chromium & Firefox
-<img width="1440" alt="截屏2023-07-11 15 52 53" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/24d93bc3-0561-474e-be30-1b56f587a7bf">
+### Chromium & Firefox & Safari for Mac
+<img width="1440" alt="截屏2023-09-10 21 28 11" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/2b93876c-69bf-4cd3-9bfa-9db248b45049">
 
-<img width="1440" alt="截屏2023-07-11 15 53 10" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/2011aa43-dde9-4de7-a797-2967919b4964">
+<img width="1440" alt="截屏2023-09-10 21 28 22" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/1ea160aa-28fc-41e9-880a-9413dd899331">
 
-<img width="1440" alt="截屏2023-07-11 15 53 37" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/51584c84-58c9-4b7d-ad7a-fafb2fe9a445">
+<img width="1440" alt="截屏2023-09-10 21 28 37" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/39d0562f-00b6-4417-9aaa-3375ffcb046f">
+
+<img width="1440" alt="截屏2023-09-10 21 28 49" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/3bd9bd4a-6961-4310-91a2-d7dda8d2f1d2">
+
+<img width="1440" alt="截屏2023-09-10 21 29 17" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/4c156bfd-b842-4ce5-8bd9-9f017cd13936">
+
+<img width="1440" alt="截屏2023-09-10 21 29 30" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/8c462c29-cd28-48d4-8e6f-08151fc4878f">
+
+<img width="1440" alt="截屏2023-09-10 21 29 46" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/9ae855b6-7228-45e6-9dae-df2cdc2703fc">
 
 ### Safari for iPhone
 
@@ -33,9 +41,4 @@
 <img alt="截屏2023-07-16 19 16 21" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/04a529e4-70e7-492b-b2ff-5156a826f05b">
 
 <img alt="截屏2023-07-16 19 16 21" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/4fb10ae1-b549-48c3-bd96-a393ea639da7">
-
-### Safari for Mac
-<img width="1440" alt="截屏2023-07-16 19 16 21" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/3d476889-365e-4a49-bd10-d7a344a44bf0">
-
-<img width="1440" alt="截屏2023-07-16 19 16 46" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/1a1b8d72-5e79-4d33-b60f-db9a9350f131">
 
