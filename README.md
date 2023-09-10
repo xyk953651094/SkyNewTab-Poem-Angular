@@ -15,12 +15,6 @@
 * 天气来源：https://www.jinrishici.com  
 * 诗词来源：https://www.jinrishici.com   
 
-## 最近更新
-* 新增倒数日、待办事项、菜单栏、popup
-* 优化代码质量
-* 修复已知问题
-* 优化视觉效果
-
 ## 安装
 * 与 [SkyNewTab-Poem-React](https://github.com/xyk953651094/SkyNewTab-Poem-React) 重复，暂时不上架各商店
 * 下载 Releases 页面提供的文件进行安装
