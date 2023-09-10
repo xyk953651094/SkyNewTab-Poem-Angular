@@ -10,7 +10,7 @@
 ## 简介
 * 适用于 Chrome、Edge、Firefox、Safari 的新标签页插件
 * 基于 Html + TypeScript + SCSS + Angular + NG Zorro(Ant Design for Angular) + Bootstrap Icon
-* 支持语言：中文。  
+* 支持语言：中文 
 * 节气来源：https://www.mxnzp.com 
 * 天气来源：https://www.jinrishici.com  
 * 诗词来源：https://www.jinrishici.com   
