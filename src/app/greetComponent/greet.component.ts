@@ -30,6 +30,7 @@ export class GreetComponent implements OnInit, OnChanges {
     calendar: string = "暂无信息";
     suit: string = "暂无信息";
     avoid: string = "暂无信息";
+    btnMaxSize = 80;
     protected readonly getGreetContent = getGreetContent;
     protected readonly device = device;
     protected readonly getFontColor = getFontColor;
@@ -44,8 +45,12 @@ export class GreetComponent implements OnInit, OnChanges {
         e.currentTarget.style.color = getFontColor(this.minorColor);
     }
 
+    constellationBtnOnClick() {
+        window.open(this.searchEngineUrl + "星座运势", "_blank");
+    }
+
     historyBtnOnClick() {
-        window.open(this.searchEngineUrl + "历史上的今天", "_blank",);
+        window.open(this.searchEngineUrl + "历史上的今天", "_blank");
     }
 
     infoBtnOnClick() {

@@ -31,6 +31,7 @@ import {NzAvatarModule} from "ng-zorro-antd/avatar";
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {NzRateModule} from 'ng-zorro-antd/rate';
 import {NzEmptyModule} from 'ng-zorro-antd/empty';
+import {NzAlertModule} from 'ng-zorro-antd/alert';
 
 import {SunComponent} from "./sunComponent/sun.component";
 import {GreetComponent} from './greetComponent/greet.component';
@@ -93,7 +94,8 @@ registerLocaleData(zh);
         NzSwitchModule,
         NzSelectModule,
         NzRateModule,
-        NzEmptyModule
+        NzEmptyModule,
+        NzAlertModule
     ],
     providers: [
         {provide: NZ_I18N, useValue: zh_CN},

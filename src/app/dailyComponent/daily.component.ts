@@ -1,6 +1,6 @@
-import {Component, Input, OnInit, OnChanges, SimpleChanges} from "@angular/core";
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {NzMessageService} from 'ng-zorro-antd/message';
-import {getFontColor, getSearchEngineDetail, getTimeDetails,} from "../../typescripts/publicFunctions";
+import {getFontColor, getTimeDetails,} from "../../typescripts/publicFunctions";
 
 const $ = require("jquery");
 

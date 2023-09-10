@@ -26,7 +26,6 @@ export class WeatherComponent implements OnInit, OnChanges {
     rainfall: string = "暂无信息";
     visibility: string = "暂无信息";
     windInfo: string = "暂无信息";
-    suggest: string = "暂无信息"
     protected readonly getFontColor = getFontColor;
 
     constructor(private message: NzMessageService) {
@@ -54,41 +53,6 @@ export class WeatherComponent implements OnInit, OnChanges {
         window.open(this.searchEngineUrl + "天气", "_blank");
     }
 
-    getSuggest(temperature: number, pm25: number) {
-        let tempTemperature = "";
-        let tempPm25 = "";
-
-        if (temperature > 30) {
-            tempTemperature = "温度炎热，注意避暑"
-        }
-        else if(temperature < 10) {
-            tempTemperature = "温度寒冷，注意防寒"
-        }
-
-        if (pm25 > 200) {
-            tempPm25 = "空气较差，不宜外出"
-        }
-        else if(pm25 < 100) {
-            tempPm25 = "空气良好，适合外出"
-        }
-
-        if(tempTemperature.length === 0 && tempPm25.length === 0) {
-            return "";
-        }
-        else if (tempTemperature.length !== 0 && tempPm25.length === 0) {
-            return tempTemperature;
-        }
-        else if (tempTemperature.length !== 0 && tempPm25.length !== 0) {
-            return tempTemperature + " · " + tempPm25;
-        }
-        else if (tempTemperature.length === 0 && tempPm25.length !== 0) {
-            return tempPm25;
-        }
-        else {
-            return "";
-        }
-    }
-
     // 天气
     setWeather(data: any): void {
         if (data.weatherData) {
@@ -100,8 +64,6 @@ export class WeatherComponent implements OnInit, OnChanges {
             this.rainfall = data.weatherData.rainfall + "%";
             this.visibility = data.weatherData.visibility;
             this.windInfo = data.weatherData.windDirection + data.weatherData.windPower + "级";
-            // @ts-ignore
-            this.suggest = this.getSuggest(parseInt(data.weatherData.temperature), parseInt(data.weatherData.pm25))
         }
     }
 

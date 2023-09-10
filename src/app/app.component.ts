@@ -17,7 +17,8 @@ export class AppComponent implements OnInit {
     svgColors: string[] = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"];
     preferenceData: PreferenceDataInterface = defaultPreferenceData;
 
-    constructor() {}
+    constructor() {
+    }
 
     getPreferenceData(value: PreferenceDataInterface) {
         this.preferenceData = value;
@@ -45,6 +46,7 @@ export class AppComponent implements OnInit {
                 "color": getFontColor(this.minorColor),
                 "font-family": "'Times New Roman', cursive, sans-serif",
             });
+            $(".ant-alert").css("padding", "10px");
 
             // popover
             let popoverEle = $(".ant-popover");

@@ -1,4 +1,5 @@
-<nz-card [nzBodyStyle]="{backgroundColor: minorColor}" [nzExtra]="extraTemplate" [style]="{border: '1px solid ' + getFontColor(minorColor)}"
+<nz-card [nzBodyStyle]="{backgroundColor: minorColor}" [nzExtra]="extraTemplate"
+         [style]="{border: '1px solid ' + getFontColor(minorColor)}"
          nzSize="small"
          nzTitle="联系作者"
 >
@@ -19,7 +20,7 @@
                     [style.color]="getFontColor(minorColor)" class="poemFont"
                     nz-button nzShape="round" nzType="text"
             >
-                <span nz-icon nzType="exclamation-circle" nzTheme="outline"></span>
+                <span nz-icon nzTheme="outline" nzType="exclamation-circle"></span>
                 {{"问题反馈"}}
             </button>
         </div>

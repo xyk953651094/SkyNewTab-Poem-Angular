@@ -1,4 +1,5 @@
-<button (click)="showDrawerBtnOnClick()" [nzTooltipColor]="minorColor" [style]="{cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
+<button (click)="showDrawerBtnOnClick()" [nzTooltipColor]="minorColor"
+        [style]="{cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
         class="componentTheme poemFont" nz-button nz-tooltip
         nzShape="circle"
         nzSize="large" nzTooltipPlacement="bottomRight" nzTooltipTitle="菜单栏"
@@ -11,14 +12,14 @@
     (nzOnClose)="drawerOnClose()"
     [nzBodyStyle]="{backgroundColor: minorColor}"
     [nzFooter]="drawerFooter"
+    [nzHeight]="500"
     [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
-    [nzVisible]="displayDrawer"
-    nzCloseIcon=null
     [nzPlacement]="drawerPosition"
+    [nzVisible]="displayDrawer"
+    [nzWidth]="380"
+    nzCloseIcon=null
     nzSize="default"
     nzTitle="菜单栏"
-    [nzWidth]="380"
-    [nzHeight]="500"
 >
     <ng-container *nzDrawerContent>
         <nz-space nzDirection="vertical" nzSize="large">

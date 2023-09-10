@@ -1,5 +1,7 @@
 <button [nzPopoverContent]="popoverContent" [nzPopoverOverlayStyle]="{minWidth: '400px'}"
-        [nzPopoverTitle]="popoverTitle" [style]="{display: display, cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}" class="componentTheme poemFont"
+        [nzPopoverTitle]="popoverTitle"
+        [style]="{display: display, cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
+        class="componentTheme poemFont"
         nz-button
         nz-popover nzPopoverPlacement="bottomLeft" nzShape="round" nzSize="large"
         nzType="text"
@@ -14,7 +16,8 @@
         </div>
         <div class="alignRight" nz-col nzSpan="18">
             <nz-space>
-                <button (click)="locationBtnOnClick()" (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                <button (click)="locationBtnOnClick()" (mouseout)="btnMouseOut($event)"
+                        (mouseover)="btnMouseOver($event)"
                         *nzSpaceItem
                         [style]="{color: getFontColor(minorColor), float: 'right'}"
                         class="poemFont"
@@ -40,17 +43,6 @@
 </ng-template>
 <ng-template #popoverContent>
     <nz-list>
-        <nz-list-item [style]="{display: suggest.length === 0 ? 'none' : 'block'}">
-            <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
-                    [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                    class="poemFont"
-                    nz-button
-                    nzShape="round" nzType="text"
-            >
-                <span nz-icon nzTheme="outline" nzType="bulb"></span>
-                {{suggest}}
-            </button>
-        </nz-list-item>
         <nz-list-item>
             <nz-space class="poemFont" nzAlign="start" nzDirection="vertical">
                 <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
