@@ -63,7 +63,7 @@ export class WeatherComponent implements OnInit, OnChanges {
             this.pm25 = data.weatherData.pm25;
             this.rainfall = data.weatherData.rainfall + "%";
             this.visibility = data.weatherData.visibility;
-            this.windInfo = data.weatherData.windDirection + data.weatherData.windPower + "级";
+            this.windInfo = data.weatherData.windDirection + " " + data.weatherData.windPower + " 级";
         }
     }
 
