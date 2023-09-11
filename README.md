@@ -23,11 +23,11 @@
 ### Chromium & Firefox & Safari for Mac
 <img width="1440" alt="截屏2023-09-10 21 28 11" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/2b93876c-69bf-4cd3-9bfa-9db248b45049">
 
-<img width="1440" alt="截屏2023-09-10 21 28 22" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/1ea160aa-28fc-41e9-880a-9413dd899331">
+<img width="1440" alt="截屏2023-09-11 13 56 01" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/ae188faa-b30a-443f-b874-79a03ee8d1e7">
 
 <img width="1440" alt="截屏2023-09-10 21 28 37" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/39d0562f-00b6-4417-9aaa-3375ffcb046f">
 
-<img width="1440" alt="截屏2023-09-10 21 28 49" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/3bd9bd4a-6961-4310-91a2-d7dda8d2f1d2">
+<img width="1440" alt="截屏2023-09-11 13 56 10" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/ef3d29cd-1cd2-49b4-a9f0-81dbc429f173">
 
 <img width="1440" alt="截屏2023-09-10 21 29 17" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/4c156bfd-b842-4ce5-8bd9-9f017cd13936">
 
