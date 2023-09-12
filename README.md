@@ -38,7 +38,3 @@
 ### Safari for iPhone
 
 ### Safari for iPad
-<img alt="截屏2023-07-16 19 16 21" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/04a529e4-70e7-492b-b2ff-5156a826f05b">
-
-<img alt="截屏2023-07-16 19 16 21" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/4fb10ae1-b549-48c3-bd96-a393ea639da7">
-
