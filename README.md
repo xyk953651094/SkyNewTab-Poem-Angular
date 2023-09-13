@@ -20,7 +20,7 @@
 * 下载 Releases 页面提供的文件进行安装
 
 ## 效果展示
-### Chromium & Firefox & Safari for Mac
+### Chromium & Firefox
 <img width="1440" alt="截屏2023-09-10 21 28 11" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/2b93876c-69bf-4cd3-9bfa-9db248b45049">
 
 <img width="1440" alt="截屏2023-09-11 13 56 01" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/ae188faa-b30a-443f-b874-79a03ee8d1e7">
@@ -35,6 +35,5 @@
 
 <img width="1440" alt="截屏2023-09-10 21 29 46" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/9ae855b6-7228-45e6-9dae-df2cdc2703fc">
 
-### Safari for iPhone
-
-### Safari for iPad
+### Safari
+* 新版由于 Xcode 编译出现问题，适配 Safari 进展暂时迟缓
