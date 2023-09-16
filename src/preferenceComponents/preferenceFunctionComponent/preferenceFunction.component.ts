@@ -51,6 +51,17 @@ export class preferenceFunctionComponent implements OnInit {
         this.refreshWindow();
     }
 
+    displayAlertSwitchOnChange(checked: boolean) {
+        this.preferenceData = this.modifyPreferenceData({displayAlert: checked});
+        this.getPreferenceFunctionData.emit(this.preferenceData);
+        localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
+        if (checked) {
+            this.message.success("已显示提示信息");
+        } else {
+            this.message.success("已隐藏提示信息");
+        }
+    }
+
     // 重置设置
     clearStorageBtnOnClick() {
         localStorage.clear();
