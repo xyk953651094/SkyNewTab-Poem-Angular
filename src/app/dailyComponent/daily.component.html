@@ -1,0 +1,117 @@
+<button [nzPopoverContent]="popoverContent" [nzPopoverOverlayStyle]="{width: '550px'}"
+        [nzPopoverTitle]="popoverTitle"
+        [style]="{display: display, cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
+        class="componentTheme poemFont"
+        nz-button
+        nz-popover nzPopoverPlacement="bottomRight" nzShape="round" nzSize="large"
+        nzType="text"
+>
+    <span nz-icon nzTheme="outline" nzType="calendar"></span>
+    {{dailySize + " 个倒数日"}}
+</button>
+<nz-modal (nzOnCancel)="modalCancelBtnOnClick()" (nzOnOk)="modalOkBtnOnClick()" [(nzVisible)]="displayModal"
+          [nzBodyStyle]="{backgroundColor: minorColor}"
+          [nzClosable]="false" [nzContent]="modalContent"
+          [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
+          [nzTitle]="'添加倒数日 ' + dailySize + ' / ' + dailyMaxSize"
+          nzCentered
+>
+    <ng-template #modalContent>
+        <form [nzNoColon]="true" nz-form>
+            <nz-form-item>
+                <nz-form-label>倒数标题</nz-form-label>
+                <nz-form-control nzErrorTip="表单不能为空">
+                    <input [maxLength]="10" class="poemFont" id="dailyInput" nz-input
+                           placeholder="请输入标题，字数不能超过10个"/>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label>倒数日期</nz-form-label>
+                <nz-form-control nzErrorTip="表单不能为空">
+                    <nz-date-picker [nzAllowClear]="false" [nzDropdownClassName]="'poemFont'" [nzId]="'dailyDatePicker'"
+                                    class="poemFont"></nz-date-picker>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </ng-template>
+</nz-modal>
+
+<ng-template #popoverTitle>
+    <div nz-row nzAlign="middle">
+        <div nz-col nzSpan="10">
+      <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
+        {{"倒数日 " + dailySize + " / " + dailyMaxSize}}
+      </span>
+        </div>
+        <div class="alignRight" nz-col nzSpan="14">
+            <nz-space>
+                <button (click)="showAddModalBtnOnClick()" (mouseout)="btnMouseOut($event)"
+                        (mouseover)="btnMouseOver($event)"
+                        *nzSpaceItem
+                        [style]="{color: getFontColor(minorColor)}"
+                        class="poemFont"
+                        nz-button
+                        nzShape="round" nzType="text"
+                >
+                    <span nz-icon nzTheme="outline" nzType="plus"></span>
+                    {{"添加倒数日"}}
+                </button>
+                <button (click)="removeAllBtnOnClick()" (mouseout)="btnMouseOut($event)"
+                        (mouseover)="btnMouseOver($event)"
+                        *nzSpaceItem
+                        [style]="{color: getFontColor(minorColor)}"
+                        class="poemFont"
+                        nz-button
+                        nzShape="round" nzType="text"
+                >
+                    <span nz-icon nzTheme="outline" nzType="delete"></span>
+                    {{"全部删除"}}
+                </button>
+            </nz-space>
+        </div>
+    </div>
+</ng-template>
+<ng-template #popoverContent>
+    <nz-empty [style]="{display: (listItems.length > 0 ? 'none' : 'block')}" nzNotFoundImage="simple"></nz-empty>
+    <nz-list>
+        <nz-list-item *ngFor="let item of listItems">
+            <ul nz-list-item-actions>
+                <nz-list-item-action>
+                    <button (click)="removeBtnOnClick(item)" (mouseout)="btnMouseOut($event)"
+                            (mouseover)="btnMouseOver($event)"
+                            [style]="{color: getFontColor(minorColor)}"
+                            class="poemFont"
+                            nz-button
+                            nzShape="circle" nzType="text"
+                    >
+                        <span nz-icon nzTheme="outline" nzType="delete"></span>
+                    </button>
+                </nz-list-item-action>
+            </ul>
+            <div [style.width]="'100%'" nz-row>
+                <div nz-col nzSpan=10>
+                    <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                            [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+                            class="poemFont"
+                            nz-button
+                            nzShape="round" nzType="text"
+                    >
+                        <span nz-icon nzTheme="outline" nzType="calendar"></span>
+                        {{item.title}}
+                    </button>
+                </div>
+                <div nz-col nzSpan=14>
+                    <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                            [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+                            class="poemFont"
+                            nz-button
+                            nzShape="round" nzType="text"
+                    >
+                        <span nz-icon nzTheme="outline" nzType="clock-circle"></span>
+                        {{getTimeDetails(getDate(item.selectedTimeStamp)).showDate4 + "｜" + getDailyDescription(item.selectedTimeStamp)}}
+                    </button>
+                </div>
+            </div>
+        </nz-list-item>
+    </nz-list>
+</ng-template>

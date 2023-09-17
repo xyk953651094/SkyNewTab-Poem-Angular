@@ -11,8 +11,13 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "customWebpackConfig": {
+              "path": "./webpack.config.js",
+              "replaceDuplicatePlugins": true,
+              "mergeRules": { "entry": "replace" }
+            },
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -36,9 +41,9 @@
             ],
             "styles": [
               "src/theme.less",
-              "src/styles.css",
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "src/assets/iconFont/iconfont.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js"
@@ -57,8 +62,7 @@
                   "maximumWarning": "5mb",
                   "maximumError": "5mb"
                 }
-              ],
-              "outputHashing": "all"
+              ]
             },
             "development": {
               "buildOptimizer": false,
