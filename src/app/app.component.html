@@ -2,22 +2,62 @@
 <nz-layout>
     <nz-header class="header">
         <div nz-row nzJustify="center">
-            <div [nzLg]="{span: 9}" [nzMd]="{span: 9}" [nzSm]="{span: 22}" [nzXXl]="{span: 9}" [nzXl]="{span: 9}"
-                 [nzXs]="{span: 22}" nz-col>
-                <greet-component [fontColor]="fontColor"/>
+            <div [nzLg]="{span: 9}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 9}" [nzXl]="{span: 9}"
+                 [nzXs]="{span: 0}" nz-col>
+                <nz-space>
+                    <greet-component
+                        *nzSpaceItem
+                        [majorColor]="majorColor"
+                        [minorColor]="minorColor"
+                        [preferenceData]="preferenceData"
+                    />
+                    <weather-component
+                        *nzSpaceItem
+                        [majorColor]="majorColor"
+                        [minorColor]="minorColor"
+                        [preferenceData]="preferenceData"
+                    />
+                </nz-space>
             </div>
-            <div [nzLg]="{span: 9}" [nzMd]="{span: 9}" [nzSm]="{span: 0}" [nzXXl]="{span: 9}" [nzXl]="{span: 9}"
+            <div [nzLg]="{span: 9}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 9}" [nzXl]="{span: 9}"
                  [nzXs]="{span: 0}" nz-col style="text-align: right">
-                <weather-component [fontColor]="fontColor"/>
+                <nz-space nzAlign="center">
+                    <daily-component
+                        *nzSpaceItem
+                        [majorColor]="majorColor"
+                        [minorColor]="minorColor"
+                        [preferenceData]="preferenceData"
+                    />
+                    <todo-component
+                        *nzSpaceItem
+                        [majorColor]="majorColor"
+                        [minorColor]="minorColor"
+                        [preferenceData]="preferenceData"
+                    />
+                    <preference-component
+                        (getPreferenceData)="getPreferenceData($event)"
+                        *nzSpaceItem
+                        [majorColor]="majorColor"
+                        [minorColor]="minorColor"
+                    />
+                </nz-space>
+            </div>
+            <div [nzLg]="{span: 0}" [nzMd]="{span: 22}" [nzSm]="{span: 22}" [nzXXl]="{span: 0}" [nzXl]="{span: 0}"
+                 [nzXs]="{span: 22}" nz-col style="text-align: right">
+                <preference-component
+                    (getPreferenceData)="getPreferenceData($event)"
+                    [majorColor]="majorColor"
+                    [minorColor]="minorColor"
+                />
             </div>
         </div>
     </nz-header>
-    <nz-content class="content center">
-        <poem-component [fontColor]="fontColor"/>
+    <nz-content class="content alignCenter">
+        <poem-component [minorColor]="minorColor"/>
     </nz-content>
     <nz-footer class="footer">
-        <wave-component [waveColor]="svgColor"/>
+        <wave-component [waveColors]="svgColors"/>
     </nz-footer>
 </nz-layout>
-<sun-component [sunColor]="svgColor"/>
+<sun-component [sunColors]="svgColors"/>
 

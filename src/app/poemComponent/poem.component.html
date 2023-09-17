@@ -1,11 +1,11 @@
 <div nz-row nzAlign="middle" nzJustify="center">
-    <nz-space nzDirection="vertical">
-        <div [nzLg]="{span: 24}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 24}" [nzXl]="{span: 24}"
-             [nzXs]="{span: 0}"
-             nz-col>
+    <nz-space nzAlign="center" nzDirection="vertical">
+        <div *nzSpaceItem [nzLg]="{span: 24}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 24}"
+             [nzXl]="{span: 24}"
+             [nzXs]="{span: 0}" nz-col>
             <button (click)="poemContentBtnOnClick()" (mouseout)="btnMouseOut($event)"
-                    (mouseover)="btnMouseOver($event)" [style.color]="fontColor"
-                    class="buttonFont"
+                    (mouseover)="btnMouseOver($event)" [style.color]="minorColor"
+                    class="poemFont largeFont"
                     nz-button nzShape="round" nzSize="large"
                     nzType="text"
             >
@@ -15,18 +15,18 @@
         <div [nzLg]="{span: 0}" [nzMd]="{span: 24}" [nzSm]="{span: 24}" [nzXXl]="{span: 0}" [nzXl]="{span: 0}"
              [nzXs]="{span: 24}"
              nz-col>
-            <div nz-space nzAlign="center">
-                <span [style.color]="fontColor" class="buttonFont vertical" nz-typography>
+            <div nz-space nzAlign="center" class="alignCenter">
+                <span [style]="{color: minorColor, fontSize: '24px'}" class="poemFont largeFont vertical" nz-typography>
                     {{poemContent.length < 20 ? poemContent : poemContent.substring(0, 20) + "..."}}
                 </span>
             </div>
         </div>
-        <div [nzLg]="{span: 24}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 24}" [nzXl]="{span: 24}"
-             [nzXs]="{span: 0}"
-             nz-col>
+        <div *nzSpaceItem [nzLg]="{span: 24}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 24}"
+             [nzXl]="{span: 24}"
+             [nzXs]="{span: 0}" nz-col>
             <button (click)="poemAuthorBtnOnClick()" (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
-                    [style.color]="fontColor"
-                    class="buttonFont"
+                    [style.color]="minorColor"
+                    class="poemFont largeFont"
                     nz-button nzShape="round" nzSize="large"
                     nzType="text"
             >

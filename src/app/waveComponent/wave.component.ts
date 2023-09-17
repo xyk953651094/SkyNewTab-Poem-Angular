@@ -7,5 +7,5 @@ import {Component, Input} from "@angular/core";
 })
 export class WaveComponent {
     title = "WaveComponent";
-    @Input() waveColor: string[] = ["#ffffff", "#ffffff", "#ffffff"];
+    @Input() waveColors: string[] = ["#ffffff", "#ffffff", "#ffffff"];
 }

@@ -7,5 +7,5 @@ import {Component, Input} from "@angular/core";
 })
 export class SunComponent {
     title = "SunComponent";
-    @Input() sunColor: string[] = ["#ffffff", "#ffffff", "#ffffff"];
+    @Input() sunColors: string[] = ["#ffffff", "#ffffff", "#ffffff"];
 }

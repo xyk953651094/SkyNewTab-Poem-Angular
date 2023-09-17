@@ -1,0 +1,26 @@
+<nz-space>
+    <button (click)="homeBtnOnClick()" (mouseout)="btnMouseOut($event)"
+            (mouseover)="btnMouseOver($event)"
+            *nzSpaceItem [style.color]="getFontColor(minorColor)"
+            class="poemFont" nz-button nzShape="round" nzType="text"
+    >
+        <span nz-icon nzTheme="outline" nzType="github"></span>
+        {{"主页"}}
+    </button>
+    <button (click)="blogBtnOnClick()" (mouseout)="btnMouseOut($event)"
+            (mouseover)="btnMouseOver($event)"
+            *nzSpaceItem [style.color]="getFontColor(minorColor)"
+            class="poemFont" nz-button nzShape="round" nzType="text"
+    >
+        <span nz-icon nzType="notification" nzTheme="outline"></span>
+        {{"博客"}}
+    </button>
+    <button (click)="supportBtnOnClick()" (mouseout)="btnMouseOut($event)"
+            (mouseover)="btnMouseOver($event)"
+            *nzSpaceItem [style.color]="getFontColor(minorColor)"
+            class="poemFont" nz-button nzShape="round" nzType="text"
+    >
+        <span nz-icon nzTheme="outline" nzType="gift"></span>
+        {{"支持"}}
+    </button>
+</nz-space>
