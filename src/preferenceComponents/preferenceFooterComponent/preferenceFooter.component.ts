@@ -22,8 +22,8 @@ export class preferenceFooterComponent implements OnInit {
         e.currentTarget.style.color = getFontColor(this.minorColor);
     }
 
-    homeBtnOnClick() {
-        window.open("https://github.com/xyk953651094", "_blank");
+    homeBtnOnClick(value: string) {
+        window.open("https://" + value + ".com/xyk953651094", "_blank");
     }
 
     blogBtnOnClick() {

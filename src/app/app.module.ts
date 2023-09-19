@@ -49,6 +49,7 @@ import {preferenceEmailComponent} from "../preferenceComponents/preferenceEmailC
 import {preferenceInfoComponent} from "../preferenceComponents/preferenceInfoComponent/preferenceInfo.component";
 import {preferenceLinkComponent} from "../preferenceComponents/preferenceLinkComponent/preferenceLink.component";
 import {preferenceFooterComponent} from "../preferenceComponents/preferenceFooterComponent/preferenceFooter.component";
+import {preferenceHeaderComponent} from "../preferenceComponents/preferenceHeaderComponent/preferenceHeader.component";
 
 registerLocaleData(zh);
 
@@ -68,6 +69,7 @@ registerLocaleData(zh);
         preferenceInfoComponent,
         preferenceLinkComponent,
         preferenceFunctionComponent,
+        preferenceHeaderComponent
     ],
     imports: [
         BrowserModule,

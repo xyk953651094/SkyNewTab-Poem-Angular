@@ -2,14 +2,14 @@ import {Component, Input, OnInit} from "@angular/core";
 import {getFontColor} from "../../typescripts/publicFunctions";
 
 @Component({
-    selector: "popupFooter-component",
-    templateUrl: "./popupFooter.component.html",
-    styleUrls: ["./popupFooter.component.scss", "../../app/popupComponent/popup.component.scss"]
+    selector: "preferenceHeader-component",
+    templateUrl: "./preferenceHeader.component.html",
+    styleUrls: ["./preferenceHeader.component.scss", "../../stylesheets/publicStyles.scss"]
 })
-export class popupFooterComponent implements OnInit {
+export class preferenceHeaderComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
-    title = "popupFooterComponent";
+    title = "preferenceHeaderComponent";
     protected readonly getFontColor = getFontColor;
 
     btnMouseOver(e: any) {
@@ -20,14 +20,6 @@ export class popupFooterComponent implements OnInit {
     btnMouseOut(e: any) {
         e.currentTarget.style.backgroundColor = "transparent";
         e.currentTarget.style.color = getFontColor(this.minorColor);
-    }
-
-    homeBtnOnClick(value: string) {
-        window.open("https://" + value + ".com/xyk953651094", "_blank");
-    }
-
-    blogBtnOnClick() {
-        window.open("https://xyk953651094.blogspot.com", "_blank");
     }
 
     supportBtnOnClick() {
