@@ -19,7 +19,7 @@
     [nzWidth]="380"
     nzCloseIcon=null
     nzSize="default"
-    nzTitle="菜单栏"
+    [nzTitle]="drawerHeader"
 >
     <ng-container *nzDrawerContent>
         <nz-space nzDirection="vertical" nzSize="large">
@@ -47,6 +47,12 @@
         </nz-space>
     </ng-container>
 </nz-drawer>
+<ng-template #drawerHeader>
+    <preferenceHeader-component
+        [majorColor]="majorColor"
+        [minorColor]="minorColor"
+    />
+</ng-template>
 <ng-template #drawerFooter>
     <div nz-row nzAlign="middle" nzJustify="center">
         <preferenceFooter-component
