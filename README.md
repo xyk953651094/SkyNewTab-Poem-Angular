@@ -14,7 +14,7 @@
 * 请前往 Releases 页面查看
 
 ## 安装
-* 与 [SkyNewTab-Poem-React](https://github.com/xyk953651094/SkyNewTab-Poem-React) 重复，仅作为学习目的开发，暂时不上架各商店
+* 与 [SkyNewTab-Poem-React](https://github.com/xyk953651094/SkyNewTab-Poem-React) 重复，仅作为学习目的开发，不上架各商店
 * 下载 Releases 页面提供的文件进行安装
 
 ## 链接
