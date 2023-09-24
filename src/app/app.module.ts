@@ -34,6 +34,7 @@ import {NzEmptyModule} from 'ng-zorro-antd/empty';
 import {NzAlertModule} from 'ng-zorro-antd/alert';
 
 import {SunComponent} from "./sunComponent/sun.component";
+import {SearchComponent} from "./searchComponent/search.component";
 import {GreetComponent} from './greetComponent/greet.component';
 import {WeatherComponent} from './weatherComponent/weather.component';
 import {DailyComponent} from './dailyComponent/daily.component';
@@ -57,6 +58,7 @@ registerLocaleData(zh);
     declarations: [
         AppComponent,
         SunComponent,
+        SearchComponent,
         GreetComponent,
         WeatherComponent,
         DailyComponent,

@@ -5,6 +5,11 @@
             <div [nzLg]="{span: 9}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 9}" [nzXl]="{span: 9}"
                  [nzXs]="{span: 0}" nz-col>
                 <nz-space>
+                    <search-component
+                        *nzSpaceItem
+                        [minorColor]="minorColor"
+                        [preferenceData]="preferenceData"
+                    />
                     <greet-component
                         *nzSpaceItem
                         [majorColor]="majorColor"

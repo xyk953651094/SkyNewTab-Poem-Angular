@@ -42,7 +42,8 @@ export class preferenceFunctionComponent implements OnInit {
         this.preferenceData = this.modifyPreferenceData({buttonShape: value});
         this.getPreferenceFunctionData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
-        this.message.success("已更换按钮形状");
+        this.message.success("已更换按钮形状，一秒后刷新页面");
+        this.refreshWindow();
     }
 
     // 简洁模式
