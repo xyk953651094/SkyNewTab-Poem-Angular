@@ -45,14 +45,6 @@ export class GreetComponent implements OnInit, OnChanges {
         e.currentTarget.style.color = getFontColor(this.minorColor);
     }
 
-    constellationBtnOnClick() {
-        window.open(this.searchEngineUrl + "星座运势", "_blank");
-    }
-
-    historyBtnOnClick() {
-        window.open(this.searchEngineUrl + "历史上的今天", "_blank");
-    }
-
     infoBtnOnClick() {
         window.open(this.searchEngineUrl + "万年历", "_blank");
     }
