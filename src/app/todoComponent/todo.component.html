@@ -3,7 +3,7 @@
         [style]="{display: display, cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
         class="componentTheme poemFont"
         nz-button
-        nz-popover nzPopoverPlacement="bottomRight" nzShape="round" nzSize="large"
+        nz-popover nzPopoverPlacement="bottomRight" [nzShape]="preferenceData.buttonShape" nzSize="large"
         nzType="text"
 >
     <span nz-icon nzTheme="outline" nzType="check-square"></span>
@@ -65,7 +65,7 @@
                         [style]="{color: getFontColor(minorColor)}"
                         class="poemFont"
                         nz-button
-                        nzShape="round" nzType="text"
+                        [nzShape]="preferenceData.buttonShape" nzType="text"
                 >
                     <span nz-icon nzTheme="outline" nzType="plus"></span>
                     {{"添加待办事项"}}
@@ -76,7 +76,7 @@
                         [style]="{color: getFontColor(minorColor)}"
                         class="poemFont"
                         nz-button
-                        nzShape="round" nzType="text"
+                        [nzShape]="preferenceData.buttonShape" nzType="text"
                 >
                     <span nz-icon nzTheme="outline" nzType="check"></span>
                     {{"全部完成"}}
@@ -96,7 +96,7 @@
                             [style]="{color: getFontColor(minorColor)}"
                             class="poemFont"
                             nz-button
-                            nzShape="circle" nzType="text"
+                            [nzShape]="buttonShape" nzType="text"
                     >
                         <span nz-icon nzTheme="outline" nzType="check"></span>
                     </button>
@@ -108,7 +108,7 @@
                             [style]="{color: getFontColor(minorColor), cursor: 'default'}"
                             class="poemFont"
                             nz-button
-                            nzShape="round" nzType="text"
+                            [nzShape]="preferenceData.buttonShape" nzType="text"
                     >
                         <span nz-icon nzTheme="outline" nzType="check-square"></span>
                         {{item.title}}
@@ -119,7 +119,7 @@
                             [style]="{color: getFontColor(minorColor), cursor: 'default'}"
                             class="poemFont"
                             nz-button
-                            nzShape="round" nzType="text"
+                            [nzShape]="preferenceData.buttonShape" nzType="text"
                     >
                         <span nz-icon nzType="tag" nzTheme="outline"></span>
                         {{item.tag + "｜" + item.priority}}

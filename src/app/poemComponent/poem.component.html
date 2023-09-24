@@ -6,7 +6,7 @@
             <button (click)="poemContentBtnOnClick()" (mouseout)="btnMouseOut($event)"
                     (mouseover)="btnMouseOver($event)" [style.color]="minorColor"
                     class="poemFont largeFont"
-                    nz-button nzShape="round" nzSize="large"
+                    nz-button [nzShape]="preferenceData.buttonShape" nzSize="large"
                     nzType="text"
             >
                 {{poemContent.length < 30 ? poemContent : poemContent.substring(0, 30) + "..."}}
@@ -27,7 +27,7 @@
             <button (click)="poemAuthorBtnOnClick()" (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
                     [style.color]="minorColor"
                     class="poemFont largeFont"
-                    nz-button nzShape="round" nzSize="large"
+                    nz-button [nzShape]="preferenceData.buttonShape" nzSize="large"
                     nzType="text"
             >
                 {{poemAuthorDetails.length < 30 ? poemAuthorDetails : poemAuthorDetails.substring(0, 30) + "..."}}

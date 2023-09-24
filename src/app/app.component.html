@@ -39,6 +39,7 @@
                         *nzSpaceItem
                         [majorColor]="majorColor"
                         [minorColor]="minorColor"
+                        [preferenceData]="preferenceData"
                     />
                 </nz-space>
             </div>
@@ -48,12 +49,16 @@
                     (getPreferenceData)="getPreferenceData($event)"
                     [majorColor]="majorColor"
                     [minorColor]="minorColor"
+                    [preferenceData]="preferenceData"
                 />
             </div>
         </div>
     </nz-header>
     <nz-content class="content alignCenter">
-        <poem-component [minorColor]="minorColor"/>
+        <poem-component
+            [minorColor]="minorColor"
+            [preferenceData]="preferenceData"
+        />
     </nz-content>
     <nz-footer class="footer">
         <wave-component [waveColors]="svgColors"/>

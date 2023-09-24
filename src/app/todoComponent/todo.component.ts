@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {NzMessageService} from 'ng-zorro-antd/message';
 import {getFontColor, getTimeDetails,} from "../../typescripts/publicFunctions";
+import {NzButtonShape} from "ng-zorro-antd/button";
 
 const $ = require("jquery");
 
@@ -21,6 +22,7 @@ export class todoComponent implements OnInit, OnChanges {
     todoMaxSize: number = 5;
     tag: string = "工作";
     priority: string = "★";
+    buttonShape: NzButtonShape = "round";
     protected readonly getFontColor = getFontColor;
     protected readonly getTimeDetails = getTimeDetails;
     protected readonly Date = Date;
@@ -149,6 +151,7 @@ export class todoComponent implements OnInit, OnChanges {
 
     ngOnInit(): void {
         this.display = this.preferenceData.simpleMode ? "none" : "block";
+        this.buttonShape = this.preferenceData.buttonShape === "round" ? "circle" : null;
 
         let todos = [];
         let tempTodos = localStorage.getItem("todos");

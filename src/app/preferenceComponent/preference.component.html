@@ -1,7 +1,7 @@
 <button (click)="showDrawerBtnOnClick()" [nzTooltipColor]="minorColor"
         [style]="{color: getFontColor(minorColor), backgroundColor: minorColor}"
         class="componentTheme poemFont" nz-button nz-tooltip
-        nzShape="circle"
+        [nzShape]="buttonShape"
         nzSize="large" nzTooltipPlacement="bottomRight" nzTooltipTitle="菜单栏"
         nzType="text"
 >
@@ -33,16 +33,19 @@
                 *nzSpaceItem
                 [majorColor]="majorColor"
                 [minorColor]="minorColor"
+                [preferenceData]="preferenceData"
             />
             <preferenceInfo-component
                 *nzSpaceItem
                 [majorColor]="majorColor"
                 [minorColor]="minorColor"
+                [preferenceData]="preferenceData"
             />
             <preferenceEmail-component
                 *nzSpaceItem
                 [majorColor]="majorColor"
                 [minorColor]="minorColor"
+                [preferenceData]="preferenceData"
             />
         </nz-space>
     </ng-container>
@@ -51,6 +54,7 @@
     <preferenceHeader-component
         [majorColor]="majorColor"
         [minorColor]="minorColor"
+        [preferenceData]="preferenceData"
     />
 </ng-template>
 <ng-template #drawerFooter>
@@ -58,6 +62,7 @@
         <preferenceFooter-component
             [majorColor]="majorColor"
             [minorColor]="minorColor"
+            [preferenceData]="preferenceData"
         />
     </div>
 </ng-template>

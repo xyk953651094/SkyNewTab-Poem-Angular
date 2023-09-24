@@ -38,6 +38,13 @@ export class preferenceFunctionComponent implements OnInit {
         this.message.success("已更换搜索引擎");
     }
 
+    buttonShapeRadioOnChange(value: string) {
+        this.preferenceData = this.modifyPreferenceData({buttonShape: value});
+        this.getPreferenceFunctionData.emit(this.preferenceData);
+        localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
+        this.message.success("已更换按钮形状");
+    }
+
     // 简洁模式
     simpleModeSwitchOnChange(checked: boolean) {
         this.preferenceData = this.modifyPreferenceData({simpleMode: checked});

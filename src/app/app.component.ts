@@ -53,21 +53,21 @@ export class AppComponent implements OnInit {
             if (popoverEle.length && popoverEle.length > 0) {
                 $(".ant-popover-arrow").css("display", "none");
                 // $(".ant-popover-inner").css("box-shadow", "none");
-                $(".ant-popover-inner").css("border-radius", "10px");
+                $(".ant-popover-inner").css("border-radius", "2px");
                 $(".ant-popover-title").css({
                     "color": getFontColor(this.minorColor),
                     "font-family": "'Times New Roman', cursive, sans-serif",
-                    "font-size": "20px",
+                    "font-weight": "bold",
                     "background-color": this.minorColor,
                     "border-color": this.minorColor,
-                    "border-top-left-radius": "10px",
-                    "border-top-right-radius": "10px"
+                    "border-top-left-radius": "2px",
+                    "border-top-right-radius": "2px"
                 });
                 $(".ant-popover-inner-content").css({
                     "color": getFontColor(this.minorColor),
                     "background-color": this.minorColor,
-                    "border-bottom-left-radius": "10px",
-                    "border-bottom-right-radius": "10px"
+                    "border-bottom-left-radius": "2px",
+                    "border-bottom-right-radius": "2px"
                 });
             }
 
@@ -145,7 +145,12 @@ export class AppComponent implements OnInit {
                     "color": getFontColor(this.minorColor),
                     "font-family": "Times New Roman, cursive, sans-serif"
                 })
-                $(".ant-modal-footer > .ant-btn").addClass("ant-btn-round ant-btn-text").removeClass("ant-btn-default ant-btn-primary");
+                if(this.preferenceData.buttonShape === "round") {
+                    $(".ant-modal-footer > .ant-btn").removeClass("ant-btn-default ant-btn-primary").addClass("poemFont ant-btn-round ant-btn-text");
+                }
+                else {
+                    $(".ant-modal-footer > .ant-btn").removeClass("ant-btn-round ant-btn-default ant-btn-primary").addClass("poemFont ant-btn-text");
+                }
                 $(".ant-modal-footer > .ant-btn").on("mouseover", (e: any) => {
                     e.currentTarget.style.backgroundColor = this.majorColor;
                     e.currentTarget.style.color = getFontColor(this.majorColor);

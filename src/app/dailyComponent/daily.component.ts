@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {NzMessageService} from 'ng-zorro-antd/message';
 import {getFontColor, getTimeDetails,} from "../../typescripts/publicFunctions";
+import {NzButtonShape} from "ng-zorro-antd/button";
 
 const $ = require("jquery");
 
@@ -20,6 +21,7 @@ export class DailyComponent implements OnInit, OnChanges {
     dailySize: number = 0;
     dailyMaxSize: number = 5;
     selectedTimeStamp: number = 0;
+    buttonShape: NzButtonShape = "round";
     protected readonly getFontColor = getFontColor;
     protected readonly getTimeDetails = getTimeDetails;
     protected readonly Date = Date;
@@ -157,6 +159,7 @@ export class DailyComponent implements OnInit, OnChanges {
 
     ngOnInit(): void {
         this.display = this.preferenceData.simpleMode ? "none" : "block"
+        this.buttonShape = this.preferenceData.buttonShape === "round" ? "circle" : null;
 
         let daily = [];
         let tempDaily = localStorage.getItem("daily");

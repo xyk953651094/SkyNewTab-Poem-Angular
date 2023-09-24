@@ -4,8 +4,9 @@
             <button (click)="poemContentBtnOnClick()" (mouseout)="btnMouseOut($event)"
                     (mouseover)="btnMouseOver($event)"
                     [style.color]="getFontColor(minorColor)" class="popupFont"
-                    nz-button nzShape="round" nzType="text"
+                    nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
             >
+                <span nz-icon nzType="read" nzTheme="outline"></span>
                 {{poemContent.length < poemMaxSize ? poemContent : poemContent.substring(0, poemMaxSize) + "..."}}
             </button>
         </div>
@@ -13,8 +14,9 @@
             <button (click)="poemAuthorBtnOnClick()" (mouseout)="btnMouseOut($event)"
                     (mouseover)="btnMouseOver($event)"
                     [style.color]="getFontColor(minorColor)" class="popupFont"
-                    nz-button nzShape="round" nzType="text"
+                    nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
             >
+                <span nz-icon nzType="user" nzTheme="outline"></span>
                 {{poemAuthorDetails.length < poemMaxSize ? poemAuthorDetails : poemAuthorDetails.substring(0, poemMaxSize) + "..."}}
             </button>
         </div>

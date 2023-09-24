@@ -3,7 +3,7 @@
         [style]="{display: display, cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
         class="componentTheme poemFont"
         nz-button
-        nz-popover nzPopoverPlacement="bottomLeft" nzShape="round" nzSize="large"
+        nz-popover nzPopoverPlacement="bottomLeft" [nzShape]="preferenceData.buttonShape" nzSize="large"
         nzType="text"
 >
     <span [class]="weatherIcon">&nbsp;&nbsp;</span>
@@ -19,7 +19,7 @@
                     [style]="{color: getFontColor(minorColor), float: 'right'}"
                     class="poemFont"
                     nz-button
-                    nzShape="round" nzType="text"
+                    [nzShape]="preferenceData.buttonShape" nzType="text"
             >
                 <span nz-icon nzTheme="outline" nzType="info-circle"></span>
                 {{"更多信息"}}
@@ -38,7 +38,7 @@
                                 [style]="{color: getFontColor(minorColor), float: 'right'}"
                                 class="poemFont"
                                 nz-button
-                                nzShape="round" nzType="text"
+                                [nzShape]="preferenceData.buttonShape" nzType="text"
                         >
                             <span nz-icon nzType="environment" nzTheme="outline"></span>
                             {{"地理位置：" + location}}
@@ -48,7 +48,7 @@
                         <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
                                 [style]="{color: getFontColor(minorColor), cursor: 'default'}"
                                 class="poemFont"
-                                nz-button nzShape="round" nzType="text"
+                                nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
                         >
                             <span class="bi bi-wind"></span>
                             {{"&nbsp;&nbsp;&nbsp;风速情况：" + this.windInfo}}
@@ -60,7 +60,7 @@
                         <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
                                 [style]="{color: getFontColor(minorColor), cursor: 'default'}"
                                 class="poemFont"
-                                nz-button nzShape="round" nzType="text"
+                                nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
                         >
                             <span class="bi bi-moisture"></span>
                             {{"&nbsp;&nbsp;&nbsp;空气湿度：" + humidity + "%"}}
@@ -70,7 +70,7 @@
                         <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
                                 [style]="{color: getFontColor(minorColor), cursor: 'default'}"
                                 class="poemFont"
-                                nz-button nzShape="round" nzType="text"
+                                nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
                         >
                             <span class="bi bi-water"></span>
                             {{"&nbsp;&nbsp;&nbsp;空气质量：" + pm25}}
@@ -82,7 +82,7 @@
                         <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
                                 [style]="{color: getFontColor(minorColor), cursor: 'default'}"
                                 class="poemFont"
-                                nz-button nzShape="round" nzType="text"
+                                nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
                         >
                             <span class="bi bi-cloud-rain"></span>
                             {{"&nbsp;&nbsp;&nbsp;降雨概率：" + rainfall}}
@@ -92,7 +92,7 @@
                         <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
                                 [style]="{color: getFontColor(minorColor), cursor: 'default'}"
                                 class="poemFont"
-                                nz-button nzShape="round" nzType="text"
+                                nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
                         >
                             <span class="bi bi-eye"></span>
                             {{"&nbsp;&nbsp;&nbsp;视线距离：" + visibility}}

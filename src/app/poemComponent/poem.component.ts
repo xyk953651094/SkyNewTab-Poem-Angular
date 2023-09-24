@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {getFontColor} from "../../typescripts/publicFunctions";
+import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
 const poemRequest = require("jinrishici");
 
@@ -10,6 +11,7 @@ const poemRequest = require("jinrishici");
 })
 export class PoemComponent implements OnInit {
     @Input() minorColor: string = "#000000";
+    @Input() preferenceData = defaultPreferenceData;
     title = "PoemComponent";
     searchEngineUrl: string = "https://www.bing.com/search?q=";
     poemContent: string = "海上生明月，天涯共此时。";

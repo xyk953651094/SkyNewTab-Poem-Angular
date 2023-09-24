@@ -3,7 +3,7 @@
         [style]="{display: display, cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
         class="componentTheme poemFont"
         nz-button
-        nz-popover nzPopoverPlacement="bottomLeft" nzShape="round" nzSize="large"
+        nz-popover nzPopoverPlacement="bottomLeft" [nzShape]="preferenceData.buttonShape" nzSize="large"
         nzType="text"
 >
     <span [class]="greetIcon">&nbsp;&nbsp;</span>
@@ -20,7 +20,7 @@
                     [style]="{color: getFontColor(minorColor)}"
                     class="poemFont"
                     nz-button
-                    nzShape="round" nzType="text"
+                    [nzShape]="preferenceData.buttonShape" nzType="text"
             >
                 <span nz-icon nzTheme="outline" nzType="info-circle"></span>
                 {{"更多信息"}}
@@ -34,7 +34,7 @@
                 [style]="{color: getFontColor(minorColor), cursor: 'default'}"
                 class="poemFont"
                 nz-button
-                nzShape="round" nzType="text"
+                [nzShape]="preferenceData.buttonShape" nzType="text"
         >
             <span nz-icon nzTheme="outline" nzType="calendar"></span>
             {{calendar}}
@@ -44,7 +44,7 @@
                 [style]="{color: getFontColor(minorColor), cursor: 'default'}"
                 class="poemFont"
                 nz-button
-                nzShape="round" nzType="text"
+                [nzShape]="preferenceData.buttonShape" nzType="text"
         >
             <span nz-icon nzTheme="outline" nzType="check-circle"></span>
             {{"宜：" + (suit.length < btnMaxSize) ? suit : suit.substring(0, btnMaxSize) + "..."}}
@@ -54,7 +54,7 @@
                 [style]="{color: getFontColor(minorColor), cursor: 'default'}"
                 class="poemFont"
                 nz-button
-                nzShape="round" nzType="text"
+                [nzShape]="preferenceData.buttonShape" nzType="text"
         >
             <span nz-icon nzTheme="outline" nzType="close-circle"></span>
             {{"忌：" + (avoid.length < btnMaxSize) ? avoid : avoid.substring(0, btnMaxSize) + "..."}}

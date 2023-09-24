@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {getFontColor} from "../../typescripts/publicFunctions";
+import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
 @Component({
     selector: "preferenceHeader-component",
@@ -9,6 +10,7 @@ import {getFontColor} from "../../typescripts/publicFunctions";
 export class preferenceHeaderComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
+    @Input() preferenceData = defaultPreferenceData;
     title = "preferenceHeaderComponent";
     protected readonly getFontColor = getFontColor;
 
