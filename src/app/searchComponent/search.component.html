@@ -25,7 +25,17 @@
 </ng-template>
 
 <ng-template #inputPrefix>
-    <nz-avatar nzSize="small" [nzSrc]="searchEngineIconUrl" nzAlt="图标"/>
+    <div nz-row nzAlign="middle">
+        <button class="poemFont" nz-button nzType="text" nzSize="small"
+                [style]="{
+                    cursor: 'default',
+                    backgroundColor: minorColor,
+                    color: getFontColor(minorColor),
+                }">
+            {{searchEngineName}}
+        </button>
+        <nz-divider nzType="vertical"></nz-divider>
+    </div>
 </ng-template>
 
 <ng-template #inputSuffix>

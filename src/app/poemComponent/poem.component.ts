@@ -21,6 +21,7 @@ export class PoemComponent implements OnInit {
     btnMouseOver(e: any) {
         e.currentTarget.style.backgroundColor = this.minorColor;
         e.currentTarget.style.color = getFontColor(this.minorColor);
+        e.currentTarget.classList.remove("poemText");
         e.currentTarget.classList.add("componentTheme");
     }
 
@@ -28,6 +29,7 @@ export class PoemComponent implements OnInit {
         e.currentTarget.style.backgroundColor = "transparent";
         e.currentTarget.style.color = this.minorColor;
         e.currentTarget.classList.remove("componentTheme");
+        e.currentTarget.classList.add("poemText");
     }
 
     // 今日诗词

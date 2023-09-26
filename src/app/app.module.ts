@@ -51,6 +51,8 @@ import {preferenceInfoComponent} from "../preferenceComponents/preferenceInfoCom
 import {preferenceLinkComponent} from "../preferenceComponents/preferenceLinkComponent/preferenceLink.component";
 import {preferenceFooterComponent} from "../preferenceComponents/preferenceFooterComponent/preferenceFooter.component";
 import {preferenceHeaderComponent} from "../preferenceComponents/preferenceHeaderComponent/preferenceHeader.component";
+import {preferenceProductComponent} from "../preferenceComponents/preferenceProductComponent/preferenceProduct.component";
+import {NzDividerModule} from "ng-zorro-antd/divider";
 
 registerLocaleData(zh);
 
@@ -71,7 +73,8 @@ registerLocaleData(zh);
         preferenceInfoComponent,
         preferenceLinkComponent,
         preferenceFunctionComponent,
-        preferenceHeaderComponent
+        preferenceHeaderComponent,
+        preferenceProductComponent
     ],
     imports: [
         BrowserModule,
@@ -99,7 +102,8 @@ registerLocaleData(zh);
         NzSelectModule,
         NzRateModule,
         NzEmptyModule,
-        NzAlertModule
+        NzAlertModule,
+        NzDividerModule
     ],
     providers: [
         {provide: NZ_I18N, useValue: zh_CN},

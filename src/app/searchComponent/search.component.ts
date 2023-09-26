@@ -15,8 +15,8 @@ export class SearchComponent implements OnInit {
     @Input() preferenceData = defaultPreferenceData;
     title = "SearchComponent";
     display: "block" | "none" = "block";
+    searchEngineName: string = "Bing";
     searchEngineUrl: string = "https://www.bing.com/search?q=";
-    searchEngineIconUrl: string = "https://www.bing.com/favicon.ico";
     buttonShape: NzButtonShape = "round";
 
     onPressEnter(e: any) {
@@ -26,9 +26,10 @@ export class SearchComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        let searchEngineDetail = getSearchEngineDetail(this.preferenceData.searchEngine);
         this.display = this.preferenceData.simpleMode ? "none" : "block";
-        this.searchEngineUrl = getSearchEngineDetail(this.preferenceData.searchEngine).searchEngineUrl;
-        this.searchEngineIconUrl = getSearchEngineDetail(this.preferenceData.searchEngine).searchEngineIconUrl;
+        this.searchEngineName = searchEngineDetail.searchEngineName;
+        this.searchEngineUrl = searchEngineDetail.searchEngineUrl;
         this.buttonShape = this.preferenceData.buttonShape === "round" ? "circle" : null;
     }
 
