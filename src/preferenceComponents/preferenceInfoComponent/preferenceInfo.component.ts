@@ -25,15 +25,19 @@ export class preferenceInfoComponent implements OnInit {
     }
 
     calendarBtnOnClick() {
-        window.open("mailto:xyk953651094@qq.com?&subject=云开诗词新标签页-功能建议", "_blank");
+        window.open("https://www.mxnzp.com/", "_blank");
     }
 
     weatherBtnOnClick() {
-        window.open("mailto:xyk953651094@qq.com?&subject=云开诗词新标签页-问题反馈", "_blank");
+        window.open("https://www.jinrishici.com/", "_blank");
     }
 
     poemBtnOnClick() {
-        window.open("mailto:xyk953651094@qq.com?&subject=云开诗词新标签页-问题反馈", "_blank");
+        window.open("https://unsplash.com/", "_blank");
+    }
+
+    codeBtnOnClick() {
+        window.open("https://www.jetbrains.com.cn/community/opensource/#support/", "_blank");
     }
 
     ngOnInit(): void {
