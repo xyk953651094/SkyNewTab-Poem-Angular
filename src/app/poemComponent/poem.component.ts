@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {getFontColor} from "../../typescripts/publicFunctions";
+import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
 const poemRequest = require("jinrishici");
 
@@ -10,6 +11,7 @@ const poemRequest = require("jinrishici");
 })
 export class PoemComponent implements OnInit {
     @Input() minorColor: string = "#000000";
+    @Input() preferenceData = defaultPreferenceData;
     title = "PoemComponent";
     searchEngineUrl: string = "https://www.bing.com/search?q=";
     poemContent: string = "海上生明月，天涯共此时。";
@@ -19,6 +21,7 @@ export class PoemComponent implements OnInit {
     btnMouseOver(e: any) {
         e.currentTarget.style.backgroundColor = this.minorColor;
         e.currentTarget.style.color = getFontColor(this.minorColor);
+        e.currentTarget.classList.remove("poemText");
         e.currentTarget.classList.add("componentTheme");
     }
 
@@ -26,6 +29,7 @@ export class PoemComponent implements OnInit {
         e.currentTarget.style.backgroundColor = "transparent";
         e.currentTarget.style.color = this.minorColor;
         e.currentTarget.classList.remove("componentTheme");
+        e.currentTarget.classList.add("poemText");
     }
 
     // 今日诗词

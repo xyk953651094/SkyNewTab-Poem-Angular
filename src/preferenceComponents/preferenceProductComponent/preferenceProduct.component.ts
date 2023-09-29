@@ -1,17 +1,19 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {getFontColor} from "../../typescripts/publicFunctions";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
+import {NzButtonShape} from "ng-zorro-antd/button";
 
 @Component({
-    selector: "preferenceInfo-component",
-    templateUrl: "./preferenceInfo.component.html",
-    styleUrls: ["./preferenceInfo.component.scss", "../../stylesheets/publicStyles.scss"]
+    selector: "preferenceProduct-component",
+    templateUrl: "./preferenceProduct.component.html",
+    styleUrls: ["./preferenceProduct.component.scss", "../../stylesheets/publicStyles.scss"]
 })
-export class preferenceInfoComponent implements OnInit {
+export class preferenceProductComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
     @Input() preferenceData = defaultPreferenceData;
-    title = "preferenceInfoComponent";
+    title = "preferenceProductComponent";
+    buttonShape: NzButtonShape = "round";
     protected readonly getFontColor = getFontColor;
 
     btnMouseOver(e: any) {
@@ -24,23 +26,11 @@ export class preferenceInfoComponent implements OnInit {
         e.currentTarget.style.color = getFontColor(this.minorColor);
     }
 
-    calendarBtnOnClick() {
-        window.open("https://www.mxnzp.com/", "_blank");
-    }
-
-    weatherBtnOnClick() {
-        window.open("https://www.jinrishici.com/", "_blank");
-    }
-
-    poemBtnOnClick() {
-        window.open("https://unsplash.com/", "_blank");
-    }
-
-    codeBtnOnClick() {
-        window.open("https://www.jetbrains.com.cn/community/opensource/#support/", "_blank");
+    homeBtnOnClick(terrace: string, frame: string) {
+        window.open("https://" + terrace + ".com/xyk953651094/SkyNewTab-" + frame, "_blank");
     }
 
     ngOnInit(): void {
-
+        this.buttonShape = this.preferenceData.buttonShape === "round" ? "circle" : null;
     }
 }

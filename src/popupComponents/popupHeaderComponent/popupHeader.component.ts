@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {getFontColor} from "../../typescripts/publicFunctions";
+import {PreferenceDataInterface} from "../../typescripts/publicInterface";
+import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
 @Component({
     selector: "popupHeader-component",
@@ -9,6 +11,7 @@ import {getFontColor} from "../../typescripts/publicFunctions";
 export class popupHeaderComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
+    @Input() preferenceData: PreferenceDataInterface = defaultPreferenceData;
     title = "popupHeaderComponent";
     protected readonly getFontColor = getFontColor;
 

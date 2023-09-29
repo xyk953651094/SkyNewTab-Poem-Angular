@@ -1,7 +1,7 @@
 <button (click)="showDrawerBtnOnClick()" [nzTooltipColor]="minorColor"
         [style]="{color: getFontColor(minorColor), backgroundColor: minorColor}"
         class="componentTheme poemFont" nz-button nz-tooltip
-        nzShape="circle"
+        [nzShape]="buttonShape"
         nzSize="large" nzTooltipPlacement="bottomRight" nzTooltipTitle="菜单栏"
         nzType="text"
 >
@@ -29,21 +29,30 @@
                 [majorColor]="majorColor"
                 [minorColor]="minorColor"
             />
-            <preferenceLink-component
-                *nzSpaceItem
-                [majorColor]="majorColor"
-                [minorColor]="minorColor"
-            />
             <preferenceInfo-component
                 *nzSpaceItem
                 [majorColor]="majorColor"
                 [minorColor]="minorColor"
+                [preferenceData]="preferenceData"
             />
             <preferenceEmail-component
                 *nzSpaceItem
                 [majorColor]="majorColor"
                 [minorColor]="minorColor"
+                [preferenceData]="preferenceData"
             />
+            <preferenceProduct-component
+                *nzSpaceItem
+                [majorColor]="majorColor"
+                [minorColor]="minorColor"
+                [preferenceData]="preferenceData"
+            />
+<!--            <preferenceLink-component-->
+<!--                *nzSpaceItem-->
+<!--                [majorColor]="majorColor"-->
+<!--                [minorColor]="minorColor"-->
+<!--                [preferenceData]="preferenceData"-->
+<!--            />-->
         </nz-space>
     </ng-container>
 </nz-drawer>
@@ -51,6 +60,7 @@
     <preferenceHeader-component
         [majorColor]="majorColor"
         [minorColor]="minorColor"
+        [preferenceData]="preferenceData"
     />
 </ng-template>
 <ng-template #drawerFooter>
@@ -58,6 +68,7 @@
         <preferenceFooter-component
             [majorColor]="majorColor"
             [minorColor]="minorColor"
+            [preferenceData]="preferenceData"
         />
     </div>
 </ng-template>

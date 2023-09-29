@@ -8,40 +8,48 @@
             <button (click)="baiduBtnOnClick()" (mouseout)="btnMouseOut($event)"
                     (mouseover)="btnMouseOver($event)"
                     [style.color]="getFontColor(minorColor)" class="poemFont"
-                    nz-button nzShape="round" nzType="text"
+                    nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
             >
-                <nz-avatar [nzSize]="16" nzShape="square" nzSrc="https://www.baidu.com/favicon.ico"></nz-avatar>
-                {{"&nbsp;&nbsp;百度汉语"}}
+                <span nz-icon>
+                    <span nz-icon nzType="read" nzTheme="outline"></span>
+                </span>
+                {{"百度汉语"}}
             </button>
         </div>
         <div nz-col nzSpan="12">
             <button (click)="sougouBtnOnClick()" (mouseout)="btnMouseOut($event)"
                     (mouseover)="btnMouseOver($event)"
                     [style.color]="getFontColor(minorColor)" class="poemFont"
-                    nz-button nzShape="round" nzType="text"
+                    nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
             >
-                <nz-avatar [nzSize]="16" nzShape="square" nzSrc="https://www.sogou.com/favicon.ico"></nz-avatar>
-                {{"&nbsp;&nbsp;搜狗汉语"}}
+                <span nz-icon>
+                    <span nz-icon nzType="read" nzTheme="outline"></span>
+                </span>
+                {{"搜狗汉语"}}
             </button>
         </div>
         <div nz-col nzSpan="12">
             <button (click)="soBtnOnClick()" (mouseout)="btnMouseOut($event)"
                     (mouseover)="btnMouseOver($event)"
                     [style.color]="getFontColor(minorColor)" class="poemFont"
-                    nz-button nzShape="round" nzType="text"
+                    nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
             >
-                <nz-avatar [nzSize]="16" nzShape="square" nzSrc="https://www.so.com/favicon.ico"></nz-avatar>
-                {{"&nbsp;&nbsp;360国学"}}
+                <span nz-icon>
+                    <span nz-icon nzType="read" nzTheme="outline"></span>
+                </span>
+                {{"360国学"}}
             </button>
         </div>
         <div nz-col nzSpan="12">
             <button (click)="jetBrainsBtnOnClick()" (mouseout)="btnMouseOut($event)"
                     (mouseover)="btnMouseOver($event)"
                     [style.color]="getFontColor(minorColor)" class="poemFont"
-                    nz-button nzShape="round" nzType="text"
+                    nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
             >
-                <nz-avatar [nzSize]="16" nzShape="square" nzSrc="https://www.jetbrains.com/favicon.ico"></nz-avatar>
-                {{"&nbsp;&nbsp;JetBrains"}}
+                <span nz-icon>
+                    <span nz-icon nzType="code" nzTheme="outline"></span>
+                </span>
+                {{"JetBrains"}}
             </button>
         </div>
     </div>

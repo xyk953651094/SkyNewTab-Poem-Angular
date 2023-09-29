@@ -1,0 +1,43 @@
+<button [nzPopoverContent]="popoverContent" [nzPopoverOverlayStyle]="{width: '550px'}"
+        [nzPopoverTitle]="popoverTitle"
+        [style]="{display: display, cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
+        class="componentTheme poemFont"
+        nz-button
+        nz-popover nzPopoverPlacement="bottomLeft" [nzShape]="buttonShape" nzSize="large"
+        nzType="text"
+>
+    <span nz-icon nzType="search" nzTheme="outline"></span>
+</button>
+
+<ng-template #popoverTitle>
+    <div nz-row nzAlign="middle">
+        <div nz-col nzSpan="24">
+            <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
+                {{"搜索栏"}}
+            </span>
+        </div>
+    </div>
+</ng-template>
+<ng-template #popoverContent>
+    <nz-input-group [nzPrefix]="inputPrefix" [nzSuffix]="inputSuffix">
+        <input nz-input id="searchInput" class="poemFont" placeholder="按下 Enter 键搜索" (keypress)="onPressEnter($event)"/>
+    </nz-input-group>
+</ng-template>
+
+<ng-template #inputPrefix>
+    <div nz-row nzAlign="middle">
+        <button class="poemFont" nz-button nzType="text" nzSize="small"
+                [style]="{
+                    cursor: 'default',
+                    backgroundColor: minorColor,
+                    color: getFontColor(minorColor),
+                }">
+            {{searchEngineName}}
+        </button>
+        <nz-divider nzType="vertical"></nz-divider>
+    </div>
+</ng-template>
+
+<ng-template #inputSuffix>
+    <span nz-icon nzType="search" nzTheme="outline"></span>
+</ng-template>

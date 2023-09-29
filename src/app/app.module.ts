@@ -34,6 +34,7 @@ import {NzEmptyModule} from 'ng-zorro-antd/empty';
 import {NzAlertModule} from 'ng-zorro-antd/alert';
 
 import {SunComponent} from "./sunComponent/sun.component";
+import {SearchComponent} from "./searchComponent/search.component";
 import {GreetComponent} from './greetComponent/greet.component';
 import {WeatherComponent} from './weatherComponent/weather.component';
 import {DailyComponent} from './dailyComponent/daily.component';
@@ -50,6 +51,8 @@ import {preferenceInfoComponent} from "../preferenceComponents/preferenceInfoCom
 import {preferenceLinkComponent} from "../preferenceComponents/preferenceLinkComponent/preferenceLink.component";
 import {preferenceFooterComponent} from "../preferenceComponents/preferenceFooterComponent/preferenceFooter.component";
 import {preferenceHeaderComponent} from "../preferenceComponents/preferenceHeaderComponent/preferenceHeader.component";
+import {preferenceProductComponent} from "../preferenceComponents/preferenceProductComponent/preferenceProduct.component";
+import {NzDividerModule} from "ng-zorro-antd/divider";
 
 registerLocaleData(zh);
 
@@ -57,6 +60,7 @@ registerLocaleData(zh);
     declarations: [
         AppComponent,
         SunComponent,
+        SearchComponent,
         GreetComponent,
         WeatherComponent,
         DailyComponent,
@@ -69,7 +73,8 @@ registerLocaleData(zh);
         preferenceInfoComponent,
         preferenceLinkComponent,
         preferenceFunctionComponent,
-        preferenceHeaderComponent
+        preferenceHeaderComponent,
+        preferenceProductComponent
     ],
     imports: [
         BrowserModule,
@@ -97,7 +102,8 @@ registerLocaleData(zh);
         NzSelectModule,
         NzRateModule,
         NzEmptyModule,
-        NzAlertModule
+        NzAlertModule,
+        NzDividerModule
     ],
     providers: [
         {provide: NZ_I18N, useValue: zh_CN},
