@@ -1,0 +1,10 @@
+<div nz-row nzJustify="center">
+    <button (click)="toTopBtnOnClick('github')" (mouseout)="btnMouseOut($event)"
+            (mouseover)="btnMouseOver($event)"
+            [style.color]="getFontColor(minorColor)"
+            class="poemFont" nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
+    >
+        <span nz-icon nzType="to-top" nzTheme="outline"></span>
+        {{"回到顶部"}}
+    </button>
+</div>
