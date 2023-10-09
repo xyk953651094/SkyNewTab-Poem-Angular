@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {getFontColor} from "../../typescripts/publicFunctions";
-import {defaultPreferenceData, themeArray} from "../../typescripts/publicConstants";
+import {getFontColor, setColorTheme} from "../../typescripts/publicFunctions";
+import {defaultPreferenceData, lightThemeArray} from "../../typescripts/publicConstants";
 
 const $ = require("jquery")
 
@@ -25,15 +25,17 @@ export class popupComponent implements OnInit {
         this.preferenceData = tempPreferenceData === null ? defaultPreferenceData : JSON.parse(tempPreferenceData);
 
         // 设置颜色主题
-        let bodyEle = $("body");
-        let randomNum = Math.floor(Math.random() * themeArray.length);  // 随机选择
-        let themeColor = themeArray[randomNum];
-        let tempThemeColor = localStorage.getItem("themeColor");
+        let themeArray;
+        let tempThemeColor = localStorage.getItem("themeArray");
         if (tempThemeColor) {
-            themeColor = JSON.parse(tempThemeColor);
+            themeArray = JSON.parse(tempThemeColor);
+            let bodyEle = $("body");
+            bodyEle.css("background-color", themeArray.minorColor + " !important");
         }
-        bodyEle.css("background-color", themeColor.minorColor + " !important");
-        this.majorColor = themeColor.majorColor;
-        this.minorColor = themeColor.minorColor;
+        else {
+            themeArray = setColorTheme();
+        }
+        this.majorColor = themeArray.majorColor;
+        this.minorColor = themeArray.minorColor;
     }
 }

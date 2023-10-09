@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {defaultPreferenceData, themeArray} from "../typescripts/publicConstants";
-import {getFontColor} from "../typescripts/publicFunctions";
+import {defaultPreferenceData, lightThemeArray} from "../typescripts/publicConstants";
+import {getFontColor, setColorTheme} from "../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../typescripts/publicInterface";
 
 const $ = require("jquery");
@@ -27,17 +27,14 @@ export class AppComponent implements OnInit {
     // 随机颜色主题
     setColorTheme() {
         // 随机颜色主题
-        let theme: ({ majorColor: string, minorColor: string, svgColors: string[] }[]) = themeArray;
-        let randomNum = Math.floor(Math.random() * theme.length);  // 随机选择
-        localStorage.setItem("themeColor", JSON.stringify(themeArray[randomNum]));
-        this.majorColor = theme[randomNum].majorColor;
-        this.minorColor = theme[randomNum].minorColor;
-        this.svgColors = theme[randomNum].svgColors;
-
-        let bodyEle = $("body");
-        bodyEle.css("background-color", theme[randomNum].majorColor);
+        let themeArray = setColorTheme();
+        localStorage.setItem("themeArray", JSON.stringify(themeArray));
+        this.majorColor = themeArray.majorColor;
+        this.minorColor = themeArray.minorColor;
+        this.svgColors = themeArray.svgColors;
 
         // 修改弹窗主题
+        let bodyEle = $("body");
         bodyEle.bind("DOMNodeInserted", () => {
             // 通用
             $(".ant-list-item:not(:last-child)").css("border-bottom", "1px solid " + getFontColor(this.minorColor));
