@@ -19,7 +19,7 @@ export class WeatherComponent implements OnInit, OnChanges {
     display = "block";
     searchEngineUrl: string = "https://www.bing.com/search?q=";
     weatherIcon: string = "";
-    weatherContent: string = "";
+    weatherContent: string = "暂无信息";
     location: string = "暂无信息";
     humidity: string = "暂无信息";
     pm25: string = "暂无信息";

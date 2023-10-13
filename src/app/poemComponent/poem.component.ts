@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
+import {NzMessageService} from 'ng-zorro-antd/message';
 import {getFontColor} from "../../typescripts/publicFunctions";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
@@ -17,6 +18,9 @@ export class PoemComponent implements OnInit {
     poemContent: string = "海上生明月，天涯共此时。";
     poemAuthor: string = "张九龄";
     poemAuthorDetails: string = "【唐】张九龄 ·《望月怀远》"
+
+    constructor(private message: NzMessageService) {
+    }
 
     btnMouseOver(e: any) {
         e.currentTarget.style.backgroundColor = this.minorColor;
@@ -63,15 +67,15 @@ export class PoemComponent implements OnInit {
         let nowTimeStamp = new Date().getTime();
         if (lastPoemRequestTime === null) {  // 第一次请求时 lastRequestTime 为 null，因此直接进行请求赋值 lastRequestTime
             this.getPoem();
-        } else if (nowTimeStamp - parseInt(lastPoemRequestTime) > 60 * 1000) {  // 必须多于一分钟才能进行新的请求
+        } else if (nowTimeStamp - parseInt(lastPoemRequestTime) > 10 * 60 * 1000) {  // 必须多于十分钟才能进行新的请求
             this.getPoem();
-        } else {  // 一分钟之内使用上一次请求结果
+        } else {  // 十分钟之内使用上一次请求结果
             let lastPoem: any = localStorage.getItem("lastPoem");
             if (lastPoem) {
                 lastPoem = JSON.parse(lastPoem);
                 this.setPoem(lastPoem);
             } else {
-                // this.message.error("获取诗词失败");
+                this.message.error("获取诗词失败");
             }
         }
     }

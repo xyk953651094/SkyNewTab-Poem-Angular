@@ -27,8 +27,8 @@
 <ng-template #inputPrefix>
     <div nz-row nzAlign="middle">
         <button class="poemFont" nz-button nzType="text" nzSize="small"
+                (click)="changeSearchEngine()"
                 [style]="{
-                    cursor: 'default',
                     backgroundColor: minorColor,
                     color: getFontColor(minorColor),
                 }">

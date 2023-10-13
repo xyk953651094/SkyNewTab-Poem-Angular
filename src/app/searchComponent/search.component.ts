@@ -25,6 +25,18 @@ export class SearchComponent implements OnInit {
         }
     }
 
+    changeSearchEngine() {
+        const searchEngines = ["Baidu", "Bing", "Google", "Yandex"];
+        let currentIndex = searchEngines.indexOf(this.searchEngineName);
+        let nextIndex = 0;
+        if (currentIndex !== searchEngines.length - 1) {
+            nextIndex = currentIndex + 1;
+        }
+
+        this.searchEngineName = searchEngines[nextIndex];
+        this.searchEngineUrl = getSearchEngineDetail(searchEngines[nextIndex].toLowerCase()).searchEngineUrl;
+    }
+
     ngOnInit(): void {
         let searchEngineDetail = getSearchEngineDetail(this.preferenceData.searchEngine);
         this.display = this.preferenceData.simpleMode ? "none" : "block";

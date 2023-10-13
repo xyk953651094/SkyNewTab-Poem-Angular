@@ -33,7 +33,7 @@ export class preferenceInfoComponent implements OnInit {
     }
 
     poemBtnOnClick() {
-        window.open("https://unsplash.com/", "_blank");
+        window.open("https://www.jinrishici.com/", "_blank");
     }
 
     codeBtnOnClick() {

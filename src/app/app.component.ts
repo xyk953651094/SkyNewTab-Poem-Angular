@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {defaultPreferenceData, lightThemeArray} from "../typescripts/publicConstants";
-import {getFontColor, setColorTheme} from "../typescripts/publicFunctions";
+import {defaultPreferenceData} from "../typescripts/publicConstants";
+import {getFontColor, getPreferenceDataStorage, setColorTheme} from "../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../typescripts/publicInterface";
 
 const $ = require("jquery");
@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
     majorColor = "#000000";
     minorColor: string = "#ffffff";
     svgColors: string[] = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"];
-    preferenceData: PreferenceDataInterface = defaultPreferenceData;
+    preferenceData: PreferenceDataInterface = getPreferenceDataStorage();
 
     constructor() {
     }
@@ -161,15 +161,6 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // 加载偏好设置
-        let tempPreferenceData = localStorage.getItem("preferenceData");
-        if (tempPreferenceData === null) {
-            this.preferenceData = defaultPreferenceData
-            localStorage.setItem("preferenceData", JSON.stringify(defaultPreferenceData));
-        } else {
-            this.preferenceData = JSON.parse(tempPreferenceData);
-        }
-
         // 颜色主题
         this.setColorTheme();
     }
