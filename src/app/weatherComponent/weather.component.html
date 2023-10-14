@@ -31,6 +31,15 @@
     <nz-list>
         <nz-list-item>
             <nz-space nzDirection="vertical">
+                <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                        [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+                        class="poemFont"
+                        nz-button *nzSpaceItem
+                        [nzShape]="preferenceData.buttonShape" nzType="text"
+                >
+                    <span nz-icon nzType="clock-circle" nzTheme="outline"></span>
+                    {{"最后更新时间：" + lastRequestTime}}
+                </button>
                 <div nz-row *nzSpaceItem [nzGutter]="8">
                     <div nzSpan="12" nz-col>
                         <button (click)="locationBtnOnClick()" (mouseout)="btnMouseOut($event)"
