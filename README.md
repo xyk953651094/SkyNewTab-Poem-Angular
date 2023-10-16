@@ -38,4 +38,4 @@
 <img width="1440" alt="截屏2023-09-10 21 29 46" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/9ae855b6-7228-45e6-9dae-df2cdc2703fc">
 
 ### Safari
-* V1.7.0 版本由于在 Xcode 中编译时出现问题，适配 Safari 进展暂时迟缓
+* V1.7.0 版本由于在 Xcode 中编译时出现问题，适配 Safari 进展暂时迟缓，后续暂时不会推进

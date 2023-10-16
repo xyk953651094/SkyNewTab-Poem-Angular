@@ -32,6 +32,7 @@ import {NzSelectModule} from 'ng-zorro-antd/select';
 import {NzRateModule} from 'ng-zorro-antd/rate';
 import {NzEmptyModule} from 'ng-zorro-antd/empty';
 import {NzAlertModule} from 'ng-zorro-antd/alert';
+import {NzDividerModule} from "ng-zorro-antd/divider";
 
 import {SunComponent} from "./sunComponent/sun.component";
 import {SearchComponent} from "./searchComponent/search.component";
@@ -52,7 +53,7 @@ import {preferenceLinkComponent} from "../preferenceComponents/preferenceLinkCom
 import {preferenceFooterComponent} from "../preferenceComponents/preferenceFooterComponent/preferenceFooter.component";
 import {preferenceHeaderComponent} from "../preferenceComponents/preferenceHeaderComponent/preferenceHeader.component";
 import {preferenceProductComponent} from "../preferenceComponents/preferenceProductComponent/preferenceProduct.component";
-import {NzDividerModule} from "ng-zorro-antd/divider";
+import {preferenceToTopComponent} from "../preferenceComponents/preferenceToTopComponent/preferenceToTop.component";
 
 registerLocaleData(zh);
 
@@ -74,7 +75,8 @@ registerLocaleData(zh);
         preferenceLinkComponent,
         preferenceFunctionComponent,
         preferenceHeaderComponent,
-        preferenceProductComponent
+        preferenceProductComponent,
+        preferenceToTopComponent
     ],
     imports: [
         BrowserModule,

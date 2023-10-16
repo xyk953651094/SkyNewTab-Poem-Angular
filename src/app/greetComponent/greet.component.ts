@@ -45,6 +45,10 @@ export class GreetComponent implements OnInit, OnChanges {
         e.currentTarget.style.color = getFontColor(this.minorColor);
     }
 
+    historyBtnOnClick() {
+        window.open(this.searchEngineUrl + "历史上的今天", "_blank");
+    }
+
     infoBtnOnClick() {
         window.open(this.searchEngineUrl + "万年历", "_blank");
     }
@@ -90,7 +94,14 @@ export class GreetComponent implements OnInit, OnChanges {
             })
             .catch(function () {
                 // 请求失败也更新请求时间，防止超时后无信息可显示
-                localStorage.setItem("lastHolidayRequestTime", String(new Date().getTime()));  // 保存请求时间，防抖节流
+                // localStorage.setItem("lastHolidayRequestTime", String(new Date().getTime()));  // 保存请求时间，防抖节流
+
+                // 请求失败时使用上一次请求结果
+                let lastHoliday: any = localStorage.getItem("lastHoliday");
+                if (lastHoliday) {
+                    lastHoliday = JSON.parse(lastHoliday);
+                    tempThis.setHoliday(lastHoliday);
+                }
             });
     };
 

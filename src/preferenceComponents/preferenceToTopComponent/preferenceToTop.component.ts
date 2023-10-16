@@ -3,15 +3,15 @@ import {getFontColor} from "../../typescripts/publicFunctions";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
 @Component({
-    selector: "preferenceInfo-component",
-    templateUrl: "./preferenceInfo.component.html",
-    styleUrls: ["./preferenceInfo.component.scss", "../../stylesheets/publicStyles.scss"]
+    selector: "preferenceToTop-component",
+    templateUrl: "./preferenceToTop.component.html",
+    styleUrls: ["./preferenceToTop.component.scss", "../../stylesheets/publicStyles.scss"]
 })
-export class preferenceInfoComponent implements OnInit {
+export class preferenceToTopComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
     @Input() preferenceData = defaultPreferenceData;
-    title = "preferenceInfoComponent";
+    title = "preferenceToTopComponent";
     protected readonly getFontColor = getFontColor;
 
     btnMouseOver(e: any) {
@@ -24,20 +24,11 @@ export class preferenceInfoComponent implements OnInit {
         e.currentTarget.style.color = getFontColor(this.minorColor);
     }
 
-    calendarBtnOnClick() {
-        window.open("https://www.mxnzp.com/", "_blank");
-    }
-
-    weatherBtnOnClick() {
-        window.open("https://www.jinrishici.com/", "_blank");
-    }
-
-    poemBtnOnClick() {
-        window.open("https://www.jinrishici.com/", "_blank");
-    }
-
-    codeBtnOnClick() {
-        window.open("https://www.jetbrains.com.cn/community/opensource/#support/", "_blank");
+    toTopBtnOnClick(value: string) {
+        let drawerContent: HTMLElement | null = document.getElementById("drawerContent");
+        if (drawerContent) {
+            drawerContent.scrollIntoView({behavior: "smooth"});
+        }
     }
 
     ngOnInit(): void {

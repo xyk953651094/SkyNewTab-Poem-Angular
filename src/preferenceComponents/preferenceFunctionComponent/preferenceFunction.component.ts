@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {NzMessageService} from 'ng-zorro-antd/message';
-import {getFontColor} from "../../typescripts/publicFunctions";
+import {getFontColor, getPreferenceDataStorage} from "../../typescripts/publicFunctions";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 
@@ -13,7 +13,7 @@ export class preferenceFunctionComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
     title = "preferenceFunctionComponent";
-    preferenceData: PreferenceDataInterface = this.initPreferenceData();
+    preferenceData: PreferenceDataInterface = getPreferenceDataStorage();
     @Output() getPreferenceFunctionData: EventEmitter<PreferenceDataInterface> = new EventEmitter();
     protected readonly getFontColor = getFontColor;
 
@@ -75,17 +75,6 @@ export class preferenceFunctionComponent implements OnInit {
         localStorage.clear();
         this.message.success("已重置所有内容，一秒后刷新页面");
         this.refreshWindow();
-    }
-
-    // 初始化偏好设置
-    initPreferenceData() {
-        let tempPreferenceData = localStorage.getItem("preferenceData");
-        if (tempPreferenceData === null) {
-            localStorage.setItem("preferenceData", JSON.stringify(defaultPreferenceData));
-            return defaultPreferenceData;
-        } else {
-            return JSON.parse(tempPreferenceData);
-        }
     }
 
     // 修改偏好设置

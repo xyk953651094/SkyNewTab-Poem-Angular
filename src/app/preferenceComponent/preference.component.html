@@ -22,7 +22,7 @@
     [nzTitle]="drawerHeader"
 >
     <ng-container *nzDrawerContent>
-        <nz-space nzDirection="vertical" nzSize="large">
+        <nz-space nzDirection="vertical" nzSize="large" id="drawerContent">
             <preferenceFunction-component
                 (getPreferenceFunctionData)="getPreferenceFunctionData($event)"
                 *nzSpaceItem
@@ -53,6 +53,12 @@
 <!--                [minorColor]="minorColor"-->
 <!--                [preferenceData]="preferenceData"-->
 <!--            />-->
+            <preferenceToTop-component
+                *nzSpaceItem
+                [majorColor]="majorColor"
+                [minorColor]="minorColor"
+                [preferenceData]="preferenceData"
+            />
         </nz-space>
     </ng-container>
 </nz-drawer>

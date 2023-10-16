@@ -1,6 +1,12 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {NzMessageService} from 'ng-zorro-antd/message';
-import {getFontColor, getSearchEngineDetail, getWeatherIcon, httpRequest} from "../../typescripts/publicFunctions";
+import {
+    getFontColor,
+    getSearchEngineDetail,
+    getTimeDetails,
+    getWeatherIcon,
+    httpRequest
+} from "../../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
@@ -17,9 +23,10 @@ export class WeatherComponent implements OnInit, OnChanges {
     @Input() preferenceData: PreferenceDataInterface = defaultPreferenceData;
     title = "WeatherComponent";
     display = "block";
+    lastRequestTime: string = "暂无信息";
     searchEngineUrl: string = "https://www.bing.com/search?q=";
     weatherIcon: string = "";
-    weatherContent: string = "";
+    weatherContent: string = "暂无信息";
     location: string = "暂无信息";
     humidity: string = "暂无信息";
     pm25: string = "暂无信息";
@@ -82,7 +89,14 @@ export class WeatherComponent implements OnInit, OnChanges {
             })
             .catch(function () {
                 // 请求失败也更新请求时间，防止超时后无信息可显示
-                localStorage.setItem("lastWeatherRequestTime", String(new Date().getTime()));  // 保存请求时间，防抖节流
+                // localStorage.setItem("lastWeatherRequestTime", String(new Date().getTime()));  // 保存请求时间，防抖节流
+
+                // 请求失败时使用上一次请求结果
+                let lastWeather: any = localStorage.getItem("lastWeather");
+                if (lastWeather) {
+                    lastWeather = JSON.parse(lastWeather);
+                    tempThis.setWeather(lastWeather);
+                }
             });
     }
 
@@ -99,11 +113,11 @@ export class WeatherComponent implements OnInit, OnChanges {
 
         // 天气,防抖节流
         if (!this.preferenceData.simpleMode) {
-            let lastRequestTime: any = localStorage.getItem("lastWeatherRequestTime");
+            let tempLastRequestTime: any = localStorage.getItem("lastWeatherRequestTime");
             let nowTimeStamp = new Date().getTime();
-            if (lastRequestTime === null) {  // 第一次请求时 lastRequestTime 为 null，因此直接进行请求赋值 lastRequestTime
+            if (tempLastRequestTime === null) {  // 第一次请求时 tempLastRequestTime 为 null，因此直接进行请求赋值 tempLastRequestTime
                 this.getWeather();
-            } else if (nowTimeStamp - parseInt(lastRequestTime) > 60 * 60 * 1000) {  // 必须多于一小时才能进行新的请求
+            } else if (nowTimeStamp - parseInt(tempLastRequestTime) > 60 * 60 * 1000) {  // 必须多于一小时才能进行新的请求
                 this.getWeather();
             } else {  // 一小时之内使用上一次请求结果
                 let lastWeather: any = localStorage.getItem("lastWeather");
@@ -112,6 +126,12 @@ export class WeatherComponent implements OnInit, OnChanges {
                     this.setWeather(lastWeather);
                 }
             }
+
+            if (tempLastRequestTime !== null) {
+                this.lastRequestTime = getTimeDetails(new Date(parseInt(tempLastRequestTime))).showDetail;
+            }
         }
     }
+
+    protected readonly getTimeDetails = getTimeDetails;
 }
