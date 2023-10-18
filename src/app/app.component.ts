@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {defaultPreferenceData} from "../typescripts/publicConstants";
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import {getFontColor, getPreferenceDataStorage, setColorTheme} from "../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../typescripts/publicInterface";
 
@@ -17,8 +17,7 @@ export class AppComponent implements OnInit {
     svgColors: string[] = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"];
     preferenceData: PreferenceDataInterface = getPreferenceDataStorage();
 
-    constructor() {
-    }
+    constructor(private notification: NzNotificationService) {}
 
     getPreferenceData(value: PreferenceDataInterface) {
         this.preferenceData = value;
@@ -89,6 +88,15 @@ export class AppComponent implements OnInit {
                 $(".ant-message-custom-content > .anticon").css({
                     "color": getFontColor(this.minorColor),
                 });
+            }
+
+            // notification
+            let notificationEle = $(".ant-notification");
+            if (notificationEle.length && notificationEle.length > 0) {
+                $(".ant-notification-notice").css({"backgroundColor": this.minorColor});
+                $(".ant-notification-notice-icon").css("color", getFontColor(this.minorColor));
+                $(".ant-notification-notice-message").css("color", getFontColor(this.minorColor));
+                $(".ant-notification-notice-description").css("color", getFontColor(this.minorColor));
             }
 
             // drawer
@@ -163,5 +171,17 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         // 颜色主题
         this.setColorTheme();
+
+        // 版本号提醒
+        let storageVersion = localStorage.getItem("SkyNewTabPoemAngularVersion");
+        let currentVersion = require('../../package.json').version;
+        if(storageVersion !== currentVersion) {
+            this.notification.info(
+                "已更新至 " + currentVersion,
+                "详情请前往 GitHub 或 GitLab 查看",
+                { nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null" },
+            );
+            localStorage.setItem("SkyNewTabPoemAngularVersion", currentVersion);
+        }
     }
 }

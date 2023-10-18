@@ -33,6 +33,7 @@ import {NzRateModule} from 'ng-zorro-antd/rate';
 import {NzEmptyModule} from 'ng-zorro-antd/empty';
 import {NzAlertModule} from 'ng-zorro-antd/alert';
 import {NzDividerModule} from "ng-zorro-antd/divider";
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
 
 import {SunComponent} from "./sunComponent/sun.component";
 import {SearchComponent} from "./searchComponent/search.component";
@@ -105,7 +106,8 @@ registerLocaleData(zh);
         NzRateModule,
         NzEmptyModule,
         NzAlertModule,
-        NzDividerModule
+        NzDividerModule,
+        NzNotificationModule
     ],
     providers: [
         {provide: NZ_I18N, useValue: zh_CN},
