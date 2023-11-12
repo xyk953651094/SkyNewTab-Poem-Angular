@@ -1,0 +1,19 @@
+<div nz-row nzJustify="center">
+    <div nz-col nzSpan="24" id="clockDiv" class="zIndexHigh"
+         [style]="{padding: '5px 10px', borderRadius: '8px', maxWidth: 'max-content'}"
+         (mouseover)="btnMouseOver($event)" (mouseout)="btnMouseOut($event)">
+        <nz-space nzAlign="center" id="clock">
+            <span class="textShadow clockText poemFont" [style]="{color: minorColor}" nz-typography *nzSpaceItem>
+                {{currentTime}}
+            </span>
+            <nz-space nzAlign="center" nzDirection="vertical" *nzSpaceItem>
+                <span class="textShadow dateText poemFont" [style]="{color: minorColor}" nz-typography *nzSpaceItem>
+                    {{currentYear}}
+                </span>
+                <span class="textShadow dateText poemFont" [style]="{color: minorColor}" nz-typography *nzSpaceItem>
+                    {{currentDate}}
+                </span>
+            </nz-space>
+        </nz-space>
+    </div>
+</div>

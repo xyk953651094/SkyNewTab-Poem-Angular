@@ -42,6 +42,7 @@ import {WeatherComponent} from './weatherComponent/weather.component';
 import {DailyComponent} from './dailyComponent/daily.component';
 import {todoComponent} from "./todoComponent/todo.component";
 import {PreferenceComponent} from './preferenceComponent/preference.component';
+import {ClockComponent} from "./clockComponent/clock.component";
 import {PoemComponent} from "./poemComponent/poem.component";
 import {WaveComponent} from "./waveComponent/wave.component";
 
@@ -67,6 +68,7 @@ registerLocaleData(zh);
         WeatherComponent,
         DailyComponent,
         todoComponent,
+        ClockComponent,
         PoemComponent,
         WaveComponent,
         PreferenceComponent,

@@ -42,7 +42,6 @@ export class SearchComponent implements OnInit {
         this.display = this.preferenceData.simpleMode ? "none" : "block";
         this.searchEngineName = searchEngineDetail.searchEngineName;
         this.searchEngineUrl = searchEngineDetail.searchEngineUrl;
-        this.buttonShape = this.preferenceData.buttonShape === "round" ? "circle" : null;
     }
 
     protected readonly getFontColor = getFontColor;
