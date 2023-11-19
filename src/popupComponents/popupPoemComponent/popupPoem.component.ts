@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {getFontColor, getSearchEngineDetail} from "../../typescripts/publicFunctions";
+import {getFontColor, getSearchEngineDetail, btnMouseOver, btnMouseOut} from "../../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
@@ -19,16 +19,6 @@ export class popupPoemComponent implements OnInit {
     poemAuthorDetails = "【唐】张九龄 ·《望月怀远》";
     poemMaxSize = 25;
     protected readonly getFontColor = getFontColor;
-
-    btnMouseOver(e: any) {
-        e.currentTarget.style.backgroundColor = this.majorColor;
-        e.currentTarget.style.color = getFontColor(this.majorColor);
-    }
-
-    btnMouseOut(e: any) {
-        e.currentTarget.style.backgroundColor = "transparent";
-        e.currentTarget.style.color = getFontColor(this.minorColor);
-    }
 
     poemContentBtnOnClick() {
         window.open(this.searchEngineUrl + this.poemContent, "_blank");
@@ -57,4 +47,7 @@ export class popupPoemComponent implements OnInit {
         this.getPoem();
         this.searchEngineUrl = getSearchEngineDetail(this.preferenceData.searchEngine).searchEngineUrl
     }
+
+    protected readonly btnMouseOut = btnMouseOut;
+    protected readonly btnMouseOver = btnMouseOver;
 }

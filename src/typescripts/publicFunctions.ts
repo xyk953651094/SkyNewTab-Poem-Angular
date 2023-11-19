@@ -284,3 +284,14 @@ export function getPreferenceDataStorage() {
         return fixPreferenceData(JSON.parse(tempPreferenceData));  // 检查是否缺少数据
     }
 }
+
+// 按钮（clockComponent 不适用公共方法，已单独实现）
+export function btnMouseOver(color: string, e: any) {
+    e.currentTarget.style.backgroundColor = color;
+    e.currentTarget.style.color = getFontColor(color);
+}
+
+export function btnMouseOut(color: string, e: any) {
+    e.currentTarget.style.backgroundColor = "transparent";
+    e.currentTarget.style.color = getFontColor(color);
+}

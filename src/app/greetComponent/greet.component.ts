@@ -6,7 +6,7 @@ import {
     getGreetIcon,
     getSearchEngineDetail,
     getTimeDetails,
-    httpRequest
+    httpRequest, btnMouseOver, btnMouseOut
 } from "../../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 
@@ -34,16 +34,6 @@ export class GreetComponent implements OnInit, OnChanges {
     protected readonly getGreetContent = getGreetContent;
     protected readonly device = device;
     protected readonly getFontColor = getFontColor;
-
-    btnMouseOver(e: any) {
-        e.currentTarget.style.backgroundColor = this.majorColor;
-        e.currentTarget.style.color = getFontColor(this.majorColor);
-    }
-
-    btnMouseOut(e: any) {
-        e.currentTarget.style.backgroundColor = "transparent";
-        e.currentTarget.style.color = getFontColor(this.minorColor);
-    }
 
     historyBtnOnClick() {
         window.open(this.searchEngineUrl + "历史上的今天", "_blank");
@@ -141,4 +131,7 @@ export class GreetComponent implements OnInit, OnChanges {
             }, 60 * 60 * 1000);
         }
     }
+
+    protected readonly btnMouseOut = btnMouseOut;
+    protected readonly btnMouseOver = btnMouseOver;
 }

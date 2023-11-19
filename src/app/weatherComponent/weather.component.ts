@@ -5,7 +5,7 @@ import {
     getSearchEngineDetail,
     getTimeDetails,
     getWeatherIcon,
-    httpRequest
+    httpRequest, btnMouseOver, btnMouseOut
 } from "../../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
@@ -35,18 +35,7 @@ export class WeatherComponent implements OnInit, OnChanges {
     windInfo: string = "暂无信息";
     protected readonly getFontColor = getFontColor;
 
-    constructor(private message: NzMessageService) {
-    }
-
-    btnMouseOver(e: any) {
-        e.currentTarget.style.backgroundColor = this.majorColor;
-        e.currentTarget.style.color = getFontColor(this.majorColor);
-    }
-
-    btnMouseOut(e: any) {
-        e.currentTarget.style.backgroundColor = "transparent";
-        e.currentTarget.style.color = getFontColor(this.minorColor);
-    }
+    constructor(private message: NzMessageService) {}
 
     locationBtnOnClick() {
         if (this.location !== "暂无信息") {
@@ -134,4 +123,6 @@ export class WeatherComponent implements OnInit, OnChanges {
     }
 
     protected readonly getTimeDetails = getTimeDetails;
+    protected readonly btnMouseOut = btnMouseOut;
+    protected readonly btnMouseOver = btnMouseOver;
 }

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {getFontColor} from "../../typescripts/publicFunctions";
+import {getFontColor, btnMouseOver, btnMouseOut} from "../../typescripts/publicFunctions";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
 @Component({
@@ -14,16 +14,6 @@ export class preferenceFooterComponent implements OnInit {
     title = "preferenceFooterComponent";
     protected readonly getFontColor = getFontColor;
 
-    btnMouseOver(e: any) {
-        e.currentTarget.style.backgroundColor = this.majorColor;
-        e.currentTarget.style.color = getFontColor(this.majorColor);
-    }
-
-    btnMouseOut(e: any) {
-        e.currentTarget.style.backgroundColor = "transparent";
-        e.currentTarget.style.color = getFontColor(this.minorColor);
-    }
-
     homeBtnOnClick(value: string) {
         window.open("https://" + value + ".com/xyk953651094/SkyNewTab-Poem-Angular/", "_blank");
     }
@@ -35,4 +25,7 @@ export class preferenceFooterComponent implements OnInit {
     ngOnInit(): void {
 
     }
+
+    protected readonly btnMouseOut = btnMouseOut;
+    protected readonly btnMouseOver = btnMouseOver;
 }

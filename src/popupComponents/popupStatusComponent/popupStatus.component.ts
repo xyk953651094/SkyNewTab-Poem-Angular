@@ -4,7 +4,7 @@ import {
     getGreetContent,
     getGreetIcon,
     getSearchEngineDetail,
-    getWeatherIcon
+    getWeatherIcon, btnMouseOver, btnMouseOut
 } from "../../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
@@ -27,16 +27,6 @@ export class popupStatusComponent implements OnInit {
     todoSize = 0;
     searchEngineUrl = "https://www.bing.com/search?q=";
     protected readonly getFontColor = getFontColor;
-
-    btnMouseOver(e: any) {
-        e.currentTarget.style.backgroundColor = this.majorColor;
-        e.currentTarget.style.color = getFontColor(this.majorColor);
-    }
-
-    btnMouseOut(e: any) {
-        e.currentTarget.style.backgroundColor = "transparent";
-        e.currentTarget.style.color = getFontColor(this.minorColor);
-    }
 
     greetBtnOnClick() {
         window.open(this.searchEngineUrl + "万年历", "_blank");
@@ -70,4 +60,7 @@ export class popupStatusComponent implements OnInit {
         this.todoSize = tempTodos ? JSON.parse(tempTodos).length : 0;
         this.searchEngineUrl = getSearchEngineDetail(this.preferenceData.searchEngine).searchEngineUrl
     }
+
+    protected readonly btnMouseOver = btnMouseOver;
+    protected readonly btnMouseOut = btnMouseOut;
 }

@@ -5,8 +5,8 @@
         </span>
     </div>
     <div nz-col nzSpan="12" [style]="{textAlign: 'right'}">
-        <button (click)="supportBtnOnClick()" (mouseout)="btnMouseOut($event)"
-                (mouseover)="btnMouseOver($event)"
+        <button (click)="supportBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                (mouseover)="btnMouseOver(majorColor, $event)"
                 [style.color]="getFontColor(minorColor)"
                 class="poemFont" nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
         >

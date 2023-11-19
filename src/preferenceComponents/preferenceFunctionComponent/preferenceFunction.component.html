@@ -58,8 +58,8 @@
         <nz-form-item>
             <nz-form-label>危险设置</nz-form-label>
             <nz-form-control>
-                <button (click)="clearStorageBtnOnClick()" (mouseout)="btnMouseOut($event)"
-                        (mouseover)="btnMouseOver($event)"
+                <button (click)="clearStorageBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                        (mouseover)="btnMouseOver(majorColor, $event)"
                         [style.color]="getFontColor(minorColor)" class="poemFont"
                         nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
                 >
