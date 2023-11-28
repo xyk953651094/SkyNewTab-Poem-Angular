@@ -14,8 +14,8 @@
 * 请前往 Releases 页面查看
 
 ## 安装
-* 与 [SkyNewTab-Poem-React](https://github.com/xyk953651094/SkyNewTab-Poem-React) 重复，仅作为学习目的开发，不上架各商店
-* 下载 [Releases](https://github.com/xyk953651094/SkyNewTab-Poem-Angular/releases/) 页面提供的文件进行安装
+* 与 SkyNewTab-Poem-React 重复，仅作为学习目的开发，不上架各商店
+* 下载发布（Releases）页面提供的文件进行安装
 
 ## 指南
 * 插件出现任何异常可尝试“重置插件”按钮

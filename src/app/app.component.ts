@@ -188,10 +188,10 @@ export class AppComponent implements OnInit {
         let storageVersion = localStorage.getItem("SkyNewTabPoemAngularVersion");
         let currentVersion = require('../../package.json').version;
         if(storageVersion !== currentVersion) {
-            this.notification.info(
-                "已更新至 " + currentVersion,
-                "详情请前往 GitHub 或 GitLab 查看",
-                { nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null" },
+            this.notification.success(
+                "已更新至版本 V" + currentVersion,
+                "详细更新内容请前往 GitHub 或 GitLab 主页查看",
+                {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
             );
             localStorage.setItem("SkyNewTabPoemAngularVersion", currentVersion);
         }
