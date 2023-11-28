@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from "@angular/core";
 import {defaultPreferenceData, device} from "../../typescripts/publicConstants"
 import {
     getFontColor,
@@ -21,6 +21,7 @@ export class GreetComponent implements OnInit, OnChanges {
     @Input() majorColor: string = "#000000";
     @Input() minorColor: string = "#ffffff";
     @Input() preferenceData: PreferenceDataInterface = defaultPreferenceData;
+    @Output() getHolidayData: EventEmitter<any> = new EventEmitter();
     title = "GreetComponent";
     display = "block";
     searchEngineUrl: string = "https://www.bing.com/search?q=";
@@ -79,6 +80,7 @@ export class GreetComponent implements OnInit, OnChanges {
                 localStorage.setItem("lastHolidayRequestTime", String(new Date().getTime()));  // 保存请求时间，防抖节流
                 if (resultData.code === 1) {
                     localStorage.setItem("lastHoliday", JSON.stringify(resultData.data));      // 保存请求结果，防抖节流
+                    tempThis.getHolidayData.emit(resultData.data);                             // 通知父组件更新节假日信息
                     tempThis.setHoliday(resultData.data);
                 }
             })

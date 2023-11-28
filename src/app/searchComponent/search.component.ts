@@ -38,6 +38,8 @@ export class SearchComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.buttonShape = this.preferenceData.buttonShape === "round" ? "circle" : null;
+
         let searchEngineDetail = getSearchEngineDetail(this.preferenceData.searchEngine);
         this.display = this.preferenceData.simpleMode ? "none" : "block";
         this.searchEngineName = searchEngineDetail.searchEngineName;

@@ -1,6 +1,11 @@
 import {Component, OnInit} from "@angular/core";
 import { NzNotificationService } from 'ng-zorro-antd/notification';
-import {getFontColor, getPreferenceDataStorage, setColorTheme} from "../typescripts/publicFunctions";
+import {
+    getFontColor,
+    getHolidayDataStorage,
+    getPreferenceDataStorage,
+    setColorTheme
+} from "../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../typescripts/publicInterface";
 
 const $ = require("jquery");
@@ -16,11 +21,18 @@ export class AppComponent implements OnInit {
     minorColor: string = "#ffffff";
     svgColors: string[] = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"];
     preferenceData: PreferenceDataInterface = getPreferenceDataStorage();
+    holidayData: any = getHolidayDataStorage();
 
     constructor(private notification: NzNotificationService) {}
 
     getPreferenceData(value: PreferenceDataInterface) {
         this.preferenceData = value;
+    }
+
+    getHolidayData(value: any) {
+        console.log(this.holidayData);
+        this.holidayData = value;
+        console.log(this.holidayData);
     }
 
     // 随机颜色主题

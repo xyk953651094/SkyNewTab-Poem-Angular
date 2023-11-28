@@ -37,7 +37,6 @@ export class PreferenceComponent implements OnInit {
 
     getPreferenceFunctionData(value: PreferenceDataInterface) {
         this.getPreferenceData.emit(value);
-        console.log(value);
     }
 
     ngOnInit(): void {

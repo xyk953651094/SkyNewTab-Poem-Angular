@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from "@angular/core";
-import {getFontColor} from "../../typescripts/publicFunctions";
+import {Component, Input, OnInit, SimpleChanges} from "@angular/core";
+import {getFontColor, getHolidayDataStorage} from "../../typescripts/publicFunctions";
 
 const $ = require("jquery");
 
@@ -9,15 +9,15 @@ const $ = require("jquery");
     styleUrls: ["./clock.component.scss", "../../stylesheets/publicStyles.scss"]
 })
 export class ClockComponent implements OnInit {
-    @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
+    @Input() holidayData: any;
     title = "ClockComponent";
     currentTime: string = this.getLocaleTime();
     currentDate: string = "暂无信息";
     currentYear: string = "暂无信息";
 
     btnMouseOver(e: any) {
-        $(".clockText, .dateText").removeClass("textShadow").css("color", this.majorColor);
+        $(".clockText, .dateText").removeClass("textShadow").css("color", getFontColor(this.minorColor));
         e.currentTarget.style.backgroundColor = this.minorColor;
         e.currentTarget.classList.add("componentTheme");
     }
@@ -60,14 +60,14 @@ export class ClockComponent implements OnInit {
         return localeTime;
     }
 
-    ngOnInit(): void {
-        let lastHolidayStorage = localStorage.getItem("lastHoliday");
-        if (lastHolidayStorage) {
-            let lastHoliday = JSON.parse(lastHolidayStorage);
-            this.currentDate = lastHoliday.lunarCalendar;
-            this.currentYear = lastHoliday.yearTips + lastHoliday.chineseZodiac + "年";
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes["holidayData"] && changes["holidayData"].currentValue !== null) {
+            this.currentDate = this.holidayData.lunarCalendar;
+            this.currentYear = this.holidayData.yearTips + this.holidayData.chineseZodiac + "年";
         }
+    }
 
+    ngOnInit(): void {
         // 每分钟刷新一次（日期与年份取的是万年历中请求的缓存数据，存在请求间隔，因此无法及时更新，只能更新时间）
         setInterval(() => {
             this.currentTime = this.getLocaleTime();

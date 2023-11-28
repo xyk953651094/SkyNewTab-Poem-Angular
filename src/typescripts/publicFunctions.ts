@@ -285,6 +285,15 @@ export function getPreferenceDataStorage() {
     }
 }
 
+export function getHolidayDataStorage() {
+    let tempHolidayData = localStorage.getItem("lastHoliday");
+    if (tempHolidayData !== null) {
+        return JSON.parse(tempHolidayData);
+    } else {
+        return null;
+    }
+}
+
 // 按钮（clockComponent 不适用公共方法，已单独实现）
 export function btnMouseOver(color: string, e: any) {
     e.currentTarget.style.backgroundColor = color;

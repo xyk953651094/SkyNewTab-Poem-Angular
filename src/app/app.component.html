@@ -3,7 +3,7 @@
     <nz-header class="header">
         <div nz-row nzJustify="center">
             <div [nzLg]="{span: 9}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 9}" [nzXl]="{span: 9}"
-                 [nzXs]="{span: 0}" nz-col>
+                 [nzXs]="{span: 0}" nz-col class="zIndexMiddle">
                 <nz-space>
                     <search-component
                         *nzSpaceItem
@@ -15,6 +15,7 @@
                         [majorColor]="majorColor"
                         [minorColor]="minorColor"
                         [preferenceData]="preferenceData"
+                        (getHolidayData)="getHolidayData($event)"
                     />
                     <weather-component
                         *nzSpaceItem
@@ -40,11 +41,11 @@
                         [preferenceData]="preferenceData"
                     />
                     <preference-component
-                        (getPreferenceData)="getPreferenceData($event)"
                         *nzSpaceItem
                         [majorColor]="majorColor"
                         [minorColor]="minorColor"
                         [preferenceData]="preferenceData"
+                        (getPreferenceData)="getPreferenceData($event)"
                     />
                 </nz-space>
             </div>
@@ -63,8 +64,8 @@
         <div nz-row [nzGutter]="[0, 8]">
             <div nz-col [nzXs]="{span: 0}" [nzSm]="{span: 0}" [nzMd]="{span: 24}" [nzLg]="{span: 24}" [nzXl]="{span: 24}" [nzXXl]="{span: 24}">
                 <clock-component
-                    [majorColor]="majorColor"
                     [minorColor]="minorColor"
+                    [holidayData]="holidayData"
                 />
             </div>
             <div nz-col nzSpan="24">
