@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {getFontColor} from "../../typescripts/publicFunctions";
+import {getFontColor, btnMouseOver, btnMouseOut} from "../../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
@@ -15,17 +15,10 @@ export class popupHeaderComponent implements OnInit {
     title = "popupHeaderComponent";
     protected readonly getFontColor = getFontColor;
 
-    btnMouseOver(e: any) {
-        e.currentTarget.style.backgroundColor = this.majorColor;
-        e.currentTarget.style.color = getFontColor(this.majorColor);
-    }
-
-    btnMouseOut(e: any) {
-        e.currentTarget.style.backgroundColor = "transparent";
-        e.currentTarget.style.color = getFontColor(this.minorColor);
-    }
-
     ngOnInit(): void {
 
     }
+
+    protected readonly btnMouseOver = btnMouseOver;
+    protected readonly btnMouseOut = btnMouseOut;
 }

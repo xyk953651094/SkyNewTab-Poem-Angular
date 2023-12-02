@@ -51,7 +51,6 @@ import {
 } from "../preferenceComponents/preferenceFunctionComponent/preferenceFunction.component";
 import {preferenceEmailComponent} from "../preferenceComponents/preferenceEmailComponent/preferenceEmail.component";
 import {preferenceInfoComponent} from "../preferenceComponents/preferenceInfoComponent/preferenceInfo.component";
-import {preferenceLinkComponent} from "../preferenceComponents/preferenceLinkComponent/preferenceLink.component";
 import {preferenceFooterComponent} from "../preferenceComponents/preferenceFooterComponent/preferenceFooter.component";
 import {preferenceHeaderComponent} from "../preferenceComponents/preferenceHeaderComponent/preferenceHeader.component";
 import {preferenceProductComponent} from "../preferenceComponents/preferenceProductComponent/preferenceProduct.component";
@@ -75,7 +74,6 @@ registerLocaleData(zh);
         preferenceFooterComponent,
         preferenceEmailComponent,
         preferenceInfoComponent,
-        preferenceLinkComponent,
         preferenceFunctionComponent,
         preferenceHeaderComponent,
         preferenceProductComponent,

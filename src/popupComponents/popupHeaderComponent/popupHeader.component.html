@@ -1,5 +1,5 @@
 <nz-space nzAlign="center">
-    <button (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+    <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
             *nzSpaceItem [style]="{color: getFontColor(minorColor), cursor: 'default'}"
             class="popupFont" nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
     >

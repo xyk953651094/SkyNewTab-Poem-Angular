@@ -1,6 +1,6 @@
 <div nz-row nzJustify="center">
-    <button (click)="toTopBtnOnClick('github')" (mouseout)="btnMouseOut($event)"
-            (mouseover)="btnMouseOver($event)"
+    <button (click)="toTopBtnOnClick('github')" (mouseout)="btnMouseOut(minorColor, $event)"
+            (mouseover)="btnMouseOver(majorColor, $event)"
             [style.color]="getFontColor(minorColor)"
             class="poemFont" nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
     >

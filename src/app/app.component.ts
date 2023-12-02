@@ -1,6 +1,11 @@
 import {Component, OnInit} from "@angular/core";
 import { NzNotificationService } from 'ng-zorro-antd/notification';
-import {getFontColor, getPreferenceDataStorage, setColorTheme} from "../typescripts/publicFunctions";
+import {
+    getFontColor,
+    getHolidayDataStorage,
+    getPreferenceDataStorage,
+    setColorTheme
+} from "../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../typescripts/publicInterface";
 
 const $ = require("jquery");
@@ -16,11 +21,18 @@ export class AppComponent implements OnInit {
     minorColor: string = "#ffffff";
     svgColors: string[] = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"];
     preferenceData: PreferenceDataInterface = getPreferenceDataStorage();
+    holidayData: any = getHolidayDataStorage();
 
     constructor(private notification: NzNotificationService) {}
 
     getPreferenceData(value: PreferenceDataInterface) {
         this.preferenceData = value;
+    }
+
+    getHolidayData(value: any) {
+        console.log(this.holidayData);
+        this.holidayData = value;
+        console.log(this.holidayData);
     }
 
     // 随机颜色主题
@@ -176,10 +188,10 @@ export class AppComponent implements OnInit {
         let storageVersion = localStorage.getItem("SkyNewTabPoemAngularVersion");
         let currentVersion = require('../../package.json').version;
         if(storageVersion !== currentVersion) {
-            this.notification.info(
-                "已更新至 " + currentVersion,
-                "详情请前往 GitHub 或 GitLab 查看",
-                { nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null" },
+            this.notification.success(
+                "已更新至版本 V" + currentVersion,
+                "详细更新内容请前往 GitHub 或 GitLab 主页查看",
+                {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
             );
             localStorage.setItem("SkyNewTabPoemAngularVersion", currentVersion);
         }

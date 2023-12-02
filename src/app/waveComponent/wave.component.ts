@@ -3,7 +3,7 @@ import {Component, Input} from "@angular/core";
 @Component({
     selector: "wave-component",
     templateUrl: "./wave.component.html",
-    styleUrls: ["./wave.component.scss"]
+    styleUrls: ["./wave.component.scss", "../../stylesheets/publicStyles.scss"]
 })
 export class WaveComponent {
     title = "WaveComponent";

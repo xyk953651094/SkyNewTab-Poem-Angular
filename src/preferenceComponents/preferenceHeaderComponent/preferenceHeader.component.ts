@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {getFontColor} from "../../typescripts/publicFunctions";
+import {getFontColor, btnMouseOver, btnMouseOut} from "../../typescripts/publicFunctions";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
 @Component({
@@ -14,16 +14,6 @@ export class preferenceHeaderComponent implements OnInit {
     title = "preferenceHeaderComponent";
     protected readonly getFontColor = getFontColor;
 
-    btnMouseOver(e: any) {
-        e.currentTarget.style.backgroundColor = this.majorColor;
-        e.currentTarget.style.color = getFontColor(this.majorColor);
-    }
-
-    btnMouseOut(e: any) {
-        e.currentTarget.style.backgroundColor = "transparent";
-        e.currentTarget.style.color = getFontColor(this.minorColor);
-    }
-
     supportBtnOnClick() {
         window.open("https://afdian.net/a/xyk953651094", "_blank");
     }
@@ -31,4 +21,7 @@ export class preferenceHeaderComponent implements OnInit {
     ngOnInit(): void {
 
     }
+
+    protected readonly btnMouseOut = btnMouseOut;
+    protected readonly btnMouseOver = btnMouseOver;
 }

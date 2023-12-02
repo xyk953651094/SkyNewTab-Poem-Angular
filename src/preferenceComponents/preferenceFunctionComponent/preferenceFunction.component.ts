@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {NzMessageService} from 'ng-zorro-antd/message';
-import {getFontColor, getPreferenceDataStorage} from "../../typescripts/publicFunctions";
+import {getFontColor, getPreferenceDataStorage, btnMouseOver, btnMouseOut} from "../../typescripts/publicFunctions";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 
@@ -17,18 +17,7 @@ export class preferenceFunctionComponent implements OnInit {
     @Output() getPreferenceFunctionData: EventEmitter<PreferenceDataInterface> = new EventEmitter();
     protected readonly getFontColor = getFontColor;
 
-    constructor(private message: NzMessageService) {
-    }
-
-    btnMouseOver(e: any) {
-        e.currentTarget.style.backgroundColor = this.majorColor;
-        e.currentTarget.style.color = getFontColor(this.majorColor);
-    }
-
-    btnMouseOut(e: any) {
-        e.currentTarget.style.backgroundColor = "transparent";
-        e.currentTarget.style.color = getFontColor(this.minorColor);
-    }
+    constructor(private message: NzMessageService) {}
 
     // 搜索引擎
     searchEngineRadioOnChange(value: string) {
@@ -97,4 +86,7 @@ export class preferenceFunctionComponent implements OnInit {
             return JSON.parse(tempPreferenceData);
         }
     }
+
+    protected readonly btnMouseOver = btnMouseOver;
+    protected readonly btnMouseOut = btnMouseOut;
 }

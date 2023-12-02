@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {NzMessageService} from 'ng-zorro-antd/message';
-import {getFontColor, getTimeDetails,} from "../../typescripts/publicFunctions";
+import {getFontColor, getTimeDetails, btnMouseOver, btnMouseOut} from "../../typescripts/publicFunctions";
 import {NzButtonShape} from "ng-zorro-antd/button";
 
 const $ = require("jquery");
@@ -27,16 +27,6 @@ export class DailyComponent implements OnInit, OnChanges {
     protected readonly Date = Date;
 
     constructor(private message: NzMessageService) {
-    }
-
-    btnMouseOver(e: any) {
-        e.currentTarget.style.backgroundColor = this.majorColor;
-        e.currentTarget.style.color = getFontColor(this.majorColor);
-    }
-
-    btnMouseOut(e: any) {
-        e.currentTarget.style.backgroundColor = "transparent";
-        e.currentTarget.style.color = getFontColor(this.minorColor);
     }
 
     removeAllBtnOnClick() {
@@ -169,4 +159,7 @@ export class DailyComponent implements OnInit, OnChanges {
         this.listItems = daily;
         this.dailySize = daily.length;
     }
+
+    protected readonly btnMouseOut = btnMouseOut;
+    protected readonly btnMouseOver = btnMouseOver;
 }
