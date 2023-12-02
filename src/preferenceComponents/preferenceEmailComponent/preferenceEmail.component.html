@@ -3,7 +3,7 @@
          nzSize="small"
          nzTitle="联系作者"
 >
-    <div nz-row nzGutter="[0, 8]">
+    <div nz-row nzGutter="[8, 8]">
         <div nz-col nzSpan="12">
             <button (click)="suggestBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                     (mouseover)="btnMouseOver(majorColor, $event)"
@@ -22,6 +22,16 @@
             >
                 <span nz-icon nzType="dislike" nzTheme="outline"></span>
                 {{"问题反馈"}}
+            </button>
+        </div>
+        <div nz-col nzSpan="12">
+            <button (click)="helpBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                    (mouseover)="btnMouseOver(majorColor, $event)"
+                    [style.color]="getFontColor(minorColor)" class="poemFont"
+                    nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
+            >
+                <span nz-icon nzType="question-circle" nzTheme="outline"></span>
+                {{"帮助文档"}}
             </button>
         </div>
     </div>
