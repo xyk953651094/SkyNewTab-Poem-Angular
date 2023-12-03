@@ -1,7 +1,7 @@
 <nz-space nzAlign="center">
     <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
-            *nzSpaceItem [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-            class="popupFont" nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
+            *nzSpaceItem [nzShape]="preferenceData.buttonShape"
+            [style]="{color: getFontColor(minorColor), cursor: 'default'}" class="popupFont" nz-button nzType="text"
     >
         <span nz-icon nzTheme="outline" nzType="dashboard"></span>
         {{"云开诗词新标签页的仪表盘"}}

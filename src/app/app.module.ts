@@ -33,7 +33,7 @@ import {NzRateModule} from 'ng-zorro-antd/rate';
 import {NzEmptyModule} from 'ng-zorro-antd/empty';
 import {NzAlertModule} from 'ng-zorro-antd/alert';
 import {NzDividerModule} from "ng-zorro-antd/divider";
-import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import {NzNotificationModule} from 'ng-zorro-antd/notification';
 
 import {SunComponent} from "./sunComponent/sun.component";
 import {SearchComponent} from "./searchComponent/search.component";
@@ -53,7 +53,9 @@ import {preferenceEmailComponent} from "../preferenceComponents/preferenceEmailC
 import {preferenceInfoComponent} from "../preferenceComponents/preferenceInfoComponent/preferenceInfo.component";
 import {preferenceFooterComponent} from "../preferenceComponents/preferenceFooterComponent/preferenceFooter.component";
 import {preferenceHeaderComponent} from "../preferenceComponents/preferenceHeaderComponent/preferenceHeader.component";
-import {preferenceProductComponent} from "../preferenceComponents/preferenceProductComponent/preferenceProduct.component";
+import {
+    preferenceProductComponent
+} from "../preferenceComponents/preferenceProductComponent/preferenceProduct.component";
 import {preferenceToTopComponent} from "../preferenceComponents/preferenceToTopComponent/preferenceToTop.component";
 
 registerLocaleData(zh);

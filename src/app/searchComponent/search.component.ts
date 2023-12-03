@@ -18,6 +18,7 @@ export class SearchComponent implements OnInit {
     searchEngineName: string = "Bing";
     searchEngineUrl: string = "https://www.bing.com/search?q=";
     buttonShape: NzButtonShape = "round";
+    protected readonly getFontColor = getFontColor;
 
     onPressEnter(e: any) {
         if (e.keyCode === 13) {
@@ -45,6 +46,4 @@ export class SearchComponent implements OnInit {
         this.searchEngineName = searchEngineDetail.searchEngineName;
         this.searchEngineUrl = searchEngineDetail.searchEngineUrl;
     }
-
-    protected readonly getFontColor = getFontColor;
 }

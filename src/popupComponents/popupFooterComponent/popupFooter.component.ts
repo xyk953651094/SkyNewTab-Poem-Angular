@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {getFontColor, btnMouseOver, btnMouseOut} from "../../typescripts/publicFunctions";
+import {btnMouseOut, btnMouseOver, getFontColor} from "../../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
@@ -14,6 +14,8 @@ export class popupFooterComponent implements OnInit {
     @Input() preferenceData: PreferenceDataInterface = defaultPreferenceData;
     title = "popupFooterComponent";
     protected readonly getFontColor = getFontColor;
+    protected readonly btnMouseOut = btnMouseOut;
+    protected readonly btnMouseOver = btnMouseOver;
 
     homeBtnOnClick(value: string) {
         window.open("https://" + value + ".com/xyk953651094/SkyNewTab-Poem-Angular/", "_blank");
@@ -30,7 +32,4 @@ export class popupFooterComponent implements OnInit {
     ngOnInit(): void {
 
     }
-
-    protected readonly btnMouseOut = btnMouseOut;
-    protected readonly btnMouseOver = btnMouseOver;
 }

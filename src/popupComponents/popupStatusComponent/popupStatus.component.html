@@ -1,32 +1,32 @@
 <nz-space [style]="{display: preferenceData.simpleMode ? 'none' : 'inline-flex'}">
     <button (click)="greetBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
             (mouseover)="btnMouseOver(majorColor, $event)"
-            *nzSpaceItem [style.color]="getFontColor(minorColor)"
-            class="popupFont" nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
+            *nzSpaceItem [nzShape]="preferenceData.buttonShape"
+            [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
     >
         <span [class]="greetIcon">&nbsp;&nbsp;</span>
         {{greetContent}}
     </button>
     <button (click)="weatherBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
             (mouseover)="btnMouseOver(majorColor, $event)"
-            *nzSpaceItem [style.color]="getFontColor(minorColor)"
-            class="popupFont" nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
+            *nzSpaceItem [nzShape]="preferenceData.buttonShape"
+            [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
     >
         <span [class]="weatherIcon">&nbsp;&nbsp;</span>
         {{weatherContent}}
     </button>
     <button (click)="weatherBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
             (mouseover)="btnMouseOver(majorColor, $event)"
-            *nzSpaceItem [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-            class="popupFont" nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
+            *nzSpaceItem [nzShape]="preferenceData.buttonShape"
+            [style]="{color: getFontColor(minorColor), cursor: 'default'}" class="popupFont" nz-button nzType="text"
     >
         <span nz-icon nzTheme="outline" nzType="calendar"></span>
         {{dailySize + " 个倒数日"}}
     </button>
     <button (click)="weatherBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
             (mouseover)="btnMouseOver(majorColor, $event)"
-            *nzSpaceItem [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-            class="popupFont" nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
+            *nzSpaceItem [nzShape]="preferenceData.buttonShape"
+            [style]="{color: getFontColor(minorColor), cursor: 'default'}" class="popupFont" nz-button nzType="text"
     >
         <span nz-icon nzTheme="outline" nzType="check-square"></span>
         {{todoSize + " 个待办事项"}}
@@ -34,8 +34,8 @@
 </nz-space>
 <button (click)="weatherBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
         (mouseover)="btnMouseOver(majorColor, $event)"
-        [style]="{color: getFontColor(minorColor), cursor: 'default', display: preferenceData.simpleMode ? 'inline-block' : 'none'}"
-        class="popupFont" nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
+        [nzShape]="preferenceData.buttonShape"
+        [style]="{color: getFontColor(minorColor), cursor: 'default', display: preferenceData.simpleMode ? 'inline-block' : 'none'}" class="popupFont" nz-button nzType="text"
 >
     <span nz-icon nzTheme="outline" nzType="info-circle"></span>
     {{"已开启简洁模式"}}

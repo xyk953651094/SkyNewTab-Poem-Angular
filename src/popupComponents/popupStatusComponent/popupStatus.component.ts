@@ -1,10 +1,12 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {
+    btnMouseOut,
+    btnMouseOver,
     getFontColor,
     getGreetContent,
     getGreetIcon,
     getSearchEngineDetail,
-    getWeatherIcon, btnMouseOver, btnMouseOut
+    getWeatherIcon
 } from "../../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
@@ -27,6 +29,8 @@ export class popupStatusComponent implements OnInit {
     todoSize = 0;
     searchEngineUrl = "https://www.bing.com/search?q=";
     protected readonly getFontColor = getFontColor;
+    protected readonly btnMouseOver = btnMouseOver;
+    protected readonly btnMouseOut = btnMouseOut;
 
     greetBtnOnClick() {
         window.open(this.searchEngineUrl + "万年历", "_blank");
@@ -60,7 +64,4 @@ export class popupStatusComponent implements OnInit {
         this.todoSize = tempTodos ? JSON.parse(tempTodos).length : 0;
         this.searchEngineUrl = getSearchEngineDetail(this.preferenceData.searchEngine).searchEngineUrl
     }
-
-    protected readonly btnMouseOver = btnMouseOver;
-    protected readonly btnMouseOut = btnMouseOut;
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import { NzNotificationService } from 'ng-zorro-antd/notification';
+import {NzNotificationService} from 'ng-zorro-antd/notification';
 import {
     getFontColor,
     getHolidayDataStorage,
@@ -23,7 +23,8 @@ export class AppComponent implements OnInit {
     preferenceData: PreferenceDataInterface = getPreferenceDataStorage();
     holidayData: any = getHolidayDataStorage();
 
-    constructor(private notification: NzNotificationService) {}
+    constructor(private notification: NzNotificationService) {
+    }
 
     getPreferenceData(value: PreferenceDataInterface) {
         this.preferenceData = value;
@@ -162,10 +163,9 @@ export class AppComponent implements OnInit {
                     "color": getFontColor(this.minorColor),
                     "font-family": "Times New Roman, cursive, sans-serif"
                 })
-                if(this.preferenceData.buttonShape === "round") {
+                if (this.preferenceData.buttonShape === "round") {
                     $(".ant-modal-footer > .ant-btn").removeClass("ant-btn-default ant-btn-primary").addClass("poemFont ant-btn-round ant-btn-text");
-                }
-                else {
+                } else {
                     $(".ant-modal-footer > .ant-btn").removeClass("ant-btn-round ant-btn-default ant-btn-primary").addClass("poemFont ant-btn-text");
                 }
                 $(".ant-modal-footer > .ant-btn").on("mouseover", (e: any) => {
@@ -187,7 +187,7 @@ export class AppComponent implements OnInit {
         // 版本号提醒
         let storageVersion = localStorage.getItem("SkyNewTabPoemAngularVersion");
         let currentVersion = require('../../package.json').version;
-        if(storageVersion !== currentVersion) {
+        if (storageVersion !== currentVersion) {
             this.notification.success(
                 "已更新至版本 V" + currentVersion,
                 "详细更新内容请前往 GitHub 或 GitLab 主页查看",
