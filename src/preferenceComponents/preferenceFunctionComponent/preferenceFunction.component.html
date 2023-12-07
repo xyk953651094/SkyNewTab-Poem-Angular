@@ -11,10 +11,10 @@
                                 [(ngModel)]="preferenceData.searchEngine"
                                 name="searchEngine">
                     <div [nzGutter]="[0, 8]" nz-row>
-                        <div nz-col nzSpan="12"><label nz-radio nzValue="baidu">Baidu</label></div>
-                        <div nz-col nzSpan="12"><label nz-radio nzValue="bing">Bing</label></div>
-                        <div nz-col nzSpan="12"><label nz-radio nzValue="google">Google</label></div>
-                        <div nz-col nzSpan="12"><label nz-radio nzValue="yandex">Yandex</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="baidu">百度</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="bing">必应</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="google">谷歌</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="yandex">央捷科斯</label></div>
                     </div>
                 </nz-radio-group>
             </nz-form-control>
@@ -60,17 +60,4 @@
 
 <ng-template #extraTemplate>
     <span [style]="{color: getFontColor(minorColor)}" nz-icon nzTheme="outline" nzType="setting"></span>
-</ng-template>
-
-<ng-template #alertMessageTemplate>
-    <h5 class="poemFont" nz-typography>提示信息</h5>
-</ng-template>
-
-<ng-template #alertDescriptionTemplate>
-    <div nz-typography>
-        <ol class="poemFont">
-            <li>重置插件将清空缓存恢复初始设置</li>
-            <li>插件出现任何异常可尝试重置插件</li>
-        </ol>
-    </div>
 </ng-template>

@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit {
     @Input() preferenceData = defaultPreferenceData;
     title = "SearchComponent";
     display: "block" | "none" = "block";
-    searchEngineName: string = "Bing";
+    searchEngineName: string = "必应";
     searchEngineUrl: string = "https://www.bing.com/search?q=";
     buttonShape: NzButtonShape = "round";
     protected readonly getFontColor = getFontColor;
@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit {
     }
 
     changeSearchEngine() {
-        const searchEngines = ["Baidu", "Bing", "Google", "Yandex"];
+        const searchEngines = ["百度", "必应", "谷歌", "央捷科斯"];
         let currentIndex = searchEngines.indexOf(this.searchEngineName);
         let nextIndex = 0;
         if (currentIndex !== searchEngines.length - 1) {
