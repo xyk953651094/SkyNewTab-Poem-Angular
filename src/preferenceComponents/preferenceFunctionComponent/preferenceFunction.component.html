@@ -33,30 +33,15 @@
                 </nz-radio-group>
             </nz-form-control>
         </nz-form-item>
-        <div [nzGutter]="24" nz-row>
-            <div nz-col nzSpan="12">
-                <nz-form-item>
-                    <nz-form-label>简洁模式</nz-form-label>
-                    <nz-form-control>
-                        <nz-switch (ngModelChange)="simpleModeSwitchOnChange($event)"
-                                   [ngModel]="preferenceData.simpleMode"
-                                   class="poemFont" name="simpleMode" nzCheckedChildren="已开启"
-                                   nzUnCheckedChildren="已关闭"></nz-switch>
-                    </nz-form-control>
-                </nz-form-item>
-            </div>
-            <div nz-col nzSpan="12">
-                <nz-form-item>
-                    <nz-form-label>提示信息</nz-form-label>
-                    <nz-form-control>
-                        <nz-switch (ngModelChange)="displayAlertSwitchOnChange($event)"
-                                   [ngModel]="preferenceData.displayAlert"
-                                   class="poemFont" name="displayAlert" nzCheckedChildren="已显示"
-                                   nzUnCheckedChildren="已隐藏"></nz-switch>
-                    </nz-form-control>
-                </nz-form-item>
-            </div>
-        </div>
+        <nz-form-item>
+            <nz-form-label>简洁模式</nz-form-label>
+            <nz-form-control>
+                <nz-switch (ngModelChange)="simpleModeSwitchOnChange($event)"
+                           [ngModel]="preferenceData.simpleMode"
+                           class="poemFont" name="simpleMode" nzCheckedChildren="已开启"
+                           nzUnCheckedChildren="已关闭"></nz-switch>
+            </nz-form-control>
+        </nz-form-item>
         <nz-form-item>
             <nz-form-label>危险设置</nz-form-label>
             <nz-form-control>
@@ -70,12 +55,6 @@
                 </button>
             </nz-form-control>
         </nz-form-item>
-        <nz-alert
-            [nzDescription]="alertDescriptionTemplate"
-            [nzMessage]="alertMessageTemplate"
-            [style]="{display: preferenceData.displayAlert ? 'block' : 'none'}"
-            nzType="info"
-        ></nz-alert>
     </form>
 </nz-card>
 

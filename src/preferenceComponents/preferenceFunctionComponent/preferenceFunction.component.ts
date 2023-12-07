@@ -34,8 +34,8 @@ export class preferenceFunctionComponent implements OnInit {
         this.preferenceData = this.modifyPreferenceData({buttonShape: value});
         this.getPreferenceFunctionData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
-        this.message.success("已更换按钮形状，一秒后刷新页面");
-        this.refreshWindow();
+        this.message.success("已更换按钮形状");
+        // this.refreshWindow();
     }
 
     // 简洁模式
@@ -44,22 +44,11 @@ export class preferenceFunctionComponent implements OnInit {
         this.getPreferenceFunctionData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
         if (checked) {
-            this.message.success("已开启简洁模式，一秒后刷新页面");
+            this.message.success("已开启简洁模式");
         } else {
-            this.message.success("已关闭简洁模式，一秒后刷新页面");
+            this.message.success("已关闭简洁模式");
         }
-        this.refreshWindow();
-    }
-
-    displayAlertSwitchOnChange(checked: boolean) {
-        this.preferenceData = this.modifyPreferenceData({displayAlert: checked});
-        this.getPreferenceFunctionData.emit(this.preferenceData);
-        localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
-        if (checked) {
-            this.message.success("已显示提示信息");
-        } else {
-            this.message.success("已隐藏提示信息");
-        }
+        // this.refreshWindow();
     }
 
     // 重置设置

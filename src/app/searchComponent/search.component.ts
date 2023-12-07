@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, Input, OnInit, SimpleChanges} from "@angular/core";
 import {getFontColor, getSearchEngineDetail} from "../../typescripts/publicFunctions";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 import {NzButtonShape} from "ng-zorro-antd/button";
@@ -38,12 +38,18 @@ export class SearchComponent implements OnInit {
         this.searchEngineUrl = getSearchEngineDetail(searchEngines[nextIndex].toLowerCase()).searchEngineUrl;
     }
 
-    ngOnInit(): void {
-        this.buttonShape = this.preferenceData.buttonShape === "round" ? "circle" : null;
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes["preferenceData"]) {
+            this.buttonShape = this.preferenceData.buttonShape === "round" ? "circle" : null;
 
-        let searchEngineDetail = getSearchEngineDetail(this.preferenceData.searchEngine);
-        this.display = this.preferenceData.simpleMode ? "none" : "block";
-        this.searchEngineName = searchEngineDetail.searchEngineName;
-        this.searchEngineUrl = searchEngineDetail.searchEngineUrl;
+            let searchEngineDetail = getSearchEngineDetail(this.preferenceData.searchEngine);
+            this.display = this.preferenceData.simpleMode ? "none" : "block";
+            this.searchEngineName = searchEngineDetail.searchEngineName;
+            this.searchEngineUrl = searchEngineDetail.searchEngineUrl;
+        }
+    }
+
+    ngOnInit(): void {
+
     }
 }
