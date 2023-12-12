@@ -108,8 +108,8 @@ export class AppComponent implements OnInit {
             if (notificationEle.length && notificationEle.length > 0) {
                 $(".ant-notification-notice").css({"backgroundColor": this.minorColor});
                 $(".ant-notification-notice-icon").css("color", getFontColor(this.minorColor));
-                $(".ant-notification-notice-message").css("color", getFontColor(this.minorColor));
-                $(".ant-notification-notice-description").css("color", getFontColor(this.minorColor));
+                $(".ant-notification-notice-message").css({"color": getFontColor(this.minorColor), "font-family": "Times New Roman, cursive, sans-serif"});
+                $(".ant-notification-notice-description").css({"color": getFontColor(this.minorColor), "font-family": "Times New Roman, cursive, sans-serif"});
             }
 
             // drawer
@@ -194,6 +194,14 @@ export class AppComponent implements OnInit {
                 {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
             );
             localStorage.setItem("SkyNewTabPoemAngularVersion", currentVersion);
+
+            if (currentVersion === "2.5.0") {
+                this.notification.success(
+                    "重要通知",
+                    "本次更新改动较大，请前往 菜单栏 => 功能设置 => 重置设置",
+                    {nzPlacement: "bottomLeft", nzDuration: 10000, nzCloseIcon: "null"}
+                );
+            }
         }
     }
 }

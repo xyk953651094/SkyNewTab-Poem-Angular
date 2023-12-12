@@ -13,6 +13,8 @@ export class preferenceFunctionComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
     title = "preferenceFunctionComponent";
+    displayResetPreferenceModal: boolean = false;
+    displayClearStorageModal: boolean = false;
     preferenceData: PreferenceDataInterface = getPreferenceDataStorage();
     @Output() getPreferenceFunctionData: EventEmitter<PreferenceDataInterface> = new EventEmitter();
     protected readonly getFontColor = getFontColor;
@@ -52,10 +54,36 @@ export class preferenceFunctionComponent implements OnInit {
     }
 
     // 重置设置
+    resetPreferenceBtnOnClick() {
+        this.displayResetPreferenceModal = true;
+    }
+
+    resetPreferenceOkBtnOnClick() {
+        this.displayResetPreferenceModal = false;
+        localStorage.setItem("preferenceData", JSON.stringify(defaultPreferenceData));
+        this.message.success("已重置设置，一秒后刷新页面");
+        this.refreshWindow();
+    }
+
+    resetPreferenceCancelBtnOnClick() {
+        this.displayResetPreferenceModal = false;
+    }
+
+    // 重置插件
+
     clearStorageBtnOnClick() {
+        this.displayClearStorageModal = true;
+    }
+
+    clearStorageOkBtnOnClick() {
+        this.displayClearStorageModal = false;
         localStorage.clear();
         this.message.success("已重置所有内容，一秒后刷新页面");
         this.refreshWindow();
+    }
+
+    clearStorageCancelBtnOnClick() {
+        this.displayClearStorageModal = false;
     }
 
     // 修改偏好设置
