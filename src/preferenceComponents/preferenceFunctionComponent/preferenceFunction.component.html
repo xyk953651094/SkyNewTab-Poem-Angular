@@ -9,12 +9,11 @@
             <nz-form-control>
                 <nz-radio-group (ngModelChange)="searchEngineRadioOnChange($event)"
                                 [(ngModel)]="preferenceData.searchEngine"
+                                [style]="{width: '100%'}"
                                 name="searchEngine">
-                    <div [nzGutter]="[0, 8]" nz-row>
-                        <div nz-col nzSpan="12"><label nz-radio nzValue="baidu">百度</label></div>
+                    <div nz-row>
                         <div nz-col nzSpan="12"><label nz-radio nzValue="bing">必应</label></div>
                         <div nz-col nzSpan="12"><label nz-radio nzValue="google">谷歌</label></div>
-                        <div nz-col nzSpan="12"><label nz-radio nzValue="yandex">央捷科斯</label></div>
                     </div>
                 </nz-radio-group>
             </nz-form-control>

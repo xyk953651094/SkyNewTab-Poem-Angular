@@ -33,7 +33,8 @@
                 }" class="poemFont" nz-button
                 nzSize="small"
                 nzType="text">
-            {{searchEngineName}}
+            <span [class]="'bi bi-' + searchEngineValue"></span>
+            {{"&nbsp;&nbsp;" + searchEngineName}}
         </button>
         <nz-divider nzType="vertical"></nz-divider>
     </div>

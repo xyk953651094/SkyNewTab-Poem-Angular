@@ -16,6 +16,7 @@ export class SearchComponent implements OnInit {
     title = "SearchComponent";
     display: "block" | "none" = "block";
     searchEngineName: string = "必应";
+    searchEngineValue: string = "bing";
     searchEngineUrl: string = "https://www.bing.com/search?q=";
     buttonShape: NzButtonShape = "round";
     protected readonly getFontColor = getFontColor;
@@ -27,15 +28,17 @@ export class SearchComponent implements OnInit {
     }
 
     changeSearchEngine() {
-        const searchEngines = ["百度", "必应", "谷歌", "央捷科斯"];
-        let currentIndex = searchEngines.indexOf(this.searchEngineName);
+        const searchEngines = ["bing", "google"];
+        let currentIndex = searchEngines.indexOf(this.searchEngineValue);
         let nextIndex = 0;
         if (currentIndex !== searchEngines.length - 1) {
             nextIndex = currentIndex + 1;
         }
 
-        this.searchEngineName = searchEngines[nextIndex];
-        this.searchEngineUrl = getSearchEngineDetail(searchEngines[nextIndex].toLowerCase()).searchEngineUrl;
+        let searchEngineDetail = getSearchEngineDetail(searchEngines[nextIndex])
+        this.searchEngineName = searchEngineDetail.searchEngineName;
+        this.searchEngineValue = searchEngineDetail.searchEngineValue;
+        this.searchEngineUrl = searchEngineDetail.searchEngineUrl;
     }
 
     ngOnChanges(changes: SimpleChanges) {
