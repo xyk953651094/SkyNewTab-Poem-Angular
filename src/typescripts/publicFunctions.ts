@@ -1,6 +1,7 @@
 // import "jquery-color"
 import {chinaObject, chinaWindow, darkThemeArray, defaultPreferenceData, lightThemeArray} from "./publicConstants";
 import {PreferenceDataInterface} from "./publicInterface";
+import {NzButtonShape} from "ng-zorro-antd/button";
 
 const $ = require("jquery");
 // import * as $ from "jquery";
@@ -298,4 +299,33 @@ export function btnMouseOver(color: string, e: any) {
 export function btnMouseOut(color: string, e: any) {
     e.currentTarget.style.backgroundColor = "transparent";
     e.currentTarget.style.color = getFontColor(color);
+}
+
+// 修改菜单栏表单控件时变化主题颜色
+export function resetRadioColor(selectedRadio: string | NzButtonShape, allRadios: string[], themeColor: string) {
+    // 重置所有不是当前选中的选项的颜色
+    for (let i = 0; i < allRadios.length; i++) {
+        if (selectedRadio && allRadios[i] !== selectedRadio) {
+            $("#" + allRadios[i]).find(".ant-radio-inner").css({
+                "borderColor": "#d9d9d9",
+                "backgroundColor": "#ffffff"
+            });
+        }
+        else {
+            $("#" + allRadios[i]).find(".ant-radio-inner").css({
+                "borderColor": themeColor,
+                "backgroundColor": themeColor,
+            });
+        }
+    }
+}
+
+export function resetSwitchColor(element: string, checked: boolean, themeColor: string) {
+    if (!checked) {
+        $(element).children(".ant-switch").css("backgroundColor", "rgb(0, 0, 0, 0)");
+    }
+    else {
+        $(element).children(".ant-switch").css("backgroundColor", themeColor)
+            .find(".ant-switch-inner").css("color", getFontColor(themeColor));
+    }
 }

@@ -1,6 +1,12 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {NzMessageService} from 'ng-zorro-antd/message';
-import {btnMouseOut, btnMouseOver, getFontColor, getPreferenceDataStorage} from "../../typescripts/publicFunctions";
+import {
+    btnMouseOut,
+    btnMouseOver,
+    getFontColor,
+    getPreferenceDataStorage,
+    resetRadioColor, resetSwitchColor
+} from "../../typescripts/publicFunctions";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 
@@ -30,6 +36,7 @@ export class preferenceFunctionComponent implements OnInit {
         this.getPreferenceFunctionData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
         this.message.success("已更换搜索引擎");
+        resetRadioColor(value, ["bing", "google"], this.majorColor);
     }
 
     buttonShapeRadioOnChange(value: string) {
@@ -37,7 +44,7 @@ export class preferenceFunctionComponent implements OnInit {
         this.getPreferenceFunctionData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
         this.message.success("已更换按钮形状");
-        // this.refreshWindow();
+        resetRadioColor(value, ["round", "default"], this.majorColor);
     }
 
     // 简洁模式
@@ -50,7 +57,7 @@ export class preferenceFunctionComponent implements OnInit {
         } else {
             this.message.success("已关闭简洁模式");
         }
-        // this.refreshWindow();
+        resetSwitchColor("#simpleModeSwitch", checked, this.majorColor);
     }
 
     // 重置设置

@@ -12,8 +12,8 @@
                                 [style]="{width: '100%'}"
                                 name="searchEngine">
                     <div nz-row>
-                        <div nz-col nzSpan="12"><label nz-radio nzValue="bing">必应</label></div>
-                        <div nz-col nzSpan="12"><label nz-radio nzValue="google">谷歌</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="bing" id="bing">必应</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="google" id="google">谷歌</label></div>
                     </div>
                 </nz-radio-group>
             </nz-form-control>
@@ -26,8 +26,8 @@
                                 [style]="{width: '100%'}"
                                 name="buttonShape">
                     <div nz-row>
-                        <div nz-col nzSpan="12"><label nz-radio nzValue="round">圆形</label></div>
-                        <div nz-col nzSpan="12"><label nz-radio nzValue="default">方形</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="round" id="round">圆形</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="default" id="default">方形</label></div>
                     </div>
                 </nz-radio-group>
             </nz-form-control>
@@ -36,7 +36,7 @@
             <nz-form-label>简洁模式</nz-form-label>
             <nz-form-control>
                 <nz-switch (ngModelChange)="simpleModeSwitchOnChange($event)"
-                           [ngModel]="preferenceData.simpleMode"
+                           [ngModel]="preferenceData.simpleMode" id="simpleModeSwitch"
                            class="poemFont" name="simpleMode" nzCheckedChildren="已开启"
                            nzUnCheckedChildren="已关闭"></nz-switch>
             </nz-form-control>

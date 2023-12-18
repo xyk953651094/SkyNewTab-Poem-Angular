@@ -3,7 +3,7 @@ import {NzNotificationService} from 'ng-zorro-antd/notification';
 import {
     getFontColor,
     getHolidayDataStorage,
-    getPreferenceDataStorage,
+    getPreferenceDataStorage, resetRadioColor, resetSwitchColor,
     setColorTheme
 } from "../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../typescripts/publicInterface";
@@ -139,38 +139,13 @@ export class AppComponent implements OnInit {
                     "color": getFontColor(this.minorColor),
                     "font-family": "Times New Roman, cursive, sans-serif"
                 });
-                // $(".ant-radio-checked").children(".ant-radio-inner").css({
-                //     "borderColor": this.majorColor,
-                //     "backgroundColor": this.majorColor,
-                // });
-                // $(".ant-switch-checked").css("backgroundColor", this.majorColor)
-                //     .children(".ant-switch-inner").css("color", getFontColor(this.majorColor));
                 $(".ant-drawer-footer").css("background-color", this.minorColor);
-            }
 
-            // 监视表单元素的 class 变化（卡顿）
-            // let antFormItem = $(".ant-radio, .ant-switch");
-            // if (antFormItem.length && antFormItem.length > 0) {
-            //     let observer = new MutationObserver(function (mutations) {
-            //         mutations.forEach(function (mutation) {
-            //             antFormItem.each((index: number, item: any) => {
-            //                 if ($(item).hasClass("ant-radio") && !$(item).hasClass("ant-radio-checked")) {
-            //                     $(item).children(".ant-radio-inner").css({
-            //                         "borderColor": "#d9d9d9",
-            //                         "backgroundColor": "#ffffff",
-            //                     });
-            //                 }
-            //
-            //                 if ($(item).hasClass("ant-switch") && !$(item).hasClass("ant-switch-checked")) {
-            //                     $(item).css("backgroundColor", "rgb(0, 0, 0, 0.25)");
-            //                 }
-            //             })
-            //         });
-            //     });
-            //     antFormItem.each((index: number, item: any) => {
-            //         observer.observe(item, {attributes: true, attributeFilter: ["class"]});
-            //     });
-            // }
+                // preferenceFunctionComponent
+                resetRadioColor(this.preferenceData.searchEngine, ["bing", "google"], this.majorColor);
+                resetRadioColor(this.preferenceData.buttonShape, ["round", "default"], this.majorColor);
+                resetSwitchColor("#simpleModeSwitch", this.preferenceData.simpleMode, this.majorColor);
+            }
 
             // modal
             let modalEle = $(".ant-modal");
