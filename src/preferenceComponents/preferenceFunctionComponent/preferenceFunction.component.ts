@@ -36,7 +36,7 @@ export class preferenceFunctionComponent implements OnInit {
         this.getPreferenceFunctionData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
         this.message.success("已更换搜索引擎");
-        resetRadioColor(value, ["bing", "google"], this.majorColor);
+        // resetRadioColor(value, ["bing", "google"], this.majorColor);
     }
 
     buttonShapeRadioOnChange(value: string) {
@@ -44,7 +44,7 @@ export class preferenceFunctionComponent implements OnInit {
         this.getPreferenceFunctionData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
         this.message.success("已更换按钮形状");
-        resetRadioColor(value, ["round", "default"], this.majorColor);
+        // resetRadioColor(value, ["round", "default"], this.majorColor);
     }
 
     // 简洁模式
@@ -57,7 +57,7 @@ export class preferenceFunctionComponent implements OnInit {
         } else {
             this.message.success("已关闭简洁模式");
         }
-        resetSwitchColor("#simpleModeSwitch", checked, this.majorColor);
+        // resetSwitchColor("#simpleModeSwitch", checked, this.majorColor);
     }
 
     // 重置设置

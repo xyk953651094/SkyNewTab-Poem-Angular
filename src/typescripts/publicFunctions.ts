@@ -305,17 +305,13 @@ export function btnMouseOut(color: string, e: any) {
 export function resetRadioColor(selectedRadio: string | NzButtonShape, allRadios: string[], themeColor: string) {
     // 重置所有不是当前选中的选项的颜色
     for (let i = 0; i < allRadios.length; i++) {
+        let currentRadio = $("#" + allRadios[i]);
         if (selectedRadio && allRadios[i] !== selectedRadio) {
-            $("#" + allRadios[i]).find(".ant-radio-inner").css({
-                "borderColor": "#d9d9d9",
-                "backgroundColor": "#ffffff"
-            });
+            currentRadio.find(".ant-radio-inner").css({ "borderColor": "#d9d9d9", "backgroundColor": "#ffffff" });
         }
         else {
-            $("#" + allRadios[i]).find(".ant-radio-inner").css({
-                "borderColor": themeColor,
-                "backgroundColor": themeColor,
-            });
+            currentRadio.find(".ant-radio-inner").css({ "borderColor": themeColor, "backgroundColor": themeColor });
+            currentRadio.children(":last-child").css("color", themeColor);
         }
     }
 }

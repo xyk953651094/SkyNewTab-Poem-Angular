@@ -142,9 +142,9 @@ export class AppComponent implements OnInit {
                 $(".ant-drawer-footer").css("background-color", this.minorColor);
 
                 // preferenceFunctionComponent
-                resetRadioColor(this.preferenceData.searchEngine, ["bing", "google"], this.majorColor);
-                resetRadioColor(this.preferenceData.buttonShape, ["round", "default"], this.majorColor);
-                resetSwitchColor("#simpleModeSwitch", this.preferenceData.simpleMode, this.majorColor);
+                // resetRadioColor(this.preferenceData.searchEngine, ["bing", "google"], this.majorColor);
+                // resetRadioColor(this.preferenceData.buttonShape, ["round", "default"], this.majorColor);
+                // resetSwitchColor("#simpleModeSwitch", this.preferenceData.simpleMode, this.majorColor);
             }
 
             // modal
