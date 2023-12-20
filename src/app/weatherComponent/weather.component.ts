@@ -1,11 +1,13 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {NzMessageService} from 'ng-zorro-antd/message';
 import {
+    btnMouseOut,
+    btnMouseOver,
     getFontColor,
     getSearchEngineDetail,
     getTimeDetails,
     getWeatherIcon,
-    httpRequest, btnMouseOver, btnMouseOut
+    httpRequest
 } from "../../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
@@ -34,8 +36,12 @@ export class WeatherComponent implements OnInit, OnChanges {
     visibility: string = "暂无信息";
     windInfo: string = "暂无信息";
     protected readonly getFontColor = getFontColor;
+    protected readonly getTimeDetails = getTimeDetails;
+    protected readonly btnMouseOut = btnMouseOut;
+    protected readonly btnMouseOver = btnMouseOver;
 
-    constructor(private message: NzMessageService) {}
+    constructor(private message: NzMessageService) {
+    }
 
     locationBtnOnClick() {
         if (this.location !== "暂无信息") {
@@ -121,8 +127,4 @@ export class WeatherComponent implements OnInit, OnChanges {
             }
         }
     }
-
-    protected readonly getTimeDetails = getTimeDetails;
-    protected readonly btnMouseOut = btnMouseOut;
-    protected readonly btnMouseOver = btnMouseOver;
 }

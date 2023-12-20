@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {getFontColor, btnMouseOver, btnMouseOut} from "../../typescripts/publicFunctions";
+import {btnMouseOut, btnMouseOver, getFontColor} from "../../typescripts/publicFunctions";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
 @Component({
@@ -13,6 +13,8 @@ export class preferenceEmailComponent implements OnInit {
     @Input() preferenceData = defaultPreferenceData;
     title = "preferenceEmailComponent";
     protected readonly getFontColor = getFontColor;
+    protected readonly btnMouseOver = btnMouseOver;
+    protected readonly btnMouseOut = btnMouseOut;
 
     suggestBtnOnClick() {
         window.open("mailto:xyk953651094@qq.com?&subject=云开诗词新标签页-功能建议", "_blank");
@@ -22,14 +24,11 @@ export class preferenceEmailComponent implements OnInit {
         window.open("mailto:xyk953651094@qq.com?&subject=云开诗词新标签页-问题反馈", "_blank");
     }
 
-    helpBtnOnClick() {
-        window.open("https://xyk953651094.github.io/SkyDocuments/", "_blank");
+    helpBtnOnClick(source: string) {
+        window.open("https://xyk953651094." + source + ".io/SkyDocuments/", "_blank");
     }
 
     ngOnInit(): void {
 
     }
-
-    protected readonly btnMouseOver = btnMouseOver;
-    protected readonly btnMouseOut = btnMouseOut;
 }

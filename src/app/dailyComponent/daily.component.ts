@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {NzMessageService} from 'ng-zorro-antd/message';
-import {getFontColor, getTimeDetails, btnMouseOver, btnMouseOut} from "../../typescripts/publicFunctions";
+import {btnMouseOut, btnMouseOver, getFontColor, getTimeDetails} from "../../typescripts/publicFunctions";
 import {NzButtonShape} from "ng-zorro-antd/button";
 
 const $ = require("jquery");
@@ -25,6 +25,8 @@ export class DailyComponent implements OnInit, OnChanges {
     protected readonly getFontColor = getFontColor;
     protected readonly getTimeDetails = getTimeDetails;
     protected readonly Date = Date;
+    protected readonly btnMouseOut = btnMouseOut;
+    protected readonly btnMouseOver = btnMouseOver;
 
     constructor(private message: NzMessageService) {
     }
@@ -59,6 +61,14 @@ export class DailyComponent implements OnInit, OnChanges {
             this.dailySize = daily.length;
         }
     }
+
+    // datePickerOnChange(result: Date) {
+    //     if (result) {
+    //         this.selectedTimeStamp = new Date(result).getTime();
+    //     } else {
+    //         this.selectedTimeStamp = 0;
+    //     }
+    // };
 
     showAddModalBtnOnClick() {
         let daily = [];
@@ -112,14 +122,6 @@ export class DailyComponent implements OnInit, OnChanges {
         }
     }
 
-    // datePickerOnChange(result: Date) {
-    //     if (result) {
-    //         this.selectedTimeStamp = new Date(result).getTime();
-    //     } else {
-    //         this.selectedTimeStamp = 0;
-    //     }
-    // };
-
     modalCancelBtnOnClick() {
         this.displayModal = false
     }
@@ -159,7 +161,4 @@ export class DailyComponent implements OnInit, OnChanges {
         this.listItems = daily;
         this.dailySize = daily.length;
     }
-
-    protected readonly btnMouseOut = btnMouseOut;
-    protected readonly btnMouseOver = btnMouseOver;
 }

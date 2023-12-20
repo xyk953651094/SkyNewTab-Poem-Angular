@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {getFontColor, btnMouseOver, btnMouseOut} from "../../typescripts/publicFunctions";
+import {btnMouseOut, btnMouseOver, getFontColor} from "../../typescripts/publicFunctions";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
 @Component({
@@ -13,6 +13,8 @@ export class preferenceHeaderComponent implements OnInit {
     @Input() preferenceData = defaultPreferenceData;
     title = "preferenceHeaderComponent";
     protected readonly getFontColor = getFontColor;
+    protected readonly btnMouseOut = btnMouseOut;
+    protected readonly btnMouseOver = btnMouseOver;
 
     supportBtnOnClick() {
         window.open("https://afdian.net/a/xyk953651094", "_blank");
@@ -21,7 +23,4 @@ export class preferenceHeaderComponent implements OnInit {
     ngOnInit(): void {
 
     }
-
-    protected readonly btnMouseOut = btnMouseOut;
-    protected readonly btnMouseOver = btnMouseOver;
 }

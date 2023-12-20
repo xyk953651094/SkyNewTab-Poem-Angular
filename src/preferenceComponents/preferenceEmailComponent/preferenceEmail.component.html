@@ -7,30 +7,40 @@
         <div nz-col nzSpan="12">
             <button (click)="suggestBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                     (mouseover)="btnMouseOver(majorColor, $event)"
-                    [style.color]="getFontColor(minorColor)" class="poemFont"
-                    nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
+                    [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
+                    class="poemFont" nz-button nzType="text"
             >
-                <span nz-icon nzType="like" nzTheme="outline"></span>
+                <span nz-icon nzTheme="outline" nzType="like"></span>
                 {{"功能建议"}}
             </button>
         </div>
         <div nz-col nzSpan="12">
             <button (click)="issueBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                     (mouseover)="btnMouseOver(majorColor, $event)"
-                    [style.color]="getFontColor(minorColor)" class="poemFont"
-                    nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
+                    [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
+                    class="poemFont" nz-button nzType="text"
             >
-                <span nz-icon nzType="dislike" nzTheme="outline"></span>
+                <span nz-icon nzTheme="outline" nzType="dislike"></span>
                 {{"问题反馈"}}
             </button>
         </div>
         <div nz-col nzSpan="12">
-            <button (click)="helpBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+            <button (click)="helpBtnOnClick('github')" (mouseout)="btnMouseOut(minorColor, $event)"
                     (mouseover)="btnMouseOver(majorColor, $event)"
-                    [style.color]="getFontColor(minorColor)" class="poemFont"
-                    nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
+                    [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
+                    class="poemFont" nz-button nzType="text"
             >
-                <span nz-icon nzType="question-circle" nzTheme="outline"></span>
+                <span nz-icon nzTheme="outline" nzType="github"></span>
+                {{"帮助文档"}}
+            </button>
+        </div>
+        <div nz-col nzSpan="12">
+            <button (click)="helpBtnOnClick('gitlab')" (mouseout)="btnMouseOut(minorColor, $event)"
+                    (mouseover)="btnMouseOver(majorColor, $event)"
+                    [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
+                    class="poemFont" nz-button nzType="text"
+            >
+                <span nz-icon nzTheme="outline" nzType="gitlab"></span>
                 {{"帮助文档"}}
             </button>
         </div>
@@ -38,5 +48,5 @@
 </nz-card>
 
 <ng-template #extraTemplate>
-    <span [style]="{color: getFontColor(minorColor)}" nz-icon nzType="mail" nzTheme="outline"></span>
+    <span [style]="{color: getFontColor(minorColor)}" nz-icon nzTheme="outline" nzType="mail"></span>
 </ng-template>

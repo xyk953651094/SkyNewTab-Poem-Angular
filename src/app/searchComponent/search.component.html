@@ -1,12 +1,12 @@
 <button [nzPopoverContent]="popoverContent" [nzPopoverOverlayStyle]="{width: '550px'}"
         [nzPopoverTitle]="popoverTitle"
+        [nzShape]="buttonShape"
         [style]="{display: display, cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
         class="componentTheme poemFont"
-        nz-button
-        nz-popover nzPopoverPlacement="bottomLeft" [nzShape]="buttonShape" nzSize="large"
+        nz-button nz-popover nzPopoverPlacement="bottomLeft" nzSize="large"
         nzType="text"
 >
-    <span nz-icon nzType="search" nzTheme="outline"></span>
+    <span nz-icon nzTheme="outline" nzType="search"></span>
 </button>
 
 <ng-template #popoverTitle>
@@ -20,24 +20,26 @@
 </ng-template>
 <ng-template #popoverContent>
     <nz-input-group [nzPrefix]="inputPrefix" [nzSuffix]="inputSuffix">
-        <input nz-input id="searchInput" class="poemFont" placeholder="按下 Enter 键搜索" (keypress)="onPressEnter($event)"/>
+        <input (keypress)="onPressEnter($event)" class="poemFont" id="searchInput" nz-input
+               placeholder="按下 Enter 键搜索"/>
     </nz-input-group>
 </ng-template>
 
 <ng-template #inputPrefix>
     <div nz-row nzAlign="middle">
-        <button class="poemFont" nz-button nzType="text" nzSize="small"
-                (click)="changeSearchEngine()"
-                [style]="{
+        <button (click)="changeSearchEngine()" [style]="{
                     backgroundColor: minorColor,
                     color: getFontColor(minorColor),
-                }">
-            {{searchEngineName}}
+                }" class="poemFont" nz-button
+                nzSize="small"
+                nzType="text">
+            <span [class]="'bi bi-' + searchEngineValue"></span>
+            {{"&nbsp;&nbsp;" + searchEngineName}}
         </button>
         <nz-divider nzType="vertical"></nz-divider>
     </div>
 </ng-template>
 
 <ng-template #inputSuffix>
-    <span nz-icon nzType="search" nzTheme="outline"></span>
+    <span nz-icon nzTheme="outline" nzType="search"></span>
 </ng-template>

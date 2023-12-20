@@ -1,12 +1,14 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from "@angular/core";
 import {defaultPreferenceData, device} from "../../typescripts/publicConstants"
 import {
+    btnMouseOut,
+    btnMouseOver,
     getFontColor,
     getGreetContent,
     getGreetIcon,
     getSearchEngineDetail,
     getTimeDetails,
-    httpRequest, btnMouseOver, btnMouseOut
+    httpRequest
 } from "../../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 
@@ -35,6 +37,8 @@ export class GreetComponent implements OnInit, OnChanges {
     protected readonly getGreetContent = getGreetContent;
     protected readonly device = device;
     protected readonly getFontColor = getFontColor;
+    protected readonly btnMouseOut = btnMouseOut;
+    protected readonly btnMouseOver = btnMouseOver;
 
     historyBtnOnClick() {
         window.open(this.searchEngineUrl + "历史上的今天", "_blank");
@@ -133,7 +137,4 @@ export class GreetComponent implements OnInit, OnChanges {
             }, 60 * 60 * 1000);
         }
     }
-
-    protected readonly btnMouseOut = btnMouseOut;
-    protected readonly btnMouseOver = btnMouseOver;
 }

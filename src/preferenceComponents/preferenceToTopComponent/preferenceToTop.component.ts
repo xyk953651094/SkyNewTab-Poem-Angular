@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {getFontColor, btnMouseOver, btnMouseOut} from "../../typescripts/publicFunctions";
+import {btnMouseOut, btnMouseOver, getFontColor} from "../../typescripts/publicFunctions";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
 @Component({
@@ -13,6 +13,8 @@ export class preferenceToTopComponent implements OnInit {
     @Input() preferenceData = defaultPreferenceData;
     title = "preferenceToTopComponent";
     protected readonly getFontColor = getFontColor;
+    protected readonly btnMouseOut = btnMouseOut;
+    protected readonly btnMouseOver = btnMouseOver;
 
     toTopBtnOnClick(value: string) {
         let drawerContent: HTMLElement | null = document.getElementById("drawerContent");
@@ -24,7 +26,4 @@ export class preferenceToTopComponent implements OnInit {
     ngOnInit(): void {
 
     }
-
-    protected readonly btnMouseOut = btnMouseOut;
-    protected readonly btnMouseOver = btnMouseOver;
 }

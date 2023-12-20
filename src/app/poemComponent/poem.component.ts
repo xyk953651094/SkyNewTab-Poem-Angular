@@ -47,7 +47,6 @@ export class PoemComponent implements OnInit {
 
     getPoem() {
         poemRequest.load((result: any) => {
-            // TODO: 处理请求失败
             localStorage.setItem("lastPoemRequestTime", String(new Date().getTime()));  // 保存请求时间，防抖节流
             localStorage.setItem("lastPoem", JSON.stringify(result));                   // 保存请求结果，防抖节流
             this.setPoem(result);
@@ -68,7 +67,7 @@ export class PoemComponent implements OnInit {
         let nowTimeStamp = new Date().getTime();
         if (lastPoemRequestTime === null) {  // 第一次请求时 lastRequestTime 为 null，因此直接进行请求赋值 lastRequestTime
             this.getPoem();
-        } else if (nowTimeStamp - parseInt(lastPoemRequestTime) > 10 * 60 * 1000) {  // 必须多于十分钟才能进行新的请求
+        } else if (nowTimeStamp - parseInt(lastPoemRequestTime) > 30 * 60 * 1000) {  // 必须多于 30 分钟才能进行新的请求
             this.getPoem();
         } else {  // 十分钟之内使用上一次请求结果
             let lastPoem: any = localStorage.getItem("lastPoem");

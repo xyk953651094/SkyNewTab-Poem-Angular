@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
-import {getFontColor} from "../../typescripts/publicFunctions";
+import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from "@angular/core";
+import {getFontColor, getSearchEngineDetail} from "../../typescripts/publicFunctions";
 import {defaultPreferenceData, device} from "../../typescripts/publicConstants";
 import {
     preferenceFooterComponent
@@ -39,9 +39,13 @@ export class PreferenceComponent implements OnInit {
         this.getPreferenceData.emit(value);
     }
 
-    ngOnInit(): void {
-        this.buttonShape = this.preferenceData.buttonShape === "round" ? "circle" : null;
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes["preferenceData"]) {
+            this.buttonShape = this.preferenceData.buttonShape === "round" ? "circle" : null;
+        }
+    }
 
+    ngOnInit(): void {
         // 屏幕适配
         if (device === "iPhone" || device === "Android") {
             this.drawerPosition = "bottom";

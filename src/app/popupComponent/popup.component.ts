@@ -1,6 +1,5 @@
 import {Component, OnInit} from "@angular/core";
 import {getFontColor, getPreferenceDataStorage, setColorTheme} from "../../typescripts/publicFunctions";
-import {defaultPreferenceData, lightThemeArray} from "../../typescripts/publicConstants";
 
 const $ = require("jquery")
 
@@ -24,8 +23,7 @@ export class popupComponent implements OnInit {
             themeArray = JSON.parse(tempThemeColor);
             let bodyEle = $("body");
             bodyEle.css("background-color", themeArray.minorColor + " !important");
-        }
-        else {
+        } else {
             themeArray = setColorTheme();
         }
         this.majorColor = themeArray.majorColor;

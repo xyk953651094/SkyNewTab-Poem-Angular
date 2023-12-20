@@ -1,9 +1,9 @@
 import {Component, OnInit} from "@angular/core";
-import { NzNotificationService } from 'ng-zorro-antd/notification';
+import {NzNotificationService} from 'ng-zorro-antd/notification';
 import {
     getFontColor,
     getHolidayDataStorage,
-    getPreferenceDataStorage,
+    getPreferenceDataStorage, resetRadioColor, resetSwitchColor,
     setColorTheme
 } from "../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../typescripts/publicInterface";
@@ -23,7 +23,8 @@ export class AppComponent implements OnInit {
     preferenceData: PreferenceDataInterface = getPreferenceDataStorage();
     holidayData: any = getHolidayDataStorage();
 
-    constructor(private notification: NzNotificationService) {}
+    constructor(private notification: NzNotificationService) {
+    }
 
     getPreferenceData(value: PreferenceDataInterface) {
         this.preferenceData = value;
@@ -107,8 +108,8 @@ export class AppComponent implements OnInit {
             if (notificationEle.length && notificationEle.length > 0) {
                 $(".ant-notification-notice").css({"backgroundColor": this.minorColor});
                 $(".ant-notification-notice-icon").css("color", getFontColor(this.minorColor));
-                $(".ant-notification-notice-message").css("color", getFontColor(this.minorColor));
-                $(".ant-notification-notice-description").css("color", getFontColor(this.minorColor));
+                $(".ant-notification-notice-message").css({"color": getFontColor(this.minorColor), "font-family": "Times New Roman, cursive, sans-serif"});
+                $(".ant-notification-notice-description").css({"color": getFontColor(this.minorColor), "font-family": "Times New Roman, cursive, sans-serif"});
             }
 
             // drawer
@@ -139,6 +140,11 @@ export class AppComponent implements OnInit {
                     "font-family": "Times New Roman, cursive, sans-serif"
                 });
                 $(".ant-drawer-footer").css("background-color", this.minorColor);
+
+                // preferenceFunctionComponent
+                // resetRadioColor(this.preferenceData.searchEngine, ["bing", "google"], this.majorColor);
+                // resetRadioColor(this.preferenceData.buttonShape, ["round", "default"], this.majorColor);
+                // resetSwitchColor("#simpleModeSwitch", this.preferenceData.simpleMode, this.majorColor);
             }
 
             // modal
@@ -162,10 +168,9 @@ export class AppComponent implements OnInit {
                     "color": getFontColor(this.minorColor),
                     "font-family": "Times New Roman, cursive, sans-serif"
                 })
-                if(this.preferenceData.buttonShape === "round") {
+                if (this.preferenceData.buttonShape === "round") {
                     $(".ant-modal-footer > .ant-btn").removeClass("ant-btn-default ant-btn-primary").addClass("poemFont ant-btn-round ant-btn-text");
-                }
-                else {
+                } else {
                     $(".ant-modal-footer > .ant-btn").removeClass("ant-btn-round ant-btn-default ant-btn-primary").addClass("poemFont ant-btn-text");
                 }
                 $(".ant-modal-footer > .ant-btn").on("mouseover", (e: any) => {
@@ -187,13 +192,21 @@ export class AppComponent implements OnInit {
         // 版本号提醒
         let storageVersion = localStorage.getItem("SkyNewTabPoemAngularVersion");
         let currentVersion = require('../../package.json').version;
-        if(storageVersion !== currentVersion) {
+        if (storageVersion !== currentVersion) {
             this.notification.success(
                 "已更新至版本 V" + currentVersion,
                 "详细更新内容请前往 GitHub 或 GitLab 主页查看",
                 {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
             );
             localStorage.setItem("SkyNewTabPoemAngularVersion", currentVersion);
+
+            if (currentVersion === "2.5.0") {
+                this.notification.success(
+                    "重要通知",
+                    "本次更新改动较大，请前往 菜单栏 => 功能设置 => 重置设置",
+                    {nzPlacement: "bottomLeft", nzDuration: 10000, nzCloseIcon: "null"}
+                );
+            }
         }
     }
 }

@@ -4,9 +4,9 @@
              [nzXl]="{span: 24}"
              [nzXs]="{span: 0}" nz-col>
             <button (click)="poemContentBtnOnClick()" (mouseout)="btnMouseOut($event)"
-                    (mouseover)="btnMouseOver($event)" [style.color]="minorColor"
-                    class="poemText poemFont largeFont"
-                    nz-button [nzShape]="preferenceData.buttonShape" nzSize="large"
+                    (mouseover)="btnMouseOver($event)" [nzShape]="preferenceData.buttonShape"
+                    [style.color]="minorColor"
+                    class="poemText poemFont largeFont" nz-button nzSize="large"
                     nzType="text"
             >
                 {{poemContent.length < 30 ? poemContent : poemContent.substring(0, 30) + "..."}}
@@ -16,9 +16,9 @@
              [nzXl]="{span: 24}"
              [nzXs]="{span: 0}" nz-col>
             <button (click)="poemAuthorBtnOnClick()" (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+                    [nzShape]="preferenceData.buttonShape"
                     [style.color]="minorColor"
-                    class="poemText poemFont largeFont"
-                    nz-button [nzShape]="preferenceData.buttonShape" nzSize="large"
+                    class="poemText poemFont largeFont" nz-button nzSize="large"
                     nzType="text"
             >
                 {{poemAuthorDetails.length < 30 ? poemAuthorDetails : poemAuthorDetails.substring(0, 30) + "..."}}
@@ -27,8 +27,9 @@
         <div [nzLg]="{span: 0}" [nzMd]="{span: 24}" [nzSm]="{span: 24}" [nzXXl]="{span: 0}" [nzXl]="{span: 0}"
              [nzXs]="{span: 24}"
              nz-col>
-            <div nz-space nzAlign="center" class="alignCenter">
-                <span [style]="{color: minorColor, fontSize: '24px'}" class="poemText poemFont largeFont vertical" nz-typography>
+            <div class="alignCenter" nz-space nzAlign="center">
+                <span [style]="{color: minorColor, fontSize: '24px'}" class="poemText poemFont largeFont vertical"
+                      nz-typography>
                     {{poemContent.length < 20 ? poemContent : poemContent.substring(0, 20) + "..."}}
                 </span>
             </div>

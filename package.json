@@ -1,6 +1,6 @@
 {
   "name": "skynewtab-poem-angular",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -19,7 +19,7 @@
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
-    "bootstrap-icons": "^1.10.5",
+    "bootstrap-icons": "^1.11.2",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {getFontColor, btnMouseOver, btnMouseOut} from "../../typescripts/publicFunctions";
+import {btnMouseOut, btnMouseOver, getFontColor} from "../../typescripts/publicFunctions";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
 @Component({
@@ -13,6 +13,8 @@ export class preferenceInfoComponent implements OnInit {
     @Input() preferenceData = defaultPreferenceData;
     title = "preferenceInfoComponent";
     protected readonly getFontColor = getFontColor;
+    protected readonly btnMouseOut = btnMouseOut;
+    protected readonly btnMouseOver = btnMouseOver;
 
     calendarBtnOnClick() {
         window.open("https://www.mxnzp.com/", "_blank");
@@ -33,7 +35,4 @@ export class preferenceInfoComponent implements OnInit {
     ngOnInit(): void {
 
     }
-
-    protected readonly btnMouseOut = btnMouseOut;
-    protected readonly btnMouseOver = btnMouseOver;
 }

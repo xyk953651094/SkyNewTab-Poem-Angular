@@ -9,12 +9,11 @@
             <nz-form-control>
                 <nz-radio-group (ngModelChange)="searchEngineRadioOnChange($event)"
                                 [(ngModel)]="preferenceData.searchEngine"
+                                [style]="{width: '100%'}"
                                 name="searchEngine">
-                    <div nz-row [nzGutter]="[0, 8]">
-                        <div nz-col nzSpan="12"><label nz-radio nzValue="baidu">Baidu</label></div>
-                        <div nz-col nzSpan="12"><label nz-radio nzValue="bing">Bing</label></div>
-                        <div nz-col nzSpan="12"><label nz-radio nzValue="google">Google</label></div>
-                        <div nz-col nzSpan="12"><label nz-radio nzValue="yandex">Yandex</label></div>
+                    <div nz-row>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="bing" id="bing">必应</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="google" id="google">谷歌</label></div>
                     </div>
                 </nz-radio-group>
             </nz-form-control>
@@ -27,69 +26,73 @@
                                 [style]="{width: '100%'}"
                                 name="buttonShape">
                     <div nz-row>
-                        <div nz-col nzSpan="12"><label nz-radio nzValue="round">圆形</label></div>
-                        <div nz-col nzSpan="12"><label nz-radio nzValue="default">方形</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="round" id="round">圆形</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="default" id="default">方形</label></div>
                     </div>
                 </nz-radio-group>
             </nz-form-control>
         </nz-form-item>
-        <div [nzGutter]="24" nz-row>
-            <div nz-col nzSpan="12">
-                <nz-form-item>
-                    <nz-form-label>简洁模式</nz-form-label>
-                    <nz-form-control>
-                        <nz-switch (ngModelChange)="simpleModeSwitchOnChange($event)" [ngModel]="preferenceData.simpleMode"
-                                   name="simpleMode" class="poemFont" nzCheckedChildren="已开启"
-                                   nzUnCheckedChildren="已关闭"></nz-switch>
-                    </nz-form-control>
-                </nz-form-item>
-            </div>
-            <div nz-col nzSpan="12">
-                <nz-form-item>
-                    <nz-form-label>提示信息</nz-form-label>
-                    <nz-form-control>
-                        <nz-switch (ngModelChange)="displayAlertSwitchOnChange($event)" [ngModel]="preferenceData.displayAlert"
-                                   name="displayAlert" class="poemFont" nzCheckedChildren="已显示"
-                                   nzUnCheckedChildren="已隐藏"></nz-switch>
-                    </nz-form-control>
-                </nz-form-item>
-            </div>
-        </div>
+        <nz-form-item>
+            <nz-form-label>简洁模式</nz-form-label>
+            <nz-form-control>
+                <nz-switch (ngModelChange)="simpleModeSwitchOnChange($event)"
+                           [ngModel]="preferenceData.simpleMode" id="simpleModeSwitch"
+                           class="poemFont" name="simpleMode" nzCheckedChildren="已开启"
+                           nzUnCheckedChildren="已关闭"></nz-switch>
+            </nz-form-control>
+        </nz-form-item>
         <nz-form-item>
             <nz-form-label>危险设置</nz-form-label>
             <nz-form-control>
-                <button (click)="clearStorageBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
-                        (mouseover)="btnMouseOver(majorColor, $event)"
-                        [style.color]="getFontColor(minorColor)" class="poemFont"
-                        nz-button [nzShape]="preferenceData.buttonShape" nzType="text"
-                >
-                    <span nz-icon nzType="redo" nzTheme="outline"></span>
-                    {{"重置插件"}}
-                </button>
+                <nz-space>
+                    <button (click)=" resetPreferenceBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                            (mouseover)="btnMouseOver(majorColor, $event)" *nzSpaceItem
+                            [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
+                            class="poemFont" nz-button nzType="text"
+                    >
+                        <span nz-icon nzTheme="outline" nzType="redo"></span>
+                        {{"重置设置"}}
+                    </button>
+                    <button (click)="clearStorageBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                            (mouseover)="btnMouseOver(majorColor, $event)" *nzSpaceItem
+                            [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
+                            class="poemFont" nz-button nzType="text"
+                    >
+                        <span nz-icon nzTheme="outline" nzType="redo"></span>
+                        {{"重置插件"}}
+                    </button>
+                </nz-space>
             </nz-form-control>
         </nz-form-item>
-        <nz-alert
-            [nzDescription]="alertDescriptionTemplate"
-            [nzMessage]="alertMessageTemplate"
-            nzType="info"
-            [style]="{display: preferenceData.displayAlert ? 'block' : 'none'}"
-        ></nz-alert>
     </form>
 </nz-card>
+<nz-modal (nzOnCancel)="resetPreferenceCancelBtnOnClick()" (nzOnOk)="resetPreferenceOkBtnOnClick()" [(nzVisible)]="displayResetPreferenceModal"
+          [nzBodyStyle]="{backgroundColor: minorColor}"
+          [nzClosable]="false" [nzContent]="modalContent"
+          [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
+          [nzTitle]="'确定重置设置?'"
+          nzCentered
+>
+    <ng-template #modalContent>
+        <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
+            {{"注意：所有设置项将被重置为默认值，确定重置吗？"}}
+        </span>
+    </ng-template>
+</nz-modal>
+<nz-modal (nzOnCancel)="clearStorageCancelBtnOnClick()" (nzOnOk)="clearStorageOkBtnOnClick()" [(nzVisible)]="displayClearStorageModal"
+          [nzBodyStyle]="{backgroundColor: minorColor}"
+          [nzClosable]="false" [nzContent]="modalContent"
+          [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
+          [nzTitle]="'确定重置插件?'"
+          nzCentered
+>
+    <ng-template #modalContent>
+        <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
+            {{"注意：本地存储的所有数据将被清空，确定重置吗？"}}
+        </span>
+    </ng-template>
+</nz-modal>
 
 <ng-template #extraTemplate>
     <span [style]="{color: getFontColor(minorColor)}" nz-icon nzTheme="outline" nzType="setting"></span>
-</ng-template>
-
-<ng-template #alertMessageTemplate>
-    <h5 class="poemFont" nz-typography>提示信息</h5>
-</ng-template>
-
-<ng-template #alertDescriptionTemplate>
-    <div nz-typography>
-        <ol class="poemFont">
-            <li>重置插件将清空缓存恢复初始设置</li>
-            <li>插件出现任何异常可尝试重置插件</li>
-        </ol>
-    </div>
 </ng-template>

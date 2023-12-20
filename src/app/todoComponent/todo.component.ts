@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {NzMessageService} from 'ng-zorro-antd/message';
-import {getFontColor, getTimeDetails, btnMouseOver, btnMouseOut} from "../../typescripts/publicFunctions";
+import {btnMouseOut, btnMouseOver, getFontColor, getTimeDetails} from "../../typescripts/publicFunctions";
 import {NzButtonShape} from "ng-zorro-antd/button";
 
 const $ = require("jquery");
@@ -26,6 +26,8 @@ export class todoComponent implements OnInit, OnChanges {
     protected readonly getFontColor = getFontColor;
     protected readonly getTimeDetails = getTimeDetails;
     protected readonly Date = Date;
+    protected readonly btnMouseOver = btnMouseOver;
+    protected readonly btnMouseOut = btnMouseOut;
 
     constructor(private message: NzMessageService) {
     }
@@ -152,7 +154,4 @@ export class todoComponent implements OnInit, OnChanges {
         this.listItems = todos;
         this.todoSize = todos.length;
     }
-
-    protected readonly btnMouseOver = btnMouseOver;
-    protected readonly btnMouseOut = btnMouseOut;
 }

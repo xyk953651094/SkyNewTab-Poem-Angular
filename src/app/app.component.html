@@ -3,7 +3,7 @@
     <nz-header class="header">
         <div nz-row nzJustify="center">
             <div [nzLg]="{span: 9}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 9}" [nzXl]="{span: 9}"
-                 [nzXs]="{span: 0}" nz-col class="zIndexMiddle">
+                 [nzXs]="{span: 0}" class="zIndexMiddle" nz-col>
                 <nz-space>
                     <search-component
                         *nzSpaceItem
@@ -11,11 +11,11 @@
                         [preferenceData]="preferenceData"
                     />
                     <greet-component
+                        (getHolidayData)="getHolidayData($event)"
                         *nzSpaceItem
                         [majorColor]="majorColor"
                         [minorColor]="minorColor"
                         [preferenceData]="preferenceData"
-                        (getHolidayData)="getHolidayData($event)"
                     />
                     <weather-component
                         *nzSpaceItem
@@ -41,11 +41,11 @@
                         [preferenceData]="preferenceData"
                     />
                     <preference-component
+                        (getPreferenceData)="getPreferenceData($event)"
                         *nzSpaceItem
                         [majorColor]="majorColor"
                         [minorColor]="minorColor"
                         [preferenceData]="preferenceData"
-                        (getPreferenceData)="getPreferenceData($event)"
                     />
                 </nz-space>
             </div>
@@ -61,11 +61,12 @@
         </div>
     </nz-header>
     <nz-content class="content alignCenter">
-        <div nz-row [nzGutter]="[0, 8]">
-            <div nz-col [nzXs]="{span: 0}" [nzSm]="{span: 0}" [nzMd]="{span: 24}" [nzLg]="{span: 24}" [nzXl]="{span: 24}" [nzXXl]="{span: 24}">
+        <div [nzGutter]="[0, 8]" nz-row>
+            <div [nzLg]="{span: 24}" [nzMd]="{span: 24}" [nzSm]="{span: 0}" [nzXXl]="{span: 24}" [nzXl]="{span: 24}"
+                 [nzXs]="{span: 0}" nz-col>
                 <clock-component
-                    [minorColor]="minorColor"
                     [holidayData]="holidayData"
+                    [minorColor]="minorColor"
                 />
             </div>
             <div nz-col nzSpan="24">

@@ -1,11 +1,11 @@
-<button (click)="showDrawerBtnOnClick()" [nzTooltipColor]="minorColor"
-        [style]="{color: getFontColor(minorColor), backgroundColor: minorColor}"
-        class="componentTheme poemFont" nz-button nz-tooltip
-        [nzShape]="buttonShape"
+<button (click)="showDrawerBtnOnClick()" [nzShape]="buttonShape"
+        [nzTooltipColor]="minorColor"
+        [style]="{color: getFontColor(minorColor), backgroundColor: minorColor}" class="componentTheme poemFont" nz-button
+        nz-tooltip
         nzSize="large" nzTooltipPlacement="bottomRight" nzTooltipTitle="菜单栏"
         nzType="text"
 >
-    <span nz-icon nzType="menu" nzTheme="outline"></span>
+    <span nz-icon nzTheme="outline" nzType="menu"></span>
 </button>
 
 <nz-drawer
@@ -15,27 +15,27 @@
     [nzHeight]="500"
     [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
     [nzPlacement]="drawerPosition"
+    [nzTitle]="drawerHeader"
     [nzVisible]="displayDrawer"
     [nzWidth]="400"
     nzCloseIcon=null
     nzSize="default"
-    [nzTitle]="drawerHeader"
 >
     <ng-container *nzDrawerContent>
-        <nz-space nzDirection="vertical" nzSize="large" id="drawerContent">
+        <nz-space id="drawerContent" nzDirection="vertical" nzSize="large">
             <preferenceFunction-component
                 (getPreferenceFunctionData)="getPreferenceFunctionData($event)"
                 *nzSpaceItem
                 [majorColor]="majorColor"
                 [minorColor]="minorColor"
             />
-            <preferenceInfo-component
+            <preferenceEmail-component
                 *nzSpaceItem
                 [majorColor]="majorColor"
                 [minorColor]="minorColor"
                 [preferenceData]="preferenceData"
             />
-            <preferenceEmail-component
+            <preferenceInfo-component
                 *nzSpaceItem
                 [majorColor]="majorColor"
                 [minorColor]="minorColor"
