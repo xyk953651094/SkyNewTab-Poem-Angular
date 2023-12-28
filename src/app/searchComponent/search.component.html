@@ -27,7 +27,7 @@
 
 <ng-template #inputPrefix>
     <div nz-row nzAlign="middle">
-        <button (click)="changeSearchEngine()" [style]="{
+        <button (click)="changeSearchEngine($event)" [style]="{
                     backgroundColor: minorColor,
                     color: getFontColor(minorColor),
                 }" class="poemFont" nz-button

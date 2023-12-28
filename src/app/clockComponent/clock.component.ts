@@ -125,7 +125,7 @@ export class ClockComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.display = this.preferenceData.simpleMode ? "none" : "block";
+        this.display = this.preferenceData.simpleMode ? "none" : "flex";
 
         // 每分钟刷新一次（日期与年份取的是万年历中请求的缓存数据，存在请求间隔，因此无法及时更新，只能更新时间）
         setInterval(() => {
