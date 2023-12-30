@@ -308,10 +308,11 @@ export function resetRadioColor(selectedRadio: string | NzButtonShape, allRadios
         let currentRadio = $("#" + allRadios[i]);
         if (selectedRadio && allRadios[i] !== selectedRadio) {
             currentRadio.find(".ant-radio-inner").css({ "borderColor": "#d9d9d9", "backgroundColor": "#ffffff" });
+            currentRadio.children(":last-child").css({"fontWeight": "normal", "textDecoration": "none"});
         }
         else {
             currentRadio.find(".ant-radio-inner").css({ "borderColor": themeColor, "backgroundColor": themeColor });
-            currentRadio.children(":last-child").css("color", themeColor);
+            currentRadio.children(":last-child").css({"color": themeColor, "fontWeight": "bold", "textDecoration": "underline"});
         }
     }
 }

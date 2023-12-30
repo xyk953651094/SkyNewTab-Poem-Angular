@@ -31,9 +31,7 @@ export class AppComponent implements OnInit {
     }
 
     getHolidayData(value: any) {
-        console.log(this.holidayData);
         this.holidayData = value;
-        console.log(this.holidayData);
     }
 
     // 随机颜色主题
@@ -142,9 +140,9 @@ export class AppComponent implements OnInit {
                 $(".ant-drawer-footer").css("background-color", this.minorColor);
 
                 // preferenceFunctionComponent
-                // resetRadioColor(this.preferenceData.searchEngine, ["bing", "google"], this.majorColor);
-                // resetRadioColor(this.preferenceData.buttonShape, ["round", "default"], this.majorColor);
-                // resetSwitchColor("#simpleModeSwitch", this.preferenceData.simpleMode, this.majorColor);
+                resetRadioColor(this.preferenceData.searchEngine, ["bing", "google"], this.majorColor);
+                resetRadioColor(this.preferenceData.buttonShape, ["round", "default"], this.majorColor);
+                resetSwitchColor("#simpleModeSwitch", this.preferenceData.simpleMode, this.majorColor);
             }
 
             // modal
@@ -195,7 +193,7 @@ export class AppComponent implements OnInit {
         if (storageVersion !== currentVersion) {
             this.notification.success(
                 "已更新至版本 V" + currentVersion,
-                "详细更新内容请前往 GitHub 或 GitLab 主页查看",
+                "详细内容请前往 GitHub 或 GitLab 主页查看",
                 {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
             );
             localStorage.setItem("SkyNewTabPoemAngularVersion", currentVersion);

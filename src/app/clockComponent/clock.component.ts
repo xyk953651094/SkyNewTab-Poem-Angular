@@ -1,5 +1,7 @@
 import {Component, Input, OnInit, SimpleChanges} from "@angular/core";
-import {getFontColor} from "../../typescripts/publicFunctions";
+import {getFontColor, getSearchEngineDetail} from "../../typescripts/publicFunctions";
+import {PreferenceDataInterface} from "../../typescripts/publicInterface";
+import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
 const $ = require("jquery");
 
@@ -11,7 +13,9 @@ const $ = require("jquery");
 export class ClockComponent implements OnInit {
     @Input() minorColor: string = "#000000";
     @Input() holidayData: any;
+    @Input() preferenceData: PreferenceDataInterface = defaultPreferenceData;
     title = "ClockComponent";
+    display = "flex";
     currentTime: string = this.getLocaleTime();
     currentDate: string = "暂无信息";
     currentYear: string = "暂无信息";
@@ -114,9 +118,15 @@ export class ClockComponent implements OnInit {
             this.currentDate = this.holidayData.lunarCalendar;
             this.currentYear = this.holidayData.yearTips + this.holidayData.chineseZodiac + "年";
         }
+
+        if (changes["preferenceData"]) {
+            this.display = this.preferenceData.simpleMode ? "none" : "flex";
+        }
     }
 
     ngOnInit(): void {
+        this.display = this.preferenceData.simpleMode ? "none" : "flex";
+
         // 每分钟刷新一次（日期与年份取的是万年历中请求的缓存数据，存在请求间隔，因此无法及时更新，只能更新时间）
         setInterval(() => {
             this.currentTime = this.getLocaleTime();
