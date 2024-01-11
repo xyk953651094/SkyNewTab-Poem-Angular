@@ -57,6 +57,7 @@ import {
     preferenceProductComponent
 } from "../preferenceComponents/preferenceProductComponent/preferenceProduct.component";
 import {preferenceToTopComponent} from "../preferenceComponents/preferenceToTopComponent/preferenceToTop.component";
+import {preferenceHelpComponent} from "../preferenceComponents/preferenceHelpComponent/preferenceHelp.component";
 
 registerLocaleData(zh);
 
@@ -74,6 +75,7 @@ registerLocaleData(zh);
         WaveComponent,
         PreferenceComponent,
         preferenceFooterComponent,
+        preferenceHelpComponent,
         preferenceEmailComponent,
         preferenceInfoComponent,
         preferenceFunctionComponent,
