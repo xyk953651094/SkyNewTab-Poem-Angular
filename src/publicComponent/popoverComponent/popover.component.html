@@ -1,0 +1,12 @@
+<button [nzPopoverTitle]="popoverTitle" [nzPopoverContent]="popoverContent"
+        [nzPopoverPlacement]="popoverPlacement"
+        [nzPopoverOverlayStyle]="{minWidth: popoverMinWidth}"
+        [nzShape]="buttonShape"
+        [style]="{display: display, cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
+        class="componentTheme poemFont"
+        nz-button nz-popover  nzSize="large"
+        nzType="text"
+>
+    <ng-container *ngTemplateOutlet="buttonIcon"/>
+    {{buttonContent}}
+</button>

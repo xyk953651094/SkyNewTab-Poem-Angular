@@ -59,7 +59,7 @@ export class WeatherComponent implements OnInit, OnChanges {
     setWeather(data: any): void {
         if (data.weatherData) {
             this.weatherIcon = getWeatherIcon(data.weatherData.weather);
-            this.weatherContent = data.weatherData.weather + "｜" + data.weatherData.temperature + "°C";
+            this.weatherContent = data.weatherData.weather + " ｜ " + data.weatherData.temperature + "°C";
             this.location = data.region.replace("|", " · ");
             this.humidity = data.weatherData.humidity;
             this.pm25 = data.weatherData.pm25;

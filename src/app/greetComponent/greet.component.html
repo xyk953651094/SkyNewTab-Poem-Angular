@@ -7,8 +7,19 @@
         nzType="text"
 >
     <span [class]="greetIcon">&nbsp;&nbsp;</span>
-    {{greetContent + "｜" + holidayContent}}
+    {{greetContent + " ｜ " + holidayContent}}
 </button>
+
+<!--<popover-component [popoverTitle]="popoverTitle" [popoverContent]="popoverContent"-->
+<!--                   [popoverPlacement]="'bottomLeft'" [popoverMinWidth]="'550px'"-->
+<!--                   [buttonIcon]="buttonIcon" [buttonContent]="greetContent + ' ｜ ' + holidayContent"-->
+<!--                   [buttonShape]="preferenceData.buttonShape" [display]="display"-->
+<!--                   [minorColor]="minorColor"-->
+<!--/>-->
+<!--<ng-template #buttonIcon>-->
+<!--    <span [class]='greetIcon'>&nbsp;&nbsp;</span>-->
+<!--</ng-template>-->
+
 <ng-template #popoverTitle>
     <div nz-row nzAlign="middle">
         <div nz-col nzSpan="10">
@@ -36,6 +47,16 @@
                     <span nz-icon nzTheme="outline" nzType="more"></span>
                     {{"更多信息"}}
                 </button>
+
+<!--                <button-component [buttonContent]="'更多信息'" [buttonCursor]="'pointer'"-->
+<!--                                  [buttonIcon]="buttonIcon" (buttonOnClick)="infoBtnOnClick()"-->
+<!--                                  [buttonShape]="preferenceData.buttonShape"-->
+<!--                                  [majorColor]="majorColor" [minorColor]="minorColor"-->
+<!--                                  *nzSpaceItem-->
+<!--                />-->
+<!--                <ng-template #buttonIcon>-->
+<!--                    <span nz-icon nzTheme="outline" nzType="more"></span>-->
+<!--                </ng-template>-->
             </nz-space>
         </div>
     </div>

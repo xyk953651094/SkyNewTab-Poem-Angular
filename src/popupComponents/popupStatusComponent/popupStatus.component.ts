@@ -57,9 +57,9 @@ export class popupStatusComponent implements OnInit {
         let tempDaily = localStorage.getItem("daily");
         let tempTodos = localStorage.getItem("todos");
 
-        this.greetContent = tempGreet ? getGreetContent() + "｜" + this.setHoliday(JSON.parse(tempGreet)) : "暂无信息";
+        this.greetContent = tempGreet ? getGreetContent() + " ｜ " + this.setHoliday(JSON.parse(tempGreet)) : "暂无信息";
         this.weatherIcon = tempWeather ? getWeatherIcon(JSON.parse(tempWeather).weatherData.weather) : "";
-        this.weatherContent = tempWeather ? JSON.parse(tempWeather).weatherData.weather + "｜" + JSON.parse(tempWeather).weatherData.temperature + "°C" : "暂无信息";
+        this.weatherContent = tempWeather ? JSON.parse(tempWeather).weatherData.weather + " ｜ " + JSON.parse(tempWeather).weatherData.temperature + "°C" : "暂无信息";
         this.dailySize = tempDaily ? JSON.parse(tempDaily).length : 0;
         this.todoSize = tempTodos ? JSON.parse(tempTodos).length : 0;
         this.searchEngineUrl = getSearchEngineDetail(this.preferenceData.searchEngine).searchEngineUrl
