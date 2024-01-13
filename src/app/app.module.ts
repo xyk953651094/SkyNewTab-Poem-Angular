@@ -58,6 +58,8 @@ import {
 } from "../preferenceComponents/preferenceProductComponent/preferenceProduct.component";
 import {preferenceToTopComponent} from "../preferenceComponents/preferenceToTopComponent/preferenceToTop.component";
 import {preferenceHelpComponent} from "../preferenceComponents/preferenceHelpComponent/preferenceHelp.component";
+import {PopoverComponent} from "../publicComponent/popoverComponent/popover.component";
+import {ButtonComponent} from "../publicComponent/buttonComponent/button.component";
 
 registerLocaleData(zh);
 
@@ -81,7 +83,10 @@ registerLocaleData(zh);
         preferenceFunctionComponent,
         preferenceHeaderComponent,
         preferenceProductComponent,
-        preferenceToTopComponent
+        preferenceToTopComponent,
+
+        ButtonComponent,
+        PopoverComponent,
     ],
     imports: [
         BrowserModule,

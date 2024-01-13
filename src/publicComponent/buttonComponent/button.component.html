@@ -1,0 +1,11 @@
+<button nzType="text" nz-button
+        [nzShape]="buttonShape"
+        class="poemFont"
+        [style]="{color: getFontColor(minorColor), cursor: buttonCursor}"
+        (mouseover)="btnMouseOver(majorColor, $event)"
+        (mouseout)="btnMouseOut(minorColor, $event)"
+        (click)="buttonOnClick.emit()"
+>
+    <ng-container *ngTemplateOutlet="buttonIcon"/>
+    {{buttonContent}}
+</button>
