@@ -45,14 +45,14 @@ export class WeatherComponent implements OnInit, OnChanges {
 
     locationBtnOnClick() {
         if (this.location !== "暂无信息") {
-            window.open(this.searchEngineUrl + this.location, "_blank");
+            window.open(this.searchEngineUrl + this.location, "_self");
         } else {
             this.message.error("无跳转链接");
         }
     }
 
     infoBtnOnClick() {
-        window.open(this.searchEngineUrl + "天气", "_blank");
+        window.open(this.searchEngineUrl + "天气", "_self");
     }
 
     // 天气

@@ -17,11 +17,11 @@ export class preferenceFooterComponent implements OnInit {
     protected readonly btnMouseOver = btnMouseOver;
 
     homeBtnOnClick(value: string) {
-        window.open("https://" + value + ".com/xyk953651094/SkyNewTab-Poem-Angular/", "_blank");
+        window.open("https://" + value + ".com/xyk953651094/SkyNewTab-Poem-Angular/", "_self");
     }
 
     blogBtnOnClick() {
-        window.open("https://xyk953651094.blogspot.com/", "_blank");
+        window.open("https://xyk953651094.blogspot.com/", "_self");
     }
 
     ngOnInit(): void {

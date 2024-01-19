@@ -17,7 +17,7 @@ export class preferenceHeaderComponent implements OnInit {
     protected readonly btnMouseOver = btnMouseOver;
 
     supportBtnOnClick() {
-        window.open("https://afdian.net/a/xyk953651094", "_blank");
+        window.open("https://afdian.net/a/xyk953651094", "_self");
     }
 
     ngOnInit(): void {

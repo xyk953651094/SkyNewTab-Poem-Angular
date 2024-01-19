@@ -23,7 +23,7 @@ export class SearchComponent implements OnInit {
 
     onPressEnter(e: any) {
         if (e.keyCode === 13) {
-            window.open(this.searchEngineUrl + e.target.value)
+            window.open(this.searchEngineUrl + e.target.value, "_self");
         }
     }
 

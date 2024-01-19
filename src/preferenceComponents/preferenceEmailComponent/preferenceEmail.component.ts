@@ -17,11 +17,11 @@ export class preferenceEmailComponent implements OnInit {
     protected readonly btnMouseOut = btnMouseOut;
 
     suggestBtnOnClick() {
-        window.open("mailto:xyk953651094@qq.com?&subject=云开诗词新标签页-功能建议", "_blank");
+        window.open("mailto:xyk953651094@qq.com?&subject=云开诗词新标签页-功能建议", "_self");
     }
 
     issueBtnOnClick() {
-        window.open("mailto:xyk953651094@qq.com?&subject=云开诗词新标签页-问题反馈", "_blank");
+        window.open("mailto:xyk953651094@qq.com?&subject=云开诗词新标签页-问题反馈", "_self");
     }
 
     ngOnInit(): void {

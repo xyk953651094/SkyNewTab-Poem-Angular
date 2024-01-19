@@ -19,7 +19,7 @@ export class preferenceProductComponent implements OnInit {
     protected readonly btnMouseOver = btnMouseOver;
 
     homeBtnOnClick(terrace: string, frame: string) {
-        window.open("https://" + terrace + ".com/xyk953651094/" + frame + "/", "_blank");
+        window.open("https://" + terrace + ".com/xyk953651094/" + frame + "/", "_self");
     }
 
     ngOnInit(): void {
