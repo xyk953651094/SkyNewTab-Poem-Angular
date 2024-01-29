@@ -29,19 +29,11 @@
 
 ## 展示
 ### Chromium & Firefox
-<img width="1440" alt="截屏2023-09-10 21 28 11" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/2b93876c-69bf-4cd3-9bfa-9db248b45049">
+<img width="1440" alt="截屏2024-01-27 20 29 47" src="https://github.com/xyk953651094/SkyNewTab-React/assets/28004442/b58d119a-a48e-4d7f-9536-5cda975ee72a">
 
-<img width="1440" alt="截屏2023-09-11 13 56 01" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/ae188faa-b30a-443f-b874-79a03ee8d1e7">
+<img width="1440" alt="截屏2024-01-27 20 30 06" src="https://github.com/xyk953651094/SkyNewTab-React/assets/28004442/77a7bc80-7f78-4026-bb6c-d2c6f79a137a">
 
-<img width="1440" alt="截屏2023-09-10 21 28 37" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/39d0562f-00b6-4417-9aaa-3375ffcb046f">
-
-<img width="1440" alt="截屏2023-09-11 13 56 10" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/ef3d29cd-1cd2-49b4-a9f0-81dbc429f173">
-
-<img width="1440" alt="截屏2023-09-10 21 29 17" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/4c156bfd-b842-4ce5-8bd9-9f017cd13936">
-
-<img width="1440" alt="截屏2023-09-10 21 29 30" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/8c462c29-cd28-48d4-8e6f-08151fc4878f">
-
-<img width="1440" alt="截屏2023-09-10 21 29 46" src="https://github.com/xyk953651094/SkyNewTab-Poem-Angular/assets/28004442/9ae855b6-7228-45e6-9dae-df2cdc2703fc">
+<img width="1440" alt="截屏2024-01-27 20 30 28" src="https://github.com/xyk953651094/SkyNewTab-React/assets/28004442/a79f7c7a-e90f-4c8f-b088-c9df7de825e1">
 
 ### Safari
-* V1.7.0 版本由于在 Xcode 中编译时出现问题，适配 Safari 进展暂时迟缓，后续暂时不会推进
+* V1.7.0 版本新增 popup 后在 Xcode 中编译时出现未知问题，适配 Safari 进展暂时迟缓，后续暂时不会推进 Safari 版
