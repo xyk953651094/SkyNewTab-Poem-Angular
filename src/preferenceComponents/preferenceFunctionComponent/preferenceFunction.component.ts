@@ -19,6 +19,7 @@ export class preferenceFunctionComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
     title = "preferenceFunctionComponent";
+    formDisabled: boolean = false;
     displayResetPreferenceModal: boolean = false;
     displayClearStorageModal: boolean = false;
     preferenceData: PreferenceDataInterface = getPreferenceDataStorage();
@@ -36,7 +37,7 @@ export class preferenceFunctionComponent implements OnInit {
         this.getPreferenceFunctionData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
         this.message.success("已更换搜索引擎");
-        resetRadioColor(value, ["bing", "google"], this.majorColor);
+        // resetRadioColor(value, ["bing", "google"], this.majorColor);
     }
 
     buttonShapeRadioOnChange(value: string) {
@@ -44,7 +45,7 @@ export class preferenceFunctionComponent implements OnInit {
         this.getPreferenceFunctionData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
         this.message.success("已更换按钮形状");
-        resetRadioColor(value, ["round", "default"], this.majorColor);
+        // resetRadioColor(value, ["round", "default"], this.majorColor);
     }
 
     // 简洁模式
@@ -56,9 +57,10 @@ export class preferenceFunctionComponent implements OnInit {
             this.message.success("已开启简洁模式");
         } else {
             this.message.success("已关闭简洁模式，一秒后刷新页面");
+            this.formDisabled = true;
             this.refreshWindow();
         }
-        resetSwitchColor("#simpleModeSwitch", checked, this.majorColor);
+        // resetSwitchColor("#simpleModeSwitch", checked, this.majorColor);
     }
 
     // 重置设置
@@ -70,6 +72,7 @@ export class preferenceFunctionComponent implements OnInit {
         this.displayResetPreferenceModal = false;
         localStorage.setItem("preferenceData", JSON.stringify(defaultPreferenceData));
         this.message.success("已重置设置，一秒后刷新页面");
+        this.formDisabled = true;
         this.refreshWindow();
     }
 
@@ -87,6 +90,7 @@ export class preferenceFunctionComponent implements OnInit {
         this.displayClearStorageModal = false;
         localStorage.clear();
         this.message.success("已重置所有内容，一秒后刷新页面");
+        this.formDisabled = true;
         this.refreshWindow();
     }
 

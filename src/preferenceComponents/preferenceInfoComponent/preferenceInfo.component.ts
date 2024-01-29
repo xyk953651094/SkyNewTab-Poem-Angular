@@ -17,19 +17,19 @@ export class preferenceInfoComponent implements OnInit {
     protected readonly btnMouseOver = btnMouseOver;
 
     calendarBtnOnClick() {
-        window.open("https://www.mxnzp.com/", "_blank");
+        window.open("https://www.mxnzp.com/", "_self");
     }
 
     weatherBtnOnClick() {
-        window.open("https://www.jinrishici.com/", "_blank");
+        window.open("https://www.jinrishici.com/", "_self");
     }
 
     poemBtnOnClick() {
-        window.open("https://www.jinrishici.com/", "_blank");
+        window.open("https://www.jinrishici.com/", "_self");
     }
 
     codeBtnOnClick() {
-        window.open("https://www.jetbrains.com.cn/community/opensource/#support/", "_blank");
+        window.open("https://www.jetbrains.com.cn/community/opensource/#support/", "_self");
     }
 
     ngOnInit(): void {

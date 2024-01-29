@@ -7,7 +7,7 @@
         nzType="text"
 >
     <span nz-icon nzTheme="outline" nzType="check-square"></span>
-    {{todoSize + " 个待办事项"}}
+    {{todoSize + " 个"}}
 </button>
 <nz-modal (nzOnCancel)="modalCancelBtnOnClick()" (nzOnOk)="modalOkBtnOnClick()" [(nzVisible)]="displayModal"
           [nzBodyStyle]="{backgroundColor: minorColor}"
@@ -21,7 +21,7 @@
             <nz-form-item>
                 <nz-form-label>待办事项</nz-form-label>
                 <nz-form-control>
-                    <input [maxLength]="10" class="poemFont" id="todoInput" nz-input
+                    <input [maxLength]="10" class="poemFont" name="todoInput" [(ngModel)]="inputValue" nz-input
                            placeholder="请输入待办内容，字数不能超过10个"/>
                 </nz-form-control>
             </nz-form-item>
@@ -87,14 +87,16 @@
     </div>
 </ng-template>
 <ng-template #popoverContent>
-    <nz-empty [style]="{display: (listItems.length > 0 ? 'none' : 'block')}" nzNotFoundImage="simple"></nz-empty>
     <nz-list>
+        <nz-list-empty [style]="{display: (listItems.length > 0 ? 'none' : 'block')}">
+            <nz-empty nzNotFoundImage="simple"></nz-empty>
+        </nz-list-empty>
         <nz-list-item *ngFor="let item of listItems">
             <ul nz-list-item-actions>
                 <nz-list-item-action>
                     <button (click)="finishBtnOnClick(item)" (mouseout)="btnMouseOut(minorColor, $event)"
                             (mouseover)="btnMouseOver(majorColor, $event)"
-                            [nzShape]="buttonShape"
+                            [nzShape]="this.preferenceData.buttonShape === 'round' ? 'circle' : null"
                             [style]="{color: getFontColor(minorColor)}"
                             class="poemFont"
                             nz-button nzType="text"

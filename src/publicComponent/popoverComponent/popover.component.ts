@@ -2,8 +2,6 @@ import {Component, Input} from "@angular/core";
 import {getFontColor} from "../../typescripts/publicFunctions";
 import {NzButtonShape} from "ng-zorro-antd/button";
 
-const $ = require("jquery");
-
 @Component({
     selector: "popover-component",
     templateUrl: "./popover.component.html",

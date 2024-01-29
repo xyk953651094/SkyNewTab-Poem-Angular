@@ -17,7 +17,7 @@ export class preferenceHelpComponent implements OnInit {
     protected readonly btnMouseOut = btnMouseOut;
 
     helpBtnOnClick(source: string) {
-        window.open("https://xyk953651094." + source + ".io/SkyDocuments/", "_blank");
+        window.open("https://xyk953651094." + source + ".io/SkyDocuments/", "_self");
     }
 
     ngOnInit(): void {

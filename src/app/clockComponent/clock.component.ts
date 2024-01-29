@@ -1,16 +1,16 @@
-import {Component, Input, OnInit, SimpleChanges} from "@angular/core";
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {getFontColor, getSearchEngineDetail} from "../../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
-const $ = require("jquery");
+import $ from "jquery";
 
 @Component({
     selector: "clock-component",
     templateUrl: "./clock.component.html",
     styleUrls: ["./clock.component.scss", "../../stylesheets/publicStyles.scss"]
 })
-export class ClockComponent implements OnInit {
+export class ClockComponent implements OnInit, OnChanges {
     @Input() minorColor: string = "#000000";
     @Input() holidayData: any;
     @Input() preferenceData: PreferenceDataInterface = defaultPreferenceData;

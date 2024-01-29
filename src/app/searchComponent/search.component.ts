@@ -3,8 +3,6 @@ import {getFontColor, getSearchEngineDetail} from "../../typescripts/publicFunct
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 import {NzButtonShape} from "ng-zorro-antd/button";
 
-const $ = require("jquery");
-
 @Component({
     selector: "search-component",
     templateUrl: "./search.component.html",
@@ -23,7 +21,7 @@ export class SearchComponent implements OnInit {
 
     onPressEnter(e: any) {
         if (e.keyCode === 13) {
-            window.open(this.searchEngineUrl + e.target.value)
+            window.open(this.searchEngineUrl + e.target.value, "_self");
         }
     }
 

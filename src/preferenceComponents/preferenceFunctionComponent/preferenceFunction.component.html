@@ -7,7 +7,7 @@
         <nz-form-item>
             <nz-form-label>搜索引擎</nz-form-label>
             <nz-form-control>
-                <nz-radio-group (ngModelChange)="searchEngineRadioOnChange($event)"
+                <nz-radio-group (ngModelChange)="searchEngineRadioOnChange($event)" [nzDisabled]="formDisabled"
                                 [(ngModel)]="preferenceData.searchEngine"
                                 [style]="{width: '100%'}"
                                 name="searchEngine">
@@ -21,7 +21,7 @@
         <nz-form-item>
             <nz-form-label>按钮形状</nz-form-label>
             <nz-form-control>
-                <nz-radio-group (ngModelChange)="buttonShapeRadioOnChange($event)"
+                <nz-radio-group (ngModelChange)="buttonShapeRadioOnChange($event)" [nzDisabled]="formDisabled"
                                 [(ngModel)]="preferenceData.buttonShape"
                                 [style]="{width: '100%'}"
                                 name="buttonShape">
@@ -35,7 +35,7 @@
         <nz-form-item>
             <nz-form-label>简洁模式</nz-form-label>
             <nz-form-control>
-                <nz-switch (ngModelChange)="simpleModeSwitchOnChange($event)"
+                <nz-switch (ngModelChange)="simpleModeSwitchOnChange($event)" [nzDisabled]="formDisabled"
                            [ngModel]="preferenceData.simpleMode" id="simpleModeSwitch"
                            class="poemFont" name="simpleMode" nzCheckedChildren="已开启"
                            nzUnCheckedChildren="已关闭"></nz-switch>

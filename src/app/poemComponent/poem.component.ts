@@ -54,11 +54,11 @@ export class PoemComponent implements OnInit {
     }
 
     poemContentBtnOnClick() {
-        window.open(this.searchEngineUrl + this.poemContent, "_blank");
+        window.open(this.searchEngineUrl + this.poemContent, "_self");
     }
 
     poemAuthorBtnOnClick() {
-        window.open(this.searchEngineUrl + this.poemAuthor, "_blank");
+        window.open(this.searchEngineUrl + this.poemAuthor, "_self");
     }
 
     ngOnInit(): void {

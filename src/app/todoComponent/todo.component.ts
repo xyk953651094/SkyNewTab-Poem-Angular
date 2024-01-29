@@ -1,28 +1,27 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {NzMessageService} from 'ng-zorro-antd/message';
 import {btnMouseOut, btnMouseOver, getFontColor, getTimeDetails} from "../../typescripts/publicFunctions";
-import {NzButtonShape} from "ng-zorro-antd/button";
 
-const $ = require("jquery");
+import $ from "jquery";
 
 @Component({
     selector: "todo-component",
     templateUrl: "./todo.component.html",
     styleUrls: ["./todo.component.scss", "../../stylesheets/publicStyles.scss"]
 })
-export class todoComponent implements OnInit, OnChanges {
+export class TodoComponent implements OnInit, OnChanges {
     @Input() majorColor: string = "#000000";
     @Input() minorColor: string = "#ffffff";
     @Input() preferenceData: any = {};
-    title = "todoComponent";
+    title = "TodoComponent";
     display: "block" | "none" = "block";
     displayModal: boolean = false;
     listItems: any = [];
     todoSize: number = 0;
     todoMaxSize: number = 5;
+    inputValue: string = "";
     tag: string = "工作";
     priority: string = "★";
-    buttonShape: NzButtonShape = "round";
     protected readonly getFontColor = getFontColor;
     protected readonly getTimeDetails = getTimeDetails;
     protected readonly Date = Date;
@@ -48,8 +47,8 @@ export class todoComponent implements OnInit, OnChanges {
             todos = JSON.parse(tempTodos);
         }
         if (todos.length < this.todoMaxSize) {
-            // $("#todoInput").val("");
             this.displayModal = true;
+            this.inputValue = "";
             this.tag = "工作";
             this.priority = "★";
         } else {
@@ -58,8 +57,7 @@ export class todoComponent implements OnInit, OnChanges {
     }
 
     modalOkBtnOnClick() {
-        let todoContent = $("#todoInput").val();
-        if (todoContent && todoContent.length > 0) {
+        if (this.inputValue && this.inputValue.length > 0 && this.inputValue.length <= 10) {
             let todos = [];
             let tempTodos = localStorage.getItem("todos");
             if (tempTodos) {
@@ -67,7 +65,7 @@ export class todoComponent implements OnInit, OnChanges {
             }
             if (todos.length < this.todoMaxSize) {
                 todos.push({
-                    "title": todoContent,
+                    "title": this.inputValue,
                     "tag": this.tag,
                     "priority": this.priority,
                     "timeStamp": Date.now()
@@ -81,6 +79,8 @@ export class todoComponent implements OnInit, OnChanges {
             } else {
                 this.message.error("待办数量最多为" + this.todoMaxSize + "个");
             }
+        } else if (this.inputValue && this.inputValue.length > 10) {
+            this.message.error("待办事项名称不能超过10个字");
         } else {
             this.message.error("表单不能为空");
         }
@@ -143,7 +143,6 @@ export class todoComponent implements OnInit, OnChanges {
 
     ngOnInit(): void {
         this.display = this.preferenceData.simpleMode ? "none" : "block";
-        this.buttonShape = this.preferenceData.buttonShape === "round" ? "circle" : null;
 
         let todos = [];
         let tempTodos = localStorage.getItem("todos");

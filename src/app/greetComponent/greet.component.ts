@@ -12,8 +12,6 @@ import {
 } from "../../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 
-const $ = require("jquery");
-
 @Component({
     selector: "greet-component",
     templateUrl: "./greet.component.html",
@@ -41,11 +39,11 @@ export class GreetComponent implements OnInit, OnChanges {
     protected readonly btnMouseOver = btnMouseOver;
 
     historyBtnOnClick() {
-        window.open(this.searchEngineUrl + "历史上的今天", "_blank");
+        window.open(this.searchEngineUrl + "历史上的今天", "_self");
     }
 
     infoBtnOnClick() {
-        window.open(this.searchEngineUrl + "万年历", "_blank");
+        window.open(this.searchEngineUrl + "万年历", "_self");
     }
 
     // 问候
