@@ -60,8 +60,10 @@ import {
 } from "../preferenceComponents/preferenceProductComponent/preferenceProduct.component";
 import {preferenceToTopComponent} from "../preferenceComponents/preferenceToTopComponent/preferenceToTop.component";
 import {preferenceHelpComponent} from "../preferenceComponents/preferenceHelpComponent/preferenceHelp.component";
+
 import {PopoverComponent} from "../publicComponent/popoverComponent/popover.component";
 import {ButtonComponent} from "../publicComponent/buttonComponent/button.component";
+import {ModalComponent} from "../publicComponent/modalComponent/modal.component";
 
 
 registerLocaleData(zh);
@@ -90,6 +92,7 @@ registerLocaleData(zh);
         preferenceToTopComponent,
 
         ButtonComponent,
+        ModalComponent,
         PopoverComponent,
     ],
     imports: [

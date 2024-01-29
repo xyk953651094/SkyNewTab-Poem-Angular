@@ -1,0 +1,7 @@
+<nz-modal [nzTitle]="modalTitle" [nzContent]="modalContent"
+          [nzClosable]="false" nzCentered
+          [(nzVisible)]="displayModal" (nzOnOk)="modalOnOk.emit()" (nzOnCancel)="modalOnCancel.emit()"
+          [nzBodyStyle]="{backgroundColor: minorColor}"
+          [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
+>
+</nz-modal>
