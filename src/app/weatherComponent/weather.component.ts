@@ -12,8 +12,6 @@ import {
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
-const $ = require("jquery");
-
 @Component({
     selector: "weather-component",
     templateUrl: "./weather.component.html",

@@ -15,21 +15,29 @@
         <span [class]="weatherIcon">&nbsp;&nbsp;</span>
         {{weatherContent}}
     </button>
-    <button (click)="weatherBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+    <button (mouseout)="btnMouseOut(minorColor, $event)"
             (mouseover)="btnMouseOver(majorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"
             [style]="{color: getFontColor(minorColor), cursor: 'default'}" class="popupFont" nz-button nzType="text"
     >
         <span nz-icon nzTheme="outline" nzType="calendar"></span>
-        {{dailySize + " 个倒数日"}}
+        {{dailySize + " 个"}}
     </button>
-    <button (click)="weatherBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+    <button (mouseout)="btnMouseOut(minorColor, $event)"
             (mouseover)="btnMouseOver(majorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"
             [style]="{color: getFontColor(minorColor), cursor: 'default'}" class="popupFont" nz-button nzType="text"
     >
         <span nz-icon nzTheme="outline" nzType="check-square"></span>
-        {{todoSize + " 个待办事项"}}
+        {{todoSize + " 个"}}
+    </button>
+    <button (mouseout)="btnMouseOut(minorColor, $event)"
+            (mouseover)="btnMouseOver(majorColor, $event)"
+            *nzSpaceItem [nzShape]="preferenceData.buttonShape"
+            [style]="{color: getFontColor(minorColor), cursor: 'default'}" class="popupFont" nz-button nzType="text"
+    >
+        <span [class]="focusMode ? 'bi bi-cup-hot-fill' : 'bi bi-cup-hot'">&nbsp;&nbsp;</span>
+        {{focusMode ? "专注中" : "未专注"}}
     </button>
 </nz-space>
 <button (click)="weatherBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"

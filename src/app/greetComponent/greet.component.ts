@@ -12,8 +12,6 @@ import {
 } from "../../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 
-const $ = require("jquery");
-
 @Component({
     selector: "greet-component",
     templateUrl: "./greet.component.html",

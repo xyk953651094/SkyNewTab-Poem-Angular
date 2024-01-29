@@ -1,9 +1,8 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {NzMessageService} from 'ng-zorro-antd/message';
 import {btnMouseOut, btnMouseOver, getFontColor, getTimeDetails} from "../../typescripts/publicFunctions";
-import {NzButtonShape} from "ng-zorro-antd/button";
 
-const $ = require("jquery");
+import $ from "jquery";
 
 @Component({
     selector: "daily-component",
@@ -20,16 +19,16 @@ export class DailyComponent implements OnInit, OnChanges {
     listItems: any = [];
     dailySize: number = 0;
     dailyMaxSize: number = 5;
+    inputValue: string = "";
+    datePickerValue: Date = new Date();
     selectedTimeStamp: number = 0;
-    buttonShape: NzButtonShape = "round";
     protected readonly getFontColor = getFontColor;
     protected readonly getTimeDetails = getTimeDetails;
     protected readonly Date = Date;
     protected readonly btnMouseOut = btnMouseOut;
     protected readonly btnMouseOver = btnMouseOver;
 
-    constructor(private message: NzMessageService) {
-    }
+    constructor(private message: NzMessageService) {}
 
     removeAllBtnOnClick() {
         let tempDaily = localStorage.getItem("daily");
@@ -62,14 +61,6 @@ export class DailyComponent implements OnInit, OnChanges {
         }
     }
 
-    // datePickerOnChange(result: Date) {
-    //     if (result) {
-    //         this.selectedTimeStamp = new Date(result).getTime();
-    //     } else {
-    //         this.selectedTimeStamp = 0;
-    //     }
-    // };
-
     showAddModalBtnOnClick() {
         let daily = [];
         let tempDaily = localStorage.getItem("daily");
@@ -77,9 +68,9 @@ export class DailyComponent implements OnInit, OnChanges {
             daily = JSON.parse(tempDaily);
         }
         if (daily.length < this.dailyMaxSize) {
-            // $("#dailyInput").val("");
-
             this.displayModal = true;
+            this.inputValue = "";
+            this.datePickerValue = new Date();
             this.selectedTimeStamp = 0;
         } else {
             this.message.error("倒数日数量最多为" + this.dailyMaxSize + "个");
@@ -87,15 +78,15 @@ export class DailyComponent implements OnInit, OnChanges {
     }
 
     modalOkBtnOnClick() {
-        let title = $("#dailyInput").val();
-        let selectedDate = $("#dailyDatePicker").val();
+        let selectedDate = getTimeDetails(this.datePickerValue).showDate5;
+
         if (selectedDate) {
             this.selectedTimeStamp = new Date(selectedDate).getTime();
         } else {
             this.selectedTimeStamp = 0;
         }
 
-        if (title && title.length > 0 && this.selectedTimeStamp !== 0) {
+        if (this.inputValue && this.inputValue.length > 0 && this.inputValue.length <= 10 && this.selectedTimeStamp !== 0) {
             let daily = [];
             let tempDaily = localStorage.getItem("daily");
             if (tempDaily) {
@@ -103,7 +94,7 @@ export class DailyComponent implements OnInit, OnChanges {
             }
             if (daily.length < this.dailyMaxSize) {
                 daily.push({
-                    "title": title,
+                    "title": this.inputValue,
                     "selectedTimeStamp": this.selectedTimeStamp,
                     "timeStamp": Date.now()
                 });
@@ -117,6 +108,8 @@ export class DailyComponent implements OnInit, OnChanges {
             } else {
                 this.message.error("倒数日数量最多为" + this.dailyMaxSize + "个");
             }
+        } else if (this.inputValue && this.inputValue.length > 10) {
+            this.message.error("倒数日名称不能超过10个字");
         } else {
             this.message.error("表单不能为空");
         }
@@ -151,7 +144,6 @@ export class DailyComponent implements OnInit, OnChanges {
 
     ngOnInit(): void {
         this.display = this.preferenceData.simpleMode ? "none" : "block"
-        this.buttonShape = this.preferenceData.buttonShape === "round" ? "circle" : null;
 
         let daily = [];
         let tempDaily = localStorage.getItem("daily");

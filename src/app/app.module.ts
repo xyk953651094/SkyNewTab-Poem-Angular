@@ -34,13 +34,15 @@ import {NzEmptyModule} from 'ng-zorro-antd/empty';
 import {NzAlertModule} from 'ng-zorro-antd/alert';
 import {NzDividerModule} from "ng-zorro-antd/divider";
 import {NzNotificationModule} from 'ng-zorro-antd/notification';
+import {NzCheckboxModule} from "ng-zorro-antd/checkbox";
 
 import {SunComponent} from "./sunComponent/sun.component";
 import {SearchComponent} from "./searchComponent/search.component";
 import {GreetComponent} from './greetComponent/greet.component';
 import {WeatherComponent} from './weatherComponent/weather.component';
 import {DailyComponent} from './dailyComponent/daily.component';
-import {todoComponent} from "./todoComponent/todo.component";
+import {TodoComponent} from "./todoComponent/todo.component";
+import {FocusComponent} from "./focusComponent/focus.component";
 import {PreferenceComponent} from './preferenceComponent/preference.component';
 import {ClockComponent} from "./clockComponent/clock.component";
 import {PoemComponent} from "./poemComponent/poem.component";
@@ -61,6 +63,7 @@ import {preferenceHelpComponent} from "../preferenceComponents/preferenceHelpCom
 import {PopoverComponent} from "../publicComponent/popoverComponent/popover.component";
 import {ButtonComponent} from "../publicComponent/buttonComponent/button.component";
 
+
 registerLocaleData(zh);
 
 @NgModule({
@@ -71,7 +74,8 @@ registerLocaleData(zh);
         GreetComponent,
         WeatherComponent,
         DailyComponent,
-        todoComponent,
+        TodoComponent,
+        FocusComponent,
         ClockComponent,
         PoemComponent,
         WaveComponent,
@@ -116,7 +120,8 @@ registerLocaleData(zh);
         NzEmptyModule,
         NzAlertModule,
         NzDividerModule,
-        NzNotificationModule
+        NzNotificationModule,
+        NzCheckboxModule
     ],
     providers: [
         {provide: NZ_I18N, useValue: zh_CN},

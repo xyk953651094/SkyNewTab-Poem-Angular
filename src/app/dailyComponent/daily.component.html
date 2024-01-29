@@ -7,7 +7,7 @@
         nzType="text"
 >
     <span nz-icon nzTheme="outline" nzType="calendar"></span>
-    {{dailySize + " 个倒数日"}}
+    {{dailySize + " 个"}}
 </button>
 <nz-modal (nzOnCancel)="modalCancelBtnOnClick()" (nzOnOk)="modalOkBtnOnClick()" [(nzVisible)]="displayModal"
           [nzBodyStyle]="{backgroundColor: minorColor}"
@@ -21,15 +21,15 @@
             <nz-form-item>
                 <nz-form-label>倒数标题</nz-form-label>
                 <nz-form-control nzErrorTip="表单不能为空">
-                    <input [maxLength]="10" class="poemFont" id="dailyInput" nz-input
+                    <input [maxLength]="10" class="poemFont" name="dailyInput" [(ngModel)]="inputValue" nz-input
                            placeholder="请输入标题，字数不能超过10个"/>
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item>
                 <nz-form-label>倒数日期</nz-form-label>
                 <nz-form-control nzErrorTip="表单不能为空">
-                    <nz-date-picker [nzAllowClear]="false" [nzDropdownClassName]="'poemFont'" [nzId]="'dailyDatePicker'"
-                                    class="poemFont"></nz-date-picker>
+                    <nz-date-picker [nzAllowClear]="false" [nzDropdownClassName]="'poemFont'" name="dailyDatePicker"
+                                    class="poemFont" [(ngModel)]="datePickerValue"></nz-date-picker>
                 </nz-form-control>
             </nz-form-item>
         </form>
@@ -72,14 +72,16 @@
     </div>
 </ng-template>
 <ng-template #popoverContent>
-    <nz-empty [style]="{display: (listItems.length > 0 ? 'none' : 'block')}" nzNotFoundImage="simple"></nz-empty>
     <nz-list>
+        <nz-list-empty [style]="{display: (listItems.length > 0 ? 'none' : 'block')}">
+            <nz-empty nzNotFoundImage="simple"></nz-empty>
+        </nz-list-empty>
         <nz-list-item *ngFor="let item of listItems">
             <ul nz-list-item-actions>
                 <nz-list-item-action>
                     <button (click)="removeBtnOnClick(item)" (mouseout)="btnMouseOut(minorColor, $event)"
                             (mouseover)="btnMouseOver(majorColor, $event)"
-                            [nzShape]="buttonShape"
+                            [nzShape]="this.preferenceData.buttonShape === 'round' ? 'circle' : null"
                             [style]="{color: getFontColor(minorColor)}"
                             class="poemFont"
                             nz-button nzType="text"

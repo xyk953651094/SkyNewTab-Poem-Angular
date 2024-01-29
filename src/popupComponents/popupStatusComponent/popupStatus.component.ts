@@ -27,6 +27,7 @@ export class popupStatusComponent implements OnInit {
     weatherContent = "暂无信息";
     dailySize = 0;
     todoSize = 0;
+    focusMode = false;
     searchEngineUrl = "https://www.bing.com/search?q=";
     protected readonly getFontColor = getFontColor;
     protected readonly btnMouseOver = btnMouseOver;
@@ -56,12 +57,14 @@ export class popupStatusComponent implements OnInit {
         let tempWeather = localStorage.getItem("lastWeather");
         let tempDaily = localStorage.getItem("daily");
         let tempTodos = localStorage.getItem("todos");
+        let tempFocusMode = localStorage.getItem("focusMode");
 
         this.greetContent = tempGreet ? getGreetContent() + " ｜ " + this.setHoliday(JSON.parse(tempGreet)) : "暂无信息";
         this.weatherIcon = tempWeather ? getWeatherIcon(JSON.parse(tempWeather).weatherData.weather) : "";
         this.weatherContent = tempWeather ? JSON.parse(tempWeather).weatherData.weather + " ｜ " + JSON.parse(tempWeather).weatherData.temperature + "°C" : "暂无信息";
         this.dailySize = tempDaily ? JSON.parse(tempDaily).length : 0;
         this.todoSize = tempTodos ? JSON.parse(tempTodos).length : 0;
+        this.focusMode = tempFocusMode ? JSON.parse(tempFocusMode) : false;
         this.searchEngineUrl = getSearchEngineDetail(this.preferenceData.searchEngine).searchEngineUrl
     }
 }

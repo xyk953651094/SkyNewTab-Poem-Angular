@@ -7,8 +7,7 @@ import {
     setColorTheme
 } from "../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../typescripts/publicInterface";
-
-const $ = require("jquery");
+import $ from "jquery";
 
 @Component({
     selector: "app-root",
@@ -23,8 +22,7 @@ export class AppComponent implements OnInit {
     preferenceData: PreferenceDataInterface = getPreferenceDataStorage();
     holidayData: any = getHolidayDataStorage();
 
-    constructor(private notification: NzNotificationService) {
-    }
+    constructor(private notification: NzNotificationService) {}
 
     getPreferenceData(value: PreferenceDataInterface) {
         this.preferenceData = value;
@@ -76,6 +74,12 @@ export class AppComponent implements OnInit {
                     "border-bottom-left-radius": "2px",
                     "border-bottom-right-radius": "2px"
                 });
+
+                // focusComponent
+                let focusMode = localStorage.getItem("focusMode");
+                if (focusMode) {
+                    resetSwitchColor("#focusModeSwitch", JSON.parse(focusMode), this.majorColor);
+                }
             }
 
             // toolTip
@@ -198,10 +202,10 @@ export class AppComponent implements OnInit {
             );
             localStorage.setItem("SkyNewTabPoemAngularVersion", currentVersion);
 
-            if (currentVersion === "2.5.0") {
+            if (currentVersion === "2.8.0") {
                 this.notification.success(
                     "重要通知",
-                    "本次更新改动较大，请前往 菜单栏 => 功能设置 => 重置设置",
+                    "新增专注模式，若专注模式无法生效，可尝试重新安装本插件",
                     {nzPlacement: "bottomLeft", nzDuration: 10000, nzCloseIcon: "null"}
                 );
             }
