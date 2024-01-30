@@ -10,6 +10,7 @@ import {
     resetSwitchColor
 } from "../../typescripts/publicFunctions";
 import {NzMessageService} from "ng-zorro-antd/message";
+import {NzNotificationService} from 'ng-zorro-antd/notification';
 
 @Component({
     selector: "focus-component",
@@ -30,7 +31,7 @@ export class FocusComponent implements OnInit, OnChanges {
    
     protected readonly getFontColor = getFontColor;
 
-    constructor(private message: NzMessageService) {}
+    constructor(private message: NzMessageService, private notification: NzNotificationService) {}
 
     setExtensionStorage(key: string, value: any) {
         const browserType = getBrowserType();
@@ -122,6 +123,13 @@ export class FocusComponent implements OnInit, OnChanges {
         let focusModeStorage = localStorage.getItem("focusMode");
         if (focusModeStorage) {
             tempFocusMode = JSON.parse(focusModeStorage);
+            if (tempFocusMode) {
+                this.notification.blank(
+                    "已开启专注模式",
+                    "部分网页将无法访问，右上角专注中可修改设置",
+                    {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
+                );
+            }
         }
         else {
             localStorage.setItem("focusMode", JSON.stringify(false));

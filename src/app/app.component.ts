@@ -195,20 +195,20 @@ export class AppComponent implements OnInit {
         let storageVersion = localStorage.getItem("SkyNewTabPoemAngularVersion");
         let currentVersion = require('../../package.json').version;
         if (storageVersion !== currentVersion) {
-            this.notification.success(
+            this.notification.blank(
                 "已更新至版本 V" + currentVersion,
                 "详细内容请前往 GitHub 或 GitLab 主页查看",
                 {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
             );
             localStorage.setItem("SkyNewTabPoemAngularVersion", currentVersion);
 
-            if (currentVersion === "2.8.0") {
-                this.notification.success(
-                    "重要通知",
-                    "新增专注模式，若专注模式无法生效，可尝试重新安装本插件",
-                    {nzPlacement: "bottomLeft", nzDuration: 10000, nzCloseIcon: "null"}
-                );
-            }
+            // if (currentVersion === "2.8.0") {
+            //     this.notification.blank(
+            //         "重要通知",
+            //         "新增专注模式，若专注模式无法生效，可尝试重新安装本插件",
+            //         {nzPlacement: "bottomLeft", nzDuration: 10000, nzCloseIcon: "null"}
+            //     );
+            // }
         }
     }
 }
