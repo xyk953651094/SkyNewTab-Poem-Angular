@@ -60,8 +60,8 @@ export class FocusComponent implements OnInit, OnChanges {
     }
 
     switchFilterBtnOnClick() {
-        if (this.browserType === "Firefox") {
-            this.message.error("Firefox 暂不支持白名单模式");
+        if (["Firefox", "Safari"].indexOf(this.browserType) !== -1) {
+            this.message.error("暂不支持白名单模式");
         }
         else {
             let tempFocusFilter = (this.focusFilter === "whiteListFilter" ? "blackListFilter" : "whiteListFilter");
@@ -146,8 +146,8 @@ export class FocusComponent implements OnInit, OnChanges {
         let focusFilterStorage = localStorage.getItem("focusFilter");
         if (focusFilterStorage) {
             tempFocusFilter = focusFilterStorage;
-            if (tempFocusFilter === "whiteListFilter" && this.browserType === "Firefox") {
-                this.message.info("Firefox 暂不支持白名单模式，请切换成黑名单模式");
+            if (tempFocusFilter === "whiteListFilter" && (["Firefox", "Safari"].indexOf(this.browserType) !== -1)) {
+                this.message.info("暂不支持白名单模式，请切换成黑名单模式");
             }
         } else {
             localStorage.setItem("focusFilter", "whiteListFilter");
