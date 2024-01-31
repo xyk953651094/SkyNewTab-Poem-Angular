@@ -28,17 +28,17 @@ export class FocusComponent implements OnInit, OnChanges {
     inputValue: string = "";
     filterList: any[] = [];
     focusMaxSize: number = 5;
+    browserType = getBrowserType();
    
     protected readonly getFontColor = getFontColor;
 
     constructor(private message: NzMessageService, private notification: NzNotificationService) {}
 
     setExtensionStorage(key: string, value: any) {
-        const browserType = getBrowserType();
-        if (["Chrome", "Edge"].indexOf(browserType) !== -1) {
+        if (["Chrome", "Edge"].indexOf(this.browserType) !== -1) {
             chrome.storage.local.set({[key]: value});
         }
-        else if (["Firefox", "Safari"].indexOf(browserType) !== -1) {
+        else if (["Firefox", "Safari"].indexOf(this.browserType) !== -1) {
             browser.storage.local.set({[key]: value});
         }
     }
@@ -60,10 +60,15 @@ export class FocusComponent implements OnInit, OnChanges {
     }
 
     switchFilterBtnOnClick() {
-        let tempFocusFilter = (this.focusFilter === "whiteListFilter" ? "blackListFilter" : "whiteListFilter");
-        this.focusFilter = tempFocusFilter;
-        localStorage.setItem("focusFilter", tempFocusFilter);
-        this.setExtensionStorage("focusFilter", tempFocusFilter);
+        if (this.browserType === "Firefox") {
+            this.message.error("Firefox 暂不支持白名单模式");
+        }
+        else {
+            let tempFocusFilter = (this.focusFilter === "whiteListFilter" ? "blackListFilter" : "whiteListFilter");
+            this.focusFilter = tempFocusFilter;
+            localStorage.setItem("focusFilter", tempFocusFilter);
+            this.setExtensionStorage("focusFilter", tempFocusFilter);
+        }
     }
 
     addFilterListBtnOnClick() {
@@ -140,7 +145,10 @@ export class FocusComponent implements OnInit, OnChanges {
         let tempFocusFilter = "whiteListFilter";
         let focusFilterStorage = localStorage.getItem("focusFilter");
         if (focusFilterStorage) {
-            tempFocusFilter = focusFilterStorage
+            tempFocusFilter = focusFilterStorage;
+            if (tempFocusFilter === "whiteListFilter" && this.browserType === "Firefox") {
+                this.message.info("Firefox 暂不支持白名单模式，请切换成黑名单模式");
+            }
         } else {
             localStorage.setItem("focusFilter", "whiteListFilter");
             this.setExtensionStorage("focusFilter", "whiteListFilter");
