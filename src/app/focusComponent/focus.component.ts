@@ -10,7 +10,6 @@ import {
     resetSwitchColor
 } from "../../typescripts/publicFunctions";
 import {NzMessageService} from "ng-zorro-antd/message";
-import {NzNotificationService} from 'ng-zorro-antd/notification';
 
 @Component({
     selector: "focus-component",
@@ -24,7 +23,6 @@ export class FocusComponent implements OnInit, OnChanges {
     title = "FocusComponent";
     display: "block" | "none" = "block";
     focusMode: boolean = false;
-    focusFilter: string = "whiteListFilter";
     inputValue: string = "";
     filterList: any[] = [];
     focusMaxSize: number = 5;
@@ -32,7 +30,7 @@ export class FocusComponent implements OnInit, OnChanges {
    
     protected readonly getFontColor = getFontColor;
 
-    constructor(private message: NzMessageService, private notification: NzNotificationService) {}
+    constructor(private message: NzMessageService) {}
 
     setExtensionStorage(key: string, value: any) {
         if (["Chrome", "Edge"].indexOf(this.browserType) !== -1) {
@@ -56,18 +54,6 @@ export class FocusComponent implements OnInit, OnChanges {
             this.filterList = [];
             localStorage.removeItem("filterList");
             this.setExtensionStorage("filterList", []);
-        }
-    }
-
-    switchFilterBtnOnClick() {
-        if (["Firefox", "Safari"].indexOf(this.browserType) !== -1) {
-            this.message.error("暂不支持白名单模式");
-        }
-        else {
-            let tempFocusFilter = (this.focusFilter === "whiteListFilter" ? "blackListFilter" : "whiteListFilter");
-            this.focusFilter = tempFocusFilter;
-            localStorage.setItem("focusFilter", tempFocusFilter);
-            this.setExtensionStorage("focusFilter", tempFocusFilter);
         }
     }
 
@@ -128,30 +114,10 @@ export class FocusComponent implements OnInit, OnChanges {
         let focusModeStorage = localStorage.getItem("focusMode");
         if (focusModeStorage) {
             tempFocusMode = JSON.parse(focusModeStorage);
-            if (tempFocusMode) {
-                this.notification.blank(
-                    "已开启专注模式",
-                    "部分网页将无法访问，右上角专注中可修改设置",
-                    {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
-                );
-            }
         }
         else {
             localStorage.setItem("focusMode", JSON.stringify(false));
             this.setExtensionStorage("focusMode", false);
-        }
-
-        // 初始化过滤模式
-        let tempFocusFilter = "whiteListFilter";
-        let focusFilterStorage = localStorage.getItem("focusFilter");
-        if (focusFilterStorage) {
-            tempFocusFilter = focusFilterStorage;
-            if (tempFocusFilter === "whiteListFilter" && (["Firefox", "Safari"].indexOf(this.browserType) !== -1)) {
-                this.message.info("暂不支持白名单模式，请切换成黑名单模式");
-            }
-        } else {
-            localStorage.setItem("focusFilter", "whiteListFilter");
-            this.setExtensionStorage("focusFilter", "whiteListFilter");
         }
 
         // 初始化名单
@@ -167,7 +133,6 @@ export class FocusComponent implements OnInit, OnChanges {
 
         this.display = this.preferenceData.simpleMode ? "none" : "block";
         this.focusMode = tempFocusMode;
-        this.focusFilter = tempFocusFilter;
         this.filterList = tempFilterList;
 
         if (this.preferenceData.simpleMode) {
