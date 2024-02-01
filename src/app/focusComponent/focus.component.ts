@@ -23,21 +23,20 @@ export class FocusComponent implements OnInit, OnChanges {
     title = "FocusComponent";
     display: "block" | "none" = "block";
     focusMode: boolean = false;
-    focusFilter: string = "whiteListFilter";
     inputValue: string = "";
     filterList: any[] = [];
     focusMaxSize: number = 5;
+    browserType = getBrowserType();
    
     protected readonly getFontColor = getFontColor;
 
     constructor(private message: NzMessageService) {}
 
     setExtensionStorage(key: string, value: any) {
-        const browserType = getBrowserType();
-        if (["Chrome", "Edge"].indexOf(browserType) !== -1) {
+        if (["Chrome", "Edge"].indexOf(this.browserType) !== -1) {
             chrome.storage.local.set({[key]: value});
         }
-        else if (["Firefox", "Safari"].indexOf(browserType) !== -1) {
+        else if (["Firefox", "Safari"].indexOf(this.browserType) !== -1) {
             browser.storage.local.set({[key]: value});
         }
     }
@@ -56,13 +55,6 @@ export class FocusComponent implements OnInit, OnChanges {
             localStorage.removeItem("filterList");
             this.setExtensionStorage("filterList", []);
         }
-    }
-
-    switchFilterBtnOnClick() {
-        let tempFocusFilter = (this.focusFilter === "whiteListFilter" ? "blackListFilter" : "whiteListFilter");
-        this.focusFilter = tempFocusFilter;
-        localStorage.setItem("focusFilter", tempFocusFilter);
-        this.setExtensionStorage("focusFilter", tempFocusFilter);
     }
 
     addFilterListBtnOnClick() {
@@ -128,16 +120,6 @@ export class FocusComponent implements OnInit, OnChanges {
             this.setExtensionStorage("focusMode", false);
         }
 
-        // 初始化过滤模式
-        let tempFocusFilter = "whiteListFilter";
-        let focusFilterStorage = localStorage.getItem("focusFilter");
-        if (focusFilterStorage) {
-            tempFocusFilter = focusFilterStorage
-        } else {
-            localStorage.setItem("focusFilter", "whiteListFilter");
-            this.setExtensionStorage("focusFilter", "whiteListFilter");
-        }
-
         // 初始化名单
         let tempFilterList = [];
         let filterListStorage = localStorage.getItem("filterList");
@@ -151,7 +133,6 @@ export class FocusComponent implements OnInit, OnChanges {
 
         this.display = this.preferenceData.simpleMode ? "none" : "block";
         this.focusMode = tempFocusMode;
-        this.focusFilter = tempFocusFilter;
         this.filterList = tempFilterList;
 
         if (this.preferenceData.simpleMode) {
