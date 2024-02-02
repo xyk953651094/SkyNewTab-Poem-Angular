@@ -50,34 +50,25 @@ export class FocusComponent implements OnInit, OnChanges {
     }
 
     removeAllBtnOnClick() {
-        let tempFilterList = localStorage.getItem("filterList");
-        if (tempFilterList) {
-            this.filterList = [];
-            localStorage.removeItem("filterList");
-            this.setExtensionStorage("filterList", []);
-        }
+        this.filterList = [];
+        localStorage.removeItem("filterList");
+        this.setExtensionStorage("filterList", []);
     }
 
     removeBtnOnClick(item: any) {
-        let filterList = [];
-        let tempFilterList = localStorage.getItem("filterList");
-        if (tempFilterList) {
-            filterList = JSON.parse(tempFilterList);
-            let index = -1;
-            for (let i = 0; i < filterList.length; i++) {
-                if (item.timeStamp === filterList[i].timeStamp) {
-                    index = i;
-                    break;
-                }
+        let index = -1;
+        for (let i = 0; i < this.filterList.length; i++) {
+            if (item.timeStamp === this.filterList[i].timeStamp) {
+                index = i;
+                break;
             }
-            if (index !== -1) {
-                filterList.splice(index, 1);
-            }
-            localStorage.setItem("filterList", JSON.stringify(filterList));
-            this.setExtensionStorage("filterList", filterList);
-
-            this.filterList = filterList;
         }
+        if (index !== -1) {
+            this.filterList.splice(index, 1);
+        }
+
+        localStorage.setItem("filterList", JSON.stringify(this.filterList));
+        this.setExtensionStorage("filterList", this.filterList);
     }
 
     showAddModalBtnOnClick() {
@@ -92,8 +83,7 @@ export class FocusComponent implements OnInit, OnChanges {
     modalOkBtnOnClick() {
         if (this.filterList.length < this.focusMaxSize) {
             if (this.inputValue && this.inputValue.length > 0 && this.inputValue.length <= 20) {
-                let tempFilterList = this.filterList;
-                tempFilterList.push({
+                this.filterList.push({
                     "domain": this.inputValue,
                     "timeStamp": Date.now()
                 });
@@ -101,7 +91,6 @@ export class FocusComponent implements OnInit, OnChanges {
                 this.setExtensionStorage("filterList", this.filterList);
 
                 this.displayModal = false;
-                this.filterList = tempFilterList;
                 this.message.success("添加成功");
             } else if(this.inputValue && this.inputValue.length > 20) {
                 this.message.error("域名不能超过20个字");
@@ -124,36 +113,32 @@ export class FocusComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
-        // 初始化专注模式开启状态
-        let tempFocusMode = false;
-        let focusModeStorage = localStorage.getItem("focusMode");
-        if (focusModeStorage) {
-            tempFocusMode = JSON.parse(focusModeStorage);
-        }
-        else {
-            localStorage.setItem("focusMode", JSON.stringify(false));
-            this.setExtensionStorage("focusMode", false);
-        }
-
-        // 初始化名单
-        let tempFilterList = [];
-        let filterListStorage = localStorage.getItem("filterList");
-        if (filterListStorage) {
-            tempFilterList = JSON.parse(filterListStorage);
-        }
-        else {
-            localStorage.setItem("filterList", JSON.stringify([]));
-            this.setExtensionStorage("filterList", []);
-        }
-
         this.display = this.preferenceData.simpleMode ? "none" : "block";
-        this.focusMode = tempFocusMode;
-        this.filterList = tempFilterList;
 
+        // 初始化专注模式开启状态
         if (this.preferenceData.simpleMode) {
             this.focusMode = false;
             localStorage.setItem("focusMode", JSON.stringify(false));
             this.setExtensionStorage("focusMode", false);
+        } else {
+            let focusModeStorage = localStorage.getItem("focusMode");
+            if (focusModeStorage) {
+                this.focusMode = JSON.parse(focusModeStorage);
+            }
+            else {
+                localStorage.setItem("focusMode", JSON.stringify(false));
+                this.setExtensionStorage("focusMode", false);
+            }
+        }
+
+        // 初始化名单
+        let filterListStorage = localStorage.getItem("filterList");
+        if (filterListStorage) {
+            this.filterList = JSON.parse(filterListStorage);
+        }
+        else {
+            localStorage.setItem("filterList", JSON.stringify([]));
+            this.setExtensionStorage("filterList", []);
         }
     }
 

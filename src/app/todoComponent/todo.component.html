@@ -7,13 +7,13 @@
         nzType="text"
 >
     <span nz-icon nzTheme="outline" nzType="check-square"></span>
-    {{todoSize + " 个"}}
+    {{todoList.length + " 个"}}
 </button>
 <nz-modal (nzOnCancel)="modalCancelBtnOnClick()" (nzOnOk)="modalOkBtnOnClick()" [(nzVisible)]="displayModal"
           [nzBodyStyle]="{backgroundColor: minorColor}"
           [nzClosable]="false" [nzContent]="modalContent"
           [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
-          [nzTitle]="'添加待办事项 ' + todoSize + ' / ' + todoMaxSize"
+          [nzTitle]="'添加待办事项 ' + todoList.length + ' / ' + todoMaxSize"
           nzCentered
 >
     <ng-template #modalContent>
@@ -55,7 +55,7 @@
     <div nz-row nzAlign="middle">
         <div nz-col nzSpan="10">
       <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
-        {{"待办事项 " + todoSize + " / " + todoMaxSize}}
+        {{"待办事项 " + todoList.length + " / " + todoMaxSize}}
       </span>
         </div>
         <div class="alignRight" nz-col nzSpan="14">
@@ -88,10 +88,10 @@
 </ng-template>
 <ng-template #popoverContent>
     <nz-list>
-        <nz-list-empty [style]="{display: (listItems.length > 0 ? 'none' : 'block')}">
+        <nz-list-empty [style]="{display: (todoList.length > 0 ? 'none' : 'block')}">
             <nz-empty nzNotFoundImage="simple"></nz-empty>
         </nz-list-empty>
-        <nz-list-item *ngFor="let item of listItems">
+        <nz-list-item *ngFor="let item of todoList">
             <ul nz-list-item-actions>
                 <nz-list-item-action>
                     <button (click)="finishBtnOnClick(item)" (mouseout)="btnMouseOut(minorColor, $event)"
