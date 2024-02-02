@@ -22,6 +22,7 @@ export class FocusComponent implements OnInit, OnChanges {
     @Input() preferenceData: any = {};
     title = "FocusComponent";
     display: "block" | "none" = "block";
+    displayModal: boolean = false;
     focusMode: boolean = false;
     inputValue: string = "";
     filterList: any[] = [];
@@ -57,29 +58,6 @@ export class FocusComponent implements OnInit, OnChanges {
         }
     }
 
-    addFilterListBtnOnClick() {
-        if (this.filterList.length < this.focusMaxSize) {
-            if (this.inputValue && this.inputValue.length > 0 && this.inputValue.length <= 20) {
-                let tempFilterList = this.filterList;
-                tempFilterList.push({
-                    "domain": this.inputValue,
-                    "timeStamp": Date.now()
-                });
-
-                this.inputValue = "";
-                this.filterList = tempFilterList;
-                localStorage.setItem("filterList", JSON.stringify(this.filterList));
-                this.setExtensionStorage("filterList", this.filterList);
-            } else if(this.inputValue && this.inputValue.length > 20) {
-                this.message.error("域名不能超过20个字");
-            } else {
-                this.message.error("域名不能为空");
-            }
-        } else {
-            this.message.error("名单数量最多为" + this.focusMaxSize + "个");
-        }
-    }
-
     removeBtnOnClick(item: any) {
         let filterList = [];
         let tempFilterList = localStorage.getItem("filterList");
@@ -100,6 +78,43 @@ export class FocusComponent implements OnInit, OnChanges {
 
             this.filterList = filterList;
         }
+    }
+
+    showAddModalBtnOnClick() {
+        if (this.filterList.length < this.focusMaxSize) {
+            this.displayModal = true;
+            this.inputValue = "";
+        } else {
+            this.message.error("域名数量最多为" + this.focusMaxSize + "个");
+        }
+    }
+
+    modalOkBtnOnClick() {
+        if (this.filterList.length < this.focusMaxSize) {
+            if (this.inputValue && this.inputValue.length > 0 && this.inputValue.length <= 20) {
+                let tempFilterList = this.filterList;
+                tempFilterList.push({
+                    "domain": this.inputValue,
+                    "timeStamp": Date.now()
+                });
+                localStorage.setItem("filterList", JSON.stringify(this.filterList));
+                this.setExtensionStorage("filterList", this.filterList);
+
+                this.displayModal = false;
+                this.filterList = tempFilterList;
+                this.message.success("添加成功");
+            } else if(this.inputValue && this.inputValue.length > 20) {
+                this.message.error("域名不能超过20个字");
+            } else {
+                this.message.error("域名不能为空");
+            }
+        } else {
+            this.message.error("域名数量最多为" + this.focusMaxSize + "个");
+        }
+    }
+
+    modalCancelBtnOnClick() {
+        this.displayModal = false;
     }
 
     ngOnChanges(changes: SimpleChanges) {

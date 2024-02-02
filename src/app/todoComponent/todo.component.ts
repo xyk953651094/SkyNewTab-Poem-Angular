@@ -71,6 +71,7 @@ export class TodoComponent implements OnInit, OnChanges {
                     "timeStamp": Date.now()
                 });
                 localStorage.setItem("todos", JSON.stringify(todos));
+
                 this.displayModal = false;
                 this.listItems = todos;
                 this.todoSize = todos.length;
