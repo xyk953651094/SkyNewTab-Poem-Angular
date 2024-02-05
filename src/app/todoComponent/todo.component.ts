@@ -15,7 +15,7 @@ export class TodoComponent implements OnInit, OnChanges {
     display: "block" | "none" = "block";
     displayModal: boolean = false;
     todoList: any = [];
-    todoMaxSize: number = 5;
+    todoMaxSize: number = 10;
     inputValue: string = "";
     tag: string = "工作";
     priority: string = "★";
@@ -57,25 +57,21 @@ export class TodoComponent implements OnInit, OnChanges {
     }
 
     modalOkBtnOnClick() {
-        if (this.todoList.length < this.todoMaxSize) {
-            if (this.inputValue && this.inputValue.length > 0 && this.inputValue.length <= 10) {
-                this.todoList.push({
-                    "title": this.inputValue,
-                    "tag": this.tag,
-                    "priority": this.priority,
-                    "timeStamp": Date.now()
-                });
+        if (this.inputValue && this.inputValue.length > 0 && this.inputValue.length <= 10) {
+            this.todoList.push({
+                "title": this.inputValue,
+                "tag": this.tag,
+                "priority": this.priority,
+                "timeStamp": Date.now()
+            });
 
-                this.displayModal = false;
-                localStorage.setItem("todos", JSON.stringify(this.todoList));
-                this.message.success("添加成功");
-            } else if (this.inputValue && this.inputValue.length > 10) {
-                this.message.error("待办事项名称不能超过10个字");
-            } else {
-                this.message.error("表单不能为空");
-            }
+            this.displayModal = false;
+            localStorage.setItem("todos", JSON.stringify(this.todoList));
+            this.message.success("添加成功");
+        } else if (this.inputValue && this.inputValue.length > 10) {
+            this.message.error("待办事项名称不能超过10个字");
         } else {
-            this.message.error("待办数量最多为" + this.todoMaxSize + "个");
+            this.message.error("表单不能为空");
         }
     }
 

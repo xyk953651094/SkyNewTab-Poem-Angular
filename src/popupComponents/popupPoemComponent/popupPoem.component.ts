@@ -15,9 +15,9 @@ export class popupPoemComponent implements OnInit {
     title = "popupPoemComponent";
     searchEngineUrl = "https://www.bing.com/search?q=";
     poemContent = "海上生明月，天涯共此时。"
-    poemAuthor = "张九龄";
-    poemAuthorDetails = "【唐】张九龄 ·《望月怀远》";
+    poemAuthor = "【唐】张九龄 ·《望月怀远》";
     poemMaxSize = 25;
+    customPoem = false;
     protected readonly getFontColor = getFontColor;
     protected readonly btnMouseOut = btnMouseOut;
     protected readonly btnMouseOver = btnMouseOver;
@@ -31,11 +31,18 @@ export class popupPoemComponent implements OnInit {
     }
 
     setPoem(poemData: any) {
-        this.poemContent = poemData.data.content;
-        this.poemAuthor = poemData.data.origin.author;
-        this.poemAuthorDetails = "【" + poemData.data.origin.dynasty + "】" +
+        let tempPoemContent = poemData.data.content.length < this.poemMaxSize ?
+            poemData.data.content : poemData.data.content.substring(0, this.poemMaxSize) + "...";
+
+        let tempPoemAuthor =
+            "【" + poemData.data.origin.dynasty + "】" +
             poemData.data.origin.author + " ·" +
             "《" + poemData.data.origin.title + "》";
+        tempPoemAuthor = tempPoemAuthor.length < this.poemMaxSize ?
+            tempPoemAuthor : tempPoemAuthor.substring(0, this.poemMaxSize) + "...";
+
+        this.poemContent = tempPoemContent;
+        this.poemAuthor = tempPoemAuthor;
     }
 
     getPoem() {
@@ -46,7 +53,24 @@ export class popupPoemComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.getPoem();
         this.searchEngineUrl = getSearchEngineDetail(this.preferenceData.searchEngine).searchEngineUrl
+
+        let customPoemStorage = localStorage.getItem("customPoem");
+        if (customPoemStorage) {
+            this.customPoem = JSON.parse(customPoemStorage);
+        } else {
+            localStorage.setItem("customPoem", JSON.stringify(false));
+        }
+
+        if (this.customPoem) {
+            let customContentStorage = localStorage.getItem("customContent");
+            let customAuthorStorage = localStorage.getItem("customAuthor");
+            if (customContentStorage && customAuthorStorage) {
+                this.poemContent = customContentStorage;
+                this.poemAuthor = customAuthorStorage;
+            }
+        } else {
+            this.getPoem();
+        }
     }
 }

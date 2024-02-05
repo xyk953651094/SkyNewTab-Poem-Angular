@@ -3,25 +3,25 @@
         <div *nzSpaceItem [nzLg]="{span: 24}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 24}"
              [nzXl]="{span: 24}"
              [nzXs]="{span: 0}" nz-col>
-            <button (click)="poemContentBtnOnClick()" (mouseout)="btnMouseOut($event)"
-                    (mouseover)="btnMouseOver($event)" [nzShape]="preferenceData.buttonShape"
+            <button (click)="poemContentBtnOnClick()" (mouseout)="poemBtnMouseOut($event)"
+                    (mouseover)="poemBtnMouseOver($event)" [nzShape]="preferenceData.buttonShape"
                     [style.color]="minorColor"
                     class="poemText poemFont largeFont" nz-button nzSize="large"
                     nzType="text"
             >
-                {{poemContent.length < 30 ? poemContent : poemContent.substring(0, 30) + "..."}}
+                {{poemContent}}
             </button>
         </div>
         <div *nzSpaceItem [nzLg]="{span: 24}" [nzMd]="{span: 0}" [nzSm]="{span: 0}" [nzXXl]="{span: 24}"
              [nzXl]="{span: 24}"
              [nzXs]="{span: 0}" nz-col>
-            <button (click)="poemAuthorBtnOnClick()" (mouseout)="btnMouseOut($event)" (mouseover)="btnMouseOver($event)"
+            <button (click)="showAddModalBtnOnClick()" (mouseout)="poemBtnMouseOut($event)" (mouseover)="poemBtnMouseOver($event)"
                     [nzShape]="preferenceData.buttonShape"
                     [style.color]="minorColor"
-                    class="poemText poemFont largeFont" nz-button nzSize="large"
-                    nzType="text"
+                    class="poemText poemFont largeFont" nz-button nzSize="large" nzType="text"
+                    nz-tooltip [nzTooltipColor]="minorColor" nzTooltipPlacement="bottom" nzTooltipTitle="自定诗词"
             >
-                {{poemAuthorDetails.length < 30 ? poemAuthorDetails : poemAuthorDetails.substring(0, 30) + "..."}}
+                {{poemAuthor}}
             </button>
         </div>
         <div [nzLg]="{span: 0}" [nzMd]="{span: 24}" [nzSm]="{span: 24}" [nzXXl]="{span: 0}" [nzXl]="{span: 0}"
@@ -36,3 +36,52 @@
         </div>
     </nz-space>
 </div>
+<nz-modal [(nzVisible)]="displayModal"
+          [nzBodyStyle]="{backgroundColor: minorColor}" [nzClosable]="false" [nzContent]="modalContent"
+          [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
+          [nzTitle]="'自定诗词'"
+          nzCentered
+>
+    <ng-template #modalContent>
+        <form [nzNoColon]="true" nz-form>
+            <nz-form-item>
+                <nz-form-label>诗词内容</nz-form-label>
+                <nz-form-control nzErrorTip="表单不能为空">
+                    <input [maxLength]="30" class="poemFont" name="customContentInput" nz-input placeholder="请输入诗词内容" [(ngModel)]="customContentInputValue"/>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label>作者信息</nz-form-label>
+                <nz-form-control nzErrorTip="表单不能为空">
+                    <input [maxLength]="30" class="poemFont" name="customAuthorInput" nz-input placeholder="请输入作者信息" [(ngModel)]="customAuthorInputValue"/>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </ng-template>
+    <div *nzModalFooter>
+        <button (click)="closeCustomPoemBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                (mouseover)="btnMouseOver(majorColor, $event)" [nzShape]="preferenceData.buttonShape"
+                [style.color]="getFontColor(minorColor)" [style.display]="customPoem ? 'inline-block' : 'none'"
+                class="poemFont" nz-button
+                nzType="text"
+        >
+            {{"关闭自定诗词"}}
+        </button>
+        <button (click)="modalCancelBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                (mouseover)="btnMouseOver(majorColor, $event)" [nzShape]="preferenceData.buttonShape"
+                [style.color]="getFontColor(minorColor)"
+                class="poemFont" nz-button
+                nzType="text"
+        >
+            {{"取消"}}
+        </button>
+        <button (click)="modalOkBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                (mouseover)="btnMouseOver(majorColor, $event)" [nzShape]="preferenceData.buttonShape"
+                [style.color]="getFontColor(minorColor)"
+                class="poemFont" nz-button
+                nzType="text"
+        >
+            {{"确定"}}
+        </button>
+    </div>
+</nz-modal>

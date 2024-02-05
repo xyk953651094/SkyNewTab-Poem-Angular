@@ -26,7 +26,7 @@ export class FocusComponent implements OnInit, OnChanges {
     focusMode: boolean = false;
     inputValue: string = "";
     filterList: any[] = [];
-    focusMaxSize: number = 5;
+    focusMaxSize: number = 10;
     browserType = getBrowserType();
    
     protected readonly getFontColor = getFontColor;
@@ -81,24 +81,20 @@ export class FocusComponent implements OnInit, OnChanges {
     }
 
     modalOkBtnOnClick() {
-        if (this.filterList.length < this.focusMaxSize) {
-            if (this.inputValue && this.inputValue.length > 0 && this.inputValue.length <= 20) {
-                this.filterList.push({
-                    "domain": this.inputValue,
-                    "timeStamp": Date.now()
-                });
-                localStorage.setItem("filterList", JSON.stringify(this.filterList));
-                this.setExtensionStorage("filterList", this.filterList);
+        if (this.inputValue && this.inputValue.length > 0 && this.inputValue.length <= 20) {
+            this.filterList.push({
+                "domain": this.inputValue,
+                "timeStamp": Date.now()
+            });
+            localStorage.setItem("filterList", JSON.stringify(this.filterList));
+            this.setExtensionStorage("filterList", this.filterList);
 
-                this.displayModal = false;
-                this.message.success("添加成功");
-            } else if(this.inputValue && this.inputValue.length > 20) {
-                this.message.error("域名不能超过20个字");
-            } else {
-                this.message.error("域名不能为空");
-            }
+            this.displayModal = false;
+            this.message.success("添加成功");
+        } else if(this.inputValue && this.inputValue.length > 20) {
+            this.message.error("域名不能超过20个字");
         } else {
-            this.message.error("域名数量最多为" + this.focusMaxSize + "个");
+            this.message.error("域名不能为空");
         }
     }
 

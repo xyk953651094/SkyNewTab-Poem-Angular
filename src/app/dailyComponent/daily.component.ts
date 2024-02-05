@@ -15,7 +15,7 @@ export class DailyComponent implements OnInit, OnChanges {
     display: "block" | "none" = "block";
     displayModal: boolean = false;
     dailyList: any = [];
-    dailyMaxSize: number = 5;
+    dailyMaxSize: number = 10;
     inputValue: string = "";
     datePickerValue: Date = new Date();
     selectedTimeStamp: number = 0;
@@ -65,24 +65,20 @@ export class DailyComponent implements OnInit, OnChanges {
             this.selectedTimeStamp = 0;
         }
 
-        if (this.dailyList.length < this.dailyMaxSize) {
-            if (this.inputValue && this.inputValue.length > 0 && this.inputValue.length <= 10 && this.selectedTimeStamp !== 0) {
-                this.dailyList.push({
-                    "title": this.inputValue,
-                    "selectedTimeStamp": this.selectedTimeStamp,
-                    "timeStamp": Date.now()
-                });
+        if (this.inputValue && this.inputValue.length > 0 && this.inputValue.length <= 10 && this.selectedTimeStamp !== 0) {
+            this.dailyList.push({
+                "title": this.inputValue,
+                "selectedTimeStamp": this.selectedTimeStamp,
+                "timeStamp": Date.now()
+            });
 
-                this.displayModal = false;
-                localStorage.setItem("daily", JSON.stringify(this.dailyList));
-                this.message.success("添加成功");
-            } else if (this.inputValue && this.inputValue.length > 10) {
-                this.message.error("倒数日名称不能超过10个字");
-            } else {
-                this.message.error("表单不能为空");
-            }
+            this.displayModal = false;
+            localStorage.setItem("daily", JSON.stringify(this.dailyList));
+            this.message.success("添加成功");
+        } else if (this.inputValue && this.inputValue.length > 10) {
+            this.message.error("倒数日名称不能超过10个字");
         } else {
-            this.message.error("倒数日数量最多为" + this.dailyMaxSize + "个");
+            this.message.error("表单不能为空");
         }
     }
 
