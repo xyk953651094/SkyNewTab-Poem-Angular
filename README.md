@@ -23,10 +23,6 @@
 * GitHub Pages：https://xyk953651094.github.io/SkyDocuments
 * GitLab Pages：https://xyk953651094.gitlab.io/SkyDocuments
 
-## 链接
-* 博客：https://xyk953651094.blogspot.com
-* 捐助：https://afdian.net/a/xyk953651094
-
 ## 展示
 ### Chromium & Firefox
 <img width="1440" alt="截屏2024-01-27 20 29 47" src="https://github.com/xyk953651094/SkyNewTab-React/assets/28004442/b58d119a-a48e-4d7f-9536-5cda975ee72a">
@@ -37,3 +33,10 @@
 
 ### Safari
 * V1.7.0 版本新增 popup 后在 Xcode 中编译时出现未知问题，适配 Safari 进展暂时迟缓，后续暂时不会推进 Safari 版
+
+## 捐助
+* 如果您喜欢我的作品，请考虑捐助。
+* 注意：捐助是无偿的，但这可以为我提供更大的创作动力。
+* 爱发电：https://afdian.net/a/xyk953651094
+* <img width="300" alt="爱发电" src="https://github.com/xyk953651094/SkyNewTab-React/assets/28004442/7766955b-46fe-490f-aadb-55099ce4f6fc">
+* <img width="300" alt="微信赞赏码" src="https://github.com/xyk953651094/SkyNewTab-React/assets/28004442/6b7c2305-753c-4841-9031-106f39683494">
