@@ -3,14 +3,14 @@
          id="clockDiv"
          nz-col nzSpan="24">
         <nz-space id="clock" nzAlign="center">
-            <span *nzSpaceItem [style]="{color: minorColor}" class="textShadow clockText poemFont" nz-typography>
+            <span *nzSpaceItem [style]="{color: minorColor, cursor: 'default'}" class="textShadow clockText poemFont" nz-typography>
                 {{currentTime}}
             </span>
             <nz-space *nzSpaceItem nzAlign="center" nzDirection="vertical">
-                <span *nzSpaceItem [style]="{color: minorColor}" class="textShadow dateText poemFont" nz-typography>
+                <span *nzSpaceItem [style]="{color: minorColor, cursor: 'default'}" class="textShadow dateText poemFont" nz-typography>
                     {{currentYear}}
                 </span>
-                <span *nzSpaceItem [style]="{color: minorColor}" class="textShadow dateText poemFont" nz-typography>
+                <span *nzSpaceItem [style]="{color: minorColor, cursor: 'default'}" class="textShadow dateText poemFont" nz-typography>
                     {{currentDate}}
                 </span>
             </nz-space>

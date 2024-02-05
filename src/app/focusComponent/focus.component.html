@@ -9,11 +9,30 @@
     <span [class]="focusMode ? 'bi bi-cup-hot-fill' : 'bi bi-cup-hot'">&nbsp;&nbsp;</span>
     {{focusMode ? "专注中" : "未专注"}}
 </button>
+<nz-modal (nzOnCancel)="modalCancelBtnOnClick()" (nzOnOk)="modalOkBtnOnClick()" [(nzVisible)]="displayModal"
+          [nzBodyStyle]="{backgroundColor: minorColor}"
+          [nzClosable]="false" [nzContent]="modalContent"
+          [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
+          [nzTitle]="'添加域名 ' + filterList.length + ' / ' + focusMaxSize"
+          nzCentered
+>
+    <ng-template #modalContent>
+        <form [nzNoColon]="true" nz-form>
+            <nz-form-item>
+                <nz-form-label>网站域名</nz-form-label>
+                <nz-form-control nzErrorTip="表单不能为空">
+                    <input class="poemFont" name="focusInput" nz-input placeholder="example.com" [(ngModel)]="inputValue"/>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </ng-template>
+</nz-modal>
+
 <ng-template #popoverTitle>
     <div nz-row nzAlign="middle">
         <div nz-col nzSpan="8">
             <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
-                {{"专注模式"}}
+                {{"专注模式 " + filterList.length + " / " + focusMaxSize}}
             </span>
         </div>
         <div class="alignRight" nz-col nzSpan="16">
@@ -23,6 +42,17 @@
                            [ngModel]="focusMode" id="focusModeSwitch"
                            class="poemFont" nzCheckedChildren="已开启"
                            nzUnCheckedChildren="已关闭"></nz-switch>
+                <button *nzSpaceItem (click)="showAddModalBtnOnClick()"
+                        (mouseout)="btnMouseOut(minorColor, $event)"
+                        (mouseover)="btnMouseOver(majorColor, $event)"
+                        [nzShape]="preferenceData.buttonShape"
+                        [style]="{color: getFontColor(minorColor)}"
+                        class="poemFont"
+                        nz-button nzType="text"
+                >
+                    <span nz-icon nzTheme="outline" nzType="plus"></span>
+                    {{"添加域名"}}
+                </button>
                 <button *nzSpaceItem (click)="removeAllBtnOnClick()"
                         (mouseout)="btnMouseOut(minorColor, $event)"
                         (mouseover)="btnMouseOver(majorColor, $event)"
@@ -32,7 +62,7 @@
                         nz-button nzType="text"
                 >
                     <span nz-icon nzTheme="outline" nzType="delete"></span>
-                    {{"全部清空"}}
+                    {{"全部删除"}}
                 </button>
             </nz-space>
         </div>
@@ -43,33 +73,6 @@
         <nz-list-empty [style]="{display: (filterList.length > 0 ? 'none' : 'block')}">
             <nz-empty nzNotFoundImage="simple"></nz-empty>
         </nz-list-empty>
-        <nz-list-header>
-            <div nz-row nzAlign="middle">
-                <div nz-col nzSpan="8">
-                    <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
-                        {{ "黑名单 " + filterList.length + " / " + focusMaxSize}}
-                    </span>
-                </div>
-                <div class="alignRight" nz-col nzSpan="16">
-                    <nz-space nzAlign="center">
-                        <input *nzSpaceItem class="poemFont" nz-input
-                               placeholder="example.com" [(ngModel)]="inputValue"/>
-                        <button (click)="addFilterListBtnOnClick()"
-                                (mouseout)="btnMouseOut(minorColor, $event)"
-                                (mouseover)="btnMouseOver(majorColor, $event)"
-                                *nzSpaceItem
-                                [nzShape]="preferenceData.buttonShape"
-                                [style]="{color: getFontColor(minorColor)}"
-                                class="poemFont"
-                                nz-button nzType="text"
-                        >
-                            <span nz-icon nzTheme="outline" nzType="plus"></span>
-                            {{"添加"}}
-                        </button>
-                    </nz-space>
-                </div>
-            </div>
-        </nz-list-header>
         <nz-list-item *ngFor="let item of filterList">
             <ul nz-list-item-actions>
                 <nz-list-item-action>
@@ -96,7 +99,7 @@
         </nz-list-item>
         <nz-list-footer>
                 <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
-                    {{"访问黑名单中的网站将自动跳转至新标签页"}}
+                    {{"开启专注模式后，访问以上域名时将自动跳转至新标签页"}}
                 </span>
         </nz-list-footer>
     </nz-list>

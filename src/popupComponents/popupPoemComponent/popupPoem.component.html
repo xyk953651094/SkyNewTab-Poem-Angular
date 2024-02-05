@@ -7,7 +7,7 @@
                     class="popupFont" nz-button nzType="text"
             >
                 <span nz-icon nzTheme="outline" nzType="read"></span>
-                {{poemContent.length < poemMaxSize ? poemContent : poemContent.substring(0, poemMaxSize) + "..."}}
+                {{poemContent}}
             </button>
         </div>
         <div *nzSpaceItem nz-col nzSpan="24">
@@ -17,7 +17,7 @@
                     class="popupFont" nz-button nzType="text"
             >
                 <span nz-icon nzTheme="outline" nzType="user"></span>
-                {{poemAuthorDetails.length < poemMaxSize ? poemAuthorDetails : poemAuthorDetails.substring(0, poemMaxSize) + "..."}}
+                {{poemAuthor}}
             </button>
         </div>
     </nz-space>

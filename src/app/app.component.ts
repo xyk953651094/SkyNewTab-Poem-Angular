@@ -45,13 +45,13 @@ export class AppComponent implements OnInit {
         let bodyEle = $("body");
         bodyEle.bind("DOMNodeInserted", () => {
             // 通用
+            $(".ant-list-item").css("padding", "6px 0");
             $(".ant-list-item:not(:last-child)").css("border-bottom", "1px solid " + getFontColor(this.minorColor));
             $(".ant-list-item-action").css("marginInlineStart", "0");
             $(".ant-empty-description").css({
                 "color": getFontColor(this.minorColor),
                 "font-family": "'Times New Roman', cursive, sans-serif",
             });
-            $(".ant-alert").css("padding", "10px");
 
             // popover
             let popoverEle = $(".ant-popover");
@@ -185,6 +185,16 @@ export class AppComponent implements OnInit {
                 });
             }
         });
+
+        // const observer = new MutationObserver((mutations) => {
+        //     mutations.forEach((mutation) => {
+        //         // 插入节点时
+        //         if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+        //
+        //         }
+        //     });
+        // });
+        // observer.observe(document.body, {childList: true});
     }
 
     ngOnInit(): void {

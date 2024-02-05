@@ -22,10 +22,11 @@ export class FocusComponent implements OnInit, OnChanges {
     @Input() preferenceData: any = {};
     title = "FocusComponent";
     display: "block" | "none" = "block";
+    displayModal: boolean = false;
     focusMode: boolean = false;
     inputValue: string = "";
     filterList: any[] = [];
-    focusMaxSize: number = 5;
+    focusMaxSize: number = 10;
     browserType = getBrowserType();
    
     protected readonly getFontColor = getFontColor;
@@ -49,57 +50,56 @@ export class FocusComponent implements OnInit, OnChanges {
     }
 
     removeAllBtnOnClick() {
-        let tempFilterList = localStorage.getItem("filterList");
-        if (tempFilterList) {
-            this.filterList = [];
-            localStorage.removeItem("filterList");
-            this.setExtensionStorage("filterList", []);
-        }
-    }
-
-    addFilterListBtnOnClick() {
-        if (this.filterList.length < this.focusMaxSize) {
-            if (this.inputValue && this.inputValue.length > 0 && this.inputValue.length <= 20) {
-                let tempFilterList = this.filterList;
-                tempFilterList.push({
-                    "domain": this.inputValue,
-                    "timeStamp": Date.now()
-                });
-
-                this.inputValue = "";
-                this.filterList = tempFilterList;
-                localStorage.setItem("filterList", JSON.stringify(this.filterList));
-                this.setExtensionStorage("filterList", this.filterList);
-            } else if(this.inputValue && this.inputValue.length > 20) {
-                this.message.error("域名不能超过20个字");
-            } else {
-                this.message.error("域名不能为空");
-            }
-        } else {
-            this.message.error("名单数量最多为" + this.focusMaxSize + "个");
-        }
+        this.filterList = [];
+        localStorage.removeItem("filterList");
+        this.setExtensionStorage("filterList", []);
     }
 
     removeBtnOnClick(item: any) {
-        let filterList = [];
-        let tempFilterList = localStorage.getItem("filterList");
-        if (tempFilterList) {
-            filterList = JSON.parse(tempFilterList);
-            let index = -1;
-            for (let i = 0; i < filterList.length; i++) {
-                if (item.timeStamp === filterList[i].timeStamp) {
-                    index = i;
-                    break;
-                }
+        let index = -1;
+        for (let i = 0; i < this.filterList.length; i++) {
+            if (item.timeStamp === this.filterList[i].timeStamp) {
+                index = i;
+                break;
             }
-            if (index !== -1) {
-                filterList.splice(index, 1);
-            }
-            localStorage.setItem("filterList", JSON.stringify(filterList));
-            this.setExtensionStorage("filterList", filterList);
-
-            this.filterList = filterList;
         }
+        if (index !== -1) {
+            this.filterList.splice(index, 1);
+        }
+
+        localStorage.setItem("filterList", JSON.stringify(this.filterList));
+        this.setExtensionStorage("filterList", this.filterList);
+    }
+
+    showAddModalBtnOnClick() {
+        if (this.filterList.length < this.focusMaxSize) {
+            this.displayModal = true;
+            this.inputValue = "";
+        } else {
+            this.message.error("域名数量最多为" + this.focusMaxSize + "个");
+        }
+    }
+
+    modalOkBtnOnClick() {
+        if (this.inputValue && this.inputValue.length > 0 && this.inputValue.length <= 20) {
+            this.filterList.push({
+                "domain": this.inputValue,
+                "timeStamp": Date.now()
+            });
+            localStorage.setItem("filterList", JSON.stringify(this.filterList));
+            this.setExtensionStorage("filterList", this.filterList);
+
+            this.displayModal = false;
+            this.message.success("添加成功");
+        } else if(this.inputValue && this.inputValue.length > 20) {
+            this.message.error("域名不能超过20个字");
+        } else {
+            this.message.error("域名不能为空");
+        }
+    }
+
+    modalCancelBtnOnClick() {
+        this.displayModal = false;
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -109,36 +109,35 @@ export class FocusComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
-        // 初始化专注模式开启状态
-        let tempFocusMode = false;
-        let focusModeStorage = localStorage.getItem("focusMode");
-        if (focusModeStorage) {
-            tempFocusMode = JSON.parse(focusModeStorage);
-        }
-        else {
-            localStorage.setItem("focusMode", JSON.stringify(false));
-            this.setExtensionStorage("focusMode", false);
-        }
-
-        // 初始化名单
-        let tempFilterList = [];
-        let filterListStorage = localStorage.getItem("filterList");
-        if (filterListStorage) {
-            tempFilterList = JSON.parse(filterListStorage);
-        }
-        else {
-            localStorage.setItem("filterList", JSON.stringify([]));
-            this.setExtensionStorage("filterList", []);
-        }
-
         this.display = this.preferenceData.simpleMode ? "none" : "block";
-        this.focusMode = tempFocusMode;
-        this.filterList = tempFilterList;
 
+        // 初始化专注模式开启状态
         if (this.preferenceData.simpleMode) {
             this.focusMode = false;
             localStorage.setItem("focusMode", JSON.stringify(false));
             this.setExtensionStorage("focusMode", false);
+        } else {
+            let focusModeStorage = localStorage.getItem("focusMode");
+            if (focusModeStorage) {
+                this.focusMode = JSON.parse(focusModeStorage);
+                if (JSON.parse(focusModeStorage) === true) {
+                    this.message.info("已开启专注模式");
+                }
+            }
+            else {
+                localStorage.setItem("focusMode", JSON.stringify(false));
+                this.setExtensionStorage("focusMode", false);
+            }
+        }
+
+        // 初始化名单
+        let filterListStorage = localStorage.getItem("filterList");
+        if (filterListStorage) {
+            this.filterList = JSON.parse(filterListStorage);
+        }
+        else {
+            localStorage.setItem("filterList", JSON.stringify([]));
+            this.setExtensionStorage("filterList", []);
         }
     }
 

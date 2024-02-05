@@ -1,4 +1,4 @@
-<button [nzPopoverContent]="popoverContent" [nzPopoverOverlayStyle]="{width: '550px'}"
+<button [nzPopoverContent]="popoverContent" [nzPopoverOverlayStyle]="{width: '600px'}"
         [nzPopoverTitle]="popoverTitle"
         [nzShape]="buttonShape"
         [style]="{display: display, cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
@@ -8,21 +8,178 @@
 >
     <span nz-icon nzTheme="outline" nzType="search"></span>
 </button>
+<nz-modal (nzOnCancel)="addModalCancelBtnOnClick()" (nzOnOk)="addModalOkBtnOnClick()" [(nzVisible)]="displayAddModal"
+          [nzBodyStyle]="{backgroundColor: minorColor}"
+          [nzClosable]="false" [nzContent]="addModalContent"
+          [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
+          [nzTitle]="'添加链接 ' + linkList.length + ' / ' + linkMaxSize"
+          nzCentered
+>
+    <ng-template #addModalContent>
+        <form [nzNoColon]="true" nz-form>
+            <nz-form-item>
+                <nz-form-label>链接名称</nz-form-label>
+                <nz-form-control nzErrorTip="链接名称不能为空">
+                    <input [maxLength]="linkMaxSize" class="poemFont" name="linkNameInput" [(ngModel)]="linkNameInputValue" nz-input
+                           [placeholder]="'请输入链接名称，字数不能超过' + linkMaxSize + '个'"/>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label>链接地址</nz-form-label>
+                <nz-form-control nzErrorTip="链接地址不能为空">
+                    <input class="poemFont" name="linkUrlInput" [(ngModel)]="linkUrlInputValue" nz-input
+                           placeholder="请输入链接地址"/>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </ng-template>
+</nz-modal>
+<nz-modal (nzOnCancel)="editModalCancelBtnOnClick()" (nzOnOk)="editModalOkBtnOnClick()" [(nzVisible)]="displayEditModal"
+          [nzBodyStyle]="{backgroundColor: minorColor}"
+          [nzClosable]="false" [nzContent]="editModalContent"
+          [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
+          [nzTitle]="editModalTitle"
+          nzCentered
+>
+    <ng-template #editModalTitle>
+        <div nz-row nzAlign="middle">
+            <div nz-col nzSpan="12">
+                <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
+                    {{"编辑链接 " + linkList.length + " / " + linkMaxSize}}
+                </span>
+            </div>
+            <div nz-col nzSpan="12">
+                <button (click)="removeAllBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                        (mouseover)="btnMouseOver(majorColor, $event)"
+                        *nzSpaceItem
+                        [nzShape]="preferenceData.buttonShape"
+                        [style]="{color: getFontColor(minorColor)}"
+                        class="poemFont"
+                        nz-button nzType="text"
+                >
+                    <span nz-icon nzTheme="outline" nzType="delete"></span>
+                    {{"全部删除"}}
+                </button>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #editModalContent>
+        <nz-list>
+            <nz-list-empty [style]="{display: (linkList.length > 0 ? 'none' : 'block')}">
+                <nz-empty nzNotFoundImage="simple"></nz-empty>
+            </nz-list-empty>
+            <nz-list-item *ngFor="let item of linkList">
+                <ul nz-list-item-actions>
+                    <nz-list-item-action>
+                        <button (click)="removeBtnOnClick(item)" (mouseout)="btnMouseOut(minorColor, $event)"
+                                (mouseover)="btnMouseOver(majorColor, $event)"
+                                [nzShape]="this.preferenceData.buttonShape === 'round' ? 'circle' : null"
+                                [style]="{color: getFontColor(minorColor)}"
+                                class="poemFont"
+                                nz-button nzType="text"
+                        >
+                            <span nz-icon nzTheme="outline" nzType="delete"></span>
+                        </button>
+                    </nz-list-item-action>
+                </ul>
+                <div nz-row nzAlign="middle" [style.width]="'100%'">
+                    <div nz-col nzSpan="8">
+                        <button (mouseout)="btnMouseOut(minorColor, $event)"
+                                (mouseover)="btnMouseOver(majorColor, $event)"
+                                [nzShape]="preferenceData.buttonShape"
+                                [style]="{color: getFontColor(minorColor)}"
+                                class="poemFont"
+                                nz-button nzType="text"
+                        >
+                            <span nz-icon nzType="pushpin" nzTheme="outline"></span>
+                            {{item.linkName}}
+                        </button>
+                    </div>
+                    <div nz-col nzSpan="16">
+                        <button (mouseout)="btnMouseOut(minorColor, $event)"
+                                (mouseover)="btnMouseOver(majorColor, $event)"
+                                [nzShape]="preferenceData.buttonShape"
+                                [style]="{color: getFontColor(minorColor)}"
+                                class="poemFont"
+                                nz-button nzType="text"
+                        >
+                            <span nz-icon nzType="link" nzTheme="outline"></span>
+                            {{item.linkUrl.length < 30 ? item.linkUrl : item.linkUrl.substring(0, 30) + "..."}}
+                        </button>
+                    </div>
+                </div>
+            </nz-list-item>
+        </nz-list>
+    </ng-template>
+</nz-modal>
 
 <ng-template #popoverTitle>
     <div nz-row nzAlign="middle">
-        <div nz-col nzSpan="24">
+        <div nz-col nzSpan="6">
             <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
                 {{"搜索栏"}}
             </span>
         </div>
+        <div class="alignRight" nz-col nzSpan="18">
+            <nz-space>
+                <button (click)="showAddModalBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                        (mouseover)="btnMouseOver(majorColor, $event)"
+                        *nzSpaceItem
+                        [nzShape]="preferenceData.buttonShape"
+                        [style]="{color: getFontColor(minorColor)}"
+                        class="poemFont"
+                        nz-button nzType="text"
+                >
+                    <span nz-icon nzTheme="outline" nzType="plus"></span>
+                    {{"添加链接"}}
+                </button>
+                <button (click)="showEditModalBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                        (mouseover)="btnMouseOver(majorColor, $event)"
+                        *nzSpaceItem
+                        [nzShape]="preferenceData.buttonShape"
+                        [style]="{color: getFontColor(minorColor)}"
+                        class="poemFont"
+                        nz-button nzType="text"
+                >
+                    <span nz-icon nzTheme="outline" nzType="edit"></span>
+                    {{"编辑链接"}}
+                </button>
+                <button (click)="removeAllBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                        (mouseover)="btnMouseOver(majorColor, $event)"
+                        *nzSpaceItem
+                        [nzShape]="preferenceData.buttonShape"
+                        [style]="{color: getFontColor(minorColor)}"
+                        class="poemFont"
+                        nz-button nzType="text"
+                >
+                    <span nz-icon nzTheme="outline" nzType="delete"></span>
+                    {{"全部删除"}}
+                </button>
+            </nz-space>
+        </div>
     </div>
 </ng-template>
 <ng-template #popoverContent>
-    <nz-input-group [nzPrefix]="inputPrefix" [nzSuffix]="inputSuffix">
-        <input (keypress)="onPressEnter($event)" class="poemFont" id="searchInput" nz-input
-               placeholder="按下 Enter 键搜索"/>
-    </nz-input-group>
+    <nz-list>
+        <nz-list-item>
+            <nz-input-group [nzPrefix]="inputPrefix" [nzSuffix]="inputSuffix">
+                <input (keypress)="onPressEnter($event)" class="poemFont" id="searchInput" nz-input
+                       placeholder="按下 Enter 键搜索"/>
+            </nz-input-group>
+        </nz-list-item>
+    </nz-list>
+    <nz-space>
+        <ng-template nzSpaceItem *ngFor="let item of linkList">
+            <button (click)="linkBtnOnClick(item)"
+                    [nzShape]="preferenceData.buttonShape"
+                    [style]="{color: getFontColor(majorColor), backgroundColor: majorColor}"
+                    class="poemFont"
+                    nz-button nzType="text"
+            >
+                {{item.linkName}}
+            </button>
+        </ng-template>
+    </nz-space>
 </ng-template>
 
 <ng-template #inputPrefix>
