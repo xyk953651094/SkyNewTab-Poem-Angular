@@ -120,6 +120,9 @@ export class FocusComponent implements OnInit, OnChanges {
             let focusModeStorage = localStorage.getItem("focusMode");
             if (focusModeStorage) {
                 this.focusMode = JSON.parse(focusModeStorage);
+                if (JSON.parse(focusModeStorage) === true) {
+                    this.message.info("已开启专注模式");
+                }
             }
             else {
                 localStorage.setItem("focusMode", JSON.stringify(false));
