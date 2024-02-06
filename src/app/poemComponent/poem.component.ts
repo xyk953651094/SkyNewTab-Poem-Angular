@@ -129,6 +129,8 @@ export class PoemComponent implements OnInit, OnChanges {
             if (customContentStorage && customAuthorStorage) {
                 this.poemContent = customContentStorage;
                 this.poemAuthor = customAuthorStorage;
+                this.customContentInputValue = customContentStorage;
+                this.customAuthorInputValue = customAuthorStorage;
             }
         } else {
             // 防抖节流

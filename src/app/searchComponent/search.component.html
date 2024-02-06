@@ -162,7 +162,9 @@
 <ng-template #popoverContent>
     <nz-list>
         <nz-list-item>
-            <nz-input-group [nzPrefix]="inputPrefix" [nzSuffix]="inputSuffix">
+            <nz-input-group [nzPrefix]="inputPrefix" [nzSuffix]="inputSuffix"
+                            [style.border-radius]="preferenceData.buttonShape === 'round' ? '20px' : ''"
+            >
                 <input (keypress)="onPressEnter($event)" class="poemFont" id="searchInput" nz-input
                        placeholder="按下 Enter 键搜索"/>
             </nz-input-group>
@@ -184,12 +186,9 @@
 
 <ng-template #inputPrefix>
     <div nz-row nzAlign="middle">
-        <button (click)="changeSearchEngine()" [style]="{
-                    backgroundColor: minorColor,
-                    color: getFontColor(minorColor),
-                }" class="poemFont" nz-button
-                nzSize="small"
-                nzType="text">
+        <button (click)="changeSearchEngine()"
+                [style]="{backgroundColor: minorColor, color: getFontColor(minorColor)}" class="poemFont"
+                nz-button nzSize="small" nzType="text" [nzShape]="preferenceData.buttonShape">
             <span [class]="'bi bi-' + searchEngineValue"></span>
             {{"&nbsp;&nbsp;" + searchEngineName}}
         </button>
