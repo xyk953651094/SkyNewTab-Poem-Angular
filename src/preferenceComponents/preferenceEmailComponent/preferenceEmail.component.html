@@ -3,7 +3,7 @@
          nzSize="small"
          nzTitle="联系作者"
 >
-    <div nz-row>
+    <div nz-row [nzGutter]="[0, 8]">
         <div nz-col nzSpan="12">
             <button (click)="suggestBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                     (mouseover)="btnMouseOver(majorColor, $event)"
@@ -22,6 +22,17 @@
             >
                 <span nz-icon nzTheme="outline" nzType="dislike"></span>
                 {{"问题反馈"}}
+            </button>
+        </div>
+        <div nz-col nzSpan="24">
+            <button (mouseout)="btnMouseOut(minorColor, $event)"
+                    (mouseover)="btnMouseOver(majorColor, $event)"
+                    [nzShape]="preferenceData.buttonShape"
+                    [style.color]="getFontColor(minorColor)" [style.cursor]="'default'"
+                    class="poemFont" nz-button nzType="text"
+            >
+                <span nz-icon nzType="star" nzTheme="outline"></span>
+                {{"如果喜欢这款插件，请在插件商店五星好评"}}
             </button>
         </div>
     </div>
