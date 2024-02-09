@@ -212,13 +212,26 @@ export class AppComponent implements OnInit {
             );
             localStorage.setItem("SkyNewTabPoemAngularVersion", currentVersion);
 
+            setTimeout(() => {
+                this.notification.blank(
+                    "支持作者",
+                    "如果喜欢这款插件，请在插件商店五星好评",
+                    {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
+                );
+            }, 1000);
+
+            // 额外提醒
             // if (currentVersion === "2.8.0") {
-            //     this.notification.blank(
-            //         "重要通知",
-            //         "新增专注模式，若专注模式无法生效，可尝试重新安装本插件",
-            //         {nzPlacement: "bottomLeft", nzDuration: 10000, nzCloseIcon: "null"}
-            //     );
+            //     setTimeout(() => {
+            //         this.notification.blank(
+            //             "重要通知",
+            //             "新增专注模式，若专注模式无法生效，可尝试重新安装本插件",
+            //             {nzPlacement: "bottomLeft", nzDuration: 10000, nzCloseIcon: "null"}
+            //         );
+            //     }, 2000);
             // }
         }
     }
+
+    protected readonly getFontColor = getFontColor;
 }
