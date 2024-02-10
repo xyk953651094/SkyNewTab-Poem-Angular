@@ -65,11 +65,17 @@ export class GreetComponent implements OnInit, OnChanges {
             this.holidayContent = this.holidayContent + " · " + data.typeDes;
 
             // 发送恭贺通知
-            this.notification.blank(
-                "今日" + data.typeDes,
-                "云开诗词新标签页祝您" + data.typeDes + "快乐！",
-                {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
-            );
+            let displayBlessStorage = localStorage.getItem("displayBless");
+            if (displayBlessStorage === null) {
+                this.notification.blank(
+                    "今日" + data.typeDes,
+                    "云开诗词新标签页祝您" + data.typeDes + "快乐！",
+                    {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
+                );
+                localStorage.setItem("displayBless", JSON.stringify(false));
+            }
+        } else {
+            localStorage.removeItem("displayBless");
         }
 
         let timeDetails = getTimeDetails(new Date());
