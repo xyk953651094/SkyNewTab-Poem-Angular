@@ -10,6 +10,14 @@ import {
     resetSwitchColor
 } from "../../typescripts/publicFunctions";
 import {NzMessageService} from "ng-zorro-antd/message";
+import focusSoundOne from "../../assets/focusSounds/古镇雨滴.mp3";
+import focusSoundTwo from "../../assets/focusSounds/松树林小雪.mp3";
+
+const focusAudio = new Audio();
+const focusSoundsDictionary = {
+    "focusSoundOne": focusSoundOne,
+    "focusSoundTwo": focusSoundTwo,
+}
 
 @Component({
     selector: "focus-component",
@@ -26,6 +34,9 @@ export class FocusComponent implements OnInit, OnChanges {
     focusMode: boolean = false;
     inputValue: string = "";
     filterList: any[] = [];
+    focusSound: string = "古镇雨滴";
+    displayPlayBtn: string = "block";
+    displayPauseBtn: string = "none";
     focusMaxSize: number = 10;
     browserType = getBrowserType();
    
@@ -100,6 +111,43 @@ export class FocusComponent implements OnInit, OnChanges {
 
     modalCancelBtnOnClick() {
         this.displayModal = false;
+    }
+
+    focusSoundSelectOnChange(value: string) {
+        this.focusSound = value;
+        this.displayPlayBtn = "none";
+        this.displayPauseBtn = "block";
+        this.playFocusSound(value);
+    }
+
+    playBtnOnClick() {
+        this.displayPlayBtn = "none";
+        this.displayPauseBtn = "block";
+        this.playFocusSound(this.focusSound);
+    }
+
+    pauseBtnOnClick() {
+        this.displayPlayBtn = "block";
+        this.displayPauseBtn = "none";
+        focusAudio.pause();
+    }
+
+    playFocusSound(focusSound: string) {
+        switch (focusSound) {
+            case "古镇雨滴": {
+                focusAudio.src = focusSoundsDictionary.focusSoundOne;
+                break;
+            }
+            case "松树林小雪": {
+                focusAudio.src = focusSoundsDictionary.focusSoundTwo;
+                break;
+            }
+            default: {
+                focusAudio.src = focusSoundsDictionary.focusSoundOne;
+            }
+        }
+        focusAudio.loop = true;
+        focusAudio.play();
     }
 
     ngOnChanges(changes: SimpleChanges) {

@@ -28,6 +28,10 @@ export class preferenceInfoComponent implements OnInit {
         window.open("https://www.jinrishici.com/", "_self");
     }
 
+    soundBtnOnClick() {
+        window.open("https://www.soundvery.com/", "_self");
+    }
+
     codeBtnOnClick() {
         window.open("https://www.jetbrains.com.cn/community/opensource/#support/", "_self");
     }

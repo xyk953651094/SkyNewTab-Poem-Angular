@@ -10,7 +10,7 @@
                 [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
         >
             <span nz-icon nzTheme="outline" nzType="calendar"></span>
-            {{"节气来源：https://www.mxnzp.com"}}
+            {{"日历来源：https://www.mxnzp.com"}}
         </button>
         <button (click)="weatherBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                 (mouseover)="btnMouseOver(majorColor, $event)"
@@ -27,6 +27,14 @@
         >
             <span nz-icon nzTheme="outline" nzType="read"></span>
             {{"诗词来源：https://www.jinrishici.com"}}
+        </button>
+        <button (click)="soundBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                (mouseover)="btnMouseOver(majorColor, $event)"
+                *nzSpaceItem [nzShape]="preferenceData.buttonShape"
+                [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
+        >
+            <span nz-icon nzType="sound" nzTheme="outline"></span>
+            {{"噪音来源：https://www.soundvery.com"}}
         </button>
         <button (click)="codeBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                 (mouseover)="btnMouseOver(majorColor, $event)"
