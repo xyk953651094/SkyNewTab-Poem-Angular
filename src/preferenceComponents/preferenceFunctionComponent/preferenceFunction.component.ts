@@ -48,15 +48,15 @@ export class preferenceFunctionComponent implements OnInit {
         // resetRadioColor(value, ["round", "default"], this.majorColor);
     }
 
-    // 简洁模式
+    // 极简模式
     simpleModeSwitchOnChange(checked: boolean) {
         this.preferenceData = this.modifyPreferenceData({simpleMode: checked});
         this.getPreferenceFunctionData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
         if (checked) {
-            this.message.success("已开启简洁模式");
+            this.message.success("已开启极简模式");
         } else {
-            this.message.success("已关闭简洁模式，一秒后刷新页面");
+            this.message.success("已关闭极简模式，一秒后刷新页面");
             this.formDisabled = true;
             this.refreshWindow();
         }

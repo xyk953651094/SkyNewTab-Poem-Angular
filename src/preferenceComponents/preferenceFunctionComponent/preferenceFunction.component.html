@@ -33,7 +33,7 @@
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label>简洁模式</nz-form-label>
+            <nz-form-label>极简模式</nz-form-label>
             <nz-form-control>
                 <nz-switch (ngModelChange)="simpleModeSwitchOnChange($event)" [nzDisabled]="formDisabled"
                            [ngModel]="preferenceData.simpleMode" id="simpleModeSwitch"
@@ -43,7 +43,7 @@
         </nz-form-item>
         <nz-form-item>
             <nz-form-label>危险设置</nz-form-label>
-            <nz-form-control>
+            <nz-form-control nzExtra="出现异常时可尝试重置设置或插件">
                 <nz-space>
                     <button (click)=" resetPreferenceBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                             (mouseover)="btnMouseOver(majorColor, $event)" *nzSpaceItem
@@ -75,7 +75,7 @@
 >
     <ng-template #modalContent>
         <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
-            {{"注意：所有设置项将被重置为默认值，确定重置吗？"}}
+            {{"注意：所有设置项将被重置为默认值"}}
         </span>
     </ng-template>
 </nz-modal>
@@ -88,7 +88,7 @@
 >
     <ng-template #modalContent>
         <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
-            {{"注意：本地存储的所有数据将被清空，确定重置吗？"}}
+            {{"注意：所有设置项将被重置为默认值，所有数据将被清空"}}
         </span>
     </ng-template>
 </nz-modal>
