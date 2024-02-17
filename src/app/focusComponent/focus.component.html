@@ -100,7 +100,7 @@
         <nz-list-footer>
             <nz-space nzAlign="center">
                 <span *nzSpaceItem [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
-                    {{displayPlayBtn === "block" ? "白噪音" : "播放中"}}
+                    {{focusAudioPaused ? "白噪音" : "播放中"}}
                 </span>
                 <nz-select *nzSpaceItem class="poemFont" [(ngModel)]="focusSound" (ngModelChange)="focusSoundSelectOnChange($event)"
                            nzPlacement="topLeft" [style.width]="'120px'">
@@ -115,19 +115,11 @@
 <!--                </nz-radio-group>-->
                 <button *nzSpaceItem (click)="playBtnOnClick()"
                         (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
-                        class="poemFont" [style]="{color: getFontColor(minorColor), display: displayPlayBtn}"
+                        class="poemFont" [style]="{color: getFontColor(minorColor)}"
                         nz-button nzType="text" [nzShape]="this.preferenceData.buttonShape"
                 >
-                    <span nz-icon nzType="play-circle" nzTheme="outline"></span>
-                    {{"播放"}}
-                </button>
-                <button *nzSpaceItem (click)="pauseBtnOnClick()"
-                        (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
-                        class="poemFont" [style]="{color: getFontColor(minorColor), display: displayPauseBtn}"
-                        nz-button nzType="text" [nzShape]="this.preferenceData.buttonShape"
-                >
-                    <span nz-icon nzType="pause-circle" nzTheme="outline"></span>
-                    {{"暂停"}}
+                    <span nz-icon [nzType]="focusAudioPaused ? 'play-circle' : 'pause-circle'" nzTheme="outline"></span>
+                    {{focusAudioPaused ? "播放" : "暂停"}}
                 </button>
             </nz-space>
         </nz-list-footer>

@@ -35,8 +35,7 @@ export class FocusComponent implements OnInit, OnChanges {
     inputValue: string = "";
     filterList: any[] = [];
     focusSound: string = "古镇雨滴";
-    displayPlayBtn: string = "block";
-    displayPauseBtn: string = "none";
+    focusAudioPaused: boolean = true;
     focusMaxSize: number = 10;
     browserType = getBrowserType();
    
@@ -115,21 +114,18 @@ export class FocusComponent implements OnInit, OnChanges {
 
     focusSoundSelectOnChange(value: string) {
         this.focusSound = value;
-        this.displayPlayBtn = "none";
-        this.displayPauseBtn = "block";
+        this.focusAudioPaused = false;
         this.playFocusSound(value);
     }
 
     playBtnOnClick() {
-        this.displayPlayBtn = "none";
-        this.displayPauseBtn = "block";
-        this.playFocusSound(this.focusSound);
-    }
-
-    pauseBtnOnClick() {
-        this.displayPlayBtn = "block";
-        this.displayPauseBtn = "none";
-        focusAudio.pause();
+        if (focusAudio.paused) {
+            this.focusAudioPaused = false;
+            this.playFocusSound(this.focusSound);
+        } else {
+            this.focusAudioPaused = true;
+            focusAudio.pause();
+        }
     }
 
     playFocusSound(focusSound: string) {
