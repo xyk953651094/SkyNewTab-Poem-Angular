@@ -119,12 +119,16 @@ export class FocusComponent implements OnInit, OnChanges {
     }
 
     playBtnOnClick() {
-        if (focusAudio.paused) {
-            this.focusAudioPaused = false;
-            this.playFocusSound(this.focusSound);
+        if (this.browserType !== "Safari") {
+            if (focusAudio.paused) {
+                this.focusAudioPaused = false;
+                this.playFocusSound(this.focusSound);
+            } else {
+                this.focusAudioPaused = true;
+                focusAudio.pause();
+            }
         } else {
-            this.focusAudioPaused = true;
-            focusAudio.pause();
+            this.message.error("Safari 暂不支持播放白噪音");
         }
     }
 
