@@ -20,7 +20,7 @@
         <form [nzNoColon]="true" nz-form>
             <nz-form-item>
                 <nz-form-label>网站域名</nz-form-label>
-                <nz-form-control nzErrorTip="表单不能为空">
+                <nz-form-control nzErrorTip="表单不能为空" nzExtra="开启专注模式后，访问添加的域名时将自动跳转至本插件">
                     <input class="poemFont" name="focusInput" nz-input placeholder="example.com" [(ngModel)]="inputValue"/>
                 </nz-form-control>
             </nz-form-item>
@@ -98,9 +98,30 @@
             </button>
         </nz-list-item>
         <nz-list-footer>
-                <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
-                    {{"开启专注模式后，访问以上域名时将自动跳转至新标签页"}}
+            <nz-space nzAlign="center">
+                <span *nzSpaceItem [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
+                    {{focusAudioPaused ? "白噪音" : "播放中"}}
                 </span>
+                <nz-select *nzSpaceItem class="poemFont" [(ngModel)]="focusSound" (ngModelChange)="focusSoundSelectOnChange($event)"
+                           nzPlacement="topLeft" [style.width]="'120px'">
+                    <nz-option nzValue="古镇雨滴" nzLabel="古镇雨滴"></nz-option>
+                    <nz-option nzValue="松树林小雪" nzLabel="松树林小雪"></nz-option>
+                </nz-select>
+<!--                <nz-radio-group *nzSpaceItem (ngModelChange)="focusSoundSelectOnChange($event)" [(ngModel)]="focusSound">-->
+<!--                    <nz-space nzAlign="center">-->
+<!--                        <label nz-radio *nzSpaceItem nzValue="古镇雨滴">古镇雨滴</label>-->
+<!--                        <label nz-radio *nzSpaceItem nzValue="松树林小雪">松树林小雪</label>-->
+<!--                    </nz-space>-->
+<!--                </nz-radio-group>-->
+                <button *nzSpaceItem (click)="playBtnOnClick()"
+                        (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
+                        class="poemFont" [style]="{color: getFontColor(minorColor)}"
+                        nz-button nzType="text" [nzShape]="this.preferenceData.buttonShape"
+                >
+                    <span nz-icon [nzType]="focusAudioPaused ? 'play-circle' : 'pause-circle'" nzTheme="outline"></span>
+                    {{focusAudioPaused ? "播放" : "暂停"}}
+                </button>
+            </nz-space>
         </nz-list-footer>
     </nz-list>
 </ng-template>

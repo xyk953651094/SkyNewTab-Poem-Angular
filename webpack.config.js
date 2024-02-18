@@ -21,6 +21,20 @@ module.exports = {
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".jsx"],
     },
+    module: {
+        rules: [
+            {
+                test: /\.mp3$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        outputPath: 'assets/focusSounds',
+                        name: '[name].[ext]'
+                    }
+                }
+            },
+        ]
+    },
     plugins: [
         new HtmlWebpackPlugin({
             title: '云开诗词新标签页',

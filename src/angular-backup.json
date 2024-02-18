@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "SkyNewTabAngular": {
+    "test": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -76,16 +76,13 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
-          "options": {
-            "browserTarget": "SkyNewTabAngular:build"
-          },
+          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "SkyNewTabAngular:build:production"
+              "browserTarget": "test:build:production"
             },
             "development": {
-              "browserTarget": "SkyNewTabAngular:build:development"
+              "browserTarget": "test:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -93,7 +90,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SkyNewTabAngular:build"
+            "browserTarget": "test:build"
           }
         },
         "test": {

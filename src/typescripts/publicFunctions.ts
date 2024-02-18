@@ -328,7 +328,7 @@ export function resetRadioColor(selectedRadio: string | NzButtonShape, allRadios
         }
         else {
             currentRadio.find(".ant-radio-inner").css({ "borderColor": themeColor, "backgroundColor": themeColor });
-            currentRadio.children(":last-child").css({"color": themeColor, "fontWeight": "bold", "textDecoration": "underline"});
+            currentRadio.children(":last-child").css({"fontWeight": "bold", "textDecoration": "underline"});
         }
     }
 }

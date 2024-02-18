@@ -74,6 +74,11 @@ export class AppComponent implements OnInit {
                     "border-bottom-left-radius": "2px",
                     "border-bottom-right-radius": "2px"
                 });
+                $(".ant-select-item").css("font-family", "'Times New Roman', cursive, sans-serif");
+                $(".ant-form-item-extra").css({
+                    "color": getFontColor(this.minorColor),
+                    "font-family": "Times New Roman, cursive, sans-serif"
+                });
 
                 // focusComponent
                 let focusMode = localStorage.getItem("focusMode");
@@ -134,6 +139,10 @@ export class AppComponent implements OnInit {
                     "font-family": "Times New Roman, cursive, sans-serif"
                 });
                 $(".ant-form-item-label > label").css({
+                    "color": getFontColor(this.minorColor),
+                    "font-family": "Times New Roman, cursive, sans-serif"
+                });
+                $(".ant-form-item-extra").css({
                     "color": getFontColor(this.minorColor),
                     "font-family": "Times New Roman, cursive, sans-serif"
                 });

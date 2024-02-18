@@ -11,6 +11,7 @@ import {
     httpRequest
 } from "../../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
+import {NzNotificationService} from "ng-zorro-antd/notification";
 
 @Component({
     selector: "greet-component",
@@ -38,6 +39,8 @@ export class GreetComponent implements OnInit, OnChanges {
     protected readonly btnMouseOut = btnMouseOut;
     protected readonly btnMouseOver = btnMouseOver;
 
+    constructor(private notification: NzNotificationService) {}
+
     historyBtnOnClick() {
         window.open(this.searchEngineUrl + "历史上的今天", "_self");
     }
@@ -60,6 +63,19 @@ export class GreetComponent implements OnInit, OnChanges {
         }
         if (data.typeDes !== "休息日" && data.typeDes !== "工作日") {
             this.holidayContent = this.holidayContent + " · " + data.typeDes;
+
+            // 发送恭贺通知
+            let displayBlessStorage = localStorage.getItem("displayBless");
+            if (displayBlessStorage === null) {
+                this.notification.blank(
+                    "今日" + data.typeDes,
+                    "云开诗词新标签页祝您" + data.typeDes + "快乐！",
+                    {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
+                );
+                localStorage.setItem("displayBless", JSON.stringify(false));
+            }
+        } else {
+            localStorage.removeItem("displayBless");
         }
 
         let timeDetails = getTimeDetails(new Date());
@@ -119,9 +135,9 @@ export class GreetComponent implements OnInit, OnChanges {
             let nowTimeStamp = new Date().getTime();
             if (lastRequestTime === null) {  // 第一次请求时 lastRequestTime 为 null，因此直接进行请求赋值 lastRequestTime
                 this.getHoliday();
-            } else if (nowTimeStamp - parseInt(lastRequestTime) > 60 * 60 * 1000) {  // 必须多于一小时才能进行新的请求
+            } else if (nowTimeStamp - parseInt(lastRequestTime) > 4 * 60 * 60 * 1000) {  // 必须多于四小时才能进行新的请求
                 this.getHoliday();
-            } else {  // 一小时之内使用上一次请求结果
+            } else {  // 四小时之内使用上一次请求结果
                 let lastHoliday: any = localStorage.getItem("lastHoliday");
                 if (lastHoliday) {
                     lastHoliday = JSON.parse(lastHoliday);
