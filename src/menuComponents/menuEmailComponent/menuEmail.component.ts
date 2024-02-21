@@ -3,15 +3,15 @@ import {btnMouseOut, btnMouseOver, getFontColor} from "../../typescripts/publicF
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
 @Component({
-    selector: "preferenceEmail-component",
-    templateUrl: "./preferenceEmail.component.html",
-    styleUrls: ["./preferenceEmail.component.scss", "../../stylesheets/publicStyles.scss"]
+    selector: "menuEmail-component",
+    templateUrl: "./menuEmail.component.html",
+    styleUrls: ["./menuEmail.component.scss", "../../stylesheets/publicStyles.scss"]
 })
-export class preferenceEmailComponent implements OnInit {
+export class menuEmailComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
     @Input() preferenceData = defaultPreferenceData;
-    title = "preferenceEmailComponent";
+    title = "menuEmailComponent";
     protected readonly getFontColor = getFontColor;
     protected readonly btnMouseOver = btnMouseOver;
     protected readonly btnMouseOut = btnMouseOut;

@@ -3,21 +3,25 @@ import {btnMouseOut, btnMouseOver, getFontColor} from "../../typescripts/publicF
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
 @Component({
-    selector: "preferenceHeader-component",
-    templateUrl: "./preferenceHeader.component.html",
-    styleUrls: ["./preferenceHeader.component.scss", "../../stylesheets/publicStyles.scss"]
+    selector: "menuFooter-component",
+    templateUrl: "./menuFooter.component.html",
+    styleUrls: ["./menuFooter.component.scss", "../../stylesheets/publicStyles.scss"]
 })
-export class preferenceHeaderComponent implements OnInit {
+export class menuFooterComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
     @Input() preferenceData = defaultPreferenceData;
-    title = "preferenceHeaderComponent";
+    title = "menuFooterComponent";
     protected readonly getFontColor = getFontColor;
     protected readonly btnMouseOut = btnMouseOut;
     protected readonly btnMouseOver = btnMouseOver;
 
-    supportBtnOnClick() {
-        window.open("https://afdian.net/a/xyk953651094", "_self");
+    homeBtnOnClick(value: string) {
+        window.open("https://" + value + ".com/xyk953651094/SkyNewTab-Poem-Angular/", "_self");
+    }
+
+    blogBtnOnClick() {
+        window.open("https://xyk953651094.blogspot.com/", "_self");
     }
 
     ngOnInit(): void {

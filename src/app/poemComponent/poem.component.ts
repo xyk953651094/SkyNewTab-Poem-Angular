@@ -91,11 +91,17 @@ export class PoemComponent implements OnInit, OnChanges {
             poemData.data.content : poemData.data.content.substring(0, this.poemMaxSize) + "...";
 
         let tempPoemAuthor =
-            "【" + poemData.data.origin.dynasty + "】" +
-            poemData.data.origin.author + " ·" +
+            "【" + poemData.data.origin.dynasty + " · " + poemData.data.origin.author + "】" +
             "《" + poemData.data.origin.title + "》";
         tempPoemAuthor = tempPoemAuthor.length < this.poemMaxSize ?
             tempPoemAuthor : tempPoemAuthor.substring(0, this.poemMaxSize) + "...";
+
+        // TODO：一言 API
+        // let tempPoemContent = poemData.content.length < poemMaxSize ?
+        //     poemData.content : poemData.content.substring(0, poemMaxSize) + "...";
+        //
+        // let tempPoemAuthor = "【" + poemData.author + "】" + " ·" + "《" + poemData.origin + "》";
+        // tempPoemAuthor = tempPoemAuthor.length < poemMaxSize ? tempPoemAuthor : tempPoemAuthor.substring(0, poemMaxSize) + "...";
 
         this.poemContent = tempPoemContent;
         this.poemAuthor = tempPoemAuthor;
@@ -106,7 +112,37 @@ export class PoemComponent implements OnInit, OnChanges {
             localStorage.setItem("lastPoemRequestTime", String(new Date().getTime()));  // 保存请求时间，防抖节流
             localStorage.setItem("lastPoem", JSON.stringify(result));                   // 保存请求结果，防抖节流
             this.setPoem(result);
+        }, (errorData: any) => {
+            // 请求失败时使用上一次请求结果
+            let lastPoem: any = localStorage.getItem("lastPoem");
+            if (lastPoem) {
+                lastPoem = JSON.parse(lastPoem);
+                this.setPoem(lastPoem);
+            } else {
+                this.message.error("获取诗词失败");
+            }
         });
+
+        // TODO：一言 API
+        // let headers = {};
+        // let url = "https://v1.jinrishici.com/all";
+        // let data = {};
+        // httpRequest(headers, url, data, "GET")
+        //     .then(function (resultData: any) {
+        //         localStorage.setItem("lastPoemRequestTime", String(new Date().getTime()));  // 保存请求时间，防抖节流
+        //         localStorage.setItem("lastPoem", JSON.stringify(resultData));               // 保存请求结果，防抖节流
+        //         setPoem(resultData);
+        //     })
+        //     .catch(function () {
+        //         // 请求失败时使用上一次请求结果
+        //         let lastPoem: any = localStorage.getItem("lastPoem");
+        //         if (lastPoem) {
+        //             lastPoem = JSON.parse(lastPoem);
+        //             setPoem(lastPoem);
+        //         } else {
+        //             message.error("获取诗词失败");
+        //         }
+        //     });
     }
 
     ngOnChanges(changes: SimpleChanges) {

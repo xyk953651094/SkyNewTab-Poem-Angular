@@ -3,15 +3,15 @@ import {btnMouseOut, btnMouseOver, getFontColor} from "../../typescripts/publicF
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
 @Component({
-    selector: "preferenceHelp-component",
-    templateUrl: "./preferenceHelp.component.html",
-    styleUrls: ["./preferenceHelp.component.scss", "../../stylesheets/publicStyles.scss"]
+    selector: "menuHelp-component",
+    templateUrl: "./menuHelp.component.html",
+    styleUrls: ["./menuHelp.component.scss", "../../stylesheets/publicStyles.scss"]
 })
-export class preferenceHelpComponent implements OnInit {
+export class menuHelpComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
     @Input() preferenceData = defaultPreferenceData;
-    title = "preferenceHelpComponent";
+    title = "menuHelpComponent";
     protected readonly getFontColor = getFontColor;
     protected readonly btnMouseOver = btnMouseOver;
     protected readonly btnMouseOut = btnMouseOut;

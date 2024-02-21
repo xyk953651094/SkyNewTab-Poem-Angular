@@ -11,14 +11,14 @@ import {defaultPreferenceData} from "../../typescripts/publicConstants";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 
 @Component({
-    selector: "preferenceFunction-component",
-    templateUrl: "./preferenceFunction.component.html",
-    styleUrls: ["./preferenceFunction.component.scss", "../../stylesheets/publicStyles.scss"]
+    selector: "menuPreference-component",
+    templateUrl: "./menuPreference.component.html",
+    styleUrls: ["./menuPreference.component.scss", "../../stylesheets/publicStyles.scss"]
 })
-export class preferenceFunctionComponent implements OnInit {
+export class menuPreferenceComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
-    title = "preferenceFunctionComponent";
+    title = "menuPreferenceComponent";
     formDisabled: boolean = false;
     displayResetPreferenceModal: boolean = false;
     displayClearStorageModal: boolean = false;

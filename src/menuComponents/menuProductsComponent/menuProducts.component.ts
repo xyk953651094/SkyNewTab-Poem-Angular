@@ -4,15 +4,15 @@ import {defaultPreferenceData} from "../../typescripts/publicConstants";
 import {NzButtonShape} from "ng-zorro-antd/button";
 
 @Component({
-    selector: "preferenceProduct-component",
-    templateUrl: "./preferenceProduct.component.html",
-    styleUrls: ["./preferenceProduct.component.scss", "../../stylesheets/publicStyles.scss"]
+    selector: "menuProducts-component",
+    templateUrl: "./menuProducts.component.html",
+    styleUrls: ["./menuProducts.component.scss", "../../stylesheets/publicStyles.scss"]
 })
-export class preferenceProductComponent implements OnInit {
+export class menuProductsComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
     @Input() preferenceData = defaultPreferenceData;
-    title = "preferenceProductComponent";
+    title = "menuProductsComponent";
     buttonShape: NzButtonShape = "round";
     protected readonly getFontColor = getFontColor;
     protected readonly btnMouseOut = btnMouseOut;
