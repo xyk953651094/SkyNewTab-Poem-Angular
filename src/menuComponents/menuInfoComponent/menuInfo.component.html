@@ -3,48 +3,28 @@
          nzSize="small"
          nzTitle="产品信息"
 >
-    <nz-space nzDirection="vertical">
-        <button (click)="calendarBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
-                (mouseover)="btnMouseOver(majorColor, $event)"
-                *nzSpaceItem [nzShape]="preferenceData.buttonShape"
-                [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
-        >
-            <span nz-icon nzTheme="outline" nzType="calendar"></span>
-            {{"日历来源：https://www.mxnzp.com"}}
-        </button>
-        <button (click)="weatherBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
-                (mouseover)="btnMouseOver(majorColor, $event)"
-                *nzSpaceItem [nzShape]="preferenceData.buttonShape"
-                [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
-        >
-            <span nz-icon nzTheme="outline" nzType="cloud"></span>
-            {{"天气来源：https://www.jinrishici.com"}}
-        </button>
-        <button (click)="poemBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
-                (mouseover)="btnMouseOver(majorColor, $event)"
-                *nzSpaceItem [nzShape]="preferenceData.buttonShape"
-                [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
-        >
-            <span nz-icon nzTheme="outline" nzType="read"></span>
-            {{"诗词来源：https://www.jinrishici.com"}}
-        </button>
-        <button (click)="soundBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
-                (mouseover)="btnMouseOver(majorColor, $event)"
-                *nzSpaceItem [nzShape]="preferenceData.buttonShape"
-                [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
-        >
-            <span nz-icon nzType="sound" nzTheme="outline"></span>
-            {{"噪音来源：https://www.soundvery.com"}}
-        </button>
-        <button (click)="codeBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
-                (mouseover)="btnMouseOver(majorColor, $event)"
-                *nzSpaceItem [nzShape]="preferenceData.buttonShape"
-                [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
-        >
-            <span nz-icon nzTheme="outline" nzType="code"></span>
-            {{"开发支持：JetBrains 免费许可证计划"}}
-        </button>
-    </nz-space>
+    <div nz-row>
+        <div nz-col nzSpan="12">
+            <button (click)="homeBtnOnClick('github')" (mouseout)="btnMouseOut(minorColor, $event)"
+                    (mouseover)="btnMouseOver(majorColor, $event)"
+                    [nzShape]="preferenceData.buttonShape"
+                    [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
+            >
+                <span nz-icon nzTheme="outline" nzType="github"></span>
+                {{"GitHub 产品主页"}}
+            </button>
+        </div>
+        <div nz-col nzSpan="12">
+            <button (click)="homeBtnOnClick('gitlab')" (mouseout)="btnMouseOut(minorColor, $event)"
+                    (mouseover)="btnMouseOver(majorColor, $event)"
+                    [nzShape]="preferenceData.buttonShape"
+                    [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
+            >
+                <span nz-icon nzTheme="outline" nzType="gitlab"></span>
+                {{"GitLab 产品主页"}}
+            </button>
+        </div>
+    </div>
 </nz-card>
 
 <ng-template #extraTemplate>

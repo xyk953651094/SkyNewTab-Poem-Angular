@@ -16,15 +16,5 @@ export class menuFooterComponent implements OnInit {
     protected readonly btnMouseOut = btnMouseOut;
     protected readonly btnMouseOver = btnMouseOver;
 
-    homeBtnOnClick(value: string) {
-        window.open("https://" + value + ".com/xyk953651094/SkyNewTab-Poem-Angular/", "_self");
-    }
-
-    blogBtnOnClick() {
-        window.open("https://xyk953651094.blogspot.com/", "_self");
-    }
-
-    ngOnInit(): void {
-
-    }
+    ngOnInit(): void {}
 }

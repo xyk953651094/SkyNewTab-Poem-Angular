@@ -5,13 +5,23 @@
         </span>
     </div>
     <div [style]="{textAlign: 'right'}" nz-col nzSpan="12">
-        <button (click)="supportBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
-                (mouseover)="btnMouseOver(majorColor, $event)"
-                [nzShape]="preferenceData.buttonShape"
-                [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
-        >
-            <span nz-icon nzTheme="outline" nzType="gift"></span>
-            {{"捐助"}}
-        </button>
+        <nz-space>
+            <button (click)="supportBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                    (mouseover)="btnMouseOver(majorColor, $event)"
+                    *nzSpaceItem [nzShape]="preferenceData.buttonShape"
+                    [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
+            >
+                <span nz-icon nzTheme="outline" nzType="gift"></span>
+                {{"捐助"}}
+            </button>
+            <button (click)="blogBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                    (mouseover)="btnMouseOver(majorColor, $event)"
+                    *nzSpaceItem [nzShape]="preferenceData.buttonShape"
+                    [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
+            >
+                <span nz-icon nzTheme="outline" nzType="notification"></span>
+                {{"Blogger"}}
+            </button>
+        </nz-space>
     </div>
 </div>

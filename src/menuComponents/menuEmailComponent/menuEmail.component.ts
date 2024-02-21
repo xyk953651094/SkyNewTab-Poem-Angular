@@ -24,7 +24,5 @@ export class menuEmailComponent implements OnInit {
         window.open("mailto:xyk953651094@qq.com?&subject=云开诗词新标签页-问题反馈", "_self");
     }
 
-    ngOnInit(): void {
-
-    }
+    ngOnInit(): void {}
 }

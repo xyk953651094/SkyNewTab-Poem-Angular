@@ -13,16 +13,13 @@ export class menuProductsComponent implements OnInit {
     @Input() minorColor: string = "#000000";
     @Input() preferenceData = defaultPreferenceData;
     title = "menuProductsComponent";
-    buttonShape: NzButtonShape = "round";
     protected readonly getFontColor = getFontColor;
     protected readonly btnMouseOut = btnMouseOut;
     protected readonly btnMouseOver = btnMouseOver;
 
-    homeBtnOnClick(terrace: string, frame: string) {
-        window.open("https://" + terrace + ".com/xyk953651094/" + frame + "/", "_self");
+    homeBtnOnClick(value: string) {
+        window.open("https://" + value + ".com/xyk953651094/", "_self");
     }
 
-    ngOnInit(): void {
-        this.buttonShape = this.preferenceData.buttonShape === "round" ? "circle" : null;
-    }
+    ngOnInit(): void {}
 }

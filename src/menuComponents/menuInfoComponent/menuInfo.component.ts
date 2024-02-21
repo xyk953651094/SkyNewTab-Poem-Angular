@@ -16,27 +16,9 @@ export class menuInfoComponent implements OnInit {
     protected readonly btnMouseOut = btnMouseOut;
     protected readonly btnMouseOver = btnMouseOver;
 
-    calendarBtnOnClick() {
-        window.open("https://www.mxnzp.com/", "_self");
+    homeBtnOnClick(value: string) {
+        window.open("https://" + value + ".com/xyk953651094/SkyNewTab-Poem-Angular/", "_self");
     }
 
-    weatherBtnOnClick() {
-        window.open("https://www.jinrishici.com/", "_self");
-    }
-
-    poemBtnOnClick() {
-        window.open("https://www.jinrishici.com/", "_self");
-    }
-
-    soundBtnOnClick() {
-        window.open("https://www.soundvery.com/", "_self");
-    }
-
-    codeBtnOnClick() {
-        window.open("https://www.jetbrains.com.cn/community/opensource/#support/", "_self");
-    }
-
-    ngOnInit(): void {
-
-    }
+    ngOnInit(): void {}
 }

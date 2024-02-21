@@ -3,151 +3,26 @@
          nzSize="small"
          nzTitle="更多产品"
 >
-    <div [nzGutter]="[0, 8]" nz-row>
-        <div nz-col nzSpan="19">
-            <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
-                    [nzShape]="preferenceData.buttonShape" [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                    class="poemFont" nz-button nzType="text"
+    <div nz-row>
+        <div nz-col nzSpan="12">
+            <button (click)="homeBtnOnClick('github')" (mouseout)="btnMouseOut(minorColor, $event)"
+                    (mouseover)="btnMouseOver(majorColor, $event)"
+                    [nzShape]="preferenceData.buttonShape"
+                    [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
             >
-                <span nz-icon>
-                   <span nz-icon nzTheme="outline" nzType="profile"></span>
-                </span>
-                {{"云开帮助文档"}}
+                <span nz-icon nzTheme="outline" nzType="github"></span>
+                {{"GitHub 作者主页"}}
             </button>
         </div>
-        <div nz-col nzSpan="5">
-            <nz-space>
-                <button (click)="homeBtnOnClick('github', 'SkyDocuments')" (mouseout)="btnMouseOut(minorColor, $event)"
-                        (mouseover)="btnMouseOver(majorColor, $event)"
-                        *nzSpaceItem [nzShape]="buttonShape"
-                        [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
-                >
-                    <span nz-icon nzTheme="outline" nzType="github"></span>
-                </button>
-                <button (click)="homeBtnOnClick('gitlab', 'SkyDocuments')" (mouseout)="btnMouseOut(minorColor, $event)"
-                        (mouseover)="btnMouseOver(majorColor, $event)"
-                        *nzSpaceItem [nzShape]="buttonShape"
-                        [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
-                >
-                    <span nz-icon nzTheme="outline" nzType="gitlab"></span>
-                </button>
-            </nz-space>
-        </div>
-        <div nz-col nzSpan="19">
-            <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
-                    [nzShape]="preferenceData.buttonShape" [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                    class="poemFont" nz-button nzType="text"
+        <div nz-col nzSpan="12">
+            <button (click)="homeBtnOnClick('gitlab')" (mouseout)="btnMouseOut(minorColor, $event)"
+                    (mouseover)="btnMouseOver(majorColor, $event)"
+                    [nzShape]="preferenceData.buttonShape"
+                    [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
             >
-                <span nz-icon>
-                    <span nz-icon nzTheme="outline" nzType="appstore"></span>
-                </span>
-                {{"云开壁纸（React）"}}
+                <span nz-icon nzTheme="outline" nzType="gitlab"></span>
+                {{"GitLab 作者主页"}}
             </button>
-        </div>
-        <div nz-col nzSpan="5">
-            <nz-space>
-                <button (click)="homeBtnOnClick('github', 'SkyWallpaper-Electron')"
-                        (mouseout)="btnMouseOut(minorColor, $event)"
-                        (mouseover)="btnMouseOver(majorColor, $event)"
-                        *nzSpaceItem [nzShape]="buttonShape"
-                        [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
-                >
-                    <span nz-icon nzTheme="outline" nzType="github"></span>
-                </button>
-                <button (click)="homeBtnOnClick('gitlab', 'SkyWallpaper-Electron')"
-                        (mouseout)="btnMouseOut(minorColor, $event)"
-                        (mouseover)="btnMouseOver(majorColor, $event)"
-                        *nzSpaceItem [nzShape]="buttonShape"
-                        [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
-                >
-                    <span nz-icon nzTheme="outline" nzType="gitlab"></span>
-                </button>
-            </nz-space>
-        </div>
-        <div nz-col nzSpan="19">
-            <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
-                    [nzShape]="preferenceData.buttonShape" [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                    class="poemFont" nz-button nzType="text"
-            >
-                <span class="bi bi-puzzle"></span>
-                {{"&nbsp;&nbsp;云开新标签页（React）"}}
-            </button>
-        </div>
-        <div nz-col nzSpan="5">
-            <nz-space>
-                <button (click)="homeBtnOnClick('github', 'SkyNewTab-React')"
-                        (mouseout)="btnMouseOut(minorColor, $event)"
-                        (mouseover)="btnMouseOver(majorColor, $event)"
-                        *nzSpaceItem [nzShape]="buttonShape"
-                        [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
-                >
-                    <span nz-icon nzTheme="outline" nzType="github"></span>
-                </button>
-                <button (click)="homeBtnOnClick('gitlab', 'SkyNewTab-React')"
-                        (mouseout)="btnMouseOut(minorColor, $event)"
-                        (mouseover)="btnMouseOver(majorColor, $event)"
-                        *nzSpaceItem [nzShape]="buttonShape"
-                        [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
-                >
-                    <span nz-icon nzTheme="outline" nzType="gitlab"></span>
-                </button>
-            </nz-space>
-        </div>
-        <div nz-col nzSpan="19">
-            <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
-                    [nzShape]="preferenceData.buttonShape" [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                    class="poemFont" nz-button nzType="text"
-            >
-                <span class="bi bi-puzzle"></span>
-                {{"&nbsp;&nbsp;云开新标签页（Vue）"}}
-            </button>
-        </div>
-        <div nz-col nzSpan="5">
-            <nz-space>
-                <button (click)="homeBtnOnClick('github', 'SkyNewTab-Vue')" (mouseout)="btnMouseOut(minorColor, $event)"
-                        (mouseover)="btnMouseOver(majorColor, $event)"
-                        *nzSpaceItem [nzShape]="buttonShape"
-                        [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
-                >
-                    <span nz-icon nzTheme="outline" nzType="github"></span>
-                </button>
-                <button (click)="homeBtnOnClick('gitlab', 'SkyNewTab-Vue')" (mouseout)="btnMouseOut(minorColor, $event)"
-                        (mouseover)="btnMouseOver(majorColor, $event)"
-                        *nzSpaceItem [nzShape]="buttonShape"
-                        [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
-                >
-                    <span nz-icon nzTheme="outline" nzType="gitlab"></span>
-                </button>
-            </nz-space>
-        </div>
-        <div nz-col nzSpan="19">
-            <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
-                    [nzShape]="preferenceData.buttonShape" [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                    class="poemFont" nz-button nzType="text"
-            >
-                <span class="bi bi-puzzle"></span>
-                {{"&nbsp;&nbsp;云开诗词新标签页（React）"}}
-            </button>
-        </div>
-        <div nz-col nzSpan="5">
-            <nz-space>
-                <button (click)="homeBtnOnClick('github', 'SkyNewTab-Poem-Angular')"
-                        (mouseout)="btnMouseOut(minorColor, $event)"
-                        (mouseover)="btnMouseOver(majorColor, $event)"
-                        *nzSpaceItem [nzShape]="buttonShape"
-                        [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
-                >
-                    <span nz-icon nzTheme="outline" nzType="github"></span>
-                </button>
-                <button (click)="homeBtnOnClick('gitlab', 'SkyNewTab-Poem-Angular')"
-                        (mouseout)="btnMouseOut(minorColor, $event)"
-                        (mouseover)="btnMouseOver(majorColor, $event)"
-                        *nzSpaceItem [nzShape]="buttonShape"
-                        [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
-                >
-                    <span nz-icon nzTheme="outline" nzType="gitlab"></span>
-                </button>
-            </nz-space>
         </div>
     </div>
 </nz-card>

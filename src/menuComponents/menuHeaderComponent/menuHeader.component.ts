@@ -20,7 +20,9 @@ export class menuHeaderComponent implements OnInit {
         window.open("https://afdian.net/a/xyk953651094", "_self");
     }
 
-    ngOnInit(): void {
-
+    blogBtnOnClick() {
+        window.open("https://xyk953651094.blogspot.com/", "_self");
     }
+
+    ngOnInit(): void {}
 }
