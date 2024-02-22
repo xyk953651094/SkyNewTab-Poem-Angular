@@ -8,6 +8,7 @@ import {
 } from "../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../typescripts/publicInterface";
 import $ from "jquery";
+import {poemTopics} from "../typescripts/publicConstants";
 
 @Component({
     selector: "app-root",
@@ -150,11 +151,14 @@ export class AppComponent implements OnInit {
                     "color": getFontColor(this.minorColor),
                     "font-family": "Times New Roman, cursive, sans-serif"
                 });
+                $(".ant-select-item").css("font-family", "'Times New Roman', cursive, sans-serif");
                 $(".ant-drawer-footer").css("background-color", this.minorColor);
 
                 // menuPreferenceComponent
                 resetRadioColor(this.preferenceData.searchEngine, ["bing", "google"], this.majorColor);
                 resetRadioColor(this.preferenceData.buttonShape, ["round", "default"], this.majorColor);
+                resetRadioColor(this.preferenceData.poemTopic, poemTopics, this.majorColor);
+                resetSwitchColor("#autoTopicSwitch", this.preferenceData.autoTopic, this.majorColor);
                 resetSwitchColor("#simpleModeSwitch", this.preferenceData.simpleMode, this.majorColor);
             }
 

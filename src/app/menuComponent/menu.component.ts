@@ -35,7 +35,7 @@ export class MenuComponent implements OnInit {
         this.displayDrawer = false;
     }
 
-    getPreferenceFunctionData(value: PreferenceDataInterface) {
+    getMenuPreferenceData(value: PreferenceDataInterface) {
         this.getPreferenceData.emit(value);
     }
 

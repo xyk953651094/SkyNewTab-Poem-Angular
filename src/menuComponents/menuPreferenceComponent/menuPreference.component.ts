@@ -4,7 +4,7 @@ import {
     btnMouseOut,
     btnMouseOver,
     getFontColor,
-    getPreferenceDataStorage,
+    getPreferenceDataStorage, getTimeDetails,
     resetRadioColor, resetSwitchColor
 } from "../../typescripts/publicFunctions";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
@@ -23,18 +23,18 @@ export class menuPreferenceComponent implements OnInit {
     displayResetPreferenceModal: boolean = false;
     displayClearStorageModal: boolean = false;
     preferenceData: PreferenceDataInterface = getPreferenceDataStorage();
-    @Output() getPreferenceFunctionData: EventEmitter<PreferenceDataInterface> = new EventEmitter();
+    lastPoemRequestTime: string = "暂无信息";
+    @Output() getPreferenceData: EventEmitter<PreferenceDataInterface> = new EventEmitter();
     protected readonly getFontColor = getFontColor;
     protected readonly btnMouseOver = btnMouseOver;
     protected readonly btnMouseOut = btnMouseOut;
 
-    constructor(private message: NzMessageService) {
-    }
+    constructor(private message: NzMessageService) {}
 
     // 搜索引擎
     searchEngineRadioOnChange(value: string) {
         this.preferenceData = this.modifyPreferenceData({searchEngine: value});
-        this.getPreferenceFunctionData.emit(this.preferenceData);
+        this.getPreferenceData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
         this.message.success("已更换搜索引擎");
         // resetRadioColor(value, ["bing", "google"], this.majorColor);
@@ -42,16 +42,51 @@ export class menuPreferenceComponent implements OnInit {
 
     buttonShapeRadioOnChange(value: string) {
         this.preferenceData = this.modifyPreferenceData({buttonShape: value});
-        this.getPreferenceFunctionData.emit(this.preferenceData);
+        this.getPreferenceData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
         this.message.success("已更换按钮形状");
         // resetRadioColor(value, ["round", "default"], this.majorColor);
     }
 
+    // 诗词主题
+    poemTopicsRadioOnChange(value: string) {
+        this.preferenceData = this.modifyPreferenceData({poemTopic: value});
+        this.getPreferenceData.emit(this.preferenceData);
+        localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
+        this.message.success("已更换诗词主题，下次切换诗词时生效");
+    }
+
+    // 自动主题
+    autoTopicSwitchOnChange(checked: boolean) {
+        this.preferenceData = this.modifyPreferenceData({autoTopic: checked, changePoemTime: "3600000"});
+        this.getPreferenceData.emit(this.preferenceData);
+        localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
+        localStorage.removeItem("lastPoemRequestTime");  // 重置请求时间
+        
+        if (checked) {
+            this.message.success("已开启自动主题，一秒后刷新页面");
+        } else {
+            this.message.success("已关闭自动主题，一秒后刷新页面");
+        }
+        this.formDisabled = true;
+        this.refreshWindow();
+    }
+
+    // 切换间隔
+    changePoemTimeOnChange(value: string) {
+        this.preferenceData = this.modifyPreferenceData({changePoemTime: value});
+        this.getPreferenceData.emit(this.preferenceData);
+        localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
+        
+        this.message.success("已修改切换间隔，一秒后刷新页面");
+        this.formDisabled = true;
+        this.refreshWindow();
+    }
+
     // 极简模式
     simpleModeSwitchOnChange(checked: boolean) {
         this.preferenceData = this.modifyPreferenceData({simpleMode: checked});
-        this.getPreferenceFunctionData.emit(this.preferenceData);
+        this.getPreferenceData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
         if (checked) {
             this.message.success("已开启极简模式");
@@ -110,12 +145,9 @@ export class menuPreferenceComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        let tempPreferenceData = localStorage.getItem("preferenceData");
-        if (tempPreferenceData === null) {
-            localStorage.setItem("preferenceData", JSON.stringify(defaultPreferenceData));
-            this.preferenceData = defaultPreferenceData;
-        } else {
-            return JSON.parse(tempPreferenceData);
+        let lastPoemRequestTimeStorage = localStorage.getItem("lastPoemRequestTime");
+        if (lastPoemRequestTimeStorage !== null) {
+            this.lastPoemRequestTime = getTimeDetails(new Date(parseInt(lastPoemRequestTimeStorage))).showDetail;
         }
     }
 }
