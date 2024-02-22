@@ -49,15 +49,11 @@ import {PoemComponent} from "./poemComponent/poem.component";
 import {WaveComponent} from "./waveComponent/wave.component";
 
 import {menuPreferenceComponent} from "../menuComponents/menuPreferenceComponent/menuPreference.component";
-import {menuEmailComponent} from "../menuComponents/menuEmailComponent/menuEmail.component";
+import {menuContactComponent} from "../menuComponents/menuContactComponent/menuContact.component";
 import {menuInfoComponent} from "../menuComponents/menuInfoComponent/menuInfo.component";
 import {menuFooterComponent} from "../menuComponents/menuFooterComponent/menuFooter.component";
 import {menuHeaderComponent} from "../menuComponents/menuHeaderComponent/menuHeader.component";
-import {
-    menuProductsComponent
-} from "../menuComponents/menuProductsComponent/menuProducts.component";
 import {menuToTopComponent} from "../menuComponents/menuToTopComponent/menuToTop.component";
-import {menuHelpComponent} from "../menuComponents/menuHelpComponent/menuHelp.component";
 
 import {PopoverComponent} from "../publicComponent/popoverComponent/popover.component";
 import {ButtonComponent} from "../publicComponent/buttonComponent/button.component";
@@ -81,12 +77,10 @@ registerLocaleData(zh);
         WaveComponent,
         MenuComponent,
         menuFooterComponent,
-        menuHelpComponent,
-        menuEmailComponent,
+        menuContactComponent,
         menuInfoComponent,
         menuPreferenceComponent,
         menuHeaderComponent,
-        menuProductsComponent,
         menuToTopComponent,
 
         ButtonComponent,

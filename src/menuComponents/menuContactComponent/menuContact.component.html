@@ -24,6 +24,26 @@
                 {{"问题反馈"}}
             </button>
         </div>
+        <div nz-col nzSpan="12">
+            <button (click)="homeBtnOnClick('github')" (mouseout)="btnMouseOut(minorColor, $event)"
+                    (mouseover)="btnMouseOver(majorColor, $event)"
+                    [nzShape]="preferenceData.buttonShape"
+                    [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
+            >
+                <span nz-icon nzTheme="outline" nzType="github"></span>
+                {{"作者主页"}}
+            </button>
+        </div>
+        <div nz-col nzSpan="12">
+            <button (click)="homeBtnOnClick('gitlab')" (mouseout)="btnMouseOut(minorColor, $event)"
+                    (mouseover)="btnMouseOver(majorColor, $event)"
+                    [nzShape]="preferenceData.buttonShape"
+                    [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
+            >
+                <span nz-icon nzTheme="outline" nzType="gitlab"></span>
+                {{"作者主页"}}
+            </button>
+        </div>
     </div>
 </nz-card>
 

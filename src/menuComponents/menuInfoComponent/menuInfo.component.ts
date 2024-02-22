@@ -20,5 +20,17 @@ export class menuInfoComponent implements OnInit {
         window.open("https://" + value + ".com/xyk953651094/SkyNewTab-Poem-Angular/", "_self");
     }
 
+    updateBtnOnClick(value: string) {
+        if (value === "github") {
+            window.open("https://" + value + ".com/xyk953651094/SkyNewTab-Poem-Angular/releases/", "_self");
+        } else {
+            window.open("https://" + value + ".com/xyk953651094/SkyNewTab-Poem-Angular/-/releases/", "_self");
+        }
+    }
+
+    helpBtnOnClick(source: string) {
+        window.open("https://xyk953651094." + source + ".io/SkyDocuments/", "_self");
+    }
+
     ngOnInit(): void {}
 }
