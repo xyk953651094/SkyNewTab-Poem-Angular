@@ -59,7 +59,7 @@ export class menuPreferenceComponent implements OnInit {
 
     // 智能主题
     autoTopicSwitchOnChange(checked: boolean) {
-        this.preferenceData = this.modifyPreferenceData({autoTopic: checked});
+        this.preferenceData = this.modifyPreferenceData({autoTopic: checked, changePoemTime: "3600000"});
         this.getPreferenceData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
         localStorage.removeItem("lastPoemRequestTime");  // 重置请求时间

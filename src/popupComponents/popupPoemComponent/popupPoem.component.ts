@@ -18,7 +18,6 @@ export class popupPoemComponent implements OnInit {
     poemAuthor = "【唐】张九龄 ·《望月怀远》";
     poemMaxSize = 25;
     customPoem = false;
-    autoTopic = false;
     protected readonly getFontColor = getFontColor;
     protected readonly btnMouseOut = btnMouseOut;
     protected readonly btnMouseOver = btnMouseOver;
@@ -37,7 +36,7 @@ export class popupPoemComponent implements OnInit {
             let poemData = JSON.parse(poemDataStorage);
             let tempPoemContent = "";
             let tempPoemAuthor = "";
-            if (this.autoTopic) {
+            if (this.preferenceData.autoTopic) {
                 tempPoemContent = poemData.data.content.length < this.poemMaxSize ?
                     poemData.data.content : poemData.data.content.substring(0, this.poemMaxSize) + "...";
 
