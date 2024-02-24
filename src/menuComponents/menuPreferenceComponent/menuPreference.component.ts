@@ -24,6 +24,7 @@ export class menuPreferenceComponent implements OnInit {
     displayClearStorageModal: boolean = false;
     preferenceData: PreferenceDataInterface = getPreferenceDataStorage();
     lastPoemRequestTime: string = "暂无信息";
+    customPoem: boolean = false;
     @Output() getPreferenceData: EventEmitter<PreferenceDataInterface> = new EventEmitter();
     protected readonly getFontColor = getFontColor;
     protected readonly btnMouseOver = btnMouseOver;
@@ -56,9 +57,9 @@ export class menuPreferenceComponent implements OnInit {
         this.message.success("已更换诗词主题，下次切换诗词时生效");
     }
 
-    // 自动主题
+    // 智能主题
     autoTopicSwitchOnChange(checked: boolean) {
-        this.preferenceData = this.modifyPreferenceData({autoTopic: checked, changePoemTime: "3600000"});
+        this.preferenceData = this.modifyPreferenceData({autoTopic: checked});
         this.getPreferenceData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
         localStorage.removeItem("lastPoemRequestTime");  // 重置请求时间
@@ -100,12 +101,18 @@ export class menuPreferenceComponent implements OnInit {
 
     // 重置设置
     resetPreferenceBtnOnClick() {
-        this.displayResetPreferenceModal = true;
+        let resetTimeStampStorage = localStorage.getItem("resetTimeStamp");
+        if (resetTimeStampStorage && new Date().getTime() - parseInt(resetTimeStampStorage) < 60 * 1000) {
+            this.message.error("操作过于频繁，请稍后再试");
+        } else {
+            this.displayResetPreferenceModal = true;
+        }
     }
 
     resetPreferenceOkBtnOnClick() {
         this.displayResetPreferenceModal = false;
         localStorage.setItem("preferenceData", JSON.stringify(defaultPreferenceData));
+        localStorage.setItem("resetTimeStamp", JSON.stringify(new Date().getTime()));
         this.message.success("已重置设置，一秒后刷新页面");
         this.formDisabled = true;
         this.refreshWindow();
@@ -116,14 +123,19 @@ export class menuPreferenceComponent implements OnInit {
     }
 
     // 重置插件
-
     clearStorageBtnOnClick() {
-        this.displayClearStorageModal = true;
+        let resetTimeStampStorage = localStorage.getItem("resetTimeStamp");
+        if (resetTimeStampStorage && new Date().getTime() - parseInt(resetTimeStampStorage) < 60 * 1000) {
+            this.message.error("操作过于频繁，请稍后再试");
+        } else {
+            this.displayClearStorageModal = true;
+        }
     }
 
     clearStorageOkBtnOnClick() {
         this.displayClearStorageModal = false;
         localStorage.clear();
+        localStorage.setItem("resetTimeStamp", JSON.stringify(new Date().getTime()));
         this.message.success("已重置所有内容，一秒后刷新页面");
         this.formDisabled = true;
         this.refreshWindow();
@@ -148,6 +160,11 @@ export class menuPreferenceComponent implements OnInit {
         let lastPoemRequestTimeStorage = localStorage.getItem("lastPoemRequestTime");
         if (lastPoemRequestTimeStorage !== null) {
             this.lastPoemRequestTime = getTimeDetails(new Date(parseInt(lastPoemRequestTimeStorage))).showDetail;
+        }
+
+        let customPoemStorage = localStorage.getItem("customPoem");
+        if (customPoemStorage) {
+            this.customPoem = JSON.parse(customPoemStorage);  // 用户使用自定诗词时，禁用诗词主题与切换间隔
         }
     }
 }

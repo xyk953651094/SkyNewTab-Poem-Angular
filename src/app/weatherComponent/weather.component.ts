@@ -27,6 +27,7 @@ export class WeatherComponent implements OnInit, OnChanges {
     searchEngineUrl: string = "https://www.bing.com/search?q=";
     weatherIcon: string = "";
     weatherContent: string = "暂无信息";
+    weatherTips: string = "";
     location: string = "暂无信息";
     humidity: string = "暂无信息";
     pm25: string = "暂无信息";
@@ -38,8 +39,7 @@ export class WeatherComponent implements OnInit, OnChanges {
     protected readonly btnMouseOut = btnMouseOut;
     protected readonly btnMouseOver = btnMouseOver;
 
-    constructor(private message: NzMessageService) {
-    }
+    constructor(private message: NzMessageService) {}
 
     locationBtnOnClick() {
         if (this.location !== "暂无信息") {
@@ -64,6 +64,12 @@ export class WeatherComponent implements OnInit, OnChanges {
             this.rainfall = data.weatherData.rainfall + "%";
             this.visibility = data.weatherData.visibility;
             this.windInfo = data.weatherData.windDirection + " " + data.weatherData.windPower + " 级";
+
+            if (parseInt(data.weatherData.temperature) > 30) {
+                this.weatherTips = "天气炎热，请注意避暑，减少户外活动";
+            } else if (parseInt(data.weatherData.temperature) < 0) {
+                this.weatherTips = "天气寒冷，请注意防寒，减少户外活动";
+            }
         }
     }
 

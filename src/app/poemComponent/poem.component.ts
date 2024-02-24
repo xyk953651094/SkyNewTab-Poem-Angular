@@ -65,7 +65,10 @@ export class PoemComponent implements OnInit, OnChanges {
                 localStorage.setItem("customPoem", JSON.stringify(true));
                 localStorage.setItem("customContent", this.customContentInputValue);
                 localStorage.setItem("customAuthor", this.customAuthorInputValue);
-                this.message.success("设置成功");
+                this.message.success("已使用自定诗词，一秒后刷新页面");
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
             } else {
                 this.message.error("表单内容长度不能超过30个字");
             }
@@ -109,7 +112,7 @@ export class PoemComponent implements OnInit, OnChanges {
             tempPoemContent = poemData.content.length < this.poemMaxSize ?
                 poemData.content : poemData.content.substring(0, this.poemMaxSize) + "...";
 
-            tempPoemAuthor = "【" + poemData.author + "】" + " ·" + "《" + poemData.origin + "》";
+            tempPoemAuthor = "【" + poemData.author + "】《" + poemData.origin + "》";
             tempPoemAuthor = tempPoemAuthor.length < this.poemMaxSize ?
                 tempPoemAuthor : tempPoemAuthor.substring(0, this.poemMaxSize) + "...";
         }
