@@ -24,7 +24,6 @@ export class menuPreferenceComponent implements OnInit {
     displayClearStorageModal: boolean = false;
     preferenceData: PreferenceDataInterface = getPreferenceDataStorage();
     lastPoemRequestTime: string = "暂无信息";
-    customPoem: boolean = false;
     @Output() getPreferenceData: EventEmitter<PreferenceDataInterface> = new EventEmitter();
     protected readonly getFontColor = getFontColor;
     protected readonly btnMouseOver = btnMouseOver;
@@ -160,11 +159,6 @@ export class menuPreferenceComponent implements OnInit {
         let lastPoemRequestTimeStorage = localStorage.getItem("lastPoemRequestTime");
         if (lastPoemRequestTimeStorage !== null) {
             this.lastPoemRequestTime = getTimeDetails(new Date(parseInt(lastPoemRequestTimeStorage))).showDetail;
-        }
-
-        let customPoemStorage = localStorage.getItem("customPoem");
-        if (customPoemStorage) {
-            this.customPoem = JSON.parse(customPoemStorage);  // 用户使用自定诗词时，禁用诗词主题与切换间隔
         }
     }
 }

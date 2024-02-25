@@ -34,8 +34,8 @@
         </nz-form-item>
         <nz-form-item>
             <nz-form-label>诗词主题</nz-form-label>
-            <nz-form-control [nzExtra]="customPoem ? '正在使用自定诗词，已禁用主题与切换' : ''">
-                <nz-radio-group (ngModelChange)="poemTopicsRadioOnChange($event)" [nzDisabled]="(preferenceData.autoTopic || customPoem || formDisabled)"
+            <nz-form-control>
+                <nz-radio-group (ngModelChange)="poemTopicsRadioOnChange($event)" [nzDisabled]="(preferenceData.autoTopic || formDisabled)"
                                 [(ngModel)]="preferenceData.poemTopic"
                                 [style]="{width: '100%'}"
                                 name="poemTopic">
@@ -59,7 +59,7 @@
         <nz-form-item>
             <nz-form-label>智能主题</nz-form-label>
             <nz-form-control [nzExtra]="preferenceData.autoTopic ? '已禁用诗词主题与部分切换间隔' : ''">
-                <nz-switch (ngModelChange)="autoTopicSwitchOnChange($event)" [nzDisabled]="customPoem || formDisabled"
+                <nz-switch (ngModelChange)="autoTopicSwitchOnChange($event)" [nzDisabled]="formDisabled"
                            [ngModel]="preferenceData.autoTopic" id="autoTopicSwitch"
                            class="poemFont" name="autoTopic" nzCheckedChildren="已开启"
                            nzUnCheckedChildren="已关闭"></nz-switch>
@@ -69,7 +69,7 @@
             <nz-form-label>切换间隔</nz-form-label>
             <nz-form-control [nzExtra]="'上次切换：' + lastPoemRequestTime">
                 <nz-select (ngModelChange)="changePoemTimeOnChange($event)" [ngModel]="preferenceData.changePoemTime" name="changePoemTime"
-                           class="poemFont" [style]="{width: '170px'}" [nzDisabled]="customPoem || formDisabled" [nzOptions]="[
+                           class="poemFont" [style]="{width: '170px'}" [nzDisabled]="formDisabled" [nzOptions]="[
                                {value: '900000', label: '每隔 15 分钟', disabled: preferenceData.autoTopic},
                                {value: '1800000', label: '每隔 30 分钟', disabled: preferenceData.autoTopic},
                                {value: '3600000', label: '每隔 1 小时'},
