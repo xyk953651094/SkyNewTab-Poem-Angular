@@ -5,6 +5,26 @@
 >
     <div nz-row>
         <div nz-col nzSpan="12">
+            <button (click)="homeBtnOnClick('github')" (mouseout)="btnMouseOut(minorColor, $event)"
+                    (mouseover)="btnMouseOver(majorColor, $event)"
+                    [nzShape]="preferenceData.buttonShape"
+                    [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
+            >
+                <span nz-icon nzTheme="outline" nzType="github"></span>
+                {{"作者主页"}}
+            </button>
+        </div>
+        <div nz-col nzSpan="12">
+            <button (click)="homeBtnOnClick('gitlab')" (mouseout)="btnMouseOut(minorColor, $event)"
+                    (mouseover)="btnMouseOver(majorColor, $event)"
+                    [nzShape]="preferenceData.buttonShape"
+                    [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
+            >
+                <span nz-icon nzTheme="outline" nzType="gitlab"></span>
+                {{"作者主页"}}
+            </button>
+        </div>
+        <div nz-col nzSpan="12">
             <button (click)="suggestBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                     (mouseover)="btnMouseOver(majorColor, $event)"
                     [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
@@ -25,23 +45,12 @@
             </button>
         </div>
         <div nz-col nzSpan="12">
-            <button (click)="homeBtnOnClick('github')" (mouseout)="btnMouseOut(minorColor, $event)"
-                    (mouseover)="btnMouseOver(majorColor, $event)"
-                    [nzShape]="preferenceData.buttonShape"
-                    [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
+            <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
+                    [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
+                    class="poemFont" nz-button nzType="text"
             >
-                <span nz-icon nzTheme="outline" nzType="github"></span>
-                {{"作者主页"}}
-            </button>
-        </div>
-        <div nz-col nzSpan="12">
-            <button (click)="homeBtnOnClick('gitlab')" (mouseout)="btnMouseOut(minorColor, $event)"
-                    (mouseover)="btnMouseOver(majorColor, $event)"
-                    [nzShape]="preferenceData.buttonShape"
-                    [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
-            >
-                <span nz-icon nzTheme="outline" nzType="gitlab"></span>
-                {{"作者主页"}}
+                <span nz-icon nzType="bulb" nzTheme="outline"></span>
+                {{"联系作者前请先查阅帮助文档"}}
             </button>
         </div>
     </div>
