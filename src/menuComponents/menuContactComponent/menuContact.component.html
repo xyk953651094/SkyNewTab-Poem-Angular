@@ -44,15 +44,6 @@
                 {{"问题反馈"}}
             </button>
         </div>
-        <div nz-col nzSpan="12">
-            <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
-                    [nzShape]="preferenceData.buttonShape" [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                    class="poemFont" nz-button nzType="text"
-            >
-                <span nz-icon nzType="bulb" nzTheme="outline"></span>
-                {{"建议或反馈前请优查阅帮助文档"}}
-            </button>
-        </div>
     </div>
 </nz-card>
 

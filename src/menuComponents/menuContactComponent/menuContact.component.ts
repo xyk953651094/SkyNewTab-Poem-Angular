@@ -17,11 +17,11 @@ export class menuContactComponent implements OnInit {
     protected readonly btnMouseOut = btnMouseOut;
 
     suggestBtnOnClick() {
-        window.open("mailto:xyk953651094@qq.com?&subject=云开诗词新标签页-功能建议", "_self");
+        window.open("mailto:xyk953651094@qq.com?&subject=云开诗词新标签页-功能建议&body=提示：功能建议前请优先查阅帮助文档", "_self");
     }
 
     issueBtnOnClick() {
-        window.open("mailto:xyk953651094@qq.com?&subject=云开诗词新标签页-问题反馈", "_self");
+        window.open("mailto:xyk953651094@qq.com?&subject=云开诗词新标签页-问题反馈&body=提示：问题反馈前请优先查阅帮助文档", "_self");
     }
 
     homeBtnOnClick(value: string) {
