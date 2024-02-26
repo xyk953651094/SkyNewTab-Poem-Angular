@@ -2,7 +2,7 @@
     <button (click)="greetBtnOnClick()" (mouseout)="btnMouseOut(majorColor, $event)"
             (mouseover)="btnMouseOver(minorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"
-            [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
+            [style.color]="getFontColor(majorColor)" class="popupFont" nz-button nzType="text"
     >
         <span [class]="greetIcon">&nbsp;&nbsp;</span>
         {{greetContent}}
@@ -10,7 +10,7 @@
     <button (click)="weatherBtnOnClick()" (mouseout)="btnMouseOut(majorColor, $event)"
             (mouseover)="btnMouseOver(minorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"
-            [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
+            [style.color]="getFontColor(majorColor)" class="popupFont" nz-button nzType="text"
     >
         <span [class]="weatherIcon">&nbsp;&nbsp;</span>
         {{weatherContent}}

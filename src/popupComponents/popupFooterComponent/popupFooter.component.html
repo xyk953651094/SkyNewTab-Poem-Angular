@@ -2,7 +2,7 @@
     <button (click)="homeBtnOnClick('github')" (mouseout)="btnMouseOut(majorColor, $event)"
             (mouseover)="btnMouseOver(minorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"
-            [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
+            [style.color]="getFontColor(majorColor)" class="popupFont" nz-button nzType="text"
     >
         <span nz-icon nzTheme="outline" nzType="github"></span>
         {{"产品主页"}}
@@ -10,7 +10,7 @@
     <button (click)="homeBtnOnClick('gitlab')" (mouseout)="btnMouseOut(majorColor, $event)"
             (mouseover)="btnMouseOver(minorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"
-            [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
+            [style.color]="getFontColor(majorColor)" class="popupFont" nz-button nzType="text"
     >
         <span nz-icon nzTheme="outline" nzType="gitlab"></span>
         {{"产品主页"}}
@@ -18,7 +18,7 @@
     <button (click)="blogBtnOnClick()" (mouseout)="btnMouseOut(majorColor, $event)"
             (mouseover)="btnMouseOver(minorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"
-            [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
+            [style.color]="getFontColor(majorColor)" class="popupFont" nz-button nzType="text"
     >
         <span nz-icon nzTheme="outline" nzType="notification"></span>
         {{"博客"}}
@@ -26,7 +26,7 @@
     <button (click)="supportBtnOnClick()" (mouseout)="btnMouseOut(majorColor, $event)"
             (mouseover)="btnMouseOver(minorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"
-            [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
+            [style.color]="getFontColor(majorColor)" class="popupFont" nz-button nzType="text"
     >
         <span nz-icon nzTheme="outline" nzType="gift"></span>
         {{"捐助"}}
