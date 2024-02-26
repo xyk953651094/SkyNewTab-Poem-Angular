@@ -1,30 +1,30 @@
 <nz-space>
-    <button (click)="homeBtnOnClick('github')" (mouseout)="btnMouseOut(minorColor, $event)"
-            (mouseover)="btnMouseOver(majorColor, $event)"
+    <button (click)="homeBtnOnClick('github')" (mouseout)="btnMouseOut(majorColor, $event)"
+            (mouseover)="btnMouseOver(minorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"
             [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
     >
         <span nz-icon nzTheme="outline" nzType="github"></span>
-        {{"GitHub 产品主页"}}
+        {{"产品主页"}}
     </button>
-    <button (click)="homeBtnOnClick('gitlab')" (mouseout)="btnMouseOut(minorColor, $event)"
-            (mouseover)="btnMouseOver(majorColor, $event)"
+    <button (click)="homeBtnOnClick('gitlab')" (mouseout)="btnMouseOut(majorColor, $event)"
+            (mouseover)="btnMouseOver(minorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"
             [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
     >
         <span nz-icon nzTheme="outline" nzType="gitlab"></span>
-        {{"GitLab 产品主页"}}
+        {{"产品主页"}}
     </button>
-    <button (click)="blogBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
-            (mouseover)="btnMouseOver(majorColor, $event)"
+    <button (click)="blogBtnOnClick()" (mouseout)="btnMouseOut(majorColor, $event)"
+            (mouseover)="btnMouseOver(minorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"
             [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
     >
         <span nz-icon nzTheme="outline" nzType="notification"></span>
         {{"博客"}}
     </button>
-    <button (click)="supportBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
-            (mouseover)="btnMouseOver(majorColor, $event)"
+    <button (click)="supportBtnOnClick()" (mouseout)="btnMouseOut(majorColor, $event)"
+            (mouseover)="btnMouseOver(minorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"
             [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
     >
