@@ -22,7 +22,7 @@ export class popupComponent implements OnInit {
         if (tempThemeColor) {
             themeArray = JSON.parse(tempThemeColor);
             let bodyEle = $("body");
-            bodyEle.css("background-color", themeArray.majorColor + " !important");
+            bodyEle.css("backgroundColor", themeArray.majorColor + " !important");
         } else {
             themeArray = setColorTheme();
         }
