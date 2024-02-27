@@ -228,7 +228,7 @@ export class AppComponent implements OnInit {
             setTimeout(() => {
                 this.notification.blank(
                     "支持作者",
-                    "如果喜欢这款插件，请在插件商店五星好评",
+                    "如果喜欢这款插件，请考虑捐助或五星好评",
                     {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
                 );
             }, 1000);
