@@ -28,5 +28,16 @@ export class menuContactComponent implements OnInit {
         window.open("https://" + value + ".com/xyk953651094/", "_self");
     }
 
+    moreBtnOnClick(value: string) {
+        switch (value) {
+            case "github":
+                window.open("https://github.com/xyk953651094?tab=repositories/", "_self");
+                break;
+            case "gitlab":
+                window.open("https://gitlab.com/users/xyk953651094/projects/", "_self");
+                break;
+        }
+    }
+
     ngOnInit(): void {}
 }

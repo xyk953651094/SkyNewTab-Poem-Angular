@@ -25,6 +25,26 @@
             </button>
         </div>
         <div nz-col nzSpan="12">
+            <button (click)="moreBtnOnClick('github')" (mouseout)="btnMouseOut(minorColor, $event)"
+                    (mouseover)="btnMouseOver(majorColor, $event)"
+                    [nzShape]="preferenceData.buttonShape"
+                    [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
+            >
+                <span nz-icon nzTheme="outline" nzType="github"></span>
+                {{"更多产品"}}
+            </button>
+        </div>
+        <div nz-col nzSpan="12">
+            <button (click)="moreBtnOnClick('gitlab')" (mouseout)="btnMouseOut(minorColor, $event)"
+                    (mouseover)="btnMouseOver(majorColor, $event)"
+                    [nzShape]="preferenceData.buttonShape"
+                    [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
+            >
+                <span nz-icon nzTheme="outline" nzType="gitlab"></span>
+                {{"更多产品"}}
+            </button>
+        </div>
+        <div nz-col nzSpan="12">
             <button (click)="suggestBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                     (mouseover)="btnMouseOver(majorColor, $event)"
                     [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
