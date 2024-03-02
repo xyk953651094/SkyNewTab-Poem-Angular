@@ -3,24 +3,22 @@ import {btnMouseOut, btnMouseOver, getFontColor} from "../../typescripts/publicF
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
 @Component({
-    selector: "preferenceHelp-component",
-    templateUrl: "./preferenceHelp.component.html",
-    styleUrls: ["./preferenceHelp.component.scss", "../../stylesheets/publicStyles.scss"]
+    selector: "menuFooter-component",
+    templateUrl: "./menuFooter.component.html",
+    styleUrls: ["./menuFooter.component.scss", "../../stylesheets/publicStyles.scss"]
 })
-export class preferenceHelpComponent implements OnInit {
+export class menuFooterComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
     @Input() preferenceData = defaultPreferenceData;
-    title = "preferenceHelpComponent";
+    title = "menuFooterComponent";
     protected readonly getFontColor = getFontColor;
-    protected readonly btnMouseOver = btnMouseOver;
     protected readonly btnMouseOut = btnMouseOut;
+    protected readonly btnMouseOver = btnMouseOver;
 
-    helpBtnOnClick(source: string) {
-        window.open("https://xyk953651094." + source + ".io/SkyDocuments/", "_self");
+    supportBtnOnClick() {
+        window.open("https://afdian.net/a/xyk953651094", "_self");
     }
 
-    ngOnInit(): void {
-
-    }
+    ngOnInit(): void {}
 }

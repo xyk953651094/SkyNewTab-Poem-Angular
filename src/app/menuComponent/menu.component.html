@@ -23,37 +23,25 @@
 >
     <ng-container *nzDrawerContent>
         <nz-space id="drawerContent" nzDirection="vertical" nzSize="large">
-            <preferenceFunction-component
-                (getPreferenceFunctionData)="getPreferenceFunctionData($event)"
+            <menuPreference-component
+                (getPreferenceData)="getMenuPreferenceData($event)"
                 *nzSpaceItem
                 [majorColor]="majorColor"
                 [minorColor]="minorColor"
             />
-            <preferenceHelp-component
-                *nzSpaceItem
-                [majorColor]="majorColor"
-                [minorColor]="minorColor"
-                [preferenceData]="preferenceData"
-            />
-            <preferenceEmail-component
+            <menuInfo-component
                 *nzSpaceItem
                 [majorColor]="majorColor"
                 [minorColor]="minorColor"
                 [preferenceData]="preferenceData"
             />
-            <preferenceInfo-component
+            <menuEmail-component
                 *nzSpaceItem
                 [majorColor]="majorColor"
                 [minorColor]="minorColor"
                 [preferenceData]="preferenceData"
             />
-            <preferenceProduct-component
-                *nzSpaceItem
-                [majorColor]="majorColor"
-                [minorColor]="minorColor"
-                [preferenceData]="preferenceData"
-            />
-            <preferenceToTop-component
+            <menuToTop-component
                 *nzSpaceItem
                 [majorColor]="majorColor"
                 [minorColor]="minorColor"
@@ -63,7 +51,7 @@
     </ng-container>
 </nz-drawer>
 <ng-template #drawerHeader>
-    <preferenceHeader-component
+    <menuHeader-component
         [majorColor]="majorColor"
         [minorColor]="minorColor"
         [preferenceData]="preferenceData"
@@ -71,7 +59,7 @@
 </ng-template>
 <ng-template #drawerFooter>
     <div nz-row nzAlign="middle" nzJustify="center">
-        <preferenceFooter-component
+        <menuFooter-component
             [majorColor]="majorColor"
             [minorColor]="minorColor"
             [preferenceData]="preferenceData"

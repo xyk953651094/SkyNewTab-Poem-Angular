@@ -1,0 +1,11 @@
+<nz-space>
+    <button (click)="supportBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+            (mouseover)="btnMouseOver(majorColor, $event)"
+            *nzSpaceItem [nzShape]="preferenceData.buttonShape"
+            [style.color]="getFontColor(minorColor)"
+            class="poemFont" nz-button nzType="text"
+    >
+        <span nz-icon nzType="star" nzTheme="outline"></span>
+        {{"如果喜欢这款插件，请考虑捐助或五星好评"}}
+    </button>
+</nz-space>

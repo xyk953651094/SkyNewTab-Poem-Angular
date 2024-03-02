@@ -8,6 +8,7 @@ import {
 } from "../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../typescripts/publicInterface";
 import $ from "jquery";
+import {poemTopics} from "../typescripts/publicConstants";
 
 @Component({
     selector: "app-root",
@@ -150,11 +151,14 @@ export class AppComponent implements OnInit {
                     "color": getFontColor(this.minorColor),
                     "font-family": "Times New Roman, cursive, sans-serif"
                 });
+                $(".ant-select-item").css("font-family", "'Times New Roman', cursive, sans-serif");
                 $(".ant-drawer-footer").css("background-color", this.minorColor);
 
-                // preferenceFunctionComponent
+                // menuPreferenceComponent
                 resetRadioColor(this.preferenceData.searchEngine, ["bing", "google"], this.majorColor);
                 resetRadioColor(this.preferenceData.buttonShape, ["round", "default"], this.majorColor);
+                resetRadioColor(this.preferenceData.poemTopic, poemTopics, this.majorColor);
+                resetSwitchColor("#autoTopicSwitch", this.preferenceData.autoTopic, this.majorColor);
                 resetSwitchColor("#simpleModeSwitch", this.preferenceData.simpleMode, this.majorColor);
             }
 
@@ -224,17 +228,17 @@ export class AppComponent implements OnInit {
             setTimeout(() => {
                 this.notification.blank(
                     "支持作者",
-                    "如果喜欢这款插件，请在插件商店五星好评",
+                    "如果喜欢这款插件，请考虑捐助或五星好评",
                     {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
                 );
             }, 1000);
 
             // 额外提醒
-            // if (currentVersion === "2.8.0") {
+            // if (currentVersion === "3.1.0") {
             //     setTimeout(() => {
             //         this.notification.blank(
             //             "重要通知",
-            //             "新增专注模式，若专注模式无法生效，可尝试重新安装本插件",
+            //             "本次更新修改了偏好设置中的切换间隔，如出现异常请点击重置设置按钮",
             //             {nzPlacement: "bottomLeft", nzDuration: 10000, nzCloseIcon: "null"}
             //         );
             //     }, 2000);

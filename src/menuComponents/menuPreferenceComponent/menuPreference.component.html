@@ -33,6 +33,54 @@
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
+            <nz-form-label>诗词主题</nz-form-label>
+            <nz-form-control>
+                <nz-radio-group (ngModelChange)="poemTopicsRadioOnChange($event)" [nzDisabled]="(preferenceData.autoTopic || formDisabled)"
+                                [(ngModel)]="preferenceData.poemTopic"
+                                [style]="{width: '100%'}"
+                                name="poemTopic">
+                    <div nz-row [nzGutter]="[0, 8]">
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="all" id="all">随机</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="shuqing" id="shuqing">抒情</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="siji" id="siji">四季</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="shanshui" id="shanshui">山水</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="tianqi" id="tianqi">天气</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="renwu" id="renwu">人物</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="rensheng" id="rensheng">人生</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="shenghuo" id="shenghuo">生活</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="jieri" id="jieri">节日</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="dongwu" id="dongwu">动物</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="zhiwu" id="zhiwu">植物</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="shiwu" id="shiwu">食物</label></div>
+                    </div>
+                </nz-radio-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label>智能主题</nz-form-label>
+            <nz-form-control [nzExtra]="preferenceData.autoTopic ? '已禁用诗词主题与部分切换间隔' : ''">
+                <nz-switch (ngModelChange)="autoTopicSwitchOnChange($event)" [nzDisabled]="formDisabled"
+                           [ngModel]="preferenceData.autoTopic" id="autoTopicSwitch"
+                           class="poemFont" name="autoTopic" nzCheckedChildren="已开启"
+                           nzUnCheckedChildren="已关闭"></nz-switch>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label>切换间隔</nz-form-label>
+            <nz-form-control [nzExtra]="'上次切换：' + lastPoemRequestTime">
+                <nz-select (ngModelChange)="changePoemTimeOnChange($event)" [ngModel]="preferenceData.changePoemTime" name="changePoemTime"
+                           class="poemFont" [style]="{width: '170px'}" [nzDisabled]="formDisabled" [nzOptions]="[
+                               {value: '900000', label: '每隔 15 分钟', disabled: preferenceData.autoTopic},
+                               {value: '1800000', label: '每隔 30 分钟', disabled: preferenceData.autoTopic},
+                               {value: '3600000', label: '每隔 1 小时'},
+                               {value: '21600000', label: '每隔 6 小时'},
+                               {value: '43200000', label: '每隔 12 小时'},
+                               {value: '86400000', label: '每隔 1 天'},
+                           ]"
+                />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
             <nz-form-label>极简模式</nz-form-label>
             <nz-form-control>
                 <nz-switch (ngModelChange)="simpleModeSwitchOnChange($event)" [nzDisabled]="formDisabled"

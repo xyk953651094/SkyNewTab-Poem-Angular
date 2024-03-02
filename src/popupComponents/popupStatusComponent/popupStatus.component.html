@@ -1,49 +1,49 @@
 <nz-space [style]="{display: preferenceData.simpleMode ? 'none' : 'inline-flex'}">
-    <button (click)="greetBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
-            (mouseover)="btnMouseOver(majorColor, $event)"
+    <button (click)="greetBtnOnClick()" (mouseout)="btnMouseOut(majorColor, $event)"
+            (mouseover)="btnMouseOver(minorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"
-            [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
+            [style.color]="getFontColor(majorColor)" class="popupFont" nz-button nzType="text"
     >
         <span [class]="greetIcon">&nbsp;&nbsp;</span>
         {{greetContent}}
     </button>
-    <button (click)="weatherBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
-            (mouseover)="btnMouseOver(majorColor, $event)"
+    <button (click)="weatherBtnOnClick()" (mouseout)="btnMouseOut(majorColor, $event)"
+            (mouseover)="btnMouseOver(minorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"
-            [style.color]="getFontColor(minorColor)" class="popupFont" nz-button nzType="text"
+            [style.color]="getFontColor(majorColor)" class="popupFont" nz-button nzType="text"
     >
         <span [class]="weatherIcon">&nbsp;&nbsp;</span>
         {{weatherContent}}
     </button>
-    <button (mouseout)="btnMouseOut(minorColor, $event)"
-            (mouseover)="btnMouseOver(majorColor, $event)"
+    <button (mouseout)="btnMouseOut(majorColor, $event)"
+            (mouseover)="btnMouseOver(minorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"
-            [style]="{color: getFontColor(minorColor), cursor: 'default'}" class="popupFont" nz-button nzType="text"
+            [style]="{color: getFontColor(majorColor), cursor: 'default'}" class="popupFont" nz-button nzType="text"
     >
         <span nz-icon nzTheme="outline" nzType="calendar"></span>
         {{dailySize + " 个"}}
     </button>
-    <button (mouseout)="btnMouseOut(minorColor, $event)"
-            (mouseover)="btnMouseOver(majorColor, $event)"
+    <button (mouseout)="btnMouseOut(majorColor, $event)"
+            (mouseover)="btnMouseOver(minorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"
-            [style]="{color: getFontColor(minorColor), cursor: 'default'}" class="popupFont" nz-button nzType="text"
+            [style]="{color: getFontColor(majorColor), cursor: 'default'}" class="popupFont" nz-button nzType="text"
     >
         <span nz-icon nzTheme="outline" nzType="check-square"></span>
         {{todoSize + " 个"}}
     </button>
-    <button (mouseout)="btnMouseOut(minorColor, $event)"
-            (mouseover)="btnMouseOver(majorColor, $event)"
+    <button (mouseout)="btnMouseOut(majorColor, $event)"
+            (mouseover)="btnMouseOver(minorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"
-            [style]="{color: getFontColor(minorColor), cursor: 'default'}" class="popupFont" nz-button nzType="text"
+            [style]="{color: getFontColor(majorColor), cursor: 'default'}" class="popupFont" nz-button nzType="text"
     >
         <span [class]="focusMode ? 'bi bi-cup-hot-fill' : 'bi bi-cup-hot'">&nbsp;&nbsp;</span>
         {{focusMode ? "专注中" : "未专注"}}
     </button>
 </nz-space>
-<button (click)="weatherBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
-        (mouseover)="btnMouseOver(majorColor, $event)"
+<button (click)="weatherBtnOnClick()" (mouseout)="btnMouseOut(majorColor, $event)"
+        (mouseover)="btnMouseOver(minorColor, $event)"
         [nzShape]="preferenceData.buttonShape"
-        [style]="{color: getFontColor(minorColor), cursor: 'default', display: preferenceData.simpleMode ? 'inline-block' : 'none'}" class="popupFont" nz-button nzType="text"
+        [style]="{color: getFontColor(majorColor), cursor: 'default', display: preferenceData.simpleMode ? 'inline-block' : 'none'}" class="popupFont" nz-button nzType="text"
 >
     <span nz-icon nzTheme="outline" nzType="info-circle"></span>
     {{"已开启极简模式"}}

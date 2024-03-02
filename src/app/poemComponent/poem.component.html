@@ -19,7 +19,7 @@
                     [nzShape]="preferenceData.buttonShape"
                     [style.color]="minorColor"
                     class="poemText poemFont largeFont" nz-button nzSize="large" nzType="text"
-                    nz-tooltip [nzTooltipColor]="minorColor" nzTooltipPlacement="bottom" nzTooltipTitle="自定诗词"
+                    nz-tooltip [nzTooltipColor]="minorColor" nzTooltipPlacement="bottom" [nzTooltipTitle]="customPoem ? '正在显示自定诗词' : '点击启用自定诗词'"
             >
                 {{poemAuthor}}
             </button>

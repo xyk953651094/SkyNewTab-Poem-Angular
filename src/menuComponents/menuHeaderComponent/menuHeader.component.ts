@@ -3,27 +3,26 @@ import {btnMouseOut, btnMouseOver, getFontColor} from "../../typescripts/publicF
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
 @Component({
-    selector: "preferenceToTop-component",
-    templateUrl: "./preferenceToTop.component.html",
-    styleUrls: ["./preferenceToTop.component.scss", "../../stylesheets/publicStyles.scss"]
+    selector: "menuHeader-component",
+    templateUrl: "./menuHeader.component.html",
+    styleUrls: ["./menuHeader.component.scss", "../../stylesheets/publicStyles.scss"]
 })
-export class preferenceToTopComponent implements OnInit {
+export class menuHeaderComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
     @Input() preferenceData = defaultPreferenceData;
-    title = "preferenceToTopComponent";
+    title = "menuHeaderComponent";
     protected readonly getFontColor = getFontColor;
     protected readonly btnMouseOut = btnMouseOut;
     protected readonly btnMouseOver = btnMouseOver;
 
-    toTopBtnOnClick(value: string) {
-        let drawerContent: HTMLElement | null = document.getElementById("drawerContent");
-        if (drawerContent) {
-            drawerContent.scrollIntoView({behavior: "smooth"});
-        }
+    supportBtnOnClick() {
+        window.open("https://afdian.net/a/xyk953651094", "_self");
     }
 
-    ngOnInit(): void {
-
+    blogBtnOnClick() {
+        window.open("https://xyk953651094.blogspot.com/", "_self");
     }
+
+    ngOnInit(): void {}
 }

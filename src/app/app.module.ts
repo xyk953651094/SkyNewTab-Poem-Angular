@@ -43,23 +43,17 @@ import {WeatherComponent} from './weatherComponent/weather.component';
 import {DailyComponent} from './dailyComponent/daily.component';
 import {TodoComponent} from "./todoComponent/todo.component";
 import {FocusComponent} from "./focusComponent/focus.component";
-import {PreferenceComponent} from './preferenceComponent/preference.component';
+import {MenuComponent} from './menuComponent/menu.component';
 import {ClockComponent} from "./clockComponent/clock.component";
 import {PoemComponent} from "./poemComponent/poem.component";
 import {WaveComponent} from "./waveComponent/wave.component";
 
-import {
-    preferenceFunctionComponent
-} from "../preferenceComponents/preferenceFunctionComponent/preferenceFunction.component";
-import {preferenceEmailComponent} from "../preferenceComponents/preferenceEmailComponent/preferenceEmail.component";
-import {preferenceInfoComponent} from "../preferenceComponents/preferenceInfoComponent/preferenceInfo.component";
-import {preferenceFooterComponent} from "../preferenceComponents/preferenceFooterComponent/preferenceFooter.component";
-import {preferenceHeaderComponent} from "../preferenceComponents/preferenceHeaderComponent/preferenceHeader.component";
-import {
-    preferenceProductComponent
-} from "../preferenceComponents/preferenceProductComponent/preferenceProduct.component";
-import {preferenceToTopComponent} from "../preferenceComponents/preferenceToTopComponent/preferenceToTop.component";
-import {preferenceHelpComponent} from "../preferenceComponents/preferenceHelpComponent/preferenceHelp.component";
+import {menuPreferenceComponent} from "../menuComponents/menuPreferenceComponent/menuPreference.component";
+import {menuContactComponent} from "../menuComponents/menuContactComponent/menuContact.component";
+import {menuInfoComponent} from "../menuComponents/menuInfoComponent/menuInfo.component";
+import {menuFooterComponent} from "../menuComponents/menuFooterComponent/menuFooter.component";
+import {menuHeaderComponent} from "../menuComponents/menuHeaderComponent/menuHeader.component";
+import {menuToTopComponent} from "../menuComponents/menuToTopComponent/menuToTop.component";
 
 import {PopoverComponent} from "../publicComponent/popoverComponent/popover.component";
 import {ButtonComponent} from "../publicComponent/buttonComponent/button.component";
@@ -81,15 +75,13 @@ registerLocaleData(zh);
         ClockComponent,
         PoemComponent,
         WaveComponent,
-        PreferenceComponent,
-        preferenceFooterComponent,
-        preferenceHelpComponent,
-        preferenceEmailComponent,
-        preferenceInfoComponent,
-        preferenceFunctionComponent,
-        preferenceHeaderComponent,
-        preferenceProductComponent,
-        preferenceToTopComponent,
+        MenuComponent,
+        menuFooterComponent,
+        menuContactComponent,
+        menuInfoComponent,
+        menuPreferenceComponent,
+        menuHeaderComponent,
+        menuToTopComponent,
 
         ButtonComponent,
         ModalComponent,

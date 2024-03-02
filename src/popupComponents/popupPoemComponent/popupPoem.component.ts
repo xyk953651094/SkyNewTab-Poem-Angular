@@ -30,25 +30,31 @@ export class popupPoemComponent implements OnInit {
         window.open(this.searchEngineUrl + this.poemAuthor, "_blank");
     }
 
-    setPoem(poemData: any) {
-        let tempPoemContent = poemData.data.content.length < this.poemMaxSize ?
-            poemData.data.content : poemData.data.content.substring(0, this.poemMaxSize) + "...";
+    setPoem() {
+        let poemDataStorage = localStorage.getItem("lastPoem");
+        if (poemDataStorage) {
+            let poemData = JSON.parse(poemDataStorage);
+            let tempPoemContent = "";
+            let tempPoemAuthor = "";
+            if (this.preferenceData.autoTopic) {
+                tempPoemContent = poemData.data.content.length < this.poemMaxSize ?
+                    poemData.data.content : poemData.data.content.substring(0, this.poemMaxSize) + "...";
 
-        let tempPoemAuthor =
-            "【" + poemData.data.origin.dynasty + "】" +
-            poemData.data.origin.author + " ·" +
-            "《" + poemData.data.origin.title + "》";
-        tempPoemAuthor = tempPoemAuthor.length < this.poemMaxSize ?
-            tempPoemAuthor : tempPoemAuthor.substring(0, this.poemMaxSize) + "...";
+                tempPoemAuthor =
+                    "【" + poemData.data.origin.dynasty + " · " + poemData.data.origin.author + "】" +
+                    "《" + poemData.data.origin.title + "》";
+                tempPoemAuthor = tempPoemAuthor.length < this.poemMaxSize ?
+                    tempPoemAuthor : tempPoemAuthor.substring(0, this.poemMaxSize) + "...";
+            } else {
+                tempPoemContent = poemData.content.length < this.poemMaxSize ?
+                    poemData.content : poemData.content.substring(0, this.poemMaxSize) + "...";
 
-        this.poemContent = tempPoemContent;
-        this.poemAuthor = tempPoemAuthor;
-    }
-
-    getPoem() {
-        let poemData = localStorage.getItem("lastPoem");
-        if (poemData) {
-            this.setPoem(JSON.parse(poemData));
+                tempPoemAuthor = "【" + poemData.author + "】《" + poemData.origin + "》";
+                tempPoemAuthor = tempPoemAuthor.length < this.poemMaxSize ?
+                    tempPoemAuthor : tempPoemAuthor.substring(0, this.poemMaxSize) + "...";
+            }
+            this.poemContent = tempPoemContent;
+            this.poemAuthor = tempPoemAuthor;
         }
     }
 
@@ -66,11 +72,13 @@ export class popupPoemComponent implements OnInit {
             let customContentStorage = localStorage.getItem("customContent");
             let customAuthorStorage = localStorage.getItem("customAuthor");
             if (customContentStorage && customAuthorStorage) {
-                this.poemContent = customContentStorage;
-                this.poemAuthor = customAuthorStorage;
+                this.poemContent = customContentStorage.length < this.poemMaxSize ?
+                    customContentStorage : customContentStorage.substring(0, this.poemMaxSize) + "...";
+                this.poemAuthor = customAuthorStorage.length < this.poemMaxSize ?
+                    customAuthorStorage : customAuthorStorage.substring(0, this.poemMaxSize) + "...";
             }
         } else {
-            this.getPoem();
+            this.setPoem();
         }
     }
 }

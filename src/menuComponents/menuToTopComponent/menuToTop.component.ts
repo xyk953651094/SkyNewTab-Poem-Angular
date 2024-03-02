@@ -3,25 +3,24 @@ import {btnMouseOut, btnMouseOver, getFontColor} from "../../typescripts/publicF
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 
 @Component({
-    selector: "preferenceFooter-component",
-    templateUrl: "./preferenceFooter.component.html",
-    styleUrls: ["./preferenceFooter.component.scss", "../../stylesheets/publicStyles.scss"]
+    selector: "menuToTop-component",
+    templateUrl: "./menuToTop.component.html",
+    styleUrls: ["./menuToTop.component.scss", "../../stylesheets/publicStyles.scss"]
 })
-export class preferenceFooterComponent implements OnInit {
+export class menuToTopComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
     @Input() preferenceData = defaultPreferenceData;
-    title = "preferenceFooterComponent";
+    title = "menuToTopComponent";
     protected readonly getFontColor = getFontColor;
     protected readonly btnMouseOut = btnMouseOut;
     protected readonly btnMouseOver = btnMouseOver;
 
-    homeBtnOnClick(value: string) {
-        window.open("https://" + value + ".com/xyk953651094/SkyNewTab-Poem-Angular/", "_self");
-    }
-
-    blogBtnOnClick() {
-        window.open("https://xyk953651094.blogspot.com/", "_self");
+    toTopBtnOnClick(value: string) {
+        let drawerContent: HTMLElement | null = document.getElementById("drawerContent");
+        if (drawerContent) {
+            drawerContent.scrollIntoView({behavior: "smooth"});
+        }
     }
 
     ngOnInit(): void {

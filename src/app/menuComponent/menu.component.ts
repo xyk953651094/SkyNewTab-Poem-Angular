@@ -2,8 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from "@an
 import {getFontColor, getSearchEngineDetail} from "../../typescripts/publicFunctions";
 import {defaultPreferenceData, device} from "../../typescripts/publicConstants";
 import {
-    preferenceFooterComponent
-} from "../../preferenceComponents/preferenceFooterComponent/preferenceFooter.component";
+    menuFooterComponent
+} from "../../menuComponents/menuFooterComponent/menuFooter.component";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 import {NzDrawerPlacement} from "ng-zorro-antd/drawer";
 import {NzButtonShape} from "ng-zorro-antd/button";
@@ -11,21 +11,21 @@ import {NzButtonShape} from "ng-zorro-antd/button";
 const poemRequest = require("jinrishici");
 
 @Component({
-    selector: "preference-component",
-    templateUrl: "./preference.component.html",
-    styleUrls: ["./preference.component.scss", "../../stylesheets/publicStyles.scss"]
+    selector: "menu-component",
+    templateUrl: "./menu.component.html",
+    styleUrls: ["./menu.component.scss", "../../stylesheets/publicStyles.scss"]
 })
-export class PreferenceComponent implements OnInit {
+export class MenuComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
     @Input() preferenceData = defaultPreferenceData;
     @Output() getPreferenceData: EventEmitter<PreferenceDataInterface> = new EventEmitter();
-    title = "PreferenceComponent";
+    title = "MenuComponent";
     displayDrawer = false;
     drawerPosition: NzDrawerPlacement = "right";
     buttonShape: NzButtonShape = "round";
     protected readonly getFontColor = getFontColor;
-    protected readonly preferenceFooterComponent = preferenceFooterComponent;
+    protected readonly preferenceFooterComponent = menuFooterComponent;
 
     showDrawerBtnOnClick() {
         this.displayDrawer = true;
@@ -35,7 +35,7 @@ export class PreferenceComponent implements OnInit {
         this.displayDrawer = false;
     }
 
-    getPreferenceFunctionData(value: PreferenceDataInterface) {
+    getMenuPreferenceData(value: PreferenceDataInterface) {
         this.getPreferenceData.emit(value);
     }
 

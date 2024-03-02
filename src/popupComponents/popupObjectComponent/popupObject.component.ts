@@ -8,6 +8,7 @@ import {getFontColor, getObjectClassName} from "../../typescripts/publicFunction
 })
 export class popupObjectComponent {
     title = "popupObjectComponent";
+    @Input() majorColor: string = "#000000";
     @Input() minorColor: string = "#ffffff";
     objectClassName: string = getObjectClassName();
 
