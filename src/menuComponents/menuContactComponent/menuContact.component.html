@@ -3,7 +3,7 @@
          nzSize="small"
          nzTitle="联系作者"
 >
-    <div nz-row>
+    <div nz-row [nzGutter]="[0, 8]">
         <div nz-col nzSpan="12">
             <button (click)="homeBtnOnClick('github')" (mouseout)="btnMouseOut(minorColor, $event)"
                     (mouseover)="btnMouseOver(majorColor, $event)"
