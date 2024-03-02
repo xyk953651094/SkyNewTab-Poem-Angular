@@ -16,5 +16,9 @@ export class menuFooterComponent implements OnInit {
     protected readonly btnMouseOut = btnMouseOut;
     protected readonly btnMouseOver = btnMouseOver;
 
+    supportBtnOnClick() {
+        window.open("https://afdian.net/a/xyk953651094", "_self");
+    }
+
     ngOnInit(): void {}
 }

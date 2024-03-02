@@ -1,8 +1,8 @@
 <nz-space>
-    <button (mouseout)="btnMouseOut(minorColor, $event)"
+    <button (click)="supportBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
             (mouseover)="btnMouseOver(majorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"
-            [style.color]="getFontColor(minorColor)" [style.cursor]="'default'"
+            [style.color]="getFontColor(minorColor)"
             class="poemFont" nz-button nzType="text"
     >
         <span nz-icon nzType="star" nzTheme="outline"></span>
