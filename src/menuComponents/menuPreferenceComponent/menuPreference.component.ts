@@ -7,7 +7,7 @@ import {
     getPreferenceDataStorage, getTimeDetails,
     resetRadioColor, resetSwitchColor
 } from "../../typescripts/publicFunctions";
-import {defaultPreferenceData} from "../../typescripts/publicConstants";
+import {defaultPreferenceData, device} from "../../typescripts/publicConstants";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 
 @Component({
@@ -100,15 +100,23 @@ export class menuPreferenceComponent implements OnInit {
 
     // 导入数据
     importDataBtnOnClick() {
-        // TODO: 导入数据
-        this.message.success("已成功导入数据，一秒后刷新页面");
-        this.refreshWindow();
+        if (device !== "") {
+            this.message.error("暂不支持移动端");
+        } else {
+            // TODO: 导入数据
+            this.message.success("已成功导入数据，一秒后刷新页面");
+            this.refreshWindow();
+        }
     }
 
     // 导入数据
     exportDataBtnOnClick() {
-        // TODO: 导出数据
-        this.message.success("已成功导出数据");
+        if (device !== "") {
+            this.message.error("暂不支持移动端");
+        } else {
+            // TODO: 导出数据
+            this.message.success("已成功导出数据");
+        }
     }
 
     // 重置设置
