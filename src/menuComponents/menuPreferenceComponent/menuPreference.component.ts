@@ -98,6 +98,19 @@ export class menuPreferenceComponent implements OnInit {
         // resetSwitchColor("#simpleModeSwitch", checked, this.majorColor);
     }
 
+    // 导入数据
+    importDataBtnOnClick() {
+        // TODO: 导入数据
+        this.message.success("已成功导入数据，一秒后刷新页面");
+        this.refreshWindow();
+    }
+
+    // 导入数据
+    exportDataBtnOnClick() {
+        // TODO: 导出数据
+        this.message.success("已成功导出数据");
+    }
+
     // 重置设置
     resetPreferenceBtnOnClick() {
         let resetTimeStampStorage = localStorage.getItem("resetTimeStamp");

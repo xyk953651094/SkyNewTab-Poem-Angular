@@ -90,6 +90,29 @@
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
+            <nz-form-label>数据管理</nz-form-label>
+            <nz-form-control>
+                <nz-space>
+                    <button (click)=" importDataBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                            (mouseover)="btnMouseOver(majorColor, $event)" *nzSpaceItem
+                            [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
+                            class="poemFont" nz-button nzType="text"
+                    >
+                        <span nz-icon nzType="import" nzTheme="outline"></span>
+                        {{"导入数据"}}
+                    </button>
+                    <button (click)="exportDataBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                            (mouseover)="btnMouseOver(majorColor, $event)" *nzSpaceItem
+                            [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
+                            class="poemFont" nz-button nzType="text"
+                    >
+                        <span nz-icon nzType="export" nzTheme="outline"></span>
+                        {{"导出数据"}}
+                    </button>
+                </nz-space>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
             <nz-form-label>危险设置</nz-form-label>
             <nz-form-control nzExtra="出现异常时可尝试重置设置或插件">
                 <nz-space>
