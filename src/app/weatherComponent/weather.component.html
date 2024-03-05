@@ -43,10 +43,10 @@
                     </button>
                 </div>
                 <div nz-col nzSpan="12">
-                    <button (click)="locationBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                    <button (mouseout)="btnMouseOut(minorColor, $event)"
                             (mouseover)="btnMouseOver(majorColor, $event)"
                             [nzShape]="preferenceData.buttonShape"
-                            [style]="{color: getFontColor(minorColor)}"
+                            [style]="{color: getFontColor(minorColor), cursor: 'default'}"
                             class="poemFont"
                             nz-button nzType="text"
                     >
