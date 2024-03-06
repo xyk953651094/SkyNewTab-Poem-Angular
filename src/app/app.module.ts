@@ -58,6 +58,7 @@ import {menuToTopComponent} from "../menuComponents/menuToTopComponent/menuToTop
 import {PopoverComponent} from "../publicComponent/popoverComponent/popover.component";
 import {ButtonComponent} from "../publicComponent/buttonComponent/button.component";
 import {ModalComponent} from "../publicComponent/modalComponent/modal.component";
+import {NzUploadModule} from "ng-zorro-antd/upload";
 
 
 registerLocaleData(zh);
@@ -116,7 +117,8 @@ registerLocaleData(zh);
         NzAlertModule,
         NzDividerModule,
         NzNotificationModule,
-        NzCheckboxModule
+        NzCheckboxModule,
+        NzUploadModule
     ],
     providers: [
         {provide: NZ_I18N, useValue: zh_CN},

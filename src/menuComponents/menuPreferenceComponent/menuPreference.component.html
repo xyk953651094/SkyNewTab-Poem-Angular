@@ -93,14 +93,22 @@
             <nz-form-label>数据管理</nz-form-label>
             <nz-form-control>
                 <nz-space>
-                    <button (click)=" importDataBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
-                            (mouseover)="btnMouseOver(majorColor, $event)" *nzSpaceItem
-                            [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
-                            class="poemFont" nz-button nzType="text"
+                    <nz-upload
+                        *nzSpaceItem
+                        nzAccept="application/json"
+                        [nzLimit]="1"
+                        [nzBeforeUpload]="importDataBtnOnClick"
+                        [nzShowUploadList]="false"
                     >
-                        <span nz-icon nzType="import" nzTheme="outline"></span>
-                        {{"导入数据"}}
-                    </button>
+                        <button (mouseout)="btnMouseOut(minorColor, $event)"
+                                (mouseover)="btnMouseOver(majorColor, $event)"
+                                [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
+                                class="poemFont" nz-button nzType="text"
+                        >
+                            <span nz-icon nzType="import" nzTheme="outline"></span>
+                            {{"导入数据"}}
+                        </button>
+                    </nz-upload>
                     <button (click)="exportDataBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                             (mouseover)="btnMouseOver(majorColor, $event)" *nzSpaceItem
                             [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"

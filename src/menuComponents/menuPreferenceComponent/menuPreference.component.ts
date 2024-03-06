@@ -9,6 +9,7 @@ import {
 } from "../../typescripts/publicFunctions";
 import {defaultPreferenceData, device} from "../../typescripts/publicConstants";
 import {PreferenceDataInterface} from "../../typescripts/publicInterface";
+import {NzUploadFile} from "ng-zorro-antd/upload";
 
 @Component({
     selector: "menuPreference-component",
@@ -98,24 +99,84 @@ export class menuPreferenceComponent implements OnInit {
         // resetSwitchColor("#simpleModeSwitch", checked, this.majorColor);
     }
 
-    // 导入数据
-    importDataBtnOnClick() {
+    // 导入数据（此处必需使用箭头函数）
+    importDataBtnOnClick = (file: NzUploadFile) => {
         if (device !== "") {
             this.message.error("暂不支持移动端");
         } else {
-            // TODO: 导入数据
-            this.message.success("已成功导入数据，一秒后刷新页面");
-            this.refreshWindow();
+            if (file.name.indexOf("云开诗词新标签页") === 0) {
+                file["text"]().then((result: string) => {
+                    let importData = JSON.parse(result);
+                    if (importData) {
+                        localStorage.setItem("daily", JSON.stringify(importData.dailyList ? importData.dailyList : []));
+                        localStorage.setItem("todos", JSON.stringify(importData.todoList ? importData.todoList : []));
+                        localStorage.setItem("filterList", JSON.stringify(importData.filterList ? importData.filterList : []));
+                        localStorage.setItem("linkList", JSON.stringify(importData.linkList ? importData.linkList : []));
+                        localStorage.setItem("preferenceData", JSON.stringify(importData.preferenceData ? importData.preferenceData : defaultPreferenceData));
+
+                        this.formDisabled = true;
+                        this.message.success("导入数据成功，一秒后刷新页面");
+                        this.refreshWindow();
+                    } else {
+                        this.message.error("导入数据失败");
+                    }
+                })
+            } else {
+                this.message.error("请选择正确的文件");
+            }
         }
+        return false;
     }
 
-    // 导入数据
+    // 导出数据
     exportDataBtnOnClick() {
         if (device !== "") {
             this.message.error("暂不支持移动端");
         } else {
-            // TODO: 导出数据
-            this.message.success("已成功导出数据");
+            // 倒数日
+            let tempDailyList = [];
+            let dailyListStorage = localStorage.getItem("daily");
+            if (dailyListStorage) {
+                tempDailyList = JSON.parse(dailyListStorage);
+            }
+
+            // 待办事项
+            let tempTodoList = [];
+            let todoListStorage = localStorage.getItem("todos");
+            if (todoListStorage) {
+                tempTodoList = JSON.parse(todoListStorage);
+            }
+
+            // 专注模式过滤名单
+            let tempFilterList = [];
+            let filterListStorage = localStorage.getItem("filterList");
+            if (filterListStorage) {
+                tempFilterList = JSON.parse(filterListStorage);
+            }
+
+            // 快捷链接
+            let tempLinkList = [];
+            let linkListStorage = localStorage.getItem("linkList");
+            if (linkListStorage) {
+                tempLinkList = JSON.parse(linkListStorage);
+            }
+
+            let exportData = {
+                dailyList: tempDailyList,
+                todoList: tempTodoList,
+                filterList: tempFilterList,
+                linkList: tempLinkList,
+                preferenceData: this.preferenceData,
+            }
+
+            let file = new Blob([JSON.stringify(exportData)], {type: "application/json"});
+            const objectURL = URL.createObjectURL(file);
+            let a = document.createElement("a");
+            a.href = objectURL;
+            a.download = "云开诗词新标签页.json";
+            a.click();
+            URL.revokeObjectURL(objectURL);
+            this.message.success("导出数据成功");
         }
     }
 
