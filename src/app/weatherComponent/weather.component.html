@@ -29,97 +29,99 @@
     </div>
 </ng-template>
 <ng-template #popoverContent>
-    <nz-list>
+    <nz-list [nzSplit]="false">
+        <nz-list-item [style]="{display: weatherTips.length === 0 ? 'none' : 'flex'}">
+            <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
+                    [nzShape]="preferenceData.buttonShape"
+                    [style]="{color: getFontColor(minorColor), cursor: 'default'}" class="poemFont"
+                    nz-button nzType="text"
+            >
+                <span nz-icon nzType="bulb" nzTheme="outline"></span>
+                {{weatherTips}}
+            </button>
+        </nz-list-item>
         <nz-list-item>
-            <div [nzGutter]="[0, 8]" nz-row>
-                <div nz-col nzSpan="24" [style]="{display: weatherTips.length === 0 ? 'none' : 'block'}">
-                    <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
-                            [nzShape]="preferenceData.buttonShape"
-                            [style]="{color: getFontColor(minorColor), cursor: 'default'}" class="poemFont"
-                            nz-button nzType="text"
-                    >
-                        <span nz-icon nzType="bulb" nzTheme="outline"></span>
-                        {{weatherTips}}
-                    </button>
-                </div>
-                <div nz-col nzSpan="12">
-                    <button (mouseout)="btnMouseOut(minorColor, $event)"
-                            (mouseover)="btnMouseOver(majorColor, $event)"
-                            [nzShape]="preferenceData.buttonShape"
-                            [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                            class="poemFont"
-                            nz-button nzType="text"
-                    >
-                        <span nz-icon nzTheme="outline" nzType="environment"></span>
-                        {{"地理位置：" + location}}
-                    </button>
-                </div>
-                <div nz-col nzSpan="12">
-                    <button (mouseout)="btnMouseOut(minorColor, $event)"
-                            (mouseover)="btnMouseOver(majorColor, $event)"
-                            [nzShape]="preferenceData.buttonShape"
-                            [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                            class="poemFont" nz-button nzType="text"
-                    >
-                        <span class="bi bi-wind"></span>
-                        {{"&nbsp;&nbsp;风速情况：" + this.windInfo}}
-                    </button>
-                </div>
-                <div nz-col nzSpan="12">
-                    <button (mouseout)="btnMouseOut(minorColor, $event)"
-                            (mouseover)="btnMouseOver(majorColor, $event)"
-                            [nzShape]="preferenceData.buttonShape"
-                            [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                            class="poemFont" nz-button nzType="text"
-                    >
-                        <span class="bi bi-moisture"></span>
-                        {{"&nbsp;&nbsp;空气湿度：" + humidity + "%"}}
-                    </button>
-                </div>
-                <div nz-col nzSpan="12">
-                    <button (mouseout)="btnMouseOut(minorColor, $event)"
-                            (mouseover)="btnMouseOver(majorColor, $event)"
-                            [nzShape]="preferenceData.buttonShape"
-                            [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                            class="poemFont" nz-button nzType="text"
-                    >
-                        <span class="bi bi-water"></span>
-                        {{"&nbsp;&nbsp;空气质量：" + pm25}}
-                    </button>
-                </div>
-                <div nz-col nzSpan="12">
-                    <button (mouseout)="btnMouseOut(minorColor, $event)"
-                            (mouseover)="btnMouseOver(majorColor, $event)"
-                            [nzShape]="preferenceData.buttonShape"
-                            [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                            class="poemFont" nz-button nzType="text"
-                    >
-                        <span class="bi bi-cloud-rain"></span>
-                        {{"&nbsp;&nbsp;降雨概率：" + rainfall}}
-                    </button>
-                </div>
-                <div nz-col nzSpan="12">
-                    <button (mouseout)="btnMouseOut(minorColor, $event)"
-                            (mouseover)="btnMouseOver(majorColor, $event)"
-                            [nzShape]="preferenceData.buttonShape"
-                            [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                            class="poemFont" nz-button nzType="text"
-                    >
-                        <span class="bi bi-eye"></span>
-                        {{"&nbsp;&nbsp;视线距离：" + visibility}}
-                    </button>
-                </div>
-                <div nz-col nzSpan="24">
-                    <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
-                            [nzShape]="preferenceData.buttonShape"
-                            [style]="{color: getFontColor(minorColor), cursor: 'default'}" class="poemFont"
-                            nz-button nzType="text"
-                    >
-                        <span nz-icon nzTheme="outline" nzType="clock-circle"></span>
-                        {{"上次更新：" + lastRequestTime}}
-                    </button>
-                </div>
+            <div nz-col nzSpan="12">
+                <button (mouseout)="btnMouseOut(minorColor, $event)"
+                        (mouseover)="btnMouseOver(majorColor, $event)"
+                        [nzShape]="preferenceData.buttonShape"
+                        [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+                        class="poemFont"
+                        nz-button nzType="text"
+                >
+                    <span nz-icon nzTheme="outline" nzType="environment"></span>
+                    {{"地理位置：" + location}}
+                </button>
             </div>
+            <div nz-col nzSpan="12">
+                <button (mouseout)="btnMouseOut(minorColor, $event)"
+                        (mouseover)="btnMouseOver(majorColor, $event)"
+                        [nzShape]="preferenceData.buttonShape"
+                        [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+                        class="poemFont" nz-button nzType="text"
+                >
+                    <span class="bi bi-wind"></span>
+                    {{"&nbsp;&nbsp;风速情况：" + this.windInfo}}
+                </button>
+            </div>
+        </nz-list-item>
+        <nz-list-item>
+            <div nz-col nzSpan="12">
+                <button (mouseout)="btnMouseOut(minorColor, $event)"
+                        (mouseover)="btnMouseOver(majorColor, $event)"
+                        [nzShape]="preferenceData.buttonShape"
+                        [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+                        class="poemFont" nz-button nzType="text"
+                >
+                    <span class="bi bi-moisture"></span>
+                    {{"&nbsp;&nbsp;空气湿度：" + humidity + "%"}}
+                </button>
+            </div>
+            <div nz-col nzSpan="12">
+                <button (mouseout)="btnMouseOut(minorColor, $event)"
+                        (mouseover)="btnMouseOver(majorColor, $event)"
+                        [nzShape]="preferenceData.buttonShape"
+                        [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+                        class="poemFont" nz-button nzType="text"
+                >
+                    <span class="bi bi-water"></span>
+                    {{"&nbsp;&nbsp;空气质量：" + pm25}}
+                </button>
+            </div>
+        </nz-list-item>
+        <nz-list-item>
+            <div nz-col nzSpan="12">
+                <button (mouseout)="btnMouseOut(minorColor, $event)"
+                        (mouseover)="btnMouseOver(majorColor, $event)"
+                        [nzShape]="preferenceData.buttonShape"
+                        [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+                        class="poemFont" nz-button nzType="text"
+                >
+                    <span class="bi bi-cloud-rain"></span>
+                    {{"&nbsp;&nbsp;降雨概率：" + rainfall}}
+                </button>
+            </div>
+            <div nz-col nzSpan="12">
+                <button (mouseout)="btnMouseOut(minorColor, $event)"
+                        (mouseover)="btnMouseOver(majorColor, $event)"
+                        [nzShape]="preferenceData.buttonShape"
+                        [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+                        class="poemFont" nz-button nzType="text"
+                >
+                    <span class="bi bi-eye"></span>
+                    {{"&nbsp;&nbsp;视线距离：" + visibility}}
+                </button>
+            </div>
+        </nz-list-item>
+        <nz-list-item>
+            <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
+                    [nzShape]="preferenceData.buttonShape"
+                    [style]="{color: getFontColor(minorColor), cursor: 'default'}" class="poemFont"
+                    nz-button nzType="text"
+            >
+                <span nz-icon nzTheme="outline" nzType="clock-circle"></span>
+                {{"上次更新：" + lastRequestTime}}
+            </button>
         </nz-list-item>
     </nz-list>
 </ng-template>
