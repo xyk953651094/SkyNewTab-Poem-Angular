@@ -107,18 +107,13 @@
                     <nz-option nzValue="古镇雨滴" nzLabel="古镇雨滴"></nz-option>
                     <nz-option nzValue="松树林小雪" nzLabel="松树林小雪"></nz-option>
                 </nz-select>
-<!--                <nz-radio-group *nzSpaceItem (ngModelChange)="focusSoundSelectOnChange($event)" [(ngModel)]="focusSound">-->
-<!--                    <nz-space nzAlign="center">-->
-<!--                        <label nz-radio *nzSpaceItem nzValue="古镇雨滴">古镇雨滴</label>-->
-<!--                        <label nz-radio *nzSpaceItem nzValue="松树林小雪">松树林小雪</label>-->
-<!--                    </nz-space>-->
-<!--                </nz-radio-group>-->
+                <nz-avatar *nzSpaceItem nzSize="large" [nzSrc]="focusSoundIconUrl"></nz-avatar>
                 <button *nzSpaceItem (click)="playBtnOnClick()"
                         (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
                         class="poemFont" [style]="{color: getFontColor(minorColor)}"
                         nz-button nzType="text" [nzShape]="this.preferenceData.buttonShape"
                 >
-                    <span nz-icon [nzType]="focusAudioPaused ? 'play-circle' : 'pause-circle'" nzTheme="outline"></span>
+                    <span nz-icon [nzType]="focusAudioPaused ? 'caret-right' : 'pause'" nzTheme="outline"></span>
                     {{focusAudioPaused ? "播放" : "暂停"}}
                 </button>
             </nz-space>

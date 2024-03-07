@@ -15,6 +15,14 @@
         <span nz-icon nzTheme="outline" nzType="gitlab"></span>
         {{"产品主页"}}
     </button>
+    <button (click)="weChatBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+            (mouseover)="btnMouseOver(majorColor, $event)"
+            *nzSpaceItem [nzShape]="preferenceData.buttonShape"
+            [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
+    >
+        <span nz-icon nzType="wechat" nzTheme="outline"></span>
+        {{"公众号"}}
+    </button>
     <button (click)="blogBtnOnClick()" (mouseout)="btnMouseOut(majorColor, $event)"
             (mouseover)="btnMouseOver(minorColor, $event)"
             *nzSpaceItem [nzShape]="preferenceData.buttonShape"

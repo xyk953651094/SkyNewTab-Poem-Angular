@@ -35,6 +35,7 @@ export class FocusComponent implements OnInit, OnChanges {
     inputValue: string = "";
     filterList: any[] = [];
     focusSound: string = "古镇雨滴";
+    focusSoundIconUrl: string = "https://www.soundvery.com/KUpload/image/20240111/20240111145630_9331.png";
     focusAudioPaused: boolean = true;
     focusMaxSize: number = 10;
     browserType = getBrowserType();
@@ -113,6 +114,19 @@ export class FocusComponent implements OnInit, OnChanges {
     }
 
     focusSoundSelectOnChange(value: string) {
+        switch (value) {
+            case "古镇雨滴": {
+                this.focusSoundIconUrl = "https://www.soundvery.com/KUpload/image/20240111/20240111145630_9331.png";
+                break;
+            }
+            case "松树林小雪": {
+                this.focusSoundIconUrl = "https://www.soundvery.com/KUpload/image/20240125/20240125190604_0946.png";
+                break;
+            }
+            default: {
+                this.focusSoundIconUrl = "https://www.soundvery.com/KUpload/image/20240111/20240111145630_9331.png";
+            }
+        }
         this.focusSound = value;
         this.focusAudioPaused = false;
         this.playFocusSound(value);

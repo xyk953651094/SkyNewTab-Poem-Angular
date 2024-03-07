@@ -160,7 +160,7 @@
     </div>
 </ng-template>
 <ng-template #popoverContent>
-    <nz-list>
+    <nz-list [nzSplit]="false">
         <nz-list-item>
             <nz-input-group [nzPrefix]="inputPrefix" [nzSuffix]="inputSuffix"
                             [style.border-radius]="preferenceData.buttonShape === 'round' ? '20px' : ''"
@@ -169,19 +169,21 @@
                        placeholder="按下 Enter 键搜索"/>
             </nz-input-group>
         </nz-list-item>
+        <nz-list-item>
+            <nz-space>
+                <ng-template nzSpaceItem *ngFor="let item of linkList">
+                    <button (click)="linkBtnOnClick(item)"
+                            [nzShape]="preferenceData.buttonShape"
+                            [style]="{color: getFontColor(majorColor), backgroundColor: majorColor}"
+                            class="poemFont"
+                            nz-button nzType="text"
+                    >
+                        {{item.linkName}}
+                    </button>
+                </ng-template>
+            </nz-space>
+        </nz-list-item>
     </nz-list>
-    <nz-space>
-        <ng-template nzSpaceItem *ngFor="let item of linkList">
-            <button (click)="linkBtnOnClick(item)"
-                    [nzShape]="preferenceData.buttonShape"
-                    [style]="{color: getFontColor(majorColor), backgroundColor: majorColor}"
-                    class="poemFont"
-                    nz-button nzType="text"
-            >
-                {{item.linkName}}
-            </button>
-        </ng-template>
-    </nz-space>
 </ng-template>
 
 <ng-template #inputPrefix>
