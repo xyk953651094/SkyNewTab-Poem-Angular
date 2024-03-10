@@ -30,9 +30,11 @@
                 <nz-form-control>
                     <nz-select (ngModelChange)="selectOnChange($event)" [nzDropdownStyle]="{fontFamily: 'Times New Roman, cursive, sans-serif'}"
                                [nzOptions]="[
-                               {value: 'work', label: '工作'},
-                                {value: 'study', label: '学习'},
-                                {value: 'life', label: '生活'}
+                                   {value: 'work', label: '工作'},
+                                   {value: 'study', label: '学习'},
+                                   {value: 'life', label: '生活'},
+                                   {value: 'rest', label: '休闲'},
+                                   {value: 'other', label: '其它'},
                                ]"
                                class="poemFont" name="todoSelect"
                                ngModel="work"

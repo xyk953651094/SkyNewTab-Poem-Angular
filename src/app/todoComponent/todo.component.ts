@@ -42,6 +42,10 @@ export class TodoComponent implements OnInit, OnChanges {
             this.todoList.splice(index, 1);
         }
 
+        this.todoList.sort((a: any, b: any) => {
+            return b.priority.length - a.priority.length;
+        });
+
         localStorage.setItem("todos", JSON.stringify(this.todoList));
     }
 
@@ -63,6 +67,10 @@ export class TodoComponent implements OnInit, OnChanges {
                 "tag": this.tag,
                 "priority": this.priority,
                 "timeStamp": Date.now()
+            });
+
+            this.todoList.sort((a: any, b: any) => {
+                return b.priority.length - a.priority.length;
             });
 
             this.displayModal = false;
@@ -90,6 +98,12 @@ export class TodoComponent implements OnInit, OnChanges {
                 break;
             case "life":
                 tempTag = "生活";
+                break;
+            case "rest":
+                tempTag = "休闲";
+                break;
+            case "other":
+                tempTag = "其它";
                 break;
             default:
                 tempTag = "工作";

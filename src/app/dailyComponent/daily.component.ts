@@ -43,6 +43,10 @@ export class DailyComponent implements OnInit, OnChanges {
             this.dailyList.splice(index, 1);
         }
 
+        this.dailyList.sort((a: any, b: any) => {
+            return a.selectedTimeStamp - b.selectedTimeStamp;
+        });
+
         localStorage.setItem("daily", JSON.stringify(this.dailyList));
     }
 
@@ -70,6 +74,10 @@ export class DailyComponent implements OnInit, OnChanges {
                 "title": this.inputValue,
                 "selectedTimeStamp": this.selectedTimeStamp,
                 "timeStamp": Date.now()
+            });
+
+            this.dailyList.sort((a: any, b: any) => {
+                return a.selectedTimeStamp - b.selectedTimeStamp;
             });
 
             this.displayModal = false;
