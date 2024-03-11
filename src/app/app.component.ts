@@ -151,7 +151,7 @@ export class AppComponent implements OnInit {
                     "font-family": "Times New Roman, cursive, sans-serif"
                 });
                 $(".ant-select-item").css("font-family", "'Times New Roman', cursive, sans-serif");
-                $(".ant-drawer-footer").css("background-color", this.minorColor);
+                $(".ant-drawer-footer").css({"background-color": this.minorColor, "border-top": "1px solid " + getFontColor(this.minorColor)});
 
                 // menuPreferenceComponent
                 resetRadioColor(this.preferenceData.searchEngine, ["bing", "google"], this.majorColor);
