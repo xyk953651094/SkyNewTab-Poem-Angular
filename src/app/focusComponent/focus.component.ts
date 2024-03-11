@@ -58,6 +58,12 @@ export class FocusComponent implements OnInit, OnChanges {
         localStorage.setItem("focusMode", JSON.stringify(checked));
         this.setExtensionStorage("focusMode", checked);
         resetSwitchColor("#focusModeSwitch", checked, this.majorColor);
+
+        // 关闭时停止播放白噪音
+        if (!checked && !focusAudio.paused) {
+            this.focusAudioPaused = true;
+            focusAudio.pause();
+        }
     }
 
     removeAllBtnOnClick() {
