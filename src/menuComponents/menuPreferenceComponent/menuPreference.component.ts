@@ -245,4 +245,6 @@ export class menuPreferenceComponent implements OnInit {
             this.lastPoemRequestTime = getTimeDetails(new Date(parseInt(lastPoemRequestTimeStorage))).showDetail;
         }
     }
+
+    protected readonly device = device;
 }

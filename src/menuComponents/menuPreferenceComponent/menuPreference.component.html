@@ -4,7 +4,7 @@
          nzTitle="功能设置"
 >
     <form [nzNoColon]="true" nz-form>
-        <nz-form-item>
+        <nz-form-item [style.display]="['iPhone', 'Android'].indexOf(device) === -1 ? 'flex' : 'none'">
             <nz-form-label>搜索引擎</nz-form-label>
             <nz-form-control>
                 <nz-radio-group (ngModelChange)="searchEngineRadioOnChange($event)" [nzDisabled]="formDisabled"
@@ -80,7 +80,7 @@
                 />
             </nz-form-control>
         </nz-form-item>
-        <nz-form-item>
+        <nz-form-item [style.display]="['iPhone', 'Android'].indexOf(device) === -1 ? 'flex' : 'none'">
             <nz-form-label>极简模式</nz-form-label>
             <nz-form-control>
                 <nz-switch (ngModelChange)="simpleModeSwitchOnChange($event)" [nzDisabled]="formDisabled"
@@ -89,7 +89,7 @@
                            nzUnCheckedChildren="已关闭"></nz-switch>
             </nz-form-control>
         </nz-form-item>
-        <nz-form-item>
+        <nz-form-item [style.display]="['iPhone', 'Android'].indexOf(device) === -1 ? 'flex' : 'none'">
             <nz-form-label>数据管理</nz-form-label>
             <nz-form-control>
                 <nz-space>
