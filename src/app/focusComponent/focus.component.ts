@@ -98,7 +98,7 @@ export class FocusComponent implements OnInit, OnChanges {
     }
 
     modalOkBtnOnClick() {
-        if (this.inputValue && this.inputValue.length > 0 && this.inputValue.length <= 20) {
+        if (this.inputValue && this.inputValue.length > 0 && this.inputValue.length <= 30) {
             this.filterList.push({
                 "domain": this.inputValue,
                 "timeStamp": Date.now()
@@ -108,8 +108,8 @@ export class FocusComponent implements OnInit, OnChanges {
 
             this.displayModal = false;
             this.message.success("添加成功");
-        } else if(this.inputValue && this.inputValue.length > 20) {
-            this.message.error("域名不能超过20个字");
+        } else if(this.inputValue && this.inputValue.length > 30) {
+            this.message.error("域名不能超过30个字");
         } else {
             this.message.error("域名不能为空");
         }

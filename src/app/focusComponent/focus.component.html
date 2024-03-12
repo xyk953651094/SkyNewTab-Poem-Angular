@@ -1,4 +1,4 @@
-<button [nzPopoverContent]="popoverContent" [nzPopoverOverlayStyle]="{width: '500px'}"
+<button [nzPopoverContent]="popoverContent" [nzPopoverOverlayStyle]="{width: '550px'}"
         [nzPopoverTitle]="popoverTitle"
         [nzShape]="preferenceData.buttonShape"
         [style]="{display: display, cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
@@ -13,15 +13,15 @@
           [nzBodyStyle]="{backgroundColor: minorColor}"
           [nzClosable]="false" [nzContent]="modalContent"
           [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
-          [nzTitle]="'添加域名 ' + filterList.length + ' / ' + focusMaxSize"
+          [nzTitle]="'添加黑名单 ' + filterList.length + ' / ' + focusMaxSize"
           nzCentered
 >
     <ng-template #modalContent>
         <form [nzNoColon]="true" nz-form>
             <nz-form-item>
                 <nz-form-label>网站域名</nz-form-label>
-                <nz-form-control nzErrorTip="表单不能为空" nzExtra="开启专注模式后，访问添加的域名时将自动跳转至本插件">
-                    <input class="poemFont" name="focusInput" nz-input placeholder="example.com" [(ngModel)]="inputValue"/>
+                <nz-form-control nzErrorTip="表单不能为空" nzExtra="开启专注模式后，访问黑名单的域名时将自动跳转至本插件">
+                    <input [maxLength]="30" class="poemFont" name="focusInput" nz-input placeholder="example.com，字数不能超过 30 个" [(ngModel)]="inputValue"/>
                 </nz-form-control>
             </nz-form-item>
         </form>
@@ -51,7 +51,7 @@
                         nz-button nzType="text"
                 >
                     <span nz-icon nzTheme="outline" nzType="plus"></span>
-                    {{"添加域名"}}
+                    {{"添加黑名单"}}
                 </button>
                 <button *nzSpaceItem (click)="removeAllBtnOnClick()"
                         (mouseout)="btnMouseOut(minorColor, $event)"
@@ -98,24 +98,41 @@
             </button>
         </nz-list-item>
         <nz-list-footer>
-            <nz-space nzAlign="center">
-                <span *nzSpaceItem [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
-                    {{focusAudioPaused ? "白噪音" : "播放中"}}
-                </span>
-                <nz-select *nzSpaceItem class="poemFont" [(ngModel)]="focusSound" (ngModelChange)="focusSoundSelectOnChange($event)"
-                           nzPlacement="topLeft" [style.width]="'120px'">
-                    <nz-option nzValue="古镇雨滴" nzLabel="古镇雨滴"></nz-option>
-                    <nz-option nzValue="松树林小雪" nzLabel="松树林小雪"></nz-option>
-                </nz-select>
-                <nz-avatar *nzSpaceItem nzSize="large" [nzSrc]="focusSoundIconUrl"></nz-avatar>
-                <button *nzSpaceItem (click)="playBtnOnClick()"
-                        (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
-                        class="poemFont" [style]="{color: getFontColor(minorColor)}"
-                        nz-button nzType="text" [nzShape]="this.preferenceData.buttonShape"
-                >
-                    <span nz-icon [nzType]="focusAudioPaused ? 'caret-right' : 'pause'" nzTheme="outline"></span>
-                    {{focusAudioPaused ? "播放" : "暂停"}}
-                </button>
+            <nz-space nzDirection="vertical">
+                <nz-space *nzSpaceItem nzAlign="center">
+                    <span *nzSpaceItem [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
+                        {{"专注时段"}}
+                    </span>
+                    <nz-select *nzSpaceItem class="poemFont" ngModel="manual" nzPlacement="topLeft" [style.width]="'120px'">
+                        <nz-option nzValue="manual" nzLabel="手动"></nz-option>
+                        <nz-option nzValue="90000" nzLabel="15 分钟"></nz-option>
+                        <nz-option nzValue="180000" nzLabel="30 分钟"></nz-option>
+                        <nz-option nzValue="270000" nzLabel="45 分钟"></nz-option>
+                        <nz-option nzValue="360000" nzLabel="60 分钟"></nz-option>
+                    </nz-select>
+                    <span *nzSpaceItem [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
+                        {{"剩余时间：29 : 36"}}
+                    </span>
+                </nz-space>
+                <nz-space *nzSpaceItem nzAlign="center">
+                    <span *nzSpaceItem [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
+                        {{"专注噪音"}}
+                    </span>
+                    <nz-select *nzSpaceItem class="poemFont" [(ngModel)]="focusSound" (ngModelChange)="focusSoundSelectOnChange($event)"
+                               nzPlacement="topLeft" [style.width]="'120px'">
+                        <nz-option nzValue="古镇雨滴" nzLabel="古镇雨滴"></nz-option>
+                        <nz-option nzValue="松树林小雪" nzLabel="松树林小雪"></nz-option>
+                    </nz-select>
+                    <nz-avatar *nzSpaceItem nzSize="large" [nzSrc]="focusSoundIconUrl"></nz-avatar>
+                    <button *nzSpaceItem (click)="playBtnOnClick()"
+                            (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
+                            class="poemFont" [style]="{color: getFontColor(minorColor)}"
+                            nz-button nzType="text" [nzShape]="this.preferenceData.buttonShape"
+                    >
+                        <span nz-icon [nzType]="focusAudioPaused ? 'caret-right' : 'pause'" nzTheme="outline"></span>
+                        {{focusAudioPaused ? "播放" : "暂停"}}
+                    </button>
+                </nz-space>
             </nz-space>
         </nz-list-footer>
     </nz-list>
