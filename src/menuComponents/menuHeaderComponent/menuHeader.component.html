@@ -15,11 +15,10 @@
             </button>
             <button (click)="blogBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                     (mouseover)="btnMouseOver(majorColor, $event)"
-                    *nzSpaceItem [nzShape]="preferenceData.buttonShape"
+                    *nzSpaceItem [nzShape]="preferenceData.buttonShape === 'round' ? 'circle' : preferenceData.buttonShape"
                     [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
             >
-                <span nz-icon nzTheme="outline" nzType="notification"></span>
-                {{"博客"}}
+                <span class="bi bi-rss-fill"></span>
             </button>
             <button (click)="supportBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                     (mouseover)="btnMouseOver(majorColor, $event)"
