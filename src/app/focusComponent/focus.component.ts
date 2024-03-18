@@ -10,14 +10,8 @@ import {
     resetSwitchColor
 } from "../../typescripts/publicFunctions";
 import {NzMessageService} from "ng-zorro-antd/message";
-import focusSoundOne from "../../assets/focusSounds/古镇雨滴.mp3";
-import focusSoundTwo from "../../assets/focusSounds/松树林小雪.mp3";
 
 const focusAudio = new Audio();
-const focusSoundsDictionary = {
-    "focusSoundOne": focusSoundOne,
-    "focusSoundTwo": focusSoundTwo,
-}
 
 @Component({
     selector: "focus-component",
@@ -139,31 +133,27 @@ export class FocusComponent implements OnInit, OnChanges {
     }
 
     playBtnOnClick() {
-        if (this.browserType !== "Safari") {
-            if (focusAudio.paused) {
-                this.focusAudioPaused = false;
-                this.playFocusSound(this.focusSound);
-            } else {
-                this.focusAudioPaused = true;
-                focusAudio.pause();
-            }
+        if (focusAudio.paused) {
+            this.focusAudioPaused = false;
+            this.playFocusSound(this.focusSound);
         } else {
-            this.message.error("Safari 暂不支持播放白噪音");
+            this.focusAudioPaused = true;
+            focusAudio.pause();
         }
     }
 
     playFocusSound(focusSound: string) {
         switch (focusSound) {
             case "古镇雨滴": {
-                focusAudio.src = focusSoundsDictionary.focusSoundOne;
+                focusAudio.src = "https://www.soundvery.com/KUpload/file/20240111/20240111145637_8657.mp3";
                 break;
             }
             case "松树林小雪": {
-                focusAudio.src = focusSoundsDictionary.focusSoundTwo;
+                focusAudio.src = "https://www.soundvery.com/KUpload/file/20240125/20240125190612_0979.mp3";
                 break;
             }
             default: {
-                focusAudio.src = focusSoundsDictionary.focusSoundOne;
+                focusAudio.src = "https://www.soundvery.com/KUpload/file/20240111/20240111145637_8657.mp3";
             }
         }
         focusAudio.loop = true;
