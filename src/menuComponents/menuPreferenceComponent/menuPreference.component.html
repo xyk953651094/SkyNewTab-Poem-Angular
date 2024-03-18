@@ -4,7 +4,7 @@
          nzTitle="功能设置"
 >
     <form [nzNoColon]="true" nz-form>
-        <nz-form-item>
+        <nz-form-item [style.display]="['iPhone', 'Android'].indexOf(device) === -1 ? 'flex' : 'none'">
             <nz-form-label>搜索引擎</nz-form-label>
             <nz-form-control>
                 <nz-radio-group (ngModelChange)="searchEngineRadioOnChange($event)" [nzDisabled]="formDisabled"
@@ -80,13 +80,44 @@
                 />
             </nz-form-control>
         </nz-form-item>
-        <nz-form-item>
+        <nz-form-item [style.display]="['iPhone', 'Android'].indexOf(device) === -1 ? 'flex' : 'none'">
             <nz-form-label>极简模式</nz-form-label>
             <nz-form-control>
                 <nz-switch (ngModelChange)="simpleModeSwitchOnChange($event)" [nzDisabled]="formDisabled"
                            [ngModel]="preferenceData.simpleMode" id="simpleModeSwitch"
                            class="poemFont" name="simpleMode" nzCheckedChildren="已开启"
                            nzUnCheckedChildren="已关闭"></nz-switch>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item [style.display]="['iPhone', 'Android'].indexOf(device) === -1 ? 'flex' : 'none'">
+            <nz-form-label>数据管理</nz-form-label>
+            <nz-form-control>
+                <nz-space>
+                    <nz-upload
+                        *nzSpaceItem
+                        nzAccept="application/json"
+                        [nzLimit]="1"
+                        [nzBeforeUpload]="importDataBtnOnClick"
+                        [nzShowUploadList]="false"
+                    >
+                        <button (mouseout)="btnMouseOut(minorColor, $event)"
+                                (mouseover)="btnMouseOver(majorColor, $event)"
+                                [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
+                                class="poemFont" nz-button nzType="text"
+                        >
+                            <span nz-icon nzType="import" nzTheme="outline"></span>
+                            {{"导入数据"}}
+                        </button>
+                    </nz-upload>
+                    <button (click)="exportDataBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                            (mouseover)="btnMouseOver(majorColor, $event)" *nzSpaceItem
+                            [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
+                            class="poemFont" nz-button nzType="text"
+                    >
+                        <span nz-icon nzType="export" nzTheme="outline"></span>
+                        {{"导出数据"}}
+                    </button>
+                </nz-space>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>

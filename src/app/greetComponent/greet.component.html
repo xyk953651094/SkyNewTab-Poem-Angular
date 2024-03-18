@@ -62,39 +62,39 @@
     </div>
 </ng-template>
 <ng-template #popoverContent>
-    <nz-list>
+    <nz-list [nzSplit]="false">
         <nz-list-item>
-            <nz-space nzAlign="start" nzDirection="vertical">
-                <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)" *nzSpaceItem
-                        [nzShape]="preferenceData.buttonShape"
-                        [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                        class="poemFont"
-                        nz-button nzType="text"
-                >
-                    <span nz-icon nzTheme="outline" nzType="calendar"></span>
-                    {{calendar}}
-                </button>
-                <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
-                        *nzSpaceItem
-                        [nzShape]="preferenceData.buttonShape"
-                        [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                        class="poemFont"
-                        nz-button nzType="text"
-                >
-                    <span nz-icon nzTheme="outline" nzType="check-circle"></span>
-                    {{"宜：" + (suit.length < btnMaxSize) ? suit : suit.substring(0, btnMaxSize) + "..."}}
-                </button>
-                <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
-                        *nzSpaceItem
-                        [nzShape]="preferenceData.buttonShape"
-                        [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                        class="poemFont"
-                        nz-button nzType="text"
-                >
-                    <span nz-icon nzTheme="outline" nzType="close-circle"></span>
-                    {{"忌：" + (avoid.length < btnMaxSize) ? avoid : avoid.substring(0, btnMaxSize) + "..."}}
-                </button>
-            </nz-space>
+            <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
+                    [nzShape]="preferenceData.buttonShape"
+                    [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+                    class="poemFont"
+                    nz-button nzType="text"
+            >
+                <span nz-icon nzTheme="outline" nzType="calendar"></span>
+                {{calendar}}
+            </button>
+        </nz-list-item>
+        <nz-list-item>
+            <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
+                    [nzShape]="preferenceData.buttonShape"
+                    [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+                    class="poemFont"
+                    nz-button nzType="text"
+            >
+                <span nz-icon nzTheme="outline" nzType="check-circle"></span>
+                {{"宜：" + (suit.length < btnMaxSize) ? suit : suit.substring(0, btnMaxSize) + "..."}}
+            </button>
+        </nz-list-item>
+        <nz-list-item>
+            <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
+                    [nzShape]="preferenceData.buttonShape"
+                    [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+                    class="poemFont"
+                    nz-button nzType="text"
+            >
+                <span nz-icon nzTheme="outline" nzType="close-circle"></span>
+                {{"忌：" + (avoid.length < btnMaxSize) ? avoid : avoid.substring(0, btnMaxSize) + "..."}}
+            </button>
         </nz-list-item>
     </nz-list>
 </ng-template>

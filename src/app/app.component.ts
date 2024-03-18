@@ -46,8 +46,7 @@ export class AppComponent implements OnInit {
         let bodyEle = $("body");
         bodyEle.bind("DOMNodeInserted", () => {
             // 通用
-            $(".ant-list-item").css("padding", "6px 0");
-            $(".ant-list-item:not(:last-child)").css("border-bottom", "1px solid " + getFontColor(this.minorColor));
+            $(".ant-list-item").css({"borderBlockEndColor": getFontColor(this.minorColor), "padding": "6px 0"});
             $(".ant-list-item-action").css("marginInlineStart", "0");
             $(".ant-empty-description").css({
                 "color": getFontColor(this.minorColor),
@@ -152,7 +151,7 @@ export class AppComponent implements OnInit {
                     "font-family": "Times New Roman, cursive, sans-serif"
                 });
                 $(".ant-select-item").css("font-family", "'Times New Roman', cursive, sans-serif");
-                $(".ant-drawer-footer").css("background-color", this.minorColor);
+                $(".ant-drawer-footer").css({"background-color": this.minorColor, "border-top": "1px solid " + getFontColor(this.minorColor)});
 
                 // menuPreferenceComponent
                 resetRadioColor(this.preferenceData.searchEngine, ["bing", "google"], this.majorColor);
