@@ -98,24 +98,56 @@
             </button>
         </nz-list-item>
         <nz-list-footer>
-            <nz-space nzAlign="center">
-                <span *nzSpaceItem [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
-                    {{"白噪音"}}
-                </span>
-                <nz-select *nzSpaceItem class="poemFont" [(ngModel)]="focusSound" (ngModelChange)="focusSoundSelectOnChange($event)"
-                           nzPlacement="topLeft" [style.width]="'120px'">
-                    <nz-option nzValue="古镇雨滴" nzLabel="古镇雨滴"></nz-option>
-                    <nz-option nzValue="松树林小雪" nzLabel="松树林小雪"></nz-option>
-                </nz-select>
-                <nz-avatar *nzSpaceItem nzSize="large" [nzSrc]="focusSoundIconUrl"></nz-avatar>
-                <button *nzSpaceItem (click)="playBtnOnClick()"
-                        (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
-                        class="poemFont" [style]="{color: getFontColor(minorColor)}"
-                        nz-button nzType="text" [nzShape]="this.preferenceData.buttonShape"
-                >
-                    <span nz-icon [nzType]="focusAudioPaused ? 'caret-right' : 'pause'" nzTheme="outline"></span>
-                    {{focusAudioPaused ? "播放" : "暂停"}}
-                </button>
+            <nz-space nzDirection="vertical">
+                <nz-space *nzSpaceItem nzAlign="center">
+                    <button *nzSpaceItem
+                            (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
+                            class="poemFont" [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+                            nz-button nzType="text" [nzShape]="this.preferenceData.buttonShape"
+                    >
+                        <span class="bi bi-hourglass-split"></span>
+                        {{"专注时段"}}
+                    </button>
+                    <nz-select *nzSpaceItem class="poemFont" ngModel="manual"
+                               nzPlacement="topLeft" [style.width]="'120px'">
+                        <nz-option nzValue="manual" nzLabel="手动结束"></nz-option>
+                        <nz-option nzValue="900000" nzLabel="15 分钟后"></nz-option>
+                        <nz-option nzValue="1800000" nzLabel="30 分钟后"></nz-option>
+                        <nz-option nzValue="2700000" nzLabel="45 分钟后"></nz-option>
+                        <nz-option nzValue="3600000" nzLabel="60 分钟后"></nz-option>
+                    </nz-select>
+                    <button *nzSpaceItem
+                            (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
+                            class="poemFont" [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+                            nz-button nzType="text" [nzShape]="this.preferenceData.buttonShape"
+                    >
+                        {{"结束时间：手动结束"}}
+                    </button>
+                </nz-space>
+                <nz-space *nzSpaceItem nzAlign="center">
+                    <button *nzSpaceItem
+                            (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
+                            class="poemFont" [style]="{color: getFontColor(minorColor), cursor: 'default'}"
+                            nz-button nzType="text" [nzShape]="this.preferenceData.buttonShape"
+                    >
+                        <span class="bi bi-music-note-beamed"></span>
+                        {{"专注噪音"}}
+                    </button>
+                    <nz-select *nzSpaceItem class="poemFont" [(ngModel)]="focusSound" (ngModelChange)="focusSoundSelectOnChange($event)"
+                               nzPlacement="topLeft" [style.width]="'120px'">
+                        <nz-option nzValue="古镇雨滴" nzLabel="古镇雨滴"></nz-option>
+                        <nz-option nzValue="松树林小雪" nzLabel="松树林小雪"></nz-option>
+                    </nz-select>
+                    <nz-avatar *nzSpaceItem nzSize="large" [nzSrc]="focusSoundIconUrl"></nz-avatar>
+                    <button *nzSpaceItem (click)="playBtnOnClick()"
+                            (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
+                            class="poemFont" [style]="{color: getFontColor(minorColor)}"
+                            nz-button nzType="text" [nzShape]="this.preferenceData.buttonShape"
+                    >
+                        <span nz-icon [nzType]="focusAudioPaused ? 'caret-right' : 'pause'" nzTheme="outline"></span>
+                        {{focusAudioPaused ? "播放" : "暂停"}}
+                    </button>
+                </nz-space>
             </nz-space>
         </nz-list-footer>
     </nz-list>

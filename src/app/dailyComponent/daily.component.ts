@@ -1,6 +1,7 @@
+import { differenceInCalendarDays, setHours } from 'date-fns';
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {NzMessageService} from 'ng-zorro-antd/message';
-import {btnMouseOut, btnMouseOver, getFontColor, getTimeDetails} from "../../typescripts/publicFunctions";
+import {btnMouseOut, btnMouseOver, getFontColor, getTimeDetails, isEmpty} from "../../typescripts/publicFunctions";
 
 @Component({
     selector: "daily-component",
@@ -19,6 +20,11 @@ export class DailyComponent implements OnInit, OnChanges {
     inputValue: string = "";
     datePickerValue: Date = new Date();
     selectedTimeStamp: number = 0;
+    dailySelectDisabled = false;
+    loop = "";
+
+    disabledDate = (current: Date): boolean => differenceInCalendarDays(current, new Date()) <= 0;
+
     protected readonly getFontColor = getFontColor;
     protected readonly getTimeDetails = getTimeDetails;
     protected readonly btnMouseOut = btnMouseOut;
@@ -73,6 +79,7 @@ export class DailyComponent implements OnInit, OnChanges {
             this.dailyList.push({
                 "title": this.inputValue,
                 "selectedTimeStamp": this.selectedTimeStamp,
+                "loop": this.loop,
                 "timeStamp": Date.now()
             });
 
@@ -92,6 +99,40 @@ export class DailyComponent implements OnInit, OnChanges {
 
     modalCancelBtnOnClick() {
         this.displayModal = false
+    }
+
+    datePickerOnOpenChange(status: boolean) {
+        // 关闭时
+        if (!status) {
+            if ([29, 30, 31].indexOf(new Date(this.datePickerValue).getDate()) !== -1) {
+                this.dailySelectDisabled = true;
+                this.loop = "";
+            } else {
+                this.dailySelectDisabled = false;
+            }
+        }
+    }
+
+    selectOnChange(value: string) {
+        let tempLoop;
+        switch (value) {
+            case "noLoop":
+                tempLoop = "";
+                break;
+            case "everyWeek":
+                tempLoop = "每周";
+                break;
+            case "everyMonth":
+                tempLoop = "每月";
+                break;
+            case "everyYear":
+                tempLoop = "每年";
+                break;
+            default:
+                tempLoop = "";
+                break;
+        }
+        this.loop = tempLoop;
     }
 
     getDailyDescription(selectedTimeStamp: number) {
@@ -120,9 +161,64 @@ export class DailyComponent implements OnInit, OnChanges {
     ngOnInit(): void {
         this.display = this.preferenceData.simpleMode ? "none" : "block"
 
+        let tempDailyList = [];
         let dailyListStorage = localStorage.getItem("daily");
         if (dailyListStorage) {
-            this.dailyList = JSON.parse(dailyListStorage);
+            tempDailyList = JSON.parse(dailyListStorage);
+
+            // 更新循环倒数日
+            let tempDailyListModified = false;
+            tempDailyList.map((value: any) => {
+                let tempValue = value;
+                if (!isEmpty(value.loop)) {
+                    let todayTimeStamp = new Date(getTimeDetails(new Date()).showDate5).getTime();
+                    if (value.selectedTimeStamp < todayTimeStamp) {
+                        tempDailyListModified = true;
+                        switch (value.loop) {
+                            case "每周":
+                                value.selectedTimeStamp += 604800000;
+                                break;
+                            case "每月": {
+                                let loopYear = new Date(value.selectedTimeStamp).getFullYear();
+                                let loopMonth = new Date(value.selectedTimeStamp).getMonth() + 1;
+                                let loopDate = new Date(value.selectedTimeStamp).getDate();
+
+                                let nextLoopYear = loopYear;
+                                let nextLoopMonth = loopMonth + 1;
+                                if (loopMonth === 12) {
+                                    nextLoopYear += 1;
+                                    nextLoopMonth = 1;
+                                }
+
+                                let nextLoopString = nextLoopYear + "-" + nextLoopMonth + "-" + loopDate;
+                                value.selectedTimeStamp = new Date(nextLoopString).getTime();
+                                break;
+                            }
+                            case "每年": {
+                                let nextLoopYear = new Date(value.selectedTimeStamp).getFullYear() + 1;
+                                let loopMonth = new Date(value.selectedTimeStamp).getMonth() + 1;
+                                let loopDate = new Date(value.selectedTimeStamp).getDate();
+
+                                let nextLoopString = nextLoopYear + "-" + loopMonth + "-" + loopDate;
+                                value.selectedTimeStamp = new Date(nextLoopString).getTime();
+                                break;
+                            }
+                        }
+                    }
+                }
+                return tempValue;
+            });
+
+            if (tempDailyListModified) {
+                tempDailyList.sort((a: any, b: any) => {
+                    return a.selectedTimeStamp - b.selectedTimeStamp;
+                });
+                localStorage.setItem("daily", JSON.stringify(tempDailyList));
+            }
         }
+
+        this.dailyList = tempDailyList;
     }
+
+    protected readonly isEmpty = isEmpty;
 }
