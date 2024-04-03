@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
         let bodyEle = $("body");
         bodyEle.bind("DOMNodeInserted", () => {
             // 通用
-            $(".ant-list-item").css({"borderBlockEndColor": getFontColor(this.minorColor), "padding": "6px 0"});
+            $(".ant-list-header, .ant-list-item").css({"borderBlockEndColor": getFontColor(this.minorColor), "padding": "6px 0"});
             $(".ant-list-item-action").css("marginInlineStart", "0");
             $(".ant-empty-description").css({
                 "color": getFontColor(this.minorColor),
