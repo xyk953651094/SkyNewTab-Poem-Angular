@@ -50,11 +50,11 @@ export class FocusComponent implements OnInit, OnChanges {
     }
 
     focusModeSwitchOnChange(checked: boolean) {
-        let tempFocusEndTime: string = "未开启专注模式";
-        let tempFocusEndTimeStamp: number = -1;
+        let tempFocusEndTime: string;
+        let tempFocusEndTimeStamp: number;
         if (checked) {
             if (this.focusPeriod === "manual") {
-                tempFocusEndTime = "手动关闭";
+                tempFocusEndTime = "手动结束";
                 tempFocusEndTimeStamp = 0;
             } else {
                 tempFocusEndTimeStamp = Date.now() + Number(this.focusPeriod);
@@ -72,6 +72,8 @@ export class FocusComponent implements OnInit, OnChanges {
         localStorage.setItem("focusEndTimeStamp", JSON.stringify(tempFocusEndTimeStamp));
         this.setExtensionStorage("focusMode", checked);
         this.setExtensionStorage("focusEndTimeStamp", tempFocusEndTimeStamp);
+
+        this.autoStopFocus(tempFocusEndTimeStamp);
 
         resetSwitchColor("#focusModeSwitch", checked, this.majorColor);
 
@@ -186,6 +188,30 @@ export class FocusComponent implements OnInit, OnChanges {
         focusAudio.play();
     }
 
+    // 倒计时自动关闭专注模式
+    autoStopFocus(focusEndTimeStamp: number) {
+        if (this.focusMode && focusEndTimeStamp > 0 && Date.now() < focusEndTimeStamp) {
+            let interval = setInterval(() => {
+                if (Date.now() >= focusEndTimeStamp) {
+                    this.focusMode = false;
+                    this.focusPeriod = "manual";
+                    this.focusEndTime = "未开启专注模式";
+                    this.resetFocusModeStorage();
+                    this.message.info("已关闭专注模式");
+                    clearInterval(interval);
+                }
+            }, 1000);
+        }
+    }
+
+    resetFocusModeStorage() {
+        localStorage.setItem("focusMode", JSON.stringify(false));
+        localStorage.setItem("focusPeriod", JSON.stringify("manual"));
+        localStorage.setItem("focusEndTimeStamp", JSON.stringify(-1));
+        this.setExtensionStorage("focusMode", false);
+        this.setExtensionStorage("focusEndTimeStamp", -1);
+    }
+
     ngOnChanges(changes: SimpleChanges) {
         if (changes["preferenceData"]) {
             this.display = this.preferenceData.simpleMode ? "none" : "block";
@@ -194,11 +220,7 @@ export class FocusComponent implements OnInit, OnChanges {
                 this.focusMode = false;
                 this.focusPeriod = "manual";
                 this.focusEndTime = "未开启专注模式";
-                localStorage.setItem("focusMode", JSON.stringify(false));
-                localStorage.setItem("focusPeriod", JSON.stringify("manual"));
-                localStorage.setItem("focusEndTimeStamp", JSON.stringify(-1));
-                this.setExtensionStorage("focusMode", false);
-                this.setExtensionStorage("focusEndTimeStamp", -1);
+                this.resetFocusModeStorage();
             }
         }
     }
@@ -243,7 +265,7 @@ export class FocusComponent implements OnInit, OnChanges {
             if (tempFocusEndTimeStamp === -1) {
                 this.focusEndTime = "未开启专注模式";
             } else if (tempFocusEndTimeStamp === 0) {
-                this.focusEndTime = "手动关闭";
+                this.focusEndTime = "手动结束";
             } else {
                 this.focusEndTime = getTimeDetails(new Date(tempFocusEndTimeStamp)).showDetail;
             }
@@ -257,16 +279,14 @@ export class FocusComponent implements OnInit, OnChanges {
             this.focusMode = false;
             this.focusPeriod = "manual";
             this.focusEndTime = "未开启专注模式";
-            localStorage.setItem("focusMode", JSON.stringify(false));
-            localStorage.setItem("focusPeriod", JSON.stringify("manual"));
-            localStorage.setItem("focusEndTimeStamp", JSON.stringify(-1));
-            this.setExtensionStorage("focusMode", false);
-            this.setExtensionStorage("focusEndTimeStamp", -1);
+            this.resetFocusModeStorage();
         }
 
         if (this.focusMode) {
             this.message.info("已开启专注模式");
         }
+
+        this.autoStopFocus(tempFocusEndTimeStamp);
     }
 
     protected readonly btnMouseOver = btnMouseOver;
