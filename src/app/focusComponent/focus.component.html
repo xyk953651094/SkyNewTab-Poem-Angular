@@ -106,7 +106,7 @@
                             nz-button nzType="text" [nzShape]="this.preferenceData.buttonShape"
                     >
                         <span class="bi bi-hourglass-split"></span>
-                        {{"自动结束"}}
+                        {{"&nbsp;&nbsp;自动结束"}}
                     </button>
                     <nz-select *nzSpaceItem class="poemFont" [ngModel]="focusPeriod" (ngModelChange)="focusTimeSelectOnChange($event)"
                                [disabled]="focusMode" [style.width]="'120px'">
@@ -131,7 +131,7 @@
                             nz-button nzType="text" [nzShape]="this.preferenceData.buttonShape"
                     >
                         <span class="bi bi-music-note-beamed"></span>
-                        {{"专注噪音"}}
+                        {{"&nbsp;&nbsp;专注噪音"}}
                     </button>
                     <nz-select *nzSpaceItem class="poemFont" [(ngModel)]="focusSound" (ngModelChange)="focusSoundSelectOnChange($event)"
                                [style.width]="'120px'">
