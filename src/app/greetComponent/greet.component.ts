@@ -80,8 +80,8 @@ export class GreetComponent implements OnInit, OnChanges {
 
         let timeDetails = getTimeDetails(new Date());
         this.calendar = timeDetails.showDate4 + " " + timeDetails.showWeek + " ｜ " + data.yearTips + data.chineseZodiac + "年 ｜ " + data.lunarCalendar + " ｜ " + data.constellation;
-        this.suit = data.suit.replace(/\./g, " · ");
-        this.avoid = data.avoid.replace(/\./g, " · ");
+        this.suit = data.suit ? data.suit.replace(/\./g, " · ") : "暂无信息";
+        this.avoid = data.avoid ? data.avoid.replace(/\./g, " · ") : "暂无信息";
     }
 
     // 节气

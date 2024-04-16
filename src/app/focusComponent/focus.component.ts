@@ -198,6 +198,7 @@ export class FocusComponent implements OnInit, OnChanges {
                     this.focusEndTime = "未开启专注模式";
                     this.resetFocusModeStorage();
                     this.message.info("已关闭专注模式");
+                    focusAudio.pause();
                     clearInterval(interval);
                 }
             }, 1000);
