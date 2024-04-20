@@ -80,7 +80,14 @@ export class AppComponent implements OnInit {
                     "font-family": "Times New Roman, cursive, sans-serif"
                 });
 
-                // focusComponent
+                let dailyNotificationStorage = localStorage.getItem("dailyNotification");
+                if (dailyNotificationStorage) {
+                    resetSwitchColor("#dailyNotificationSwitch", JSON.parse(dailyNotificationStorage), this.majorColor);
+                }
+                let todoNotificationStorage = localStorage.getItem("todoNotification");
+                if (todoNotificationStorage) {
+                    resetSwitchColor("#todoNotificationSwitch", JSON.parse(todoNotificationStorage), this.majorColor);
+                }
                 let focusMode = localStorage.getItem("focusMode");
                 if (focusMode) {
                     resetSwitchColor("#focusModeSwitch", JSON.parse(focusMode), this.majorColor);
