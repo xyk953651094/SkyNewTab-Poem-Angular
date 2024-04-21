@@ -65,8 +65,8 @@
                 <nz-switch *nzSpaceItem
                            (ngModelChange)="notificationSwitchOnChange($event)"
                            [ngModel]="notification" id="todoNotificationSwitch"
-                           class="poemFont" nzCheckedChildren="已开启"
-                           nzUnCheckedChildren="已关闭"></nz-switch>
+                           class="poemFont" nzCheckedChildren="已提醒"
+                           nzUnCheckedChildren="不提醒"></nz-switch>
                 <button (click)="showAddModalBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                         (mouseover)="btnMouseOver(majorColor, $event)"
                         *nzSpaceItem
