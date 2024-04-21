@@ -111,7 +111,7 @@ export class menuPreferenceComponent implements OnInit {
                         localStorage.setItem("daily", JSON.stringify(importData.dailyList ? importData.dailyList : []));
                         localStorage.setItem("dailyNotification", JSON.stringify(importData.dailyNotification ? importData.dailyNotification : false));
                         localStorage.setItem("todos", JSON.stringify(importData.todoList ? importData.todoList : []));
-                        localStorage.setItem("todosNotification", JSON.stringify(importData.todoNotification ? importData.todoNotification : false));
+                        localStorage.setItem("todoNotification", JSON.stringify(importData.todoNotification ? importData.todoNotification : false));
                         localStorage.setItem("filterList", JSON.stringify(importData.filterList ? importData.filterList : []));
                         localStorage.setItem("linkList", JSON.stringify(importData.linkList ? importData.linkList : []));
                         localStorage.setItem("preferenceData", JSON.stringify(importData.preferenceData ? importData.preferenceData : defaultPreferenceData));
