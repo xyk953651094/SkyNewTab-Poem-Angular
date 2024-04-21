@@ -14,6 +14,7 @@ export class TodoComponent implements OnInit, OnChanges {
     title = "TodoComponent";
     display: "block" | "none" = "block";
     displayModal: boolean = false;
+    notification: boolean = false;
     todoList: any = [];
     todoMaxSize: number = 10;
     inputValue: string = "";
@@ -47,6 +48,11 @@ export class TodoComponent implements OnInit, OnChanges {
         });
 
         localStorage.setItem("todos", JSON.stringify(this.todoList));
+    }
+
+    notificationSwitchOnChange(checked: boolean) {
+        this.notification = checked;
+        localStorage.setItem("todoNotification", JSON.stringify(checked));
     }
 
     showAddModalBtnOnClick() {
@@ -125,9 +131,19 @@ export class TodoComponent implements OnInit, OnChanges {
     ngOnInit(): void {
         this.display = this.preferenceData.simpleMode ? "none" : "block";
 
+        let notificationStorage = localStorage.getItem("todoNotification");
+        if (notificationStorage) {
+            this.notification = JSON.parse(notificationStorage);
+        } else {
+            localStorage.setItem("todoNotification", JSON.stringify(false));
+        }
+
         let tempTodos = localStorage.getItem("todos");
         if (tempTodos) {
             this.todoList = JSON.parse(tempTodos);
+            if (this.notification) {
+                this.message.warning("剩余 " + this.todoList.length + " 个待办事项未处理");
+            }
         }
     }
 }

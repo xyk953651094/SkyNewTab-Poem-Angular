@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
         let bodyEle = $("body");
         bodyEle.bind("DOMNodeInserted", () => {
             // 通用
-            $(".ant-list-item").css({"borderBlockEndColor": getFontColor(this.minorColor), "padding": "6px 0"});
+            $(".ant-list-header, .ant-list-item").css({"borderBlockEndColor": getFontColor(this.minorColor), "padding": "6px 0"});
             $(".ant-list-item-action").css("marginInlineStart", "0");
             $(".ant-empty-description").css({
                 "color": getFontColor(this.minorColor),
@@ -80,7 +80,14 @@ export class AppComponent implements OnInit {
                     "font-family": "Times New Roman, cursive, sans-serif"
                 });
 
-                // focusComponent
+                let dailyNotificationStorage = localStorage.getItem("dailyNotification");
+                if (dailyNotificationStorage) {
+                    resetSwitchColor("#dailyNotificationSwitch", JSON.parse(dailyNotificationStorage), this.majorColor);
+                }
+                let todoNotificationStorage = localStorage.getItem("todoNotification");
+                if (todoNotificationStorage) {
+                    resetSwitchColor("#todoNotificationSwitch", JSON.parse(todoNotificationStorage), this.majorColor);
+                }
                 let focusMode = localStorage.getItem("focusMode");
                 if (focusMode) {
                     resetSwitchColor("#focusModeSwitch", JSON.parse(focusMode), this.majorColor);

@@ -32,5 +32,9 @@ export class menuInfoComponent implements OnInit {
         window.open("https://xyk953651094." + source + ".io/SkyDocuments/", "_self");
     }
 
+    appreciateBtnOnClick(source: string) {
+        window.open("https://xyk953651094." + source + ".io/SkyDocuments/appreciate.html", "_self");
+    }
+
     ngOnInit(): void {}
 }
