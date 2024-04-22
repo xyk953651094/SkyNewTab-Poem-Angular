@@ -141,7 +141,7 @@ export class TodoComponent implements OnInit, OnChanges {
         let tempTodos = localStorage.getItem("todos");
         if (tempTodos) {
             this.todoList = JSON.parse(tempTodos);
-            if (this.notification) {
+            if (this.notification && this.todoList.length > 0) {
                 this.message.warning("剩余 " + this.todoList.length + " 个待办事项未处理");
             }
         }
