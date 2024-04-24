@@ -29,6 +29,7 @@ export class TodoComponent implements OnInit, OnChanges {
     finishAllBtnOnClick() {
         this.todoList = [];
         localStorage.removeItem("todos");
+        this.message.success("全部完成");
     }
 
     finishBtnOnClick(item: any) {
@@ -48,6 +49,7 @@ export class TodoComponent implements OnInit, OnChanges {
         });
 
         localStorage.setItem("todos", JSON.stringify(this.todoList));
+        this.message.success("已完成");
     }
 
     notificationSwitchOnChange(checked: boolean) {

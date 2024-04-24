@@ -85,6 +85,7 @@ export class FocusComponent implements OnInit, OnChanges {
         this.filterList = [];
         localStorage.removeItem("filterList");
         this.setExtensionStorage("filterList", []);
+        this.message.success("删除成功");
     }
 
     removeBtnOnClick(item: any) {
@@ -101,6 +102,7 @@ export class FocusComponent implements OnInit, OnChanges {
 
         localStorage.setItem("filterList", JSON.stringify(this.filterList));
         this.setExtensionStorage("filterList", this.filterList);
+        this.message.success("删除成功");
     }
 
     showAddModalBtnOnClick() {
