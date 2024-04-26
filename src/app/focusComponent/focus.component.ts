@@ -10,6 +10,10 @@ import {
     resetSwitchColor
 } from "../../typescripts/publicFunctions";
 import {NzMessageService} from "ng-zorro-antd/message";
+import focusSoundOne from "../assets/focusSounds/古镇雨滴.mp3";
+import focusSoundTwo from "../assets/focusSounds/松树林小雪.mp3";
+import focusSoundThree from "../assets/focusSounds/漓江水.mp3";
+import focusSoundFour from "../assets/focusSounds/泉水水滴.mp3";
 
 const focusAudio = new Audio();
 
@@ -152,15 +156,28 @@ export class FocusComponent implements OnInit, OnChanges {
     playFocusSound(focusSound: string) {
         switch (focusSound) {
             case "古镇雨滴": {
-                focusAudio.src = "https://www.soundvery.com/KUpload/file/20240111/20240111145637_8657.mp3";
+                // focusAudio.src = "https://www.soundvery.com/KUpload/file/20240111/20240111145637_8657.mp3";
+                focusAudio.src = focusSoundOne;
                 break;
             }
             case "松树林小雪": {
-                focusAudio.src = "https://www.soundvery.com/KUpload/file/20240125/20240125190612_0979.mp3";
+                // focusAudio.src = "https://www.soundvery.com/KUpload/file/20240125/20240125190612_0979.mp3";
+                focusAudio.src = focusSoundTwo;
+                break;
+            }
+            case "漓江水": {
+                // focusAudio.src = "https://www.soundvery.com/KUpload/file/20240406/20240406102328_8511.mp3";
+                focusAudio.src = focusSoundThree;
+                break;
+            }
+            case "泉水水滴": {
+                // focusAudio.src = "https://www.soundvery.com/KUpload/file/20240406/20240406105745_9941.mp3";
+                focusAudio.src = focusSoundFour;
                 break;
             }
             default: {
-                focusAudio.src = "https://www.soundvery.com/KUpload/file/20240111/20240111145637_8657.mp3";
+                // focusAudio.src = "https://www.soundvery.com/KUpload/file/20240111/20240111145637_8657.mp3";
+                focusAudio.src = focusSoundOne;
             }
         }
         focusAudio.loop = true;
@@ -177,7 +194,7 @@ export class FocusComponent implements OnInit, OnChanges {
                     this.focusEndTime = "未开启专注模式";
                     this.focusSound= "none";
                     this.resetFocusModeStorage();
-                    this.message.info("已关闭专注模式");
+                    this.message.info("已结束专注模式");
                     focusAudio.pause();
                     clearInterval(interval);
                 }
