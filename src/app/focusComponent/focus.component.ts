@@ -10,10 +10,10 @@ import {
     resetSwitchColor
 } from "../../typescripts/publicFunctions";
 import {NzMessageService} from "ng-zorro-antd/message";
-import focusSoundOne from "../assets/focusSounds/古镇雨滴.mp3";
-import focusSoundTwo from "../assets/focusSounds/松树林小雪.mp3";
-import focusSoundThree from "../assets/focusSounds/漓江水.mp3";
-import focusSoundFour from "../assets/focusSounds/泉水水滴.mp3";
+import focusSoundOne from "../../assets/focusSounds/古镇雨滴.mp3";
+import focusSoundTwo from "../../assets/focusSounds/松树林小雪.mp3";
+import focusSoundThree from "../../assets/focusSounds/漓江水.mp3";
+import focusSoundFour from "../../assets/focusSounds/泉水水滴.mp3";
 
 const focusAudio = new Audio();
 
