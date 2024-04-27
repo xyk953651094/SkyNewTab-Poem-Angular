@@ -62,6 +62,9 @@ export class DailyComponent implements OnInit, OnChanges {
     notificationSwitchOnChange(checked: boolean) {
         this.notification = checked;
         localStorage.setItem("dailyNotification", JSON.stringify(checked));
+        if (this.dailyList.length === 0) {
+            this.message.warning("请添加倒数日");
+        }
     }
 
     showAddModalBtnOnClick() {

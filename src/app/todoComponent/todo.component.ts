@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {NzMessageService} from 'ng-zorro-antd/message';
-import {btnMouseOut, btnMouseOver, getFontColor} from "../../typescripts/publicFunctions";
+import {btnMouseOut, btnMouseOver, getFontColor, getTimeDetails, isEmpty} from "../../typescripts/publicFunctions";
 
 @Component({
     selector: "todo-component",
@@ -18,6 +18,7 @@ export class TodoComponent implements OnInit, OnChanges {
     todoList: any = [];
     todoMaxSize: number = 10;
     inputValue: string = "";
+    timePickerValue: string = "";
     tag: string = "工作";
     priority: string = "★";
     protected readonly getFontColor = getFontColor;
@@ -55,6 +56,9 @@ export class TodoComponent implements OnInit, OnChanges {
     notificationSwitchOnChange(checked: boolean) {
         this.notification = checked;
         localStorage.setItem("todoNotification", JSON.stringify(checked));
+        if (this.todoList.length === 0) {
+            this.message.warning("请添加待办事项");
+        }
     }
 
     showAddModalBtnOnClick() {
@@ -62,6 +66,7 @@ export class TodoComponent implements OnInit, OnChanges {
             this.displayModal = true;
             this.inputValue = "";
             this.tag = "工作";
+            this.timePickerValue = "";
             this.priority = "★";
         } else {
             this.message.error("待办数量最多为" + this.todoMaxSize + "个");
@@ -73,6 +78,7 @@ export class TodoComponent implements OnInit, OnChanges {
             this.todoList.push({
                 "title": this.inputValue,
                 "tag": this.tag,
+                "time": this.timePickerValue,
                 "priority": this.priority,
                 "timeStamp": Date.now()
             });
@@ -120,6 +126,14 @@ export class TodoComponent implements OnInit, OnChanges {
         this.tag = tempTag;
     }
 
+    timePickerOnChange(value: any) {
+        if (value === null) {
+            this.timePickerValue = "";
+        } else {
+            this.timePickerValue = getTimeDetails(value).showTime;
+        }
+    }
+
     rateOnChange(value: number) {
         this.priority = "★".repeat(value);
     }
@@ -148,4 +162,6 @@ export class TodoComponent implements OnInit, OnChanges {
             }
         }
     }
+
+    protected readonly isEmpty = isEmpty;
 }

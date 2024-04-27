@@ -55,6 +55,10 @@ export class FocusComponent implements OnInit, OnChanges {
         let tempFocusEndTime: string;
         let tempFocusEndTimeStamp: number;
         if (checked) {
+            if (this.filterList.length === 0) {
+                this.message.warning("请添加黑名单");
+            }
+
             if (this.focusPeriod === "manual") {
                 tempFocusEndTime = "手动结束";
                 tempFocusEndTimeStamp = 0;
