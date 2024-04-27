@@ -134,18 +134,7 @@
                         {{item.title}}
                     </button>
                 </div>
-                <div nz-col nzSpan=5>
-                    <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
-                            [nzShape]="preferenceData.buttonShape"
-                            [style]="{color: getFontColor(minorColor), cursor: 'default'}"
-                            class="poemFont"
-                            nz-button nzType="text"
-                    >
-                        <span nz-icon nzType="clock-circle" nzTheme="outline"></span>
-                        {{isEmpty(item.time) ? "未设置" : item.time}}
-                    </button>
-                </div>
-                <div nz-col nzSpan=10>
+                <div nz-col nzSpan=9>
                     <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
                             [nzShape]="preferenceData.buttonShape"
                             [style]="{color: getFontColor(minorColor), cursor: 'default'}"
@@ -154,6 +143,17 @@
                     >
                         <span nz-icon nzTheme="outline" nzType="tag"></span>
                         {{item.tag + " ｜ " + item.priority}}
+                    </button>
+                </div>
+                <div nz-col nzSpan=6>
+                    <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
+                            [nzShape]="preferenceData.buttonShape"
+                            [style]="{color: getFontColor(minorColor), cursor: 'default', display: isEmpty(item.time) ? 'none' : 'block'}"
+                            class="poemFont"
+                            nz-button nzType="text"
+                    >
+                        <span nz-icon nzType="clock-circle" nzTheme="outline"></span>
+                        {{isEmpty(item.time) ? "" : item.time}}
                     </button>
                 </div>
             </div>
