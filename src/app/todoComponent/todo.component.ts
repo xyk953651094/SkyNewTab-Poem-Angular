@@ -29,6 +29,7 @@ export class TodoComponent implements OnInit, OnChanges {
     finishAllBtnOnClick() {
         this.todoList = [];
         localStorage.removeItem("todos");
+        this.message.success("全部完成");
     }
 
     finishBtnOnClick(item: any) {
@@ -48,11 +49,15 @@ export class TodoComponent implements OnInit, OnChanges {
         });
 
         localStorage.setItem("todos", JSON.stringify(this.todoList));
+        this.message.success("已完成");
     }
 
     notificationSwitchOnChange(checked: boolean) {
         this.notification = checked;
         localStorage.setItem("todoNotification", JSON.stringify(checked));
+        if (this.todoList.length === 0) {
+            this.message.warning("请添加待办事项");
+        }
     }
 
     showAddModalBtnOnClick() {
@@ -141,7 +146,7 @@ export class TodoComponent implements OnInit, OnChanges {
         let tempTodos = localStorage.getItem("todos");
         if (tempTodos) {
             this.todoList = JSON.parse(tempTodos);
-            if (this.notification) {
+            if (this.notification && this.todoList.length > 0) {
                 this.message.warning("剩余 " + this.todoList.length + " 个待办事项未处理");
             }
         }

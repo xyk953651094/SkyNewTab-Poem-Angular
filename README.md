@@ -17,7 +17,6 @@
 
 ## 安装
 * 本插件功能界面与 SkyNewTab-Poem-React 完全重复，仅作为学习目的开发，不上架各商店
-* 下载发布（Releases）页面提供的文件进行安装
 
 ## 帮助
 * GitHub Pages：https://xyk953651094.github.io/SkyDocuments

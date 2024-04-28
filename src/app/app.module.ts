@@ -59,6 +59,7 @@ import {PopoverComponent} from "../publicComponent/popoverComponent/popover.comp
 import {ButtonComponent} from "../publicComponent/buttonComponent/button.component";
 import {ModalComponent} from "../publicComponent/modalComponent/modal.component";
 import {NzUploadModule} from "ng-zorro-antd/upload";
+import {NzTimePickerModule} from "ng-zorro-antd/time-picker";
 
 
 registerLocaleData(zh);
@@ -118,7 +119,8 @@ registerLocaleData(zh);
         NzDividerModule,
         NzNotificationModule,
         NzCheckboxModule,
-        NzUploadModule
+        NzUploadModule,
+        NzTimePickerModule
     ],
     providers: [
         {provide: NZ_I18N, useValue: zh_CN},

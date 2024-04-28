@@ -48,10 +48,9 @@
                     {{"编辑链接 " + linkList.length + " / " + linkMaxSize}}
                 </span>
             </div>
-            <div nz-col nzSpan="12">
+            <div nz-col nzSpan="12" class="alignRight">
                 <button (click)="removeAllBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                         (mouseover)="btnMouseOver(majorColor, $event)"
-                        *nzSpaceItem
                         [nzShape]="preferenceData.buttonShape"
                         [style]="{color: getFontColor(minorColor)}"
                         class="poemFont"
@@ -82,33 +81,16 @@
                         </button>
                     </nz-list-item-action>
                 </ul>
-                <div nz-row nzAlign="middle" [style.width]="'100%'">
-                    <div nz-col nzSpan="8">
-                        <button (mouseout)="btnMouseOut(minorColor, $event)"
-                                (mouseover)="btnMouseOver(majorColor, $event)"
-                                [nzShape]="preferenceData.buttonShape"
-                                [style]="{color: getFontColor(minorColor)}"
-                                class="poemFont"
-                                nz-button nzType="text"
-                        >
-                            <span nz-icon nzType="pushpin" nzTheme="outline"></span>
-                            {{item.linkName}}
-                        </button>
-                    </div>
-                    <div nz-col nzSpan="16">
-                        <button (mouseout)="btnMouseOut(minorColor, $event)"
-                                (mouseover)="btnMouseOver(majorColor, $event)"
-                                [nzShape]="preferenceData.buttonShape"
-                                [style]="{color: getFontColor(minorColor)}"
-                                class="poemFont"
-                                nz-button nzType="text"
-                        >
-                            <span nz-icon nzType="link" nzTheme="outline"></span>
-                            {{item.linkUrl.length < 30 ? item.linkUrl : item.linkUrl.substring(0, 30) + "..."}}
-                        </button>
-                    </div>
-                </div>
+                <nz-space>
+                    <input (keypress)="editNameInputOnPressEnter(item, $event)" class="poemFont" *nzSpaceItem [style.width]="'150px'" [defaultValue]="item.linkName"  nz-input [maxLength]="5"/>
+                    <input (keypress)="editUrlInputOnPressEnter(item, $event)"  class="poemFont" *nzSpaceItem [style.width]="'250px'" [defaultValue]="item.linkUrl" nz-input/>
+                </nz-space>
             </nz-list-item>
+            <nz-list-footer>
+                <span [style]="{color: getFontColor(minorColor), display: linkList.length > 0 ? 'inline-block' : 'none'}" class="poemFont" nz-typography>
+                    {{"在输入框中修改内容后按回车生效"}}
+                </span>
+            </nz-list-footer>
         </nz-list>
     </ng-template>
 </nz-modal>

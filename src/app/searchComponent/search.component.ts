@@ -32,6 +32,7 @@ export class SearchComponent implements OnInit, OnChanges {
     removeAllBtnOnClick() {
         this.linkList = [];
         localStorage.removeItem("linkList");
+        this.message.success("删除成功");
     }
 
     removeBtnOnClick(item: any) {
@@ -49,6 +50,7 @@ export class SearchComponent implements OnInit, OnChanges {
 
         this.linkList = tempLinkList;
         localStorage.setItem("linkList", JSON.stringify(tempLinkList));
+        this.message.success("删除成功");
     }
 
     linkBtnOnClick(item: any) {
@@ -116,6 +118,56 @@ export class SearchComponent implements OnInit, OnChanges {
 
     addModalCancelBtnOnClick() {
         this.displayAddModal = false;
+    }
+
+    editNameInputOnPressEnter(item: any, e: any) {
+        if (e.keyCode === 13 && e.target.value.length > 0) {
+            let tempLinkList = this.linkList;
+
+            let index = -1;
+            for (let i = 0; i < tempLinkList.length; i++) {
+                if (item.timeStamp === tempLinkList[i].timeStamp) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index !== -1) {
+                tempLinkList[index].linkName = e.target.value;
+
+                localStorage.setItem("linkList", JSON.stringify(tempLinkList));
+                this.linkList = tempLinkList;
+                this.message.success("修改成功");
+            } else {
+                this.message.error("修改失败");
+            }
+        } else {
+            this.message.warning("链接名称不能为空");
+        }
+    }
+
+    editUrlInputOnPressEnter(item: any, e: any) {
+        if (e.keyCode === 13 && e.target.value.length > 0) {
+            let tempLinkList = this.linkList;
+
+            let index = -1;
+            for (let i = 0; i < tempLinkList.length; i++) {
+                if (item.timeStamp === tempLinkList[i].timeStamp) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index !== -1) {
+                tempLinkList[index].linkUrl = e.target.value;
+
+                localStorage.setItem("linkList", JSON.stringify(tempLinkList));
+                this.linkList = tempLinkList;
+                this.message.success("修改成功");
+            } else {
+                this.message.error("修改失败");
+            }
+        } else {
+            this.message.warning("链接地址不能为空");
+        }
     }
 
     editModalOkBtnOnClick() {

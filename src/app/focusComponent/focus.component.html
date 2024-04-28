@@ -100,18 +100,20 @@
         <nz-list-header>
             <nz-space nzAlign="center">
                 <nz-select *nzSpaceItem class="poemFont" [(ngModel)]="focusSound" (ngModelChange)="focusSoundSelectOnChange($event)"
-                           [style.width]="'120px'">
+                           [style.width]="'160px'">
                     <nz-option nzValue="none" nzLabel="关闭白噪音"></nz-option>
-                    <nz-option nzValue="古镇雨滴" nzLabel="古镇雨滴"></nz-option>
-                    <nz-option nzValue="松树林小雪" nzLabel="松树林小雪"></nz-option>
+                    <nz-option nzValue="古镇雨滴" nzLabel="声谷 - 古镇雨滴"></nz-option>
+                    <nz-option nzValue="松树林小雪" nzLabel="声谷 - 松树林小雪"></nz-option>
+                    <nz-option nzValue="漓江水" nzLabel="声谷 - 漓江水"></nz-option>
+                    <nz-option nzValue="泉水水滴" nzLabel="声谷 - 泉水水滴"></nz-option>
                 </nz-select>
                 <nz-select *nzSpaceItem class="poemFont" [ngModel]="focusPeriod" (ngModelChange)="focusTimeSelectOnChange($event)"
                            [disabled]="focusMode" [style.width]="'120px'">
                     <nz-option nzValue="manual" nzLabel="手动结束"></nz-option>
-                    <nz-option nzValue="900000" nzLabel="15 分钟后"></nz-option>
                     <nz-option nzValue="1800000" nzLabel="30 分钟后"></nz-option>
                     <nz-option nzValue="2700000" nzLabel="45 分钟后"></nz-option>
                     <nz-option nzValue="3600000" nzLabel="60 分钟后"></nz-option>
+                    <nz-option nzValue="5400000" nzLabel="90 分钟后"></nz-option>
                 </nz-select>
                 <button *nzSpaceItem
                         (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"

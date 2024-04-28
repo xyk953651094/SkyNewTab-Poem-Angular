@@ -1,4 +1,4 @@
-<button [nzPopoverContent]="popoverContent" [nzPopoverOverlayStyle]="{width: '550px'}"
+<button [nzPopoverContent]="popoverContent" [nzPopoverOverlayStyle]="{width: '600px'}"
         [nzPopoverTitle]="popoverTitle"
         [nzShape]="preferenceData.buttonShape"
         [style]="{display: display, cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
@@ -21,8 +21,8 @@
             <nz-form-item>
                 <nz-form-label>待办事项</nz-form-label>
                 <nz-form-control>
-                    <input [maxLength]="10" class="poemFont" name="todoInput" [(ngModel)]="inputValue" nz-input
-                           placeholder="请输入待办内容，字数不能超过10个"/>
+                    <input [maxLength]="15" class="poemFont" name="todoInput" [(ngModel)]="inputValue" nz-input
+                           placeholder="请输入待办内容，字数不能超过15个"/>
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item>
@@ -113,7 +113,7 @@
                 </nz-list-item-action>
             </ul>
             <div [style.width]="'100%'" nz-row>
-                <div nz-col nzSpan=12>
+                <div nz-col nzSpan=14>
                     <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
                             [nzShape]="preferenceData.buttonShape"
                             [style]="{color: getFontColor(minorColor), cursor: 'default'}"
@@ -124,7 +124,7 @@
                         {{item.title}}
                     </button>
                 </div>
-                <div nz-col nzSpan=12>
+                <div nz-col nzSpan=10>
                     <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
                             [nzShape]="preferenceData.buttonShape"
                             [style]="{color: getFontColor(minorColor), cursor: 'default'}"

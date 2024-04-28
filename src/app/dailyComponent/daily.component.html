@@ -116,7 +116,7 @@
                 </nz-list-item-action>
             </ul>
             <div [style.width]="'100%'" nz-row>
-                <div nz-col nzSpan=10>
+                <div nz-col nzSpan=9>
                     <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
                             [nzShape]="preferenceData.buttonShape"
                             [style]="{color: getFontColor(minorColor), cursor: 'default'}"
@@ -127,7 +127,7 @@
                         {{item.title}}
                     </button>
                 </div>
-                <div nz-col nzSpan=14>
+                <div nz-col nzSpan=15>
                     <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
                             [nzShape]="preferenceData.buttonShape"
                             [style]="{color: getFontColor(minorColor), cursor: 'default'}"

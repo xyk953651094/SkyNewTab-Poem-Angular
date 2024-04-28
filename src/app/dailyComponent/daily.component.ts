@@ -36,6 +36,7 @@ export class DailyComponent implements OnInit, OnChanges {
     removeAllBtnOnClick() {
         this.dailyList = [];
         localStorage.removeItem("daily");
+        this.message.success("删除成功");
     }
 
     removeBtnOnClick(item: any) {
@@ -55,11 +56,15 @@ export class DailyComponent implements OnInit, OnChanges {
         });
 
         localStorage.setItem("daily", JSON.stringify(this.dailyList));
+        this.message.success("删除成功");
     }
 
     notificationSwitchOnChange(checked: boolean) {
         this.notification = checked;
         localStorage.setItem("dailyNotification", JSON.stringify(checked));
+        if (this.dailyList.length === 0) {
+            this.message.warning("请添加倒数日");
+        }
     }
 
     showAddModalBtnOnClick() {
