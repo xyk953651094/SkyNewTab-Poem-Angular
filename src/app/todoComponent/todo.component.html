@@ -21,8 +21,8 @@
             <nz-form-item>
                 <nz-form-label>待办事项</nz-form-label>
                 <nz-form-control>
-                    <input [maxLength]="10" class="poemFont" name="todoInput" [(ngModel)]="inputValue" nz-input
-                           placeholder="请输入待办内容，字数不能超过10个"/>
+                    <input [maxLength]="15" class="poemFont" name="todoInput" [(ngModel)]="inputValue" nz-input
+                           placeholder="请输入待办内容，字数不能超过15个"/>
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item>
@@ -40,16 +40,6 @@
                                ngModel="work"
                     >
                     </nz-select>
-                </nz-form-control>
-            </nz-form-item>
-            <nz-form-item>
-                <nz-form-label>截止时间</nz-form-label>
-                <nz-form-control>
-                    <nz-time-picker name="todoTimePicker" nzFormat="HH:mm" [nzMinuteStep]="5"
-                                    [(ngModel)]="timePickerValue"
-                                    (ngModelChange)="timePickerOnChange($event)"
-                                    nzPlaceHolder="可选，注意插件并不会通知截止时间" class="poemFont" [nzPopupClassName]="'poemFont'" [style.width]="'100%'">
-                    </nz-time-picker>
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item>
@@ -123,7 +113,7 @@
                 </nz-list-item-action>
             </ul>
             <div [style.width]="'100%'" nz-row>
-                <div nz-col nzSpan=9>
+                <div nz-col nzSpan=14>
                     <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
                             [nzShape]="preferenceData.buttonShape"
                             [style]="{color: getFontColor(minorColor), cursor: 'default'}"
@@ -134,7 +124,7 @@
                         {{item.title}}
                     </button>
                 </div>
-                <div nz-col nzSpan=9>
+                <div nz-col nzSpan=10>
                     <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
                             [nzShape]="preferenceData.buttonShape"
                             [style]="{color: getFontColor(minorColor), cursor: 'default'}"
@@ -143,17 +133,6 @@
                     >
                         <span nz-icon nzTheme="outline" nzType="tag"></span>
                         {{item.tag + " ｜ " + item.priority}}
-                    </button>
-                </div>
-                <div nz-col nzSpan=6>
-                    <button (mouseout)="btnMouseOut(minorColor, $event)" (mouseover)="btnMouseOver(majorColor, $event)"
-                            [nzShape]="preferenceData.buttonShape"
-                            [style]="{color: getFontColor(minorColor), cursor: 'default', display: isEmpty(item.time) ? 'none' : 'block'}"
-                            class="poemFont"
-                            nz-button nzType="text"
-                    >
-                        <span nz-icon nzType="clock-circle" nzTheme="outline"></span>
-                        {{isEmpty(item.time) ? "" : item.time}}
                     </button>
                 </div>
             </div>
