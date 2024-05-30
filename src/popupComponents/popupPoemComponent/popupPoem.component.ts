@@ -15,7 +15,7 @@ export class popupPoemComponent implements OnInit {
     title = "popupPoemComponent";
     searchEngineUrl = "https://www.bing.com/search?q=";
     poemContent = "海上生明月，天涯共此时。"
-    poemAuthor = "【唐】张九龄 ·《望月怀远》";
+    poemAuthor = "【张九龄】《望月怀远》";
     poemMaxSize = 25;
     customPoem = false;
     protected readonly getFontColor = getFontColor;
