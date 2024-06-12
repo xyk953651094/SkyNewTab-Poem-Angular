@@ -59,7 +59,7 @@
         </form>
     </ng-template>
     <div *nzModalFooter>
-        <button (click)="closeCustomPoemBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+        <button (click)="disableCustomPoemBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                 (mouseover)="btnMouseOver(majorColor, $event)" [nzShape]="preferenceData.buttonShape"
                 [style.color]="getFontColor(minorColor)" [style.display]="customPoem ? 'inline-block' : 'none'"
                 class="poemFont" nz-button

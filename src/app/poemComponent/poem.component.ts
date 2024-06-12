@@ -81,7 +81,7 @@ export class PoemComponent implements OnInit, OnChanges {
         this.displayModal = false;
     }
 
-    closeCustomPoemBtnOnClick() {
+    disableCustomPoemBtnOnClick() {
         this.displayModal = false;
         this.customPoem = false;
         localStorage.setItem("customPoem", JSON.stringify(false));

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, SimpleChanges, Output} from "@angular/core";
 import {NzMessageService} from 'ng-zorro-antd/message';
 import {
     btnMouseOut,
@@ -19,8 +19,16 @@ import {NzUploadFile} from "ng-zorro-antd/upload";
 export class menuPreferenceComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
+    @Input() svgColors: string[] = ["#000000", "#000000", "#000000"];
     title = "menuPreferenceComponent";
     formDisabled: boolean = false;
+    displayCustomThemeModal: boolean = false;
+    customThemeState: boolean = false;
+    customMajorColor: string = "#ffffff";
+    customMinorColor: string = "#000000";
+    customSvgColor0: string = "#000000";
+    customSvgColor1: string = "#000000";
+    customSvgColor2: string = "#000000";
     displayResetPreferenceModal: boolean = false;
     displayClearStorageModal: boolean = false;
     preferenceData: PreferenceDataInterface = getPreferenceDataStorage();
@@ -81,6 +89,60 @@ export class menuPreferenceComponent implements OnInit {
         
         this.message.success("已修改切换间隔，一秒后刷新页面");
         this.formDisabled = true;
+        this.refreshWindow();
+    }
+
+    // 自定颜色
+    customThemeBtnOnClick() {
+        this.displayCustomThemeModal = true;
+    }
+
+    customMajorColorOnChange(value: any) {
+        this.customMajorColor = value;
+    }
+
+    customMinorColorOnChange(value: any) {
+        this.customMinorColor = value;
+    }
+
+    customSvgColor0OnChange(value: any) {
+        this.customSvgColor0 = value;
+    }
+
+    customSvgColor1OnChange(value: any) {
+        this.customSvgColor1 = value;
+    }
+
+    customSvgColor2OnChange(value: any) {
+        this.customSvgColor2 = value;
+    }
+
+    customThemeOkBtnOnClick() {
+        this.displayCustomThemeModal = false;
+        const customTheme = {
+            majorColor: this.customMajorColor,
+            minorColor: this.customMinorColor,
+            svgColors: [this.customSvgColor0, this.customSvgColor1, this.customSvgColor2]
+        }
+        console.log(customTheme)
+
+        this.customThemeState = true;
+        localStorage.setItem("customThemeState", JSON.stringify(true));
+        localStorage.setItem("theme", JSON.stringify(customTheme));
+        this.message.success("已启用自定颜色，一秒后刷新页面");
+        // this.refreshWindow();
+    }
+
+    customThemeCancelBtnOnClick() {
+        this.displayCustomThemeModal = false;
+    }
+
+    disableCustomThemeBtnOnClick() {
+        this.displayCustomThemeModal = false;
+        this.customThemeState = false;
+        localStorage.setItem("customThemeState", JSON.stringify(false));
+        localStorage.removeItem("theme");
+        this.message.success("已关闭自定颜色，一秒后刷新页面");
         this.refreshWindow();
     }
 
@@ -255,7 +317,30 @@ export class menuPreferenceComponent implements OnInit {
         }, 1000);
     }
 
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes["majorColor"]) {
+            this.customMajorColor = changes["majorColor"].currentValue;
+        }
+        if (changes["minorColor"]) {
+            this.customMinorColor = changes["minorColor"].currentValue;
+        }
+        if (changes["svgColors"]) {
+            this.customSvgColor0 = changes["svgColors"].currentValue[0];
+            this.customSvgColor1 = changes["svgColors"].currentValue[1];
+            this.customSvgColor2 = changes["svgColors"].currentValue[2];
+        }
+    }
+
     ngOnInit(): void {
+        let tempCustomThemeState = false;
+        let customThemeStateStorage = localStorage.getItem("customThemeState");
+        if (customThemeStateStorage) {
+            tempCustomThemeState = JSON.parse(customThemeStateStorage);
+            this.customThemeState = tempCustomThemeState;
+        } else {
+            localStorage.setItem("customThemeState", JSON.stringify(false));
+        }
+
         let lastPoemRequestTimeStorage = localStorage.getItem("lastPoemRequestTime");
         if (lastPoemRequestTimeStorage !== null) {
             this.lastPoemRequestTime = getTimeDetails(new Date(parseInt(lastPoemRequestTimeStorage))).showDetail;

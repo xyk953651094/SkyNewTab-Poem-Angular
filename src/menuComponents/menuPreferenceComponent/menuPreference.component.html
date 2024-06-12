@@ -81,6 +81,19 @@
             </nz-form-control>
         </nz-form-item>
         <nz-form-item [style.display]="['iPhone', 'Android'].indexOf(device) === -1 ? 'flex' : 'none'">
+            <nz-form-label>自定颜色</nz-form-label>
+            <nz-form-control [nzExtra]="customThemeState ? '已启用自定义主题颜色' : ''">
+                <button (click)="customThemeBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                        (mouseover)="btnMouseOver(majorColor, $event)"
+                        [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
+                        class="poemFont" nz-button nzType="text"
+                >
+                    <span nz-icon nzType="bg-colors" nzTheme="outline"></span>
+                    {{"自定义插件主题颜色"}}
+                </button>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item [style.display]="['iPhone', 'Android'].indexOf(device) === -1 ? 'flex' : 'none'">
             <nz-form-label>极简模式</nz-form-label>
             <nz-form-control>
                 <nz-switch (ngModelChange)="simpleModeSwitchOnChange($event)" [nzDisabled]="formDisabled"
@@ -145,6 +158,62 @@
         </nz-form-item>
     </form>
 </nz-card>
+<nz-modal (nzOnCancel)="customThemeCancelBtnOnClick()" (nzOnOk)="customThemeOkBtnOnClick()" [(nzVisible)]="displayCustomThemeModal"
+          [nzBodyStyle]="{backgroundColor: minorColor}"
+          [nzClosable]="false" [nzContent]="modalContent" [nzFooter]="modalFooter"
+          [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
+          [nzTitle]="'自定义插件主题颜色'"
+          nzCentered
+>
+    <ng-template #modalContent>
+        <form nz-form>
+            <nz-form-item>
+                <nz-form-label>主要颜色</nz-form-label>
+                <nz-form-control nzExtra="影响背景颜色与按钮颜色">
+<!--                    <nz-space>-->
+<!--                        <nz-color-picker class="poemFont" [nzValue]="customMajorColor" (nzOnChange)="customMajorColorOnChange($event)" nzShowText *nzSpaceItem></nz-color-picker>-->
+<!--                        <nz-color-picker class="poemFont" [nzValue]="customMinorColor" (nzOnChange)="customMinorColorOnChange($event)" nzShowText *nzSpaceItem></nz-color-picker>-->
+<!--                    </nz-space>-->
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label>SVG颜色</nz-form-label>
+                <nz-form-control nzExtra="影响左上角月亮与底部波浪">
+<!--                    <nz-space>-->
+<!--                        <nz-color-picker class="poemFont" [nzValue]="customSvgColor0" (nzOnChange)="customSvgColor0OnChange($event)" nzShowText *nzSpaceItem></nz-color-picker>-->
+<!--                        <nz-color-picker class="poemFont" [nzValue]="customSvgColor1" (nzOnChange)="customSvgColor1OnChange($event)" nzShowText *nzSpaceItem></nz-color-picker>-->
+<!--                        <nz-color-picker class="poemFont" [nzValue]="customSvgColor2" (nzOnChange)="customSvgColor2OnChange($event)" nzShowText *nzSpaceItem></nz-color-picker>-->
+<!--                    </nz-space>-->
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </ng-template>
+    <ng-template #modalFooter>
+        <nz-space>
+            <button (click)="disableCustomThemeBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                    (mouseover)="btnMouseOver(majorColor, $event)" *nzSpaceItem
+                    [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
+                    class="poemFont" nz-button nzType="text"
+            >
+                {{"恢复默认主题颜色"}}
+            </button>
+            <button (click)="customThemeCancelBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                    (mouseover)="btnMouseOver(majorColor, $event)" *nzSpaceItem
+                    [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
+                    class="poemFont" nz-button nzType="text"
+            >
+                {{"取消"}}
+            </button>
+            <button (click)="customThemeOkBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+                    (mouseover)="btnMouseOver(majorColor, $event)" *nzSpaceItem
+                    [nzShape]="preferenceData.buttonShape" [style.color]="getFontColor(minorColor)"
+                    class="poemFont" nz-button nzType="text"
+            >
+                {{"确认"}}
+            </button>
+        </nz-space>
+    </ng-template>
+</nz-modal>
 <nz-modal (nzOnCancel)="resetPreferenceCancelBtnOnClick()" (nzOnOk)="resetPreferenceOkBtnOnClick()" [(nzVisible)]="displayResetPreferenceModal"
           [nzBodyStyle]="{backgroundColor: minorColor}"
           [nzClosable]="false" [nzContent]="modalContent"

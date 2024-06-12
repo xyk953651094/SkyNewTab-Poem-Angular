@@ -4,7 +4,7 @@ import {
     getFontColor,
     getHolidayDataStorage,
     getPreferenceDataStorage, resetRadioColor, resetSwitchColor,
-    setColorTheme
+    setTheme
 } from "../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../typescripts/publicInterface";
 import $ from "jquery";
@@ -36,11 +36,10 @@ export class AppComponent implements OnInit {
     // 随机颜色主题
     setColorTheme() {
         // 随机颜色主题
-        let themeArray = setColorTheme();
-        localStorage.setItem("themeArray", JSON.stringify(themeArray));
-        this.majorColor = themeArray.majorColor;
-        this.minorColor = themeArray.minorColor;
-        this.svgColors = themeArray.svgColors;
+        let theme = setTheme();
+        this.majorColor = theme.majorColor;
+        this.minorColor = theme.minorColor;
+        this.svgColors = theme.svgColors;
 
         // 修改弹窗主题
         let bodyEle = $("body");
