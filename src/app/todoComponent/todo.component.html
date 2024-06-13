@@ -13,9 +13,21 @@
           [nzBodyStyle]="{backgroundColor: minorColor}"
           [nzClosable]="false" [nzContent]="modalContent"
           [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
-          [nzTitle]="'添加待办事项 ' + todoList.length + ' / ' + todoMaxSize"
+          [nzTitle]="modalTitle"
           nzCentered
 >
+    <ng-template #modalTitle>
+        <div nz-row nzAlign="middle">
+            <div nz-col nzSpan="12">
+                <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
+                    {{"添加待办事项 " + todoList.length + ' / ' + todoMaxSize}}
+                </span>
+            </div>
+            <div nz-col nzSpan="12" class="alignRight">
+                <span nz-icon nzTheme="outline" nzType="check-square"></span>
+            </div>
+        </div>
+    </ng-template>
     <ng-template #modalContent>
         <form [nzNoColon]="true" nz-form>
             <nz-form-item>

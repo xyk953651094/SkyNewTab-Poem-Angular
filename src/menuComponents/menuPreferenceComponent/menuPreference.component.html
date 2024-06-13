@@ -160,12 +160,24 @@
 </nz-card>
 <nz-modal (nzOnCancel)="customThemeCancelBtnOnClick()" (nzOnOk)="customThemeOkBtnOnClick()" [(nzVisible)]="displayCustomThemeModal"
           [nzBodyStyle]="{backgroundColor: minorColor}"
-          [nzClosable]="false" [nzContent]="modalContent" [nzFooter]="modalFooter"
+          [nzClosable]="false" [nzContent]="customThemeModalContent" [nzFooter]="customThemeModalFooter"
           [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
-          [nzTitle]="'自定义插件主题颜色'"
+          [nzTitle]="customThemeModalTitle"
           nzCentered
 >
-    <ng-template #modalContent>
+    <ng-template #customThemeModalTitle>
+        <div nz-row nzAlign="middle">
+            <div nz-col nzSpan="12">
+                <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
+                    {{"自定义插件主题颜色"}}
+                </span>
+            </div>
+            <div nz-col nzSpan="12" class="alignRight">
+                <span nz-icon nzType="bg-colors" nzTheme="outline"></span>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #customThemeModalContent>
         <form nz-form>
             <nz-form-item>
                 <nz-form-label>主要颜色</nz-form-label>
@@ -188,7 +200,7 @@
             </nz-form-item>
         </form>
     </ng-template>
-    <ng-template #modalFooter>
+    <ng-template #customThemeModalFooter>
         <nz-space>
             <button (click)="disableCustomThemeBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                     (mouseover)="btnMouseOver(majorColor, $event)" *nzSpaceItem
@@ -216,12 +228,24 @@
 </nz-modal>
 <nz-modal (nzOnCancel)="resetPreferenceCancelBtnOnClick()" (nzOnOk)="resetPreferenceOkBtnOnClick()" [(nzVisible)]="displayResetPreferenceModal"
           [nzBodyStyle]="{backgroundColor: minorColor}"
-          [nzClosable]="false" [nzContent]="modalContent"
+          [nzClosable]="false" [nzContent]="resetPreferenceModalContent"
           [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
-          [nzTitle]="'确定重置设置?'"
+          [nzTitle]="resetPreferenceModalTitle"
           nzCentered
 >
-    <ng-template #modalContent>
+    <ng-template #resetPreferenceModalTitle>
+        <div nz-row nzAlign="middle">
+            <div nz-col nzSpan="12">
+                <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
+                    {{"确定重置设置?"}}
+                </span>
+            </div>
+            <div nz-col nzSpan="12" class="alignRight">
+                <span nz-icon nzType="redo" nzTheme="outline"></span>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #resetPreferenceModalContent>
         <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
             {{"注意：所有设置项将被重置为默认值"}}
         </span>
@@ -229,12 +253,24 @@
 </nz-modal>
 <nz-modal (nzOnCancel)="clearStorageCancelBtnOnClick()" (nzOnOk)="clearStorageOkBtnOnClick()" [(nzVisible)]="displayClearStorageModal"
           [nzBodyStyle]="{backgroundColor: minorColor}"
-          [nzClosable]="false" [nzContent]="modalContent"
+          [nzClosable]="false" [nzContent]="clearStorageModalContent"
           [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
-          [nzTitle]="'确定重置插件?'"
+          [nzTitle]="clearStorageModalTitle"
           nzCentered
 >
-    <ng-template #modalContent>
+    <ng-template #clearStorageModalTitle>
+        <div nz-row nzAlign="middle">
+            <div nz-col nzSpan="12">
+                <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
+                    {{"确定重置插件?"}}
+                </span>
+            </div>
+            <div nz-col nzSpan="12" class="alignRight">
+                <span nz-icon nzType="redo" nzTheme="outline"></span>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #clearStorageModalContent>
         <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
             {{"注意：所有设置项将被重置为默认值，所有数据将被清空"}}
         </span>
