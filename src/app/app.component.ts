@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
             $(".ant-list-item-action").css("marginInlineStart", "0");
             $(".ant-empty-description").css({
                 "color": getFontColor(this.minorColor),
-                "font-family": "'Times New Roman', cursive, sans-serif",
+                "font-family": "'Times New Roman', cursive, serif",
             });
 
             // popover
@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
                 $(".ant-popover-inner").css("border-radius", "2px");
                 $(".ant-popover-title").css({
                     "color": getFontColor(this.minorColor),
-                    "font-family": "'Times New Roman', cursive, sans-serif",
+                    "font-family": "'Times New Roman', cursive, serif",
                     "font-weight": "bold",
                     "background-color": this.minorColor,
                     "border-color": this.minorColor,
@@ -74,10 +74,10 @@ export class AppComponent implements OnInit {
                     "border-bottom-left-radius": "2px",
                     "border-bottom-right-radius": "2px"
                 });
-                $(".ant-select-item").css("font-family", "'Times New Roman', cursive, sans-serif");
+                $(".ant-select-item").css("font-family", "'Times New Roman', cursive, serif");
                 $(".ant-form-item-extra").css({
                     "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, sans-serif"
+                    "font-family": "Times New Roman, cursive, serif"
                 });
 
                 let dailyNotificationStorage = localStorage.getItem("dailyNotification");
@@ -100,7 +100,7 @@ export class AppComponent implements OnInit {
                 $(".ant-tooltip-arrow").css("display", "none");
                 $(".ant-tooltip-inner").css({
                     "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, sans-serif"
+                    "font-family": "Times New Roman, cursive, serif"
                 });
             }
 
@@ -110,7 +110,7 @@ export class AppComponent implements OnInit {
                 $(".ant-message-notice-content").css({
                     "backgroundColor": this.minorColor,
                     "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, sans-serif"
+                    "font-family": "Times New Roman, cursive, serif"
                 });
                 $(".ant-message-custom-content > .anticon").css({
                     "color": getFontColor(this.minorColor),
@@ -122,8 +122,8 @@ export class AppComponent implements OnInit {
             if (notificationEle.length && notificationEle.length > 0) {
                 $(".ant-notification-notice").css({"backgroundColor": this.minorColor});
                 $(".ant-notification-notice-icon").css("color", getFontColor(this.minorColor));
-                $(".ant-notification-notice-message").css({"color": getFontColor(this.minorColor), "font-family": "Times New Roman, cursive, sans-serif"});
-                $(".ant-notification-notice-description").css({"color": getFontColor(this.minorColor), "font-family": "Times New Roman, cursive, sans-serif"});
+                $(".ant-notification-notice-message").css({"color": getFontColor(this.minorColor), "font-family": "Times New Roman, cursive, serif"});
+                $(".ant-notification-notice-description").css({"color": getFontColor(this.minorColor), "font-family": "Times New Roman, cursive, serif"});
             }
 
             // drawer
@@ -135,7 +135,7 @@ export class AppComponent implements OnInit {
                 });
                 $(".ant-drawer-title").css({
                     "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, sans-serif"
+                    "font-family": "Times New Roman, cursive, serif"
                 });
                 $(".ant-card-head").css({
                     "background-color": this.minorColor,
@@ -143,21 +143,21 @@ export class AppComponent implements OnInit {
                 });
                 $(".ant-card-head-title").css({
                     "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, sans-serif"
+                    "font-family": "Times New Roman, cursive, serif"
                 });
                 $(".ant-form-item-label > label").css({
                     "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, sans-serif"
+                    "font-family": "Times New Roman, cursive, serif"
                 });
                 $(".ant-form-item-extra").css({
                     "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, sans-serif"
+                    "font-family": "Times New Roman, cursive, serif"
                 });
                 $(".ant-radio-wrapper").children(":last-child").css({
                     "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, sans-serif"
+                    "font-family": "Times New Roman, cursive, serif"
                 });
-                $(".ant-select-item").css("font-family", "'Times New Roman', cursive, sans-serif");
+                $(".ant-select-item").css("font-family", "'Times New Roman', cursive, serif");
                 $(".ant-drawer-footer").css({"background-color": this.minorColor, "border-top": "1px solid " + getFontColor(this.minorColor)});
 
                 // menuPreferenceComponent
@@ -179,7 +179,7 @@ export class AppComponent implements OnInit {
                 $(".ant-modal-title").css({
                     "background-color": this.minorColor,
                     "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, sans-serif"
+                    "font-family": "Times New Roman, cursive, serif"
                 });
                 $(".ant-modal-footer").css({
                     "backgroundColor": this.minorColor,
@@ -187,7 +187,7 @@ export class AppComponent implements OnInit {
                 });
                 $(".ant-modal-footer > .ant-btn").css({
                     "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, sans-serif"
+                    "font-family": "Times New Roman, cursive, serif"
                 })
                 if (this.preferenceData.buttonShape === "round") {
                     $(".ant-modal-footer > .ant-btn").removeClass("ant-btn-default ant-btn-primary").addClass("poemFont ant-btn-round ant-btn-text");

@@ -34,7 +34,7 @@
         </nz-form-item>
         <nz-form-item>
             <nz-form-label>诗词主题</nz-form-label>
-            <nz-form-control>
+            <nz-form-control [nzExtra]="preferenceData.autoTopic ? '已禁用诗词主题与部分切换间隔' : '已启用诗词主题'">
                 <nz-radio-group (ngModelChange)="poemTopicsRadioOnChange($event)" [nzDisabled]="(preferenceData.autoTopic || formDisabled)"
                                 [(ngModel)]="preferenceData.poemTopic"
                                 [style]="{width: '100%'}"
@@ -58,7 +58,7 @@
         </nz-form-item>
         <nz-form-item>
             <nz-form-label>智能主题</nz-form-label>
-            <nz-form-control [nzExtra]="preferenceData.autoTopic ? '已禁用诗词主题与部分切换间隔' : ''">
+            <nz-form-control [nzExtra]="preferenceData.autoTopic ? '已启用智能主题' : '已禁用智能主题'">
                 <nz-switch (ngModelChange)="autoTopicSwitchOnChange($event)" [nzDisabled]="formDisabled"
                            [ngModel]="preferenceData.autoTopic" id="autoTopicSwitch"
                            class="poemFont" name="autoTopic" nzCheckedChildren="已开启"

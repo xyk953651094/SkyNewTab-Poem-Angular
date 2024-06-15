@@ -51,7 +51,7 @@
             <nz-form-item>
                 <nz-form-label>循环周期</nz-form-label>
                 <nz-form-control [nzExtra]="'倒数日期为29、30、31日时，循环周期不得选择每月、每年'">
-                    <nz-select (ngModelChange)="selectOnChange($event)" [nzDropdownStyle]="{fontFamily: 'Times New Roman, cursive, sans-serif'}"
+                    <nz-select (ngModelChange)="selectOnChange($event)" [nzDropdownStyle]="{fontFamily: 'Times New Roman, cursive, serif'}"
                                [nzOptions]="[
                                    {value: 'noLoop', label: '不循环'},
                                    {value: 'everyWeek', label: '每周'},
