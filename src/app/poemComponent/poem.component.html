@@ -39,9 +39,21 @@
 <nz-modal [(nzVisible)]="displayModal"
           [nzBodyStyle]="{backgroundColor: minorColor}" [nzClosable]="false" [nzContent]="modalContent"
           [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
-          [nzTitle]="'自定诗词'"
+          [nzTitle]="modalTitle"
           nzCentered
 >
+    <ng-template #modalTitle>
+        <div nz-row nzAlign="middle">
+            <div nz-col nzSpan="12">
+                <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
+                    {{"自定诗词"}}
+                </span>
+            </div>
+            <div nz-col nzSpan="12" class="alignRight">
+                <span nz-icon nzType="edit" nzTheme="outline"></span>
+            </div>
+        </div>
+    </ng-template>
     <ng-template #modalContent>
         <form [nzNoColon]="true" nz-form>
             <nz-form-item>
@@ -59,7 +71,7 @@
         </form>
     </ng-template>
     <div *nzModalFooter>
-        <button (click)="closeCustomPoemBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
+        <button (click)="disableCustomPoemBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                 (mouseover)="btnMouseOver(majorColor, $event)" [nzShape]="preferenceData.buttonShape"
                 [style.color]="getFontColor(minorColor)" [style.display]="customPoem ? 'inline-block' : 'none'"
                 class="poemFont" nz-button

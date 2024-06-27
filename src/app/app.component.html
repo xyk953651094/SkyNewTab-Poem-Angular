@@ -52,6 +52,7 @@
                         *nzSpaceItem
                         [majorColor]="majorColor"
                         [minorColor]="minorColor"
+                        [svgColors]="svgColors"
                         [preferenceData]="preferenceData"
                     />
                 </nz-space>
@@ -62,6 +63,7 @@
                     (getPreferenceData)="getPreferenceData($event)"
                     [majorColor]="majorColor"
                     [minorColor]="minorColor"
+                    [svgColors]="svgColors"
                     [preferenceData]="preferenceData"
                 />
             </div>
@@ -74,7 +76,6 @@
                 <clock-component
                     [holidayData]="holidayData"
                     [minorColor]="minorColor"
-                    [preferenceData]="preferenceData"
                 />
             </div>
             <div nz-col nzSpan="24">

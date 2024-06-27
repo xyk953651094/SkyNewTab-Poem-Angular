@@ -31,12 +31,4 @@
         <span class="bi bi-rss-fill"></span>
         {{"博客"}}
     </button>
-    <button (click)="supportBtnOnClick()" (mouseout)="btnMouseOut(majorColor, $event)"
-            (mouseover)="btnMouseOver(minorColor, $event)"
-            *nzSpaceItem [nzShape]="preferenceData.buttonShape"
-            [style.color]="getFontColor(majorColor)" class="popupFont" nz-button nzType="text"
-    >
-        <span nz-icon nzTheme="outline" nzType="gift"></span>
-        {{"捐助"}}
-    </button>
 </nz-space>

@@ -29,10 +29,6 @@ export class popupFooterComponent implements OnInit {
         window.open("https://xyk953651094.blogspot.com/", "_blank");
     }
 
-    supportBtnOnClick() {
-        window.open("https://afdian.net/a/xyk953651094/", "_blank");
-    }
-
     ngOnInit(): void {
 
     }

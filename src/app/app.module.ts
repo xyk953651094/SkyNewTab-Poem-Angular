@@ -60,6 +60,7 @@ import {ButtonComponent} from "../publicComponent/buttonComponent/button.compone
 import {ModalComponent} from "../publicComponent/modalComponent/modal.component";
 import {NzUploadModule} from "ng-zorro-antd/upload";
 import {NzTimePickerModule} from "ng-zorro-antd/time-picker";
+// import {NzColorPickerModule} from "ng-zorro-antd/color-picker";
 
 
 registerLocaleData(zh);
@@ -120,7 +121,8 @@ registerLocaleData(zh);
         NzNotificationModule,
         NzCheckboxModule,
         NzUploadModule,
-        NzTimePickerModule
+        NzTimePickerModule,
+        // NzColorPickerModule
     ],
     providers: [
         {provide: NZ_I18N, useValue: zh_CN},

@@ -18,6 +18,7 @@ const poemRequest = require("jinrishici");
 export class MenuComponent implements OnInit {
     @Input() majorColor: string = "#ffffff";
     @Input() minorColor: string = "#000000";
+    @Input() svgColors: string[] = ["#000000", "#000000", "#000000"];
     @Input() preferenceData = defaultPreferenceData;
     @Output() getPreferenceData: EventEmitter<PreferenceDataInterface> = new EventEmitter();
     title = "MenuComponent";

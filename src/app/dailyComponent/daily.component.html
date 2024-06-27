@@ -13,9 +13,21 @@
           [nzBodyStyle]="{backgroundColor: minorColor}"
           [nzClosable]="false" [nzContent]="modalContent"
           [nzMaskStyle]="{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)'}"
-          [nzTitle]="'添加倒数日 ' + dailyList.length + ' / ' + dailyMaxSize"
+          [nzTitle]="modalTitle"
           nzCentered
 >
+    <ng-template #modalTitle>
+        <div nz-row nzAlign="middle">
+            <div nz-col nzSpan="12">
+                <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
+                    {{"添加倒数日 " + dailyList.length + ' / ' + dailyMaxSize}}
+                </span>
+            </div>
+            <div nz-col nzSpan="12" class="alignRight">
+                <span nz-icon nzTheme="outline" nzType="calendar"></span>
+            </div>
+        </div>
+    </ng-template>
     <ng-template #modalContent>
         <form [nzNoColon]="true" nz-form>
             <nz-form-item>
@@ -39,7 +51,7 @@
             <nz-form-item>
                 <nz-form-label>循环周期</nz-form-label>
                 <nz-form-control [nzExtra]="'倒数日期为29、30、31日时，循环周期不得选择每月、每年'">
-                    <nz-select (ngModelChange)="selectOnChange($event)" [nzDropdownStyle]="{fontFamily: 'Times New Roman, cursive, sans-serif'}"
+                    <nz-select (ngModelChange)="selectOnChange($event)" [nzDropdownStyle]="{fontFamily: 'Times New Roman, cursive, serif'}"
                                [nzOptions]="[
                                    {value: 'noLoop', label: '不循环'},
                                    {value: 'everyWeek', label: '每周'},

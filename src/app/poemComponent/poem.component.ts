@@ -24,7 +24,7 @@ export class PoemComponent implements OnInit, OnChanges {
     displayModal = false;
     searchEngineUrl: string = "https://www.bing.com/search?q=";
     poemContent: string = "海上生明月，天涯共此时。";
-    poemAuthor: string = "【唐】张九龄 ·《望月怀远》";
+    poemAuthor: string = "【张九龄】《望月怀远》";
     poemMaxSize: number = 30;
     customPoem = false;
     customContentInputValue = "";
@@ -81,7 +81,7 @@ export class PoemComponent implements OnInit, OnChanges {
         this.displayModal = false;
     }
 
-    closeCustomPoemBtnOnClick() {
+    disableCustomPoemBtnOnClick() {
         this.displayModal = false;
         this.customPoem = false;
         localStorage.setItem("customPoem", JSON.stringify(false));

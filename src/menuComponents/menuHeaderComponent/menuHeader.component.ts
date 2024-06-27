@@ -16,10 +16,6 @@ export class menuHeaderComponent implements OnInit {
     protected readonly btnMouseOut = btnMouseOut;
     protected readonly btnMouseOver = btnMouseOver;
 
-    supportBtnOnClick() {
-        window.open("https://afdian.net/a/xyk953651094", "_self");
-    }
-
     weChatBtnOnClick() {
         window.open("https://github.com/xyk953651094/xyk953651094/assets/28004442/fd605f5c-d2ca-43eb-ae16-86d17d5f6fb1/", "_self");
     }

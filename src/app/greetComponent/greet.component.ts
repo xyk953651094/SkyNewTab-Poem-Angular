@@ -41,10 +41,6 @@ export class GreetComponent implements OnInit, OnChanges {
 
     constructor(private notification: NzNotificationService) {}
 
-    historyBtnOnClick() {
-        window.open(this.searchEngineUrl + "历史上的今天", "_self");
-    }
-
     infoBtnOnClick() {
         window.open(this.searchEngineUrl + "万年历", "_self");
     }

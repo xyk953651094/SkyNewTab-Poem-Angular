@@ -190,7 +190,7 @@ export class DailyComponent implements OnInit, OnChanges {
                 let todayTimeStamp = new Date(getTimeDetails(new Date()).showDate5).getTime();
 
                 // 倒数日通知
-                if (this.notification && value.selectedTimeStamp === todayTimeStamp) {
+                if (this.notification && value.selectedTimeStamp === todayTimeStamp && !this.preferenceData.simpleMode) {
                     this.message.info("今日" + value.title);
                 }
 

@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {getFontColor, getPreferenceDataStorage, setColorTheme} from "../../typescripts/publicFunctions";
+import {getFontColor, getPreferenceDataStorage, setTheme} from "../../typescripts/publicFunctions";
 
 const $ = require("jquery")
 
@@ -17,16 +17,16 @@ export class popupComponent implements OnInit {
 
     ngOnInit(): void {
         // 设置颜色主题
-        let themeArray;
-        let tempThemeColor = localStorage.getItem("themeArray");
-        if (tempThemeColor) {
-            themeArray = JSON.parse(tempThemeColor);
+        let tempTheme;
+        let tempThemeStorage = localStorage.getItem("theme");
+        if (tempThemeStorage) {
+            tempTheme = JSON.parse(tempThemeStorage);
             let bodyEle = $("body");
-            bodyEle.css("backgroundColor", themeArray.majorColor + " !important");
+            bodyEle.css("backgroundColor", tempTheme.majorColor + " !important");
         } else {
-            themeArray = setColorTheme();
+            tempTheme = setTheme();
         }
-        this.majorColor = themeArray.majorColor;
-        this.minorColor = themeArray.minorColor;
+        this.majorColor = tempTheme.majorColor;
+        this.minorColor = tempTheme.minorColor;
     }
 }
