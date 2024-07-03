@@ -226,7 +226,7 @@ export class AppComponent implements OnInit {
         if (storageVersion !== currentVersion) {
             this.notification.blank(
                 "已更新至版本 V" + currentVersion,
-                "详细内容请前往 GitHub 或 GitLab 主页查看",
+                "详细内容请前往菜单栏更新日志查看",
                 {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
             );
             localStorage.setItem("SkyNewTabPoemAngularVersion", currentVersion);

@@ -13,20 +13,13 @@ export class popupFooterComponent implements OnInit {
     @Input() minorColor: string = "#000000";
     @Input() preferenceData: PreferenceDataInterface = defaultPreferenceData;
     title = "popupFooterComponent";
+    currentVersion = require('../../../package.json').version;
     protected readonly getFontColor = getFontColor;
     protected readonly btnMouseOut = btnMouseOut;
     protected readonly btnMouseOver = btnMouseOver;
 
     homeBtnOnClick(value: string) {
         window.open("https://" + value + ".com/xyk953651094/SkyNewTab-Poem-Angular/", "_blank");
-    }
-
-    weChatBtnOnClick() {
-        window.open("https://github.com/xyk953651094/xyk953651094/assets/28004442/fd605f5c-d2ca-43eb-ae16-86d17d5f6fb1/", "_blank");
-    }
-
-    blogBtnOnClick() {
-        window.open("https://xyk953651094.blogspot.com/", "_blank");
     }
 
     ngOnInit(): void {
