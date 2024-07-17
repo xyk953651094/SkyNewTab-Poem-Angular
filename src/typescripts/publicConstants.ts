@@ -103,7 +103,7 @@ export const darkThemeArray: ({ majorColor: string; minorColor: string; svgColor
         'majorColor': '#66363C', 'minorColor': '#F2EBD9',
         'svgColors': ['#DC9A55', '#BC7350', '#935149']
     },
-    
+
     {
         'majorColor': '#A29192', 'minorColor': '#444C5E',
         'svgColors': ['#918087', '#7D707D', '#656173']
@@ -184,3 +184,4 @@ export let defaultPreferenceData: PreferenceDataInterface = {
 
 // 常用变量
 export let device = getDevice();  // 获取当前设备类型
+export const colorRegExp = /^#[0-9A-Fa-f]{6}$/;
