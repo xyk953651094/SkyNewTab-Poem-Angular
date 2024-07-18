@@ -1,13 +1,14 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from "@angular/core";
 import {NzMessageService} from 'ng-zorro-antd/message';
 import {
-    btnMouseOut,
-    btnMouseOver,
-    getFontColor,
-    getSearchEngineDetail,
-    httpRequest
+  btnMouseOut,
+  btnMouseOver,
+  getFontColor,
+  getSearchEngineDetail,
+  httpRequest, setTheme
 } from "../../typescripts/publicFunctions";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
+import {PreferenceDataInterface} from "../../typescripts/publicInterface";
 
 const poemRequest = require("jinrishici");
 
@@ -20,6 +21,7 @@ export class PoemComponent implements OnInit, OnChanges {
     @Input() majorColor: string = "#000000";
     @Input() minorColor: string = "#ffffff";
     @Input() preferenceData = defaultPreferenceData;
+    @Output() getTheme: EventEmitter<any> = new EventEmitter();
     title = "PoemComponent";
     displayModal = false;
     searchEngineUrl: string = "https://www.bing.com/search?q=";
@@ -122,10 +124,17 @@ export class PoemComponent implements OnInit, OnChanges {
     }
 
     getPoem() {
+        let tempThis = this;
+
         if (this.preferenceData.autoTopic) {
             poemRequest.load((result: any) => {
                 localStorage.setItem("lastPoemRequestTime", String(new Date().getTime()));  // 保存请求时间，防抖节流
                 localStorage.setItem("lastPoem", JSON.stringify(result));                   // 保存请求结果，防抖节流
+
+                // 设置颜色主题
+                const theme = setTheme();
+                tempThis.getTheme.emit(theme);
+
                 this.setPoem(result);
             }, (errorData: any) => {
                 // 请求失败时使用上一次请求结果
@@ -146,6 +155,11 @@ export class PoemComponent implements OnInit, OnChanges {
                 .then(function (resultData: any) {
                     localStorage.setItem("lastPoemRequestTime", String(new Date().getTime()));  // 保存请求时间，防抖节流
                     localStorage.setItem("lastPoem", JSON.stringify(resultData));               // 保存请求结果，防抖节流
+
+                    // 设置颜色主题
+                    const theme = setTheme();
+                    tempThis.getTheme.emit(theme);
+
                     tempThis.setPoem(resultData);
                 })
                 .catch(function () {

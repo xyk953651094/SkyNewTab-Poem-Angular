@@ -80,6 +80,7 @@
             </div>
             <div nz-col nzSpan="24">
                 <poem-component
+                    (getTheme)="getTheme($event)"
                     [minorColor]="minorColor"
                     [preferenceData]="preferenceData"
                 />

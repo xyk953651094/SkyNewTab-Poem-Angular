@@ -19,11 +19,17 @@ export class AppComponent implements OnInit {
     title = "云开诗词新标签页";
     majorColor = "#000000";
     minorColor: string = "#ffffff";
-    svgColors: string[] = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"];
+    svgColors: string[] = ["#ffffff", "#ffffff", "#ffffff"];
     preferenceData: PreferenceDataInterface = getPreferenceDataStorage();
     holidayData: any = getHolidayDataStorage();
 
     constructor(private notification: NzNotificationService) {}
+
+    getTheme(value: any) {
+        this.majorColor = value.majorColor;
+        this.minorColor = value.minorColor;
+        this.svgColors = value.svgColors;
+    }
 
     getPreferenceData(value: PreferenceDataInterface) {
         this.preferenceData = value;
@@ -35,11 +41,19 @@ export class AppComponent implements OnInit {
 
     // 随机颜色主题
     setColorTheme() {
-        // 随机颜色主题
-        let theme = setTheme();
-        this.majorColor = theme.majorColor;
-        this.minorColor = theme.minorColor;
-        this.svgColors = theme.svgColors;
+        // 设置颜色主题
+        let tempTheme;
+        let tempThemeStorage = localStorage.getItem("theme");
+        if (tempThemeStorage) {
+            tempTheme = JSON.parse(tempThemeStorage);
+            let body = document.getElementsByTagName("body")[0];
+            body.style.backgroundColor = tempTheme.majorColor;    // 设置body背景颜色
+        } else {
+            tempTheme = setTheme();
+        }
+        this.majorColor = tempTheme.majorColor;
+        this.minorColor = tempTheme.minorColor;
+        this.svgColors = tempTheme.svgColors;
 
         // 修改弹窗主题
         let bodyEle = $("body");
