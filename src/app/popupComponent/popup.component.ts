@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {getFontColor, getPreferenceDataStorage, setFont, setTheme} from "../../typescripts/publicFunctions";
 
-const $ = require("jquery")
+import $ from "jquery";
 
 @Component({
     selector: "popup-component",
@@ -30,6 +30,6 @@ export class popupComponent implements OnInit {
         this.minorColor = tempTheme.minorColor;
 
         // 设置字体(需要优化)
-        setFont(this.preferenceData);
+        setFont(".popupFont", this.preferenceData);
     }
 }

@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
         this.svgColors = tempTheme.svgColors;
 
         // 设置字体(需要优化)
-        setFont(this.preferenceData);
+        setFont(".poemFont", this.preferenceData);
 
         // 修改弹窗主题
         let bodyEle = $("body");
@@ -196,7 +196,7 @@ export class AppComponent implements OnInit {
             }
 
             // 设置字体(需要优化)
-            setFont(this.preferenceData);
+            setFont(".poemFont", this.preferenceData);
         });
 
         // const observer = new MutationObserver((mutations) => {
