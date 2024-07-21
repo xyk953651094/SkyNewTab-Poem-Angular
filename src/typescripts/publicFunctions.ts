@@ -344,19 +344,21 @@ export function getSearchEngineDetail(searchEngine: string) {
 // 补全设置数据
 export function fixPreferenceData(preferenceData: PreferenceDataInterface) {
     let isFixed = false;
-  function setDefaultIfUndefinedOrNull(obj: any, key: string, defaultValue: any) {
-    if (obj[key] === undefined || obj[key] === null) {
-      obj[key] = defaultValue;
-      isFixed = true;
+    function setDefaultIfUndefinedOrNull(obj: any, key: string, defaultValue: any) {
+        if (obj[key] === undefined || obj[key] === null) {
+          obj[key] = defaultValue;
+          isFixed = true;
+        }
     }
-  }
 
-  setDefaultIfUndefinedOrNull(preferenceData, 'poemTopic', defaultPreferenceData.poemTopic);
-  setDefaultIfUndefinedOrNull(preferenceData, 'autoTopic', defaultPreferenceData.autoTopic);
-  setDefaultIfUndefinedOrNull(preferenceData, 'changePoemTime', defaultPreferenceData.changePoemTime);
-  setDefaultIfUndefinedOrNull(preferenceData, 'searchEngine', defaultPreferenceData.searchEngine);
-  setDefaultIfUndefinedOrNull(preferenceData, 'buttonShape', defaultPreferenceData.buttonShape);
-  setDefaultIfUndefinedOrNull(preferenceData, 'simpleMode', defaultPreferenceData.simpleMode);
+    setDefaultIfUndefinedOrNull(preferenceData, 'poemTopic', defaultPreferenceData.poemTopic);
+    setDefaultIfUndefinedOrNull(preferenceData, 'autoTopic', defaultPreferenceData.autoTopic);
+    setDefaultIfUndefinedOrNull(preferenceData, 'changePoemTime', defaultPreferenceData.changePoemTime);
+    setDefaultIfUndefinedOrNull(preferenceData, 'searchEngine', defaultPreferenceData.searchEngine);
+    setDefaultIfUndefinedOrNull(preferenceData, 'buttonShape', defaultPreferenceData.buttonShape);
+    setDefaultIfUndefinedOrNull(preferenceData, 'simpleMode', defaultPreferenceData.simpleMode);
+    setDefaultIfUndefinedOrNull(preferenceData, 'fontFamily', defaultPreferenceData.fontFamily);
+    setDefaultIfUndefinedOrNull(preferenceData, 'fontVariant', defaultPreferenceData.fontVariant);
 
     if (isFixed) {
         localStorage.setItem("preferenceData", JSON.stringify(preferenceData));  // 重新保存设置
@@ -434,12 +436,12 @@ export function resetRadioColor(selectedRadio: string | NzButtonShape, allRadios
     for (let i = 0; i < allRadios.length; i++) {
         let currentRadio = $("#" + allRadios[i]);
         if (selectedRadio && allRadios[i] !== selectedRadio) {
-            currentRadio.find(".ant-radio-inner").css({ "borderColor": "#d9d9d9", "backgroundColor": "#ffffff" });
-            currentRadio.children(":last-child").css({"fontWeight": "normal", "textDecoration": "none"});
+            currentRadio.find(".ant-radio-inner").css({"borderColor": "#d9d9d9", "backgroundColor": "#ffffff" });
+            currentRadio.children(":last-child").css({"textDecoration": "none"});
         }
         else {
-            currentRadio.find(".ant-radio-inner").css({ "borderColor": themeColor, "backgroundColor": themeColor });
-            currentRadio.children(":last-child").css({"fontWeight": "bold", "textDecoration": "underline"});
+            currentRadio.find(".ant-radio-inner").css({"borderColor": themeColor, "backgroundColor": themeColor });
+            currentRadio.children(":last-child").css({"textDecoration": "underline"});
         }
     }
 }
@@ -455,5 +457,19 @@ export function resetSwitchColor(element: string, checked: boolean, themeColor: 
     else {
         $(element).children(".ant-switch").css("backgroundColor", themeColor)
             .find(".ant-switch-inner").css("color", getFontColor(themeColor));
+    }
+}
+
+export function setFont(preferenceData: PreferenceDataInterface) {
+    if (preferenceData.fontFamily === "cursive") {
+        $(".poemFont").css("font-family", "'Times New Roman', cursive, serif");
+    } else if (preferenceData.fontFamily === "sansSerif") {
+        $(".poemFont").css("font-family", "sansSerif");
+    }
+
+    if (preferenceData.fontVariant === "simplified") {
+        $(".poemFont").css("font-variant-east-asian", "simplified");
+    } else if (preferenceData.fontVariant === "traditional" && preferenceData.fontFamily === "sansSerif") {
+        $(".poemFont").css("font-variant-east-asian", "traditional");
     }
 }

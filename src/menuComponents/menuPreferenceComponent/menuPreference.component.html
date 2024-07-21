@@ -80,6 +80,34 @@
                 />
             </nz-form-control>
         </nz-form-item>
+        <nz-form-item>
+            <nz-form-label>字体类型</nz-form-label>
+                <nz-form-control>
+                    <nz-radio-group (ngModelChange)="fontFamilyRadioOnChange($event)" [nzDisabled]="formDisabled"
+                                    [(ngModel)]="preferenceData.fontFamily"
+                                    [style]="{width: '100%'}"
+                                    name="fontFamily">
+                        <div nz-row>
+                            <div nz-col nzSpan="12"><label nz-radio nzValue="cursive" id="cursive">带衬线</label></div>
+                            <div nz-col nzSpan="12"><label nz-radio nzValue="sansSerif" id="sansSerif">无衬线</label></div>
+                        </div>
+                    </nz-radio-group>
+                </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label>简繁切换</nz-form-label>
+            <nz-form-control>
+                <nz-radio-group (ngModelChange)="fontVariantRadioOnChange($event)" [nzDisabled]="formDisabled"
+                                [(ngModel)]="preferenceData.fontVariant"
+                                [style]="{width: '100%'}"
+                                name="fontVariant">
+                    <div nz-row>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="simplified" id="simplified">简体中文</label></div>
+                        <div nz-col nzSpan="12"><label nz-radio nzValue="traditional" id="traditional">繁体中文</label></div>
+                    </div>
+                </nz-radio-group>
+            </nz-form-control>
+        </nz-form-item>
         <nz-form-item [style.display]="['iPhone', 'Android'].indexOf(device) === -1 ? 'flex' : 'none'">
             <nz-form-label>自定颜色</nz-form-label>
             <nz-form-control [nzExtra]="customThemeState ? '已启用自定义主题颜色' : ''">

@@ -7,5 +7,8 @@ export interface PreferenceDataInterface {
 
     searchEngine: "bing" | "google",
     simpleMode: boolean,
-    buttonShape: NzButtonShape
+    buttonShape: NzButtonShape,
+
+    fontFamily: "cursive" | "sansSerif",
+    fontVariant: "simplified" | "traditional"
 }
