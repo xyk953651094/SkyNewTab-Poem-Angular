@@ -4,7 +4,8 @@ import {
     getFontColor,
     getHolidayDataStorage,
     getPreferenceDataStorage, resetRadioColor, resetSwitchColor,
-    setTheme
+    setTheme,
+    setFont
 } from "../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../typescripts/publicInterface";
 import $ from "jquery";
@@ -19,11 +20,17 @@ export class AppComponent implements OnInit {
     title = "云开诗词新标签页";
     majorColor = "#000000";
     minorColor: string = "#ffffff";
-    svgColors: string[] = ["#ffffff", "#ffffff", "#ffffff", "#ffffff"];
+    svgColors: string[] = ["#ffffff", "#ffffff", "#ffffff"];
     preferenceData: PreferenceDataInterface = getPreferenceDataStorage();
     holidayData: any = getHolidayDataStorage();
 
     constructor(private notification: NzNotificationService) {}
+
+    getTheme(value: any) {
+        this.majorColor = value.majorColor;
+        this.minorColor = value.minorColor;
+        this.svgColors = value.svgColors;
+    }
 
     getPreferenceData(value: PreferenceDataInterface) {
         this.preferenceData = value;
@@ -35,11 +42,22 @@ export class AppComponent implements OnInit {
 
     // 随机颜色主题
     setColorTheme() {
-        // 随机颜色主题
-        let theme = setTheme();
-        this.majorColor = theme.majorColor;
-        this.minorColor = theme.minorColor;
-        this.svgColors = theme.svgColors;
+        // 设置颜色主题
+        let tempTheme;
+        let tempThemeStorage = localStorage.getItem("theme");
+        if (tempThemeStorage) {
+            tempTheme = JSON.parse(tempThemeStorage);
+            let body = document.getElementsByTagName("body")[0];
+            body.style.backgroundColor = tempTheme.majorColor;    // 设置body背景颜色
+        } else {
+            tempTheme = setTheme();
+        }
+        this.majorColor = tempTheme.majorColor;
+        this.minorColor = tempTheme.minorColor;
+        this.svgColors = tempTheme.svgColors;
+
+        // 设置字体(需要优化)
+        setFont(".poemFont", this.preferenceData);
 
         // 修改弹窗主题
         let bodyEle = $("body");
@@ -50,8 +68,7 @@ export class AppComponent implements OnInit {
             $(".ant-list-item-action").css("marginInlineStart", "0");
             $(".ant-empty-description").css({
                 "color": getFontColor(this.minorColor),
-                "font-family": "'Times New Roman', cursive, serif",
-            });
+            }).addClass("poemFont");
 
             // popover
             let popoverEle = $(".ant-popover");
@@ -61,24 +78,19 @@ export class AppComponent implements OnInit {
                 $(".ant-popover-inner").css("border-radius", "2px");
                 $(".ant-popover-title").css({
                     "color": getFontColor(this.minorColor),
-                    "font-family": "'Times New Roman', cursive, serif",
-                    "font-weight": "bold",
                     "background-color": this.minorColor,
                     "border-color": this.minorColor,
                     "border-top-left-radius": "2px",
                     "border-top-right-radius": "2px"
-                });
+                }).addClass("poemFont");
                 $(".ant-popover-inner-content").css({
                     "color": getFontColor(this.minorColor),
                     "background-color": this.minorColor,
                     "border-bottom-left-radius": "2px",
                     "border-bottom-right-radius": "2px"
                 });
-                $(".ant-select-item").css("font-family", "'Times New Roman', cursive, serif");
-                $(".ant-form-item-extra").css({
-                    "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, serif"
-                });
+                $(".ant-select-item").addClass("poemFont");
+                $(".ant-form-item-extra").css("color", getFontColor(this.minorColor)).addClass("poemFont");
 
                 let dailyNotificationStorage = localStorage.getItem("dailyNotification");
                 if (dailyNotificationStorage) {
@@ -98,10 +110,7 @@ export class AppComponent implements OnInit {
             let toolTipEle = $(".ant-tooltip");
             if (toolTipEle.length && toolTipEle.length > 0) {
                 $(".ant-tooltip-arrow").css("display", "none");
-                $(".ant-tooltip-inner").css({
-                    "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, serif"
-                });
+                $(".ant-tooltip-inner").css("color", getFontColor(this.minorColor)).addClass("poemFont");
             }
 
             // message
@@ -110,8 +119,7 @@ export class AppComponent implements OnInit {
                 $(".ant-message-notice-content").css({
                     "backgroundColor": this.minorColor,
                     "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, serif"
-                });
+                }).addClass("poemFont");
                 $(".ant-message-custom-content > .anticon").css({
                     "color": getFontColor(this.minorColor),
                 });
@@ -122,8 +130,8 @@ export class AppComponent implements OnInit {
             if (notificationEle.length && notificationEle.length > 0) {
                 $(".ant-notification-notice").css({"backgroundColor": this.minorColor});
                 $(".ant-notification-notice-icon").css("color", getFontColor(this.minorColor));
-                $(".ant-notification-notice-message").css({"color": getFontColor(this.minorColor), "font-family": "Times New Roman, cursive, serif"});
-                $(".ant-notification-notice-description").css({"color": getFontColor(this.minorColor), "font-family": "Times New Roman, cursive, serif"});
+                $(".ant-notification-notice-message").css("color", getFontColor(this.minorColor)).addClass("poemFont");
+                $(".ant-notification-notice-description").css("color", getFontColor(this.minorColor)).addClass("poemFont");
             }
 
             // drawer
@@ -133,37 +141,24 @@ export class AppComponent implements OnInit {
                     "background-color": this.minorColor,
                     "border-bottom": "1px solid " + getFontColor(this.minorColor)
                 });
-                $(".ant-drawer-title").css({
-                    "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, serif"
-                });
+                $(".ant-drawer-title").css("color", getFontColor(this.minorColor)).addClass("poemFont");
                 $(".ant-card-head").css({
                     "background-color": this.minorColor,
                     "border-bottom": "2px solid " + getFontColor(this.minorColor)
                 });
-                $(".ant-card-head-title").css({
-                    "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, serif"
-                });
-                $(".ant-form-item-label > label").css({
-                    "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, serif"
-                });
-                $(".ant-form-item-extra").css({
-                    "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, serif"
-                });
-                $(".ant-radio-wrapper").children(":last-child").css({
-                    "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, serif"
-                });
-                $(".ant-select-item").css("font-family", "'Times New Roman', cursive, serif");
+                $(".ant-card-head-title").css("color", getFontColor(this.minorColor)).addClass("poemFont");
+                $(".ant-form-item-label > label").css("color", getFontColor(this.minorColor)).addClass("poemFont");
+                $(".ant-form-item-extra").css("color", getFontColor(this.minorColor)).addClass("poemFont");
+                $(".ant-radio-wrapper").children(":last-child").css("color", getFontColor(this.minorColor)).addClass("poemFont");
+                $(".ant-select-item").addClass("poemFont");
                 $(".ant-drawer-footer").css({"background-color": this.minorColor, "border-top": "1px solid " + getFontColor(this.minorColor)});
 
                 // menuPreferenceComponent
                 resetRadioColor(this.preferenceData.searchEngine, ["bing", "google"], this.majorColor);
                 resetRadioColor(this.preferenceData.buttonShape, ["round", "default"], this.majorColor);
                 resetRadioColor(this.preferenceData.poemTopic, poemTopics, this.majorColor);
+                resetRadioColor(this.preferenceData.fontFamily, ["cursive", "sansSerif"], this.majorColor);
+                resetRadioColor(this.preferenceData.fontVariant, ["simplified", "traditional"], this.majorColor);
                 resetSwitchColor("#autoTopicSwitch", this.preferenceData.autoTopic, this.majorColor);
                 resetSwitchColor("#simpleModeSwitch", this.preferenceData.simpleMode, this.majorColor);
             }
@@ -179,16 +174,12 @@ export class AppComponent implements OnInit {
                 $(".ant-modal-title").css({
                     "background-color": this.minorColor,
                     "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, serif"
-                });
+                }).addClass("poemFont");
                 $(".ant-modal-footer").css({
                     "backgroundColor": this.minorColor,
                     "border-color": this.minorColor
                 });
-                $(".ant-modal-footer > .ant-btn").css({
-                    "color": getFontColor(this.minorColor),
-                    "font-family": "Times New Roman, cursive, serif"
-                })
+                $(".ant-modal-footer > .ant-btn").css("color", getFontColor(this.minorColor)).addClass("poemFont")
                 if (this.preferenceData.buttonShape === "round") {
                     $(".ant-modal-footer > .ant-btn").removeClass("ant-btn-default ant-btn-primary").addClass("poemFont ant-btn-round ant-btn-text");
                 } else {
@@ -203,6 +194,9 @@ export class AppComponent implements OnInit {
                     e.currentTarget.style.color = getFontColor(this.minorColor);
                 });
             }
+
+            // 设置字体(需要优化)
+            setFont(".poemFont", this.preferenceData);
         });
 
         // const observer = new MutationObserver((mutations) => {
@@ -226,7 +220,7 @@ export class AppComponent implements OnInit {
         if (storageVersion !== currentVersion) {
             this.notification.blank(
                 "已更新至版本 V" + currentVersion,
-                "详细内容请前往 GitHub 或 GitLab 主页查看",
+                "详细内容请前往菜单栏更新日志查看",
                 {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
             );
             localStorage.setItem("SkyNewTabPoemAngularVersion", currentVersion);
@@ -234,7 +228,7 @@ export class AppComponent implements OnInit {
             setTimeout(() => {
                 this.notification.blank(
                     "支持作者",
-                    "如果喜欢这款插件，请考虑捐助或五星好评",
+                    "如果喜欢这款插件，请考虑五星好评",
                     {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
                 );
             }, 1000);

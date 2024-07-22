@@ -71,7 +71,7 @@ export class menuPreferenceComponent implements OnInit {
         this.getPreferenceData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
         localStorage.removeItem("lastPoemRequestTime");  // 重置请求时间
-        
+
         if (checked) {
             this.message.success("已开启自动主题，一秒后刷新页面");
         } else {
@@ -86,10 +86,35 @@ export class menuPreferenceComponent implements OnInit {
         this.preferenceData = this.modifyPreferenceData({changePoemTime: value});
         this.getPreferenceData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
-        
+
         this.message.success("已修改切换间隔，一秒后刷新页面");
         this.formDisabled = true;
         this.refreshWindow();
+    }
+
+    // 字体类型
+    fontFamilyRadioOnChange(value: string) {
+        if (value === "cursive") {
+            this.preferenceData = this.modifyPreferenceData({fontFamily: value, fontVariant: "simplified"});
+        } else {
+            this.preferenceData = this.modifyPreferenceData({fontFamily: value});
+        }
+        this.getPreferenceData.emit(this.preferenceData);
+        localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
+        this.message.success("已更换字体类型");
+    }
+
+    // 简繁切换
+    fontVariantRadioOnChange(value: string) {
+        this.preferenceData = this.modifyPreferenceData({fontVariant: value});
+        this.getPreferenceData.emit(this.preferenceData);
+        localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
+        if (value === "simplified") {
+            this.message.success("已切换为简体中文");
+        }
+        if (value === "traditional") {
+            this.message.success("已切换为繁体中文");
+        }
     }
 
     // 自定颜色

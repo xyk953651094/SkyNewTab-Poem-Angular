@@ -5,21 +5,13 @@
         </span>
     </div>
     <div [style]="{textAlign: 'right'}" nz-col nzSpan="18">
-        <nz-space>
-            <button (click)="weChatBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
-                    (mouseover)="btnMouseOver(majorColor, $event)"
-                    *nzSpaceItem [nzShape]="preferenceData.buttonShape === 'round' ? 'circle' : preferenceData.buttonShape"
-                    [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
-            >
-                <span nz-icon nzType="wechat" nzTheme="outline"></span>
-            </button>
-            <button (click)="blogBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
-                    (mouseover)="btnMouseOver(majorColor, $event)"
-                    *nzSpaceItem [nzShape]="preferenceData.buttonShape === 'round' ? 'circle' : preferenceData.buttonShape"
-                    [style.color]="getFontColor(minorColor)" class="poemFont" nz-button nzType="text"
-            >
-                <span class="bi bi-rss-fill"></span>
-            </button>
-        </nz-space>
+        <button (mouseout)="btnMouseOut(minorColor, $event)"
+                (mouseover)="btnMouseOver(majorColor, $event)"
+                [nzShape]="preferenceData.buttonShape"
+                [style]="{color: getFontColor(minorColor), cursor: 'default'}" class="poemFont" nz-button nzType="text"
+        >
+            <span nz-icon nzTheme="outline" nzType="info-circle"></span>
+            {{"版本：V" + currentVersion}}
+        </button>
     </div>
 </div>
