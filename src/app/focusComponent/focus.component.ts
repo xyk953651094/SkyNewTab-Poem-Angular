@@ -60,7 +60,7 @@ export class FocusComponent implements OnInit, OnChanges {
         let tempFocusEndTimeStamp: number;
         if (checked) {
             if (this.filterList.length === 0) {
-                this.message.warning("请添加黑名单");
+                this.message.warning("请先添加名单");
             }
 
             if (this.focusPeriod === "manual") {
