@@ -20,7 +20,7 @@
         <div nz-row nzAlign="middle">
             <div nz-col nzSpan="12">
                 <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
-                    {{"添加倒数日 " + dailyList.length + ' / ' + dailyMaxSize}}
+                    {{"添加倒数 " + dailyList.length + ' / ' + dailyMaxSize}}
                 </span>
             </div>
             <div nz-col nzSpan="12" class="alignRight">
@@ -91,7 +91,7 @@
                         nz-button nzType="text"
                 >
                     <span nz-icon nzTheme="outline" nzType="plus"></span>
-                    {{"添加倒数日"}}
+                    {{"添加倒数"}}
                 </button>
                 <button (click)="removeAllBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                         (mouseover)="btnMouseOver(majorColor, $event)"

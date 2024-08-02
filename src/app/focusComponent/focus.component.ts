@@ -37,17 +37,21 @@ export class FocusComponent implements OnInit, OnChanges {
     focusSound: string = "none";
     focusMaxSize: number = 10;
     browserType = getBrowserType();
-   
+
     protected readonly getFontColor = getFontColor;
 
     constructor(private message: NzMessageService) {}
 
     setExtensionStorage(key: string, value: any) {
-        if (["Chrome", "Edge"].indexOf(this.browserType) !== -1) {
-            chrome.storage.local.set({[key]: value});
-        }
-        else if (["Firefox", "Safari"].indexOf(this.browserType) !== -1) {
-            browser.storage.local.set({[key]: value});
+        try {
+            if (["Chrome", "Edge"].indexOf(this.browserType) !== -1) {
+                chrome.storage.local.set({[key]: value});
+            }
+            else if (["Firefox", "Safari"].indexOf(this.browserType) !== -1) {
+                browser.storage.local.set({[key]: value});
+            }
+        } catch (error: any) {
+            console.error("Error writing to localStorage:", error);
         }
     }
 

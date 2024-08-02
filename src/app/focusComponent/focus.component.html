@@ -1,4 +1,4 @@
-<button [nzPopoverContent]="popoverContent" [nzPopoverOverlayStyle]="{width: '550px'}"
+<button [nzPopoverContent]="popoverContent" [nzPopoverOverlayStyle]="{width: '600px'}"
         [nzPopoverTitle]="popoverTitle"
         [nzShape]="preferenceData.buttonShape"
         [style]="{display: display, cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
@@ -109,7 +109,7 @@
                 {{item.domain}}
             </button>
         </nz-list-item>
-        <nz-list-header>
+        <nz-list-footer>
             <nz-space nzAlign="center">
                 <nz-select *nzSpaceItem class="poemFont" [(ngModel)]="focusSound" (ngModelChange)="focusSoundSelectOnChange($event)"
                            [style.width]="'160px'">
@@ -135,6 +135,6 @@
                     {{"结束时间：" + focusEndTime}}
                 </button>
             </nz-space>
-        </nz-list-header>
+        </nz-list-footer>
     </nz-list>
 </ng-template>
