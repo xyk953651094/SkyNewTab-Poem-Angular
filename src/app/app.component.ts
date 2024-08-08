@@ -1,11 +1,11 @@
 import {Component, OnInit} from "@angular/core";
 import {NzNotificationService} from 'ng-zorro-antd/notification';
 import {
-    getFontColor,
-    getHolidayDataStorage,
-    getPreferenceDataStorage, resetRadioColor, resetSwitchColor,
-    setTheme,
-    setFont
+  getFontColor,
+  getHolidayDataStorage,
+  getPreferenceDataStorage, resetRadioColor, resetSwitchColor,
+  setTheme,
+  setFont, getExtensionStorage, setExtensionStorage
 } from "../typescripts/publicFunctions";
 import {PreferenceDataInterface} from "../typescripts/publicInterface";
 import $ from "jquery";
@@ -43,18 +43,16 @@ export class AppComponent implements OnInit {
     // 随机颜色主题
     setColorTheme() {
         // 设置颜色主题
-        let tempTheme;
-        let tempThemeStorage = localStorage.getItem("theme");
+        let tempThemeStorage = getExtensionStorage("theme", null);
         if (tempThemeStorage) {
-            tempTheme = JSON.parse(tempThemeStorage);
-            let body = document.getElementsByTagName("body")[0];
-            body.style.backgroundColor = tempTheme.majorColor;    // 设置body背景颜色
+          let bodyEle = $("body");
+          bodyEle.css("backgroundColor", tempThemeStorage.majorColor + " !important");
         } else {
-            tempTheme = setTheme();
+          tempThemeStorage = setTheme();
         }
-        this.majorColor = tempTheme.majorColor;
-        this.minorColor = tempTheme.minorColor;
-        this.svgColors = tempTheme.svgColors;
+        this.majorColor = tempThemeStorage.majorColor;
+        this.minorColor = tempThemeStorage.minorColor;
+        this.svgColors = tempThemeStorage.svgColors;
 
         // 设置字体(需要优化)
         setFont(".poemFont", this.preferenceData);
@@ -94,18 +92,12 @@ export class AppComponent implements OnInit {
                         $(".ant-select-item").addClass("poemFont");
                         $(".ant-form-item-extra").css("color", getFontColor(this.minorColor)).addClass("poemFont");
 
-                        let dailyNotificationStorage = localStorage.getItem("dailyNotification");
-                        if (dailyNotificationStorage) {
-                            resetSwitchColor("#dailyNotificationSwitch", JSON.parse(dailyNotificationStorage), this.majorColor);
-                        }
-                        let todoNotificationStorage = localStorage.getItem("todoNotification");
-                        if (todoNotificationStorage) {
-                            resetSwitchColor("#todoNotificationSwitch", JSON.parse(todoNotificationStorage), this.majorColor);
-                        }
-                        let focusMode = localStorage.getItem("focusMode");
-                        if (focusMode) {
-                            resetSwitchColor("#focusModeSwitch", JSON.parse(focusMode), this.majorColor);
-                        }
+                        let dailyNotificationStorage = getExtensionStorage("dailyNotification", false);
+                        let todoNotificationStorage = getExtensionStorage("todoNotification", false);
+                        let focusModeStorage = getExtensionStorage("focusMode", false);
+                        resetSwitchColor("#dailyNotificationSwitch", dailyNotificationStorage, this.majorColor);
+                        resetSwitchColor("#todoNotificationSwitch", todoNotificationStorage, this.majorColor);
+                        resetSwitchColor("#focusModeSwitch", focusModeStorage, this.majorColor);
                     }
 
                     // toolTip
@@ -210,15 +202,15 @@ export class AppComponent implements OnInit {
         this.setColorTheme();
 
         // 版本号提醒
-        let storageVersion = localStorage.getItem("SkyNewTabPoemAngularVersion");
         let currentVersion = require('../../package.json').version;
+        let storageVersion = getExtensionStorage("SkyNewTabPoemAngularVersion", "0.0.0");
         if (storageVersion !== currentVersion) {
             this.notification.blank(
                 "已更新至版本 V" + currentVersion,
                 "详细内容请前往菜单栏更新日志查看",
                 {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
             );
-            localStorage.setItem("SkyNewTabPoemAngularVersion", currentVersion);
+            setExtensionStorage("SkyNewTabPoemAngularVersion", currentVersion);
 
             setTimeout(() => {
                 this.notification.blank(

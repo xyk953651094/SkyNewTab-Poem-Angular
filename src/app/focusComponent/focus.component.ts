@@ -2,6 +2,7 @@
 /// <reference types="firefox-webext-browser"/>
 
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
+import {browserType} from "../../typescripts/publicConstants"
 import {
     btnMouseOut,
     btnMouseOver,
@@ -36,7 +37,6 @@ export class FocusComponent implements OnInit, OnChanges {
     focusEndTime: string = "未开启专注模式";
     focusSound: string = "none";
     focusMaxSize: number = 10;
-    browserType = getBrowserType();
 
     protected readonly getFontColor = getFontColor;
 
@@ -44,10 +44,10 @@ export class FocusComponent implements OnInit, OnChanges {
 
     setExtensionStorage(key: string, value: any) {
         try {
-            if (["Chrome", "Edge"].indexOf(this.browserType) !== -1) {
+            if (["Chrome", "Edge"].indexOf(browserType) !== -1) {
                 chrome.storage.local.set({[key]: value});
             }
-            else if (["Firefox", "Safari"].indexOf(this.browserType) !== -1) {
+            else if (["Firefox", "Safari"].indexOf(browserType) !== -1) {
                 browser.storage.local.set({[key]: value});
             }
         } catch (error: any) {

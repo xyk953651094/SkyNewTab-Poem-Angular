@@ -367,7 +367,7 @@ export function fixPreferenceData(preferenceData: PreferenceDataInterface) {
 }
 
 // 封装对 localStorage 的操作，增加异常处理
-export function getExtensionStorage(key: string, defaultValue: any = null) {
+export function getExtensionStorage(key: string, defaultValue: any) {
     try {
         let tempStorage;
         // if (["Chrome", "Edge"].indexOf(browserType) !== -1) {
@@ -376,7 +376,14 @@ export function getExtensionStorage(key: string, defaultValue: any = null) {
         // else if (["Firefox", "Safari"].indexOf(browserType) !== -1) {
         //     tempStorage = browser.storage.local.get({key});
         // }
-      // return tempStorage;
+        //
+        // if (tempStorage === null || tempStorage === undefined) {
+        //     if (defaultValue !== null && defaultValue !== undefined) {
+        //         setExtensionStorage(key, defaultValue);
+        //     }
+        //     return defaultValue;
+        // }
+        // return tempStorage;
 
         tempStorage = localStorage.getItem(key);
         if (tempStorage) {
@@ -386,7 +393,9 @@ export function getExtensionStorage(key: string, defaultValue: any = null) {
                 return tempStorage;  // 不是 JSON 的纯字符串
             }
         } else {
-            localStorage.setItem(key, JSON.stringify(defaultValue));
+            if (defaultValue !== null && defaultValue !== undefined) {
+                localStorage.setItem(key, JSON.stringify(defaultValue));
+            }
             return defaultValue;
         }
     } catch (error) {
