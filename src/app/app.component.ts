@@ -43,16 +43,17 @@ export class AppComponent implements OnInit {
     // 随机颜色主题
     setColorTheme() {
         // 设置颜色主题
-        let tempThemeStorage = getExtensionStorage("theme", null);
-        if (tempThemeStorage) {
-          let bodyEle = $("body");
-          bodyEle.css("backgroundColor", tempThemeStorage.majorColor + " !important");
-        } else {
-          tempThemeStorage = setTheme();
-        }
-        this.majorColor = tempThemeStorage.majorColor;
-        this.minorColor = tempThemeStorage.minorColor;
-        this.svgColors = tempThemeStorage.svgColors;
+        getExtensionStorage("theme", null).then((tempThemeStorage) => {
+            if (tempThemeStorage) {
+                let bodyEle = $("body");
+                bodyEle.css("backgroundColor", tempThemeStorage.majorColor + " !important");
+            } else {
+                tempThemeStorage = setTheme();
+            }
+            this.majorColor = tempThemeStorage.majorColor;
+            this.minorColor = tempThemeStorage.minorColor;
+            this.svgColors = tempThemeStorage.svgColors;
+        });
 
         // 设置字体(需要优化)
         setFont(".poemFont", this.preferenceData);
@@ -92,12 +93,15 @@ export class AppComponent implements OnInit {
                         $(".ant-select-item").addClass("poemFont");
                         $(".ant-form-item-extra").css("color", getFontColor(this.minorColor)).addClass("poemFont");
 
-                        let dailyNotificationStorage = getExtensionStorage("dailyNotification", false);
-                        let todoNotificationStorage = getExtensionStorage("todoNotification", false);
-                        let focusModeStorage = getExtensionStorage("focusMode", false);
-                        resetSwitchColor("#dailyNotificationSwitch", dailyNotificationStorage, this.majorColor);
-                        resetSwitchColor("#todoNotificationSwitch", todoNotificationStorage, this.majorColor);
-                        resetSwitchColor("#focusModeSwitch", focusModeStorage, this.majorColor);
+                        getExtensionStorage("dailyNotification", false).then((dailyNotificationStorage) => {
+                            resetSwitchColor("#dailyNotificationSwitch", dailyNotificationStorage, this.majorColor);
+                        });
+                        getExtensionStorage("todoNotification", false).then((todoNotificationStorage) => {
+                            resetSwitchColor("#todoNotificationSwitch", todoNotificationStorage, this.majorColor);
+                        });
+                        getExtensionStorage("focusMode", false).then((focusModeStorage) => {
+                            resetSwitchColor("#focusModeSwitch", focusModeStorage, this.majorColor);
+                        });
                     }
 
                     // toolTip
