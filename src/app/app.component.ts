@@ -216,13 +216,13 @@ export class AppComponent implements OnInit {
             );
             setExtensionStorage("SkyNewTabPoemAngularVersion", currentVersion);
 
-            setTimeout(() => {
-                this.notification.blank(
-                    "支持作者",
-                    "如果喜欢这款插件，请考虑五星好评",
-                    {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
-                );
-            }, 1000);
+            // setTimeout(() => {
+            //     this.notification.blank(
+            //         "支持作者",
+            //         "如果喜欢这款插件，请考虑五星好评",
+            //         {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
+            //     );
+            // }, 1000);
 
             // 额外提醒
             // if (currentVersion === "3.1.0") {
