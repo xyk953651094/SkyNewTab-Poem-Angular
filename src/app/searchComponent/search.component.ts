@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
-import {btnMouseOut, btnMouseOver, getFontColor, getSearchEngineDetail} from "../../typescripts/publicFunctions";
+import {btnMouseOut, btnMouseOver, getFontColor, getSearchEngineDetail, getExtensionStorage, setExtensionStorage, removeExtensionStorage} from "../../typescripts/publicFunctions";
 import {defaultPreferenceData} from "../../typescripts/publicConstants";
 import {NzButtonShape} from "ng-zorro-antd/button";
 import {NzMessageService} from "ng-zorro-antd/message";
@@ -31,7 +31,7 @@ export class SearchComponent implements OnInit, OnChanges {
 
     removeAllBtnOnClick() {
         this.linkList = [];
-        localStorage.removeItem("linkList");
+        removeExtensionStorage("linkList");
         this.message.success("删除成功");
     }
 
@@ -49,7 +49,7 @@ export class SearchComponent implements OnInit, OnChanges {
         }
 
         this.linkList = tempLinkList;
-        localStorage.setItem("linkList", JSON.stringify(tempLinkList));
+        setExtensionStorage("linkList", tempLinkList);
         this.message.success("删除成功");
     }
 
@@ -103,7 +103,7 @@ export class SearchComponent implements OnInit, OnChanges {
                     });
 
                     this.displayAddModal = false;
-                    localStorage.setItem("linkList", JSON.stringify(this.linkList));
+                    setExtensionStorage("linkList", this.linkList);
                     this.message.success("添加成功");
                 } else {
                     this.message.error("链接地址格式错误");
@@ -134,7 +134,7 @@ export class SearchComponent implements OnInit, OnChanges {
             if (index !== -1) {
                 tempLinkList[index].linkName = e.target.value;
 
-                localStorage.setItem("linkList", JSON.stringify(tempLinkList));
+                setExtensionStorage("linkList", tempLinkList);
                 this.linkList = tempLinkList;
                 this.message.success("修改成功");
             } else {
@@ -159,7 +159,7 @@ export class SearchComponent implements OnInit, OnChanges {
             if (index !== -1) {
                 tempLinkList[index].linkUrl = e.target.value;
 
-                localStorage.setItem("linkList", JSON.stringify(tempLinkList));
+                setExtensionStorage("linkList", tempLinkList);
                 this.linkList = tempLinkList;
                 this.message.success("修改成功");
             } else {
@@ -190,10 +190,9 @@ export class SearchComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
-        let linkListStorage = localStorage.getItem("linkList");
-        if (linkListStorage) {
-            this.linkList = JSON.parse(linkListStorage);
-        }
+        getExtensionStorage("linkList", []).then((tempLinkList) => {
+          this.linkList = tempLinkList;
+        })
     }
 
     protected readonly btnMouseOver = btnMouseOver;
