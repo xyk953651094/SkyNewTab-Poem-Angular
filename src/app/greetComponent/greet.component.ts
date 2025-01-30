@@ -59,19 +59,6 @@ export class GreetComponent implements OnInit, OnChanges {
         }
         if (data.typeDes !== "休息日" && data.typeDes !== "工作日") {
             this.holidayContent = this.holidayContent + " · " + data.typeDes;
-
-            // 发送恭贺通知
-            let displayBlessStorage = localStorage.getItem("displayBless");
-            if (displayBlessStorage === null) {
-                this.notification.blank(
-                    "今日" + data.typeDes,
-                    "云开诗词新标签页祝您" + data.typeDes + "快乐！",
-                    {nzPlacement: "bottomLeft", nzDuration: 5000, nzCloseIcon: "null"}
-                );
-                localStorage.setItem("displayBless", JSON.stringify(false));
-            }
-        } else {
-            localStorage.removeItem("displayBless");
         }
 
         let timeDetails = getTimeDetails(new Date());

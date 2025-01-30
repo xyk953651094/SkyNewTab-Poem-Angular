@@ -94,11 +94,7 @@ export class menuPreferenceComponent implements OnInit {
 
     // 字体类型
     fontFamilyRadioOnChange(value: string) {
-        if (value === "cursive") {
-            this.preferenceData = this.modifyPreferenceData({fontFamily: value, fontVariant: "simplified"});
-        } else {
-            this.preferenceData = this.modifyPreferenceData({fontFamily: value});
-        }
+        this.preferenceData = this.modifyPreferenceData({fontFamily: value});
         this.getPreferenceData.emit(this.preferenceData);
         localStorage.setItem("preferenceData", JSON.stringify(this.preferenceData));
         this.message.success("已更换字体类型");

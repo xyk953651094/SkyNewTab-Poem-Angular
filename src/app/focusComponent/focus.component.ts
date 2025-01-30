@@ -2,6 +2,7 @@
 /// <reference types="firefox-webext-browser"/>
 
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
+import {browserType} from "../../typescripts/publicConstants"
 import {
     btnMouseOut,
     btnMouseOver,
@@ -36,18 +37,21 @@ export class FocusComponent implements OnInit, OnChanges {
     focusEndTime: string = "未开启专注模式";
     focusSound: string = "none";
     focusMaxSize: number = 10;
-    browserType = getBrowserType();
-   
+
     protected readonly getFontColor = getFontColor;
 
     constructor(private message: NzMessageService) {}
 
     setExtensionStorage(key: string, value: any) {
-        if (["Chrome", "Edge"].indexOf(this.browserType) !== -1) {
-            chrome.storage.local.set({[key]: value});
-        }
-        else if (["Firefox", "Safari"].indexOf(this.browserType) !== -1) {
-            browser.storage.local.set({[key]: value});
+        try {
+            if (["Chrome", "Edge"].indexOf(browserType) !== -1) {
+                chrome.storage.local.set({[key]: value});
+            }
+            else if (["Firefox", "Safari"].indexOf(browserType) !== -1) {
+                browser.storage.local.set({[key]: value});
+            }
+        } catch (error: any) {
+            console.error("Error writing to localStorage:", error);
         }
     }
 
@@ -56,7 +60,7 @@ export class FocusComponent implements OnInit, OnChanges {
         let tempFocusEndTimeStamp: number;
         if (checked) {
             if (this.filterList.length === 0) {
-                this.message.warning("请添加黑名单");
+                this.message.warning("请先添加名单");
             }
 
             if (this.focusPeriod === "manual") {

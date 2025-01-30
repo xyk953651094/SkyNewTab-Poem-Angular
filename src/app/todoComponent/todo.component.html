@@ -20,7 +20,7 @@
         <div nz-row nzAlign="middle">
             <div nz-col nzSpan="12">
                 <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
-                    {{"添加待办事项 " + todoList.length + ' / ' + todoMaxSize}}
+                    {{"添加待办 " + todoList.length + ' / ' + todoMaxSize}}
                 </span>
             </div>
             <div nz-col nzSpan="12" class="alignRight">
@@ -88,7 +88,7 @@
                         nz-button nzType="text"
                 >
                     <span nz-icon nzTheme="outline" nzType="plus"></span>
-                    {{"添加待办事项"}}
+                    {{"添加待办"}}
                 </button>
                 <button (click)="finishAllBtnOnClick()" (mouseout)="btnMouseOut(minorColor, $event)"
                         (mouseover)="btnMouseOver(majorColor, $event)"

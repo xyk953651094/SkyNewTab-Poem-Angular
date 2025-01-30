@@ -1,4 +1,4 @@
-<button [nzPopoverContent]="popoverContent" [nzPopoverOverlayStyle]="{width: '550px'}"
+<button [nzPopoverContent]="popoverContent" [nzPopoverOverlayStyle]="{width: '600px'}"
         [nzPopoverTitle]="popoverTitle"
         [nzShape]="preferenceData.buttonShape"
         [style]="{display: display, cursor: 'default', color: getFontColor(minorColor), backgroundColor: minorColor}"
@@ -20,7 +20,7 @@
         <div nz-row nzAlign="middle">
             <div nz-col nzSpan="12">
                 <span [style]="{color: getFontColor(minorColor)}" class="poemFont" nz-typography>
-                    {{"添加黑名单 " + filterList.length + ' / ' + focusMaxSize}}
+                    {{"添加名单 " + filterList.length + ' / ' + focusMaxSize}}
                 </span>
             </div>
             <div nz-col nzSpan="12" class="alignRight">
@@ -32,7 +32,7 @@
         <form [nzNoColon]="true" nz-form>
             <nz-form-item>
                 <nz-form-label>网站域名</nz-form-label>
-                <nz-form-control nzErrorTip="表单不能为空" nzExtra="开启专注模式后，访问黑名单的域名时将自动跳转至本插件">
+                <nz-form-control nzErrorTip="表单不能为空" nzExtra="开启专注模式后，访问名单的域名时将自动跳转至本插件">
                     <input [maxLength]="30" class="poemFont" name="focusInput" nz-input placeholder="example.com，字数不能超过 30 个" [(ngModel)]="inputValue"/>
                 </nz-form-control>
             </nz-form-item>
@@ -63,7 +63,7 @@
                         nz-button nzType="text"
                 >
                     <span nz-icon nzTheme="outline" nzType="plus"></span>
-                    {{"添加黑名单"}}
+                    {{"添加名单"}}
                 </button>
                 <button *nzSpaceItem (click)="removeAllBtnOnClick()"
                         (mouseout)="btnMouseOut(minorColor, $event)"
@@ -109,7 +109,7 @@
                 {{item.domain}}
             </button>
         </nz-list-item>
-        <nz-list-header>
+        <nz-list-footer>
             <nz-space nzAlign="center">
                 <nz-select *nzSpaceItem class="poemFont" [(ngModel)]="focusSound" (ngModelChange)="focusSoundSelectOnChange($event)"
                            [style.width]="'160px'">
@@ -135,6 +135,6 @@
                     {{"结束时间：" + focusEndTime}}
                 </button>
             </nz-space>
-        </nz-list-header>
+        </nz-list-footer>
     </nz-list>
 </ng-template>
